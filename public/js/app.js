@@ -2217,7 +2217,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://ip-api.com/json?lang=pt-BR');
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://cors-anywhere.herokuapp.com/http://ip-api.com/json?lang=pt-BR');
 
               case 2:
                 payload = _context2.sent;
