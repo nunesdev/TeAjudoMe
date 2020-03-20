@@ -1,0 +1,104 @@
+// Fonts
+
+
+// Variables
+@import 'variables';
+@import 'icons';
+
+@import '~reset-css/sass/reset';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: 10px;
+  color: $white;
+
+  .sidebar {
+    height: 100%;
+    background: $darkblue;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 180px;
+
+    &-active {
+      .map {
+        left: 560px;
+      }
+    }
+
+    &-logo {
+      margin: 0 auto;
+    }
+    &-volunteers {
+      &-count {
+        font-size: 2em;
+        padding-top: 20px;
+        small {
+          font-size: 15px;
+          display: block;
+          color: $light-gray;
+        }
+      }
+    }
+
+    &--close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      font-size: 1.8em;
+      color: $white;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 3;
+    }
+
+    &--secondary {
+      transition: left .2s linear;
+      background: lighten($darkblue, 5%);
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: -380px;
+      width: 380px;
+      height: 100%;
+
+      h3 {
+        font-size: 20px
+      }
+
+      h4 {
+        font-size: 18px
+      }
+
+      &.active {
+        left: 180px;
+      }
+
+      &__body {
+        padding-top: 70px;
+      }
+    }
+
+
+    .btn-handup {
+      background: $yellow;
+      margin-top: 20px;
+      transition: background .25s ease-in;
+
+      &:hover {
+        color: $darkblue;
+        background: $white;
+      }
+    }
+  }
+}
