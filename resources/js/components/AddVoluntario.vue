@@ -18,7 +18,7 @@
             <div class="form-group">
                <input type="text" class="form-control" v-model="info.email" name="email" placeholder="Email" required>
             </div>
-          
+
             <div class="form-group">
                <input type="text" class="form-control" v-model="info.city" name="city" placeholder="Cidade" required>
             </div>
@@ -141,7 +141,7 @@ export default {
         return false;
       },
       async getMyAddress() {
-         const payload = await axios.get('http://ip-api.com/json?lang=pt-BR')
+         const payload = await axios.get('https://ip-api.com/json?lang=pt-BR')
 
          if(payload.data.status === 'success') {
            this.info.city = payload.data.city;

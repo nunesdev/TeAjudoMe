@@ -2217,7 +2217,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://ip-api.com/json?lang=pt-BR');
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('https://ip-api.com/json?lang=pt-BR');
 
               case 2:
                 payload = _context2.sent;
@@ -29155,8 +29155,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/bruno.reis/Documents/Code/acaocovid/site/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/bruno.reis/Documents/Code/acaocovid/site/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/bruno.reis/Documents/Code/TeAjudoMe/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/bruno.reis/Documents/Code/TeAjudoMe/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
