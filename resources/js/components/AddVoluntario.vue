@@ -141,7 +141,7 @@ export default {
         return false;
       },
       async getMyAddress() {
-         const payload = await axios.get('//ip-api.com/json?lang=pt-BR')
+         const payload = await axios.get('http://ip-api.com/json?lang=pt-BR') 
 
          if(payload.data.status === 'success') {
            this.info.city = payload.data.city;
