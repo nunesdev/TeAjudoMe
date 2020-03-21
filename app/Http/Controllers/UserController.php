@@ -35,14 +35,14 @@ class UserController extends BaseController
       $user->name = $request->input('name');
       $user->email = $request->input('email');
       $user->phone = $request->input('phone');
-      $user->whatsapp = isset($request->input('whatsapp')) ? $request->input('whatsapp') : false;
+      $user->whatsapp = $request->input('whatsapp') !== null ? $request->input('whatsapp') : false;
       $user->slug = str_slug($request->input('name'));
       $user->address = '';
       $user->lat = $request->input('location.lat');
       $user->lng = $request->input('location.lon');
       $user->type = 'volunteer';
       $user->city_id = 25;
-      $user->options = isset($request->input('support')) ? json_encode($request->input('support')) : '';
+      $user->options = $request->input('support') !== null ? json_encode($request->input('support')) : '';
       $user->status = 'a';
       $user->save();
 
