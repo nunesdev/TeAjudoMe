@@ -1,28 +1,24 @@
 <template>
   <div class="">
-    <div class="sidebar">
-      <div class="sidebar-logo text-center">
+    <div class="bottombar row align-items-center"  :class="{active:isActive}">
+      <div class="bottombar-logo text-center col">
         <img src="/images/teajudome.png"  alt="">
       </div>
-      <div class="sidebar-volunteers-count text-center">
-        <div class="row justify-content-center">
-          <div class="col-12">
-            20 <small>voluntários cadastrados</small>
-          </div>
-          <div class="col-12">
-            <div @click="changeState" class="btn btn-handup">Posso ajudar
-              <span class="icon-hand-stop"></span>
-            </div>
-          </div>
+      <div class="col">
+        <div @click="changeState" class="btn btn-handup">Posso ajudar
+          <span class="icon-hand-stop"></span>
         </div>
       </div>
+      <div class="col bottombar-volunteers-count text-center">
+        20 <small>voluntários</small>
+      </div>
     </div>
-    <div class="sidebar--secondary" :class="{active:isActive}">
-      <div class="sidebar--close" @click="changeState">
+    <div class="bottombar--secondary" :class="{active:isActive}">
+      <div class="bottombar--close" @click="changeState">
         <span class="icon-circle-left"></span>
       </div>
 
-      <div class="sidebar--secondary__body">
+      <div class="bottombar--secondary__body">
         <AddVoluntario :address.async="address" @closeSidebar="closeSidebar" />
       </div>
     </div>
@@ -34,7 +30,7 @@
 
 export default {
   props: ['address'],
-  name: 'Sidebar',
+  name: 'BottomBar',
   components: {
     AddVoluntario
   },

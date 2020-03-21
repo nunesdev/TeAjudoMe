@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper"
   :class='{"sidebar-active":sidebarOpen}'>
-    <Sidebar @sidebarOpen="onSidebarOpen" />
+    <Sidebar v-if="!isMobile"  @sidebarOpen="onSidebarOpen" />
     <notifications group="foo" />
     <div class="map">
       <MglMap
@@ -59,10 +59,14 @@
       </MglMap>
 
     </div>
+
+    <BottomBar v-if="isMobile" @sidebarOpen="onSidebarOpen" />
   </div>
 </template>
 <script>
+import { isMobile } from 'mobile-device-detect';
 import Sidebar from '@components/Sidebar';
+import BottomBar from '@components/BottomBar';
 import { MglMap, MglPopup, MglMarker  } from "vue-mapbox";
 import { mapGetters, mapActions } from 'vuex'
 
@@ -73,11 +77,13 @@ export default {
     MglMarker,
     MglPopup,
 
-    Sidebar
+    Sidebar,
+    BottomBar
   },
   data() {
     return {
-      sidebarOpen: true,
+      isMobile: isMobile,
+      sidebarOpen: false,
       location: null,
       gettingLocation: false,
       errorStr: null,
@@ -161,6 +167,9 @@ export default {
     width: 100%
     height: 100%
     transition: left .2s linear
+    @media only screen and (max-width: 600px)
+      left: 0
+
     .popup
       color: #3e5c88
       h4

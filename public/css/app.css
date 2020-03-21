@@ -12132,17 +12132,7 @@ a.text-dark:focus {
   }
 }
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  font-size: 10px;
-  color: #fff;
-}
-
-body .sidebar {
+.sidebar {
   height: 100%;
   background: #283241;
   position: fixed;
@@ -12152,26 +12142,54 @@ body .sidebar {
   width: 180px;
 }
 
-body .sidebar-active .map {
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    width: 80px;
+  }
+}
+
+.sidebar .btn-handup {
+  background: #ffed4a;
+  margin-top: 20px;
+  transition: background 0.25s ease-in;
+}
+
+.sidebar .btn-handup:hover {
+  color: #283241;
+  background: #fff;
+}
+
+.sidebar-active .map {
   left: 560px;
 }
 
-body .sidebar-logo {
+@media only screen and (max-width: 600px) {
+  .sidebar-active .map {
+    left: 0;
+  }
+}
+
+.sidebar-logo {
   margin: 0 auto;
 }
 
-body .sidebar-volunteers-count {
+.sidebar-logo img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.sidebar-volunteers-count {
   font-size: 2em;
   padding-top: 20px;
 }
 
-body .sidebar-volunteers-count small {
+.sidebar-volunteers-count small {
   font-size: 15px;
   display: block;
   color: #b8c1c8;
 }
 
-body .sidebar--close {
+.sidebar--close {
   position: absolute;
   top: 10px;
   right: 15px;
@@ -12184,7 +12202,7 @@ body .sidebar--close {
   z-index: 3;
 }
 
-body .sidebar--secondary {
+.sidebar--secondary {
   transition: left 0.2s linear;
   background: #323e51;
   position: fixed;
@@ -12195,30 +12213,113 @@ body .sidebar--secondary {
   height: 100%;
 }
 
-body .sidebar--secondary h3 {
+.sidebar--secondary h3 {
   font-size: 20px;
 }
 
-body .sidebar--secondary h4 {
+.sidebar--secondary h4 {
   font-size: 18px;
 }
 
-body .sidebar--secondary.active {
+.sidebar--secondary.active {
   left: 180px;
 }
 
-body .sidebar--secondary__body {
+.sidebar--secondary__body {
   padding-top: 20px;
 }
 
-body .sidebar .btn-handup {
+.bottombar {
+  height: 100px;
+  background: #283241;
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.bottombar.active {
+  left: -100%;
+}
+
+.bottombar .btn-handup {
   background: #ffed4a;
-  margin-top: 20px;
   transition: background 0.25s ease-in;
 }
 
-body .sidebar .btn-handup:hover {
+.bottombar .btn-handup:hover {
   color: #283241;
   background: #fff;
+}
+
+.bottombar-logo {
+  margin: 0 auto;
+}
+
+.bottombar-logo img {
+  max-width: 100%;
+  width: 80px;
+}
+
+.bottombar-volunteers-count {
+  font-size: 2em;
+}
+
+.bottombar-volunteers-count small {
+  font-size: 14px;
+  display: block;
+  color: #b8c1c8;
+}
+
+.bottombar--close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  font-size: 1.8em;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 3;
+}
+
+.bottombar--secondary {
+  transition: left 0.2s linear;
+  background: #323e51;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+}
+
+.bottombar--secondary h3 {
+  font-size: 20px;
+}
+
+.bottombar--secondary h4 {
+  font-size: 18px;
+}
+
+.bottombar--secondary.active {
+  left: 0;
+}
+
+.bottombar--secondary__body {
+  padding-top: 20px;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: 10px;
+  color: #fff;
 }
 
