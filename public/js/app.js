@@ -2224,7 +2224,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     title: 'Ops!',
                     text: payload.data.message,
                     type: 'warning',
-                    duration: -1
+                    duration: 5000
                   });
                 }
 

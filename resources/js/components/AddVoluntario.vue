@@ -163,7 +163,7 @@ export default {
             title: 'Ops!',
             text: payload.data.message,
             type: 'warning',
-            duration: -1
+            duration: 5000
           });
         }
 
