@@ -7,7 +7,9 @@
           <!-- <GoogleLogin v-if="!isLogged" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin> -->
 
           <form  class="form-horizontal" action="/api" v-on:submit.prevent="onSubmit" method="post">
-
+            <div class="form-group text-right" v-if="isMobile && info.name">
+              <button type="submit" class="btn btn-info" :disabled="!info.name"  :class="{'disabled':!info.name}" name="button">Salvar</button>
+            </div>
             <div class="form-group">
                <input type="text" class="form-control" v-model="info.name" name="name" placeholder="Seu nome"  required>
             </div>
@@ -68,8 +70,7 @@
                 </div>
               </div>
             </div>
-
-            <div class="form-group">
+            <div class="form-group" v-if="!isMobile">
               <button type="submit" class="btn btn-info btn-block" name="button">Salvar</button>
             </div>
           </form>
@@ -81,11 +82,13 @@
 <script>
 import axios from 'axios';
 import { mapActions, mapGetters, mapMutations } from 'vuex';
+import { isMobile } from 'mobile-device-detect';
 
 export default {
     name: 'AddVoluntario',
     data(){
       return {
+        isMobile: isMobile,
         info: {
           location: {},
           support: {}
@@ -140,7 +143,7 @@ export default {
 
         return false;
       },
-      async getMyAddress() { 
+      async getMyAddress() {
          const payload = await axios.get('https://cors-anywhere.herokuapp.com/http://ip-api.com/json?lang=pt-BR')
 
          if(payload.data.status === 'success') {

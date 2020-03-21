@@ -2040,6 +2040,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var mobile_device_detect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobile-device-detect */ "./node_modules/mobile-device-detect/dist/index.js");
+/* harmony import */ var mobile_device_detect__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(mobile_device_detect__WEBPACK_IMPORTED_MODULE_3__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2132,12 +2134,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AddVoluntario',
   data: function data() {
     return {
+      isMobile: mobile_device_detect__WEBPACK_IMPORTED_MODULE_3__["isMobile"],
       info: {
         location: {},
         support: {}
@@ -6303,6 +6308,24 @@ var render = function() {
             }
           },
           [
+            _vm.isMobile && _vm.info.name
+              ? _c("div", { staticClass: "form-group text-right" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-info",
+                      class: { disabled: !_vm.info.name },
+                      attrs: {
+                        type: "submit",
+                        disabled: !_vm.info.name,
+                        name: "button"
+                      }
+                    },
+                    [_vm._v("Salvar")]
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("input", {
                 directives: [
@@ -6776,30 +6799,25 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            !_vm.isMobile
+              ? _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-info btn-block",
+                      attrs: { type: "submit", name: "button" }
+                    },
+                    [_vm._v("Salvar")]
+                  )
+                ])
+              : _vm._e()
           ]
         )
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-info btn-block",
-          attrs: { type: "submit", name: "button" }
-        },
-        [_vm._v("Salvar")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
