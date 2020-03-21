@@ -76,6 +76,14 @@
     left: -380px;
     width: 380px;
     height: 100%;
+    overflow-y: scroll;
+
+    .check_truth {
+      small {
+        font-size: 13px!important;
+        line-height: 18px;
+      }
+    }
 
     h3 {
       font-size: 20px

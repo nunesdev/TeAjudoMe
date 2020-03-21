@@ -4,7 +4,10 @@
         <div class="col-12">
           <h3>Seus dados</h3>
           <hr>
-          <!-- <GoogleLogin v-if="!isLogged" :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin> -->
+          <!-- <div class="" v-if="!isLogged">
+            <GoogleLogin  :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
+            <hr>
+          </div> -->
 
           <form  class="form-horizontal" action="/api" v-on:submit.prevent="onSubmit" method="post">
             <div class="form-group text-right" v-if="isMobile && info.name">
@@ -70,6 +73,13 @@
                 </div>
               </div>
             </div>
+            <div class="form-group">
+              <label class="check_truth" for="veracidade">
+                <input type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
+                <small>Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários
+                </small>
+              </label>
+            </div>
             <div class="form-group" v-if="!isMobile">
               <button type="submit" class="btn btn-info btn-block" name="button">Salvar</button>
             </div>
@@ -83,20 +93,33 @@
 import axios from 'axios';
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { isMobile } from 'mobile-device-detect';
+import GoogleLogin from 'vue-google-login';
 
 export default {
     name: 'AddVoluntario',
+    components: {
+      GoogleLogin
+    },
     data(){
       return {
+      //  isLogged: this.$cookies.get('ta_isLogged') ? true : false,
         isMobile: isMobile,
         info: {
           location: {},
           support: {}
         },
+        params: {
+          client_id: "755820160001-ciatl4bnkdt40a32ajb9n1l5p9ugh9jn.apps.googleusercontent.com"
+        },
+        renderParams: {
+          width: 250,
+          height: 50,
+          longtitle: true
+        }
       }
     },
     mounted() {
-      //this.getMyAddress()
+      this.getMyData()
     },
     computed: {
 
@@ -131,6 +154,9 @@ export default {
           this.actionSetNewUser(payload.data)
           this.$emit('closeSidebar', false);
           this.info = {location:{}, support:{}}
+
+          // if(isLogged)
+          //   this.$cookies.set('ta_isLogged', this.info)
         } else {
           this.$notify({
             group: 'foo',
@@ -142,6 +168,10 @@ export default {
         }
 
         return false;
+      },
+      getMyData() {
+        const data = this.$cookies.get('ta_isLogged');
+        this.info = data;
       },
       async getMyAddress() {
          const payload = await axios.get('https://cors-anywhere.herokuapp.com/http://ip-api.com/json?lang=pt-BR')
@@ -160,6 +190,17 @@ export default {
         const token = await this.$recaptcha('login')
 
         // Do stuff with the received token.
+      },
+      onSuccess(googleUser) {
+        this.isLogged = true
+
+        this.info.email = googleUser.getBasicProfile().zu
+        this.info.name = googleUser.getBasicProfile().Ad
+
+        this.$cookies.set('ta_isLogged', this.info)
+      },
+      onFailure() {
+
       }
     }
 }

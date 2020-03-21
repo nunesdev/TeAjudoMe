@@ -24,7 +24,6 @@
             <div class="popup">
               <h3>Você está aqui</h3>
               <small>Se necessário, mova o pin para outro ponto!</small>
-
             </div>
           </MglPopup>
         </MglMarker>
@@ -101,12 +100,12 @@ export default {
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/mapbox/streets-v11',
-      coordinates: [-46.6966505,-23.6129114],
+      coordinates: [0,0],
       zoom: 12.5
     };
   },
   created() {
-    if(this.$cookies.get('isLocated')) this.locateMe()  
+    if(this.$cookies.get('isLocated')) this.locateMe()
     this.actionGetAllUsers()
   },
   computed: {

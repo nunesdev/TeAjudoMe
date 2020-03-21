@@ -12211,6 +12211,12 @@ a.text-dark:focus {
   left: -380px;
   width: 380px;
   height: 100%;
+  overflow-y: scroll;
+}
+
+.sidebar--secondary .check_truth small {
+  font-size: 13px !important;
+  line-height: 18px;
 }
 
 .sidebar--secondary h3 {

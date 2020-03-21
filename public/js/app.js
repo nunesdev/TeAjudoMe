@@ -2042,6 +2042,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var mobile_device_detect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobile-device-detect */ "./node_modules/mobile-device-detect/dist/index.js");
 /* harmony import */ var mobile_device_detect__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(mobile_device_detect__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue_google_login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-google-login */ "./node_modules/vue-google-login/dist/vue-google-login.min.js");
+/* harmony import */ var vue_google_login__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_google_login__WEBPACK_IMPORTED_MODULE_4__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2135,21 +2137,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AddVoluntario',
+  components: {
+    GoogleLogin: vue_google_login__WEBPACK_IMPORTED_MODULE_4___default.a
+  },
   data: function data() {
     return {
+      //  isLogged: this.$cookies.get('ta_isLogged') ? true : false,
       isMobile: mobile_device_detect__WEBPACK_IMPORTED_MODULE_3__["isMobile"],
       info: {
         location: {},
         support: {}
+      },
+      params: {
+        client_id: "755820160001-ciatl4bnkdt40a32ajb9n1l5p9ugh9jn.apps.googleusercontent.com"
+      },
+      renderParams: {
+        width: 250,
+        height: 50,
+        longtitle: true
       }
     };
   },
-  mounted: function mounted() {//this.getMyAddress()
+  mounted: function mounted() {
+    this.getMyData();
   },
   computed: {},
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])(['getMarkerPosition']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])(['actionSetNewUser']), {
@@ -2190,7 +2216,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   _this.info = {
                     location: {},
                     support: {}
-                  };
+                  }; // if(isLogged)
+                  //   this.$cookies.set('ta_isLogged', this.info)
                 } else {
                   _this.$notify({
                     group: 'foo',
@@ -2210,6 +2237,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }, _callee);
       }))();
+    },
+    getMyData: function getMyData() {
+      var data = this.$cookies.get('ta_isLogged');
+      this.info = data;
     },
     getMyAddress: function getMyAddress() {
       var _this2 = this;
@@ -2266,7 +2297,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }, _callee3);
       }))();
-    }
+    },
+    onSuccess: function onSuccess(googleUser) {
+      this.isLogged = true;
+      this.info.email = googleUser.getBasicProfile().zu;
+      this.info.name = googleUser.getBasicProfile().Ad;
+      this.$cookies.set('ta_isLogged', this.info);
+    },
+    onFailure: function onFailure() {}
   })
 });
 
@@ -2505,7 +2543,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -2529,7 +2566,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       errorStr: null,
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/mapbox/streets-v11',
-      coordinates: [-46.6966505, -23.6129114],
+      coordinates: [0, 0],
       zoom: 12.5
     };
   },
@@ -5564,6 +5601,19 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-google-login/dist/vue-google-login.min.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-google-login/dist/vue-google-login.min.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,e){ true?e(exports):undefined}(this,function(t){"use strict";var e,n,o=function(t){return e?Promise.resolve(e):(n||(n=function(t){return new Promise(function(n,o){window.onGapiLoad=function(){window.gapi.load("auth2",function(){try{e=window.gapi.auth2.init(Object.assign({},t))}catch(t){o({err:"client_id missing or is incorrect, or if you added extra params maybe they are written incorrectly, did you add it to the component or plugin?"})}n(e)})}})}(t)),n)},i=function(t,e){if(t)return t[e]();return Promise.reject({err:"Script not loaded correctly, did you added the plugin or the client_id to the component?"})},r={load:function(t){return Promise.all([o(t),new Promise(function(t,e){if(!document.getElementById("auth2_script_id")){var n=document.createElement("script");n.setAttribute("src","https://apis.google.com/js/platform.js?onload=onGapiLoad"),n.setAttribute("async",!0),n.setAttribute("defer","defer"),n.setAttribute("id","auth2_script_id"),document.head.appendChild(n)}t()})]).then(function(t){return t[0]})},signIn:function(){return i(e,"signIn")},signOut:function(){return i(e,"signOut")}},s=0;var d=function(t,e,n,o,i,r,s,d,u,a){"boolean"!=typeof s&&(u=d,d=s,s=!1);var c,l="function"==typeof n?n.options:n;if(t&&t.render&&(l.render=t.render,l.staticRenderFns=t.staticRenderFns,l._compiled=!0,i&&(l.functional=!0)),o&&(l._scopeId=o),r?(c=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),e&&e.call(this,u(t)),t&&t._registeredComponents&&t._registeredComponents.add(r)},l._ssrRegister=c):e&&(c=s?function(){e.call(this,a(this.$root.$options.shadowRoot))}:function(t){e.call(this,d(t))}),c)if(l.functional){var f=l.render;l.render=function(t,e){return c.call(e),f(t,e)}}else{var h=l.beforeCreate;l.beforeCreate=h?[].concat(h,c):[c]}return n}({render:function(){var t=this.$createElement,e=this._self._c||t;return this.renderParams&&!this.logoutButton?e("div",{attrs:{id:this.id},on:{click:this.handleClick}}):e("button",{attrs:{id:this.id},on:{click:this.handleClick}},[this._t("default")],2)},staticRenderFns:[]},void 0,{name:"GoogleLogin",props:{params:{type:Object,required:!0},onSuccess:{type:Function,default:function(){}},onFailure:{type:Function,default:function(){}},logoutButton:{type:Boolean,default:!1},renderParams:{type:Object,required:!1}},beforeCreate:function(){this.id="google-signin-btn-".concat(s++)},methods:{handleClick:function(){var t=this,e=this.logoutButton?"signOut":"signIn";r[e]().then(function(e){return t.onSuccess(e)}).catch(function(e){return t.onFailure(e)})}},mounted:function(){var t=this;r.load(this.params).then(function(){t.renderParams&&!1===t.logoutButton&&window.gapi.signin2.render(t.id,t.renderParams)}).catch(function(t){console.log(t)})}},void 0,!1,void 0,void 0,void 0),u={install:function(t,e){t.GoogleAuth=r.load(e)}};t.GoogleLogin=d,t.LoaderPlugin=u,t.default=d,Object.defineProperty(t,"__esModule",{value:!0})});
+//# sourceMappingURL=vue-google-login.min.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/index.js?!./node_modules/vue-mapbox/src/components/UI/Marker.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-mapbox/src/components/UI/Marker.vue?vue&type=script&lang=js& ***!
@@ -6946,6 +6996,70 @@ var render = function() {
                   )
                 ])
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                { staticClass: "check_truth", attrs: { for: "veracidade" } },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.info.support.veracidade,
+                        expression: "info.support.veracidade"
+                      }
+                    ],
+                    attrs: {
+                      type: "checkbox",
+                      id: "veracidade",
+                      name: "support[]",
+                      value: ""
+                    },
+                    domProps: {
+                      checked: Array.isArray(_vm.info.support.veracidade)
+                        ? _vm._i(_vm.info.support.veracidade, "") > -1
+                        : _vm.info.support.veracidade
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.info.support.veracidade,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(
+                                _vm.info.support,
+                                "veracidade",
+                                $$a.concat([$$v])
+                              )
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.info.support,
+                                "veracidade",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.info.support, "veracidade", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("small", [
+                    _vm._v(
+                      "Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários\n            "
+                    )
+                  ])
+                ]
+              )
             ]),
             _vm._v(" "),
             !_vm.isMobile
