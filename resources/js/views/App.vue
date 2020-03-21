@@ -23,7 +23,7 @@
           <MglPopup :showed="true">
             <div class="popup">
               <h3>Você está aqui</h3>
-              <small>Se necessário, mova o pin para outro ponto!</small>
+              <small>Se necessário, arraste o pin para outro ponto!</small>
             </div>
           </MglPopup>
         </MglMarker>

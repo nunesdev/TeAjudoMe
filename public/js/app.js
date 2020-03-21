@@ -7384,7 +7384,7 @@ var render = function() {
                           _vm._v(" "),
                           _c("small", [
                             _vm._v(
-                              "Se necessário, mova o pin para outro ponto!"
+                              "Se necessário, arraste o pin para outro ponto!"
                             )
                           ])
                         ])
