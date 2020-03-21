@@ -2149,8 +2149,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  mounted: function mounted() {
-    this.getMyAddress();
+  mounted: function mounted() {//this.getMyAddress()
   },
   computed: {},
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])(['getMarkerPosition']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])(['actionSetNewUser']), {
@@ -2497,6 +2496,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2516,6 +2519,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
+      isLocated: false,
       errorStr: null,
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/mapbox/streets-v11',
@@ -2530,6 +2534,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapGetters"])(['getMarkers'])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapActions"])(['actionGetAllUsers', 'actionSetNewPosition']), {
     getLocation: function getLocation() {
+      var _this = this;
+
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -2541,7 +2547,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   }
 
                   navigator.geolocation.getCurrentPosition(function (pos) {
-                    console.log(pos);
+                    _this.isLocated = true;
                     resolve(pos);
                   }, function (err) {
                     reject(err);
@@ -2557,30 +2563,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }))();
     },
     locateMe: function locateMe() {
-      var _this = this;
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this.gettingLocation = true;
+                _this2.gettingLocation = true;
                 _context2.prev = 1;
-                _this.gettingLocation = false;
+                _this2.gettingLocation = false;
                 _context2.next = 5;
-                return _this.getLocation();
+                return _this2.getLocation();
 
               case 5:
-                _this.location = _context2.sent;
-                _this.coordinates = [_this.location.coords.longitude, _this.location.coords.latitude];
+                _this2.location = _context2.sent;
+                _this2.coordinates = [_this2.location.coords.longitude, _this2.location.coords.latitude];
                 _context2.next = 13;
                 break;
 
               case 9:
                 _context2.prev = 9;
                 _context2.t0 = _context2["catch"](1);
-                _this.gettingLocation = false;
-                _this.errorStr = _context2.t0.message;
+                _this2.gettingLocation = false;
+                _this2.errorStr = _context2.t0.message;
 
               case 13:
               case "end":
@@ -7069,7 +7075,24 @@ var render = function() {
                         _vm._v(
                           "Se necessário, mova o pin para outro ponto, a ideia é mostrar localização aproximada e não exata."
                         )
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      !_vm.isLocated
+                        ? _c("div", { staticClass: "msg-error" }, [
+                            _vm._v(
+                              "\n              Precisamos da sua localização, clique para permitir\n              "
+                            ),
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-danger btn-sm",
+                                staticStyle: { color: "white" },
+                                on: { click: _vm.locateMe }
+                              },
+                              [_vm._v("Permitir")]
+                            )
+                          ])
+                        : _vm._e()
                     ])
                   ])
                 ],

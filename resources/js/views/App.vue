@@ -15,6 +15,10 @@
             <div class="popup">
               <h3>Você está aqui</h3>
               <small>Se necessário, mova o pin para outro ponto, a ideia é mostrar localização aproximada e não exata.</small>
+              <div class="msg-error" v-if="!isLocated">
+                Precisamos da sua localização, clique para permitir
+                <a class="btn btn-danger btn-sm" style="color:white" @click="locateMe">Permitir</a>
+              </div>
             </div>
           </MglPopup>
         </MglMarker>
@@ -86,6 +90,7 @@ export default {
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
+      isLocated: false,
       errorStr: null,
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
@@ -119,7 +124,7 @@ export default {
         }
 
         navigator.geolocation.getCurrentPosition(pos => {
-          console.log(pos);
+          this.isLocated = true
           resolve(pos);
         }, err => {
           reject(err);
