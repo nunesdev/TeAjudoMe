@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="col bottombar-volunteers-count text-center">
-        20 <small>voluntários</small>
+        {{getMarkers.length}} <small>voluntários</small>
         <small>Contato:  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a> </small>
       </div>
     </div>
@@ -28,6 +28,7 @@
 
 <script>
  import AddVoluntario from '@components/AddVoluntario';
+ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: ['address'],
@@ -39,6 +40,11 @@ export default {
     return {
       isActive: false
     }
+  },
+  computed: {
+    ...mapGetters([
+      'getMarkers',
+    ]),
   },
   methods: {
     changeState() {
