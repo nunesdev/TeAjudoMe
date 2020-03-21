@@ -8,7 +8,7 @@
       <div class="popup text-center">
         <img src="/images/map.png" width="80" alt="">
         <h3>Precisamos da sua localização</h3>
-        <a class="btn btn-block btn-success" @click="locateMe">Permitir</a>
+        <a class="btn btn-block btn-success" @click="locateMe">{{gettingLocation ? 'Carregando...' : 'Permitir'}}</a>
       </div>
     </div>
 
@@ -96,7 +96,7 @@ export default {
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
-      isLocated: false,
+      isLocated: this.$cookies.get('isLocated') ? true : false,
       errorStr: null,
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
@@ -130,6 +130,7 @@ export default {
 
         navigator.geolocation.getCurrentPosition(pos => {
           this.isLocated = true
+          this.$cookies.set('isLocated', true);
           resolve(pos);
         }, err => {
           reject(err);

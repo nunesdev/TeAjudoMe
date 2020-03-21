@@ -1,7 +1,7 @@
 .bottombar {
   height: 100px;
   background: $darkblue;
-  position: absolute;
+  position: fixed;
   z-index: 2;
   bottom: 0;
   left: 0;

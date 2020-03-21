@@ -7,7 +7,9 @@ import * as VueGoogleMaps from "vue2-google-maps";
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import Notifications from 'vue-notification'
 import Store from './store/store';
+import VueCookies from 'vue-cookies'
 
+Vue.use(VueCookies)
 Vue.use(Vuex);
 Vue.use(VueReCaptcha, { siteKey: '6LfhneIUAAAAAD5iy7oduG0ni8-1ex59VGmxrHP6' })
 Vue.use(Notifications)
