@@ -2534,6 +2534,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   created: function created() {
+    if (this.$cookies.get('isLocated')) this.locateMe();
     this.actionGetAllUsers();
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapGetters"])(['getMarkers'])),

@@ -106,6 +106,7 @@ export default {
     };
   },
   created() {
+    if(this.$cookies.get('isLocated')) this.locateMe()  
     this.actionGetAllUsers()
   },
   computed: {
