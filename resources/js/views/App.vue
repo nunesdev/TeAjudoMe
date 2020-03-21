@@ -100,8 +100,8 @@ export default {
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/mapbox/streets-v11',
-      coordinates: [0,0],
-      zoom: 12.5
+      coordinates: [-60.943904,-10.5705057],
+      zoom: 2
     };
   },
   created() {
