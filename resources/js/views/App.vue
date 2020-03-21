@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper"
   :class='{"sidebar-active":sidebarOpen}'>
+    <BottomBar v-if="isMobile" @sidebarOpen="onSidebarOpen" />
+
     <Sidebar v-if="!isMobile"  @sidebarOpen="onSidebarOpen" />
     <notifications group="foo" />
 
@@ -69,7 +71,7 @@
 
     </div>
 
-    <BottomBar v-if="isMobile" @sidebarOpen="onSidebarOpen" />
+
   </div>
 </template>
 <script>

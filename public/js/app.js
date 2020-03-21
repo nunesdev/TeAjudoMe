@@ -2562,6 +2562,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -7321,6 +7323,10 @@ var render = function() {
     "div",
     { staticClass: "wrapper", class: { "sidebar-active": _vm.sidebarOpen } },
     [
+      _vm.isMobile
+        ? _c("BottomBar", { on: { sidebarOpen: _vm.onSidebarOpen } })
+        : _vm._e(),
+      _vm._v(" "),
       !_vm.isMobile
         ? _c("Sidebar", { on: { sidebarOpen: _vm.onSidebarOpen } })
         : _vm._e(),
@@ -7512,10 +7518,6 @@ var render = function() {
             ],
             1
           )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.isMobile
-        ? _c("BottomBar", { on: { sidebarOpen: _vm.onSidebarOpen } })
         : _vm._e()
     ],
     1
