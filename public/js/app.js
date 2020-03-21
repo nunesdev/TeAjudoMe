@@ -7073,7 +7073,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("small", [
                         _vm._v(
-                          "Se necessário, mova o pin para outro ponto, a ideia é mostrar localização aproximada e não exata."
+                          "Se necessário, mova o pin para outro ponto, é necessário permitir sua localização."
                         )
                       ]),
                       _vm._v(" "),
@@ -7087,7 +7087,11 @@ var render = function() {
                               {
                                 staticClass: "btn btn-danger btn-sm",
                                 staticStyle: { color: "white" },
-                                on: { click: _vm.locateMe }
+                                on: {
+                                  click: function($event) {
+                                    return _vm.locateMe()
+                                  }
+                                }
                               },
                               [_vm._v("Permitir")]
                             )

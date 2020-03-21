@@ -14,10 +14,10 @@
           <MglPopup :showed="true">
             <div class="popup">
               <h3>Você está aqui</h3>
-              <small>Se necessário, mova o pin para outro ponto, a ideia é mostrar localização aproximada e não exata.</small>
+              <small>Se necessário, mova o pin para outro ponto, é necessário permitir sua localização.</small>
               <div class="msg-error" v-if="!isLocated">
                 Precisamos da sua localização, clique para permitir
-                <a class="btn btn-danger btn-sm" style="color:white" @click="locateMe">Permitir</a>
+                <a class="btn btn-danger btn-sm" style="color:white" @click="locateMe()">Permitir</a>
               </div>
             </div>
           </MglPopup>
