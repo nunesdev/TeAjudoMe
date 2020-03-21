@@ -146,6 +146,7 @@ export default {
         this.gettingLocation = false;
         this.location = await this.getLocation();
         this.coordinates = [this.location.coords.longitude, this.location.coords.latitude];
+        this.zoom = 12.5
 
       } catch(e) {
         this.gettingLocation = false;

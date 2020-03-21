@@ -2624,21 +2624,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 5:
                 _this2.location = _context2.sent;
                 _this2.coordinates = [_this2.location.coords.longitude, _this2.location.coords.latitude];
-                _context2.next = 13;
+                _this2.zoom = 12.5;
+                _context2.next = 14;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 10:
+                _context2.prev = 10;
                 _context2.t0 = _context2["catch"](1);
                 _this2.gettingLocation = false;
                 _this2.errorStr = _context2.t0.message;
 
-              case 13:
+              case 14:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[1, 9]]);
+        }, _callee2, null, [[1, 10]]);
       }))();
     },
     onSidebarOpen: function onSidebarOpen(v) {
