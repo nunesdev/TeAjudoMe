@@ -3,7 +3,16 @@
   :class='{"sidebar-active":sidebarOpen}'>
     <Sidebar v-if="!isMobile"  @sidebarOpen="onSidebarOpen" />
     <notifications group="foo" />
-    <div class="map">
+
+    <div class="location" v-if="!isLocated">
+      <div class="popup text-center">
+        <img src="/images/map.png" width="80" alt="">
+        <h3>Precisamos da sua localização</h3>
+        <a class="btn btn-block btn-success" @click="locateMe">Permitir</a>
+      </div>
+    </div>
+
+    <div class="map" v-if="isLocated">
       <MglMap
         :accessToken="accessToken"
         :mapStyle.sync="mapStyle"
@@ -14,11 +23,8 @@
           <MglPopup :showed="true">
             <div class="popup">
               <h3>Você está aqui</h3>
-              <small>Se necessário, mova o pin para outro ponto, é necessário permitir sua localização.</small>
-              <div class="msg-error" v-if="!isLocated">
-                Precisamos da sua localização, clique para permitir
-                <a class="btn btn-danger btn-sm" style="color:white" @click="locateMe()">Permitir</a>
-              </div>
+              <small>Se necessário, mova o pin para outro ponto!</small>
+
             </div>
           </MglPopup>
         </MglMarker>
@@ -95,12 +101,11 @@ export default {
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/mapbox/streets-v11',
-      coordinates: [0,0],
+      coordinates: [-46.6966505,-23.6129114],
       zoom: 12.5
     };
   },
   created() {
-    this.locateMe();
     this.actionGetAllUsers()
   },
   computed: {
@@ -165,6 +170,26 @@ export default {
 </script>
 
 <style lang="sass">
+  .location
+    position: fixed
+    width: 100%
+    height: 100%
+    top: 0
+    left: 180px
+    @media only screen and (max-width: 600px)
+      left: 0
+    .popup
+      border: 1px solid #dedede
+      border-radius: 4px
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      width: 300px
+      color: #273141
+      padding: 10px
+      span
+        font-size: 18px
   .map
     position: absolute
     top: 0

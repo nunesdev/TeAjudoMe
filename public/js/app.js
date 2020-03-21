@@ -2500,6 +2500,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2523,12 +2529,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       errorStr: null,
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/mapbox/streets-v11',
-      coordinates: [0, 0],
+      coordinates: [-46.6966505, -23.6129114],
       zoom: 12.5
     };
   },
   created: function created() {
-    this.locateMe();
     this.actionGetAllUsers();
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapGetters"])(['getMarkers'])),
@@ -2676,7 +2681,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".map {\n  position: absolute;\n  top: 0;\n  left: 180px;\n  width: 100%;\n  height: 100%;\n  transition: left 0.2s linear;\n}\n@media only screen and (max-width: 600px) {\n.map {\n    left: 0;\n}\n}\n.map .popup {\n  color: #3e5c88;\n}\n.map .popup h4 {\n  font-size: 18px;\n}\n.map .popup span {\n  display: block;\n  background: aliceblue;\n}\n.map .popup .support {\n  padding-top: 10px;\n}\n.map .popup .support span {\n  background: none;\n}", ""]);
+exports.push([module.i, ".location {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 180px;\n}\n@media only screen and (max-width: 600px) {\n.location {\n    left: 0;\n}\n}\n.location .popup {\n  border: 1px solid #dedede;\n  border-radius: 4px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 300px;\n  color: #273141;\n  padding: 10px;\n}\n.location .popup span {\n  font-size: 18px;\n}\n.map {\n  position: absolute;\n  top: 0;\n  left: 180px;\n  width: 100%;\n  height: 100%;\n  transition: left 0.2s linear;\n}\n@media only screen and (max-width: 600px) {\n.map {\n    left: 0;\n}\n}\n.map .popup {\n  color: #3e5c88;\n}\n.map .popup h4 {\n  font-size: 18px;\n}\n.map .popup span {\n  display: block;\n  background: aliceblue;\n}\n.map .popup .support {\n  padding-top: 10px;\n}\n.map .popup .support span {\n  background: none;\n}", ""]);
 
 // exports
 
@@ -7033,183 +7038,188 @@ var render = function() {
       _vm._v(" "),
       _c("notifications", { attrs: { group: "foo" } }),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "map" },
-        [
-          _c(
-            "MglMap",
-            {
-              attrs: {
-                accessToken: _vm.accessToken,
-                mapStyle: _vm.mapStyle,
-                center: _vm.coordinates,
-                zoom: _vm.zoom
-              },
-              on: {
-                "update:mapStyle": function($event) {
-                  _vm.mapStyle = $event
+      !_vm.isLocated
+        ? _c("div", { staticClass: "location" }, [
+            _c("div", { staticClass: "popup text-center" }, [
+              _c("img", {
+                attrs: { src: "/images/map.png", width: "80", alt: "" }
+              }),
+              _vm._v(" "),
+              _c("h3", [_vm._v("Precisamos da sua localização")]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-block btn-success",
+                  on: { click: _vm.locateMe }
                 },
-                "update:map-style": function($event) {
-                  _vm.mapStyle = $event
-                }
-              }
-            },
+                [_vm._v("Permitir")]
+              )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.isLocated
+        ? _c(
+            "div",
+            { staticClass: "map" },
             [
               _c(
-                "MglMarker",
+                "MglMap",
                 {
                   attrs: {
-                    draggable: true,
-                    coordinates: _vm.coordinates,
-                    color: "yellow"
+                    accessToken: _vm.accessToken,
+                    mapStyle: _vm.mapStyle,
+                    center: _vm.coordinates,
+                    zoom: _vm.zoom
                   },
-                  on: { dragend: _vm.onDragEnd }
+                  on: {
+                    "update:mapStyle": function($event) {
+                      _vm.mapStyle = $event
+                    },
+                    "update:map-style": function($event) {
+                      _vm.mapStyle = $event
+                    }
+                  }
                 },
                 [
-                  _c("MglPopup", { attrs: { showed: true } }, [
-                    _c("div", { staticClass: "popup" }, [
-                      _c("h3", [_vm._v("Você está aqui")]),
-                      _vm._v(" "),
-                      _c("small", [
-                        _vm._v(
-                          "Se necessário, mova o pin para outro ponto, é necessário permitir sua localização."
-                        )
-                      ]),
-                      _vm._v(" "),
-                      !_vm.isLocated
-                        ? _c("div", { staticClass: "msg-error" }, [
+                  _c(
+                    "MglMarker",
+                    {
+                      attrs: {
+                        draggable: true,
+                        coordinates: _vm.coordinates,
+                        color: "yellow"
+                      },
+                      on: { dragend: _vm.onDragEnd }
+                    },
+                    [
+                      _c("MglPopup", { attrs: { showed: true } }, [
+                        _c("div", { staticClass: "popup" }, [
+                          _c("h3", [_vm._v("Você está aqui")]),
+                          _vm._v(" "),
+                          _c("small", [
                             _vm._v(
-                              "\n              Precisamos da sua localização, clique para permitir\n              "
-                            ),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-danger btn-sm",
-                                staticStyle: { color: "white" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.locateMe()
-                                  }
-                                }
-                              },
-                              [_vm._v("Permitir")]
+                              "Se necessário, mova o pin para outro ponto!"
                             )
                           ])
-                        : _vm._e()
-                    ])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm._l(_vm.getMarkers, function(item, index) {
-                return _c(
-                  "MglMarker",
-                  { key: index, attrs: { coordinates: [item.lng, item.lat] } },
-                  [
-                    _c("MglPopup", [
-                      _c("div", { staticClass: "popup" }, [
-                        _c("h3", [_vm._v(_vm._s(item.name))]),
-                        _vm._v(" "),
-                        _c("h4", [_vm._v("Você pode falar comigo por")]),
-                        _vm._v(" "),
-                        item.email
-                          ? _c("span", [
-                              _c(
-                                "a",
-                                { attrs: { href: "mailto:" + item.email } },
-                                [_vm._v(" Email ")]
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        item.phone
-                          ? _c("span", [
-                              _c(
-                                "a",
-                                { attrs: { href: "tel:" + item.phone } },
-                                [_vm._v(" Telefone ")]
-                              ),
-                              _vm._v(" "),
-                              item.whatsapp
-                                ? _c("span", [
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: {
-                                          target: "_blank",
-                                          href:
-                                            "https://api.whatsapp.com/send?phone=+55" +
-                                            item.phone
-                                        }
-                                      },
-                                      [_vm._v(" WhatsApp ")]
-                                    )
-                                  ])
-                                : _vm._e()
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        item.options
-                          ? _c("div", { staticClass: "support" }, [
-                              _c("h4", [_vm._v("posso ajudar com")]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "row" }, [
-                                item.options.market
-                                  ? _c("div", { staticClass: "col-6" }, [
-                                      _c("span", {
-                                        staticClass: "icon-shopping-cart"
-                                      }),
-                                      _vm._v(" "),
-                                      _c("small", [_vm._v("Compras")])
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                item.options.food
-                                  ? _c("div", { staticClass: "col-6" }, [
-                                      _c("span", {
-                                        staticClass: "icon-location-food"
-                                      }),
-                                      _vm._v(" "),
-                                      _c("small", [_vm._v("Alimentação")])
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                item.options.health
-                                  ? _c("div", { staticClass: "col-6" }, [
-                                      _c("span", {
-                                        staticClass: "icon-store-front"
-                                      }),
-                                      _vm._v(" "),
-                                      _c("small", [_vm._v("Farmácia")])
-                                    ])
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                item.options.talk
-                                  ? _c("div", { staticClass: "col-6" }, [
-                                      _c("span", {
-                                        staticClass: "icon-conversation"
-                                      }),
-                                      _vm._v(" "),
-                                      _c("small", [_vm._v("Conversar")])
-                                    ])
-                                  : _vm._e()
-                              ])
-                            ])
-                          : _vm._e()
+                        ])
                       ])
-                    ])
-                  ],
-                  1
-                )
-              })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.getMarkers, function(item, index) {
+                    return _c(
+                      "MglMarker",
+                      {
+                        key: index,
+                        attrs: { coordinates: [item.lng, item.lat] }
+                      },
+                      [
+                        _c("MglPopup", [
+                          _c("div", { staticClass: "popup" }, [
+                            _c("h3", [_vm._v(_vm._s(item.name))]),
+                            _vm._v(" "),
+                            _c("h4", [_vm._v("Você pode falar comigo por")]),
+                            _vm._v(" "),
+                            item.email
+                              ? _c("span", [
+                                  _c(
+                                    "a",
+                                    { attrs: { href: "mailto:" + item.email } },
+                                    [_vm._v(" Email ")]
+                                  )
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            item.phone
+                              ? _c("span", [
+                                  _c(
+                                    "a",
+                                    { attrs: { href: "tel:" + item.phone } },
+                                    [_vm._v(" Telefone ")]
+                                  ),
+                                  _vm._v(" "),
+                                  item.whatsapp
+                                    ? _c("span", [
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              target: "_blank",
+                                              href:
+                                                "https://api.whatsapp.com/send?phone=+55" +
+                                                item.phone
+                                            }
+                                          },
+                                          [_vm._v(" WhatsApp ")]
+                                        )
+                                      ])
+                                    : _vm._e()
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            item.options
+                              ? _c("div", { staticClass: "support" }, [
+                                  _c("h4", [_vm._v("posso ajudar com")]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "row" }, [
+                                    item.options.market
+                                      ? _c("div", { staticClass: "col-6" }, [
+                                          _c("span", {
+                                            staticClass: "icon-shopping-cart"
+                                          }),
+                                          _vm._v(" "),
+                                          _c("small", [_vm._v("Compras")])
+                                        ])
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    item.options.food
+                                      ? _c("div", { staticClass: "col-6" }, [
+                                          _c("span", {
+                                            staticClass: "icon-location-food"
+                                          }),
+                                          _vm._v(" "),
+                                          _c("small", [_vm._v("Alimentação")])
+                                        ])
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    item.options.health
+                                      ? _c("div", { staticClass: "col-6" }, [
+                                          _c("span", {
+                                            staticClass: "icon-store-front"
+                                          }),
+                                          _vm._v(" "),
+                                          _c("small", [_vm._v("Farmácia")])
+                                        ])
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    item.options.talk
+                                      ? _c("div", { staticClass: "col-6" }, [
+                                          _c("span", {
+                                            staticClass: "icon-conversation"
+                                          }),
+                                          _vm._v(" "),
+                                          _c("small", [_vm._v("Conversar")])
+                                        ])
+                                      : _vm._e()
+                                  ])
+                                ])
+                              : _vm._e()
+                          ])
+                        ])
+                      ],
+                      1
+                    )
+                  })
+                ],
+                2
+              )
             ],
-            2
+            1
           )
-        ],
-        1
-      ),
+        : _vm._e(),
       _vm._v(" "),
       _vm.isMobile
         ? _c("BottomBar", { on: { sidebarOpen: _vm.onSidebarOpen } })
