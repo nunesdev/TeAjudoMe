@@ -2346,6 +2346,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['address'],
@@ -2389,6 +2390,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -7177,7 +7179,17 @@ var staticRenderFns = [
     return _c(
       "div",
       { staticClass: "col bottombar-volunteers-count text-center" },
-      [_vm._v("\n      20 "), _c("small", [_vm._v("voluntários")])]
+      [
+        _vm._v("\n      20 "),
+        _c("small", [_vm._v("voluntários")]),
+        _vm._v(" "),
+        _c("small", [
+          _vm._v("Contato:  "),
+          _c("a", { attrs: { href: "mailto:teajudome@gmail.com" } }, [
+            _vm._v("teajudome@gmail.com")
+          ])
+        ])
+      ]
     )
   }
 ]
@@ -7210,7 +7222,9 @@ var render = function() {
         _c("div", { staticClass: "row justify-content-center" }, [
           _c("div", { staticClass: "col-12" }, [
             _vm._v("\n          " + _vm._s(_vm.getMarkers.length) + " "),
-            _c("small", [_vm._v("voluntários cadastrados")])
+            _c("small", [_vm._v("voluntários cadastrados")]),
+            _vm._v(" "),
+            _vm._m(1)
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-12" }, [
@@ -7259,6 +7273,17 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "sidebar-logo text-center" }, [
       _c("img", { attrs: { src: "/images/teajudome.png", alt: "" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("small", [
+      _vm._v("Contato:  "),
+      _c("a", { attrs: { href: "mailto:teajudome@gmail.com" } }, [
+        _vm._v("teajudome@gmail.com")
+      ])
     ])
   }
 ]

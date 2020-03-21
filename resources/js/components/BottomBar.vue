@@ -11,6 +11,7 @@
       </div>
       <div class="col bottombar-volunteers-count text-center">
         20 <small>voluntários</small>
+        <small>Contato:  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a> </small>
       </div>
     </div>
     <div class="bottombar--secondary" :class="{active:isActive}">

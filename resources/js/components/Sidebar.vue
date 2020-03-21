@@ -8,6 +8,7 @@
         <div class="row justify-content-center">
           <div class="col-12">
             {{getMarkers.length}} <small>voluntários cadastrados</small>
+            <small>Contato:  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a> </small>
           </div>
           <div class="col-12">
             <div @click="changeState" class="btn btn-handup">Posso ajudar
