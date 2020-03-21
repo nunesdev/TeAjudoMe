@@ -7,7 +7,7 @@
       <div class="sidebar-volunteers-count text-center">
         <div class="row justify-content-center">
           <div class="col-12">
-            20 <small>voluntários cadastrados</small>
+            {{getMarkers.length}} <small>voluntários cadastrados</small>
           </div>
           <div class="col-12">
             <div @click="changeState" class="btn btn-handup">Posso ajudar
@@ -31,6 +31,7 @@
 
 <script>
  import AddVoluntario from '@components/AddVoluntario';
+ import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: ['address'],
@@ -43,7 +44,13 @@ export default {
       isActive: false
     }
   },
+  computed: {
+    ...mapGetters([
+      'getMarkers',
+    ]),
+  },
   methods: {
+
     changeState() {
       this.isActive = !this.isActive
       this.$emit('sidebarOpen', this.isActive);

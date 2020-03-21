@@ -2382,6 +2382,13 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AddVoluntario__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/AddVoluntario */ "./resources/js/components/AddVoluntario.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2414,6 +2421,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['address'],
   name: 'Sidebar',
@@ -2425,6 +2433,7 @@ __webpack_require__.r(__webpack_exports__);
       isActive: false
     };
   },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['getMarkers'])),
   methods: {
     changeState: function changeState() {
       this.isActive = !this.isActive;
@@ -7199,7 +7208,10 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "sidebar-volunteers-count text-center" }, [
         _c("div", { staticClass: "row justify-content-center" }, [
-          _vm._m(1),
+          _c("div", { staticClass: "col-12" }, [
+            _vm._v("\n          " + _vm._s(_vm.getMarkers.length) + " "),
+            _c("small", [_vm._v("voluntários cadastrados")])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-12" }, [
             _c(
@@ -7247,15 +7259,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "sidebar-logo text-center" }, [
       _c("img", { attrs: { src: "/images/teajudome.png", alt: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _vm._v("\n          20 "),
-      _c("small", [_vm._v("voluntários cadastrados")])
     ])
   }
 ]
