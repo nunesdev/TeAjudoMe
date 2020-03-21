@@ -2238,9 +2238,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }, _callee);
       }))();
     },
-    getMyData: function getMyData() {
-      var data = this.$cookies.get('ta_isLogged');
-      this.info = data;
+    getMyData: function getMyData() {// const data = this.$cookies.get('ta_isLogged');
+      // this.info = data;
     },
     getMyAddress: function getMyAddress() {
       var _this2 = this;
@@ -2703,7 +2702,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".form-horizontal .form-group small[data-v-195abf85] {\n  font-size: 16px;\n  display: block;\n}\n.form-horizontal .form-group label[data-v-195abf85] {\n  line-height: 2rem;\n  display: block;\n}\n.form-horizontal .helps .help[data-v-195abf85] {\n  border-radius: 4px;\n  margin-bottom: 20px;\n  cursor: pointer;\n  background: #3f5c88;\n  padding: 10px;\n  position: relative;\n}\n.form-horizontal .helps .help span[data-v-195abf85] {\n  font-size: 18px;\n}\n.form-horizontal .helps .help[data-v-195abf85]:hover, .form-horizontal .helps .help.active[data-v-195abf85] {\n  background: #00bc99;\n}\n.form-horizontal .helps .help input[data-v-195abf85] {\n  opacity: 0;\n  height: 0;\n  width: 0;\n  position: absolute;\n}", ""]);
+exports.push([module.i, ".form-horizontal .form-group small[data-v-195abf85] {\n  font-size: 15px;\n  display: block;\n}\n.form-horizontal .form-group label[data-v-195abf85] {\n  line-height: 1rem;\n  display: block;\n}\n.form-horizontal .helps .help[data-v-195abf85] {\n  border-radius: 4px;\n  margin-bottom: 12px;\n  cursor: pointer;\n  background: #3f5c88;\n  padding: 10px;\n  position: relative;\n}\n.form-horizontal .helps .help span[data-v-195abf85] {\n  font-size: 16px;\n}\n.form-horizontal .helps .help[data-v-195abf85]:hover, .form-horizontal .helps .help.active[data-v-195abf85] {\n  background: #00bc99;\n}\n.form-horizontal .helps .help input[data-v-195abf85] {\n  opacity: 0;\n  height: 0;\n  width: 0;\n  position: absolute;\n}", ""]);
 
 // exports
 

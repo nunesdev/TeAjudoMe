@@ -170,8 +170,8 @@ export default {
         return false;
       },
       getMyData() {
-        const data = this.$cookies.get('ta_isLogged');
-        this.info = data;
+        // const data = this.$cookies.get('ta_isLogged');
+        // this.info = data;
       },
       async getMyAddress() {
          const payload = await axios.get('https://cors-anywhere.herokuapp.com/http://ip-api.com/json?lang=pt-BR')
@@ -209,22 +209,22 @@ export default {
   .form-horizontal
     .form-group
       small
-        font-size: 16px
+        font-size: 15px
         display: block
       label
-        line-height: 2rem
+        line-height: 1rem
         display: block
     .helps
       .help
         border-radius: 4px
-        margin-bottom: 20px
+        margin-bottom: 12px
         cursor: pointer
         background: #3f5c88
         padding: 10px
         position: relative
 
         span
-          font-size: 18px
+          font-size: 16px
         &:hover, &.active
           background: #00bc99
         input
