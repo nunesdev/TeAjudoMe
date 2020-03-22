@@ -2,7 +2,7 @@
   <div class="">
     <div class="bottombar row align-items-center"  :class="{active:isActive}">
       <div class="bottombar-logo text-center col">
-        <img src="/images/teajudome.png"  alt="">
+        <img src="/images/teajudome.png?c=1"  alt="">
       </div>
       <div class="col bottombar-volunteers-count">
         {{getMarkers.length}} <small>voluntários</small>
@@ -22,9 +22,7 @@
       </div>
     </div>
 
-    <div @click="changeState" class="btn btn-handup">
-      <span class="icon-hand-stop"></span>
-    </div>
+    <div @click="changeState" class="btn btn-handup"><span class="icon-hand-stop"></span>Posso ajudar</div>
   </div>
 </template>
 
@@ -67,12 +65,17 @@ export default {
   bottom: 90px;
   right: 3px;
   border-radius: 50%;
-  font-size: 3em;
+  font-size: 8px;
   width: 60PX;
   height: 60px;
   background: #ffed4a;
   transition: background .25s ease-in;
   z-index: 1;
+
+  span {
+    display: block;
+    font-size: 3em;
+  }
 
   @media only screen and (max-width: 600px) {
 

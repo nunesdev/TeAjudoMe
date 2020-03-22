@@ -2,7 +2,7 @@
   <div class="">
     <div class="sidebar">
       <div class="sidebar-logo text-center">
-        <img src="/images/teajudome.png"  alt="">
+        <img src="/images/teajudome.png?c=1"  alt="">
       </div>
       <div class="sidebar-volunteers-count text-center">
         <div class="row justify-content-center">

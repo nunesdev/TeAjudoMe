@@ -2368,8 +2368,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2788,7 +2786,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".btn-handup[data-v-62a3a7e6] {\n  position: fixed;\n  bottom: 90px;\n  right: 3px;\n  border-radius: 50%;\n  font-size: 3em;\n  width: 60PX;\n  height: 60px;\n  background: #ffed4a;\n  transition: background 0.25s ease-in;\n  z-index: 1;\n}\n.btn-handup[data-v-62a3a7e6]:hover {\n  color: #313a4a;\n  background: #fff;\n}", ""]);
+exports.push([module.i, ".btn-handup[data-v-62a3a7e6] {\n  position: fixed;\n  bottom: 90px;\n  right: 3px;\n  border-radius: 50%;\n  font-size: 8px;\n  width: 60PX;\n  height: 60px;\n  background: #ffed4a;\n  transition: background 0.25s ease-in;\n  z-index: 1;\n}\n.btn-handup span[data-v-62a3a7e6] {\n  display: block;\n  font-size: 3em;\n}\n.btn-handup[data-v-62a3a7e6]:hover {\n  color: #313a4a;\n  background: #fff;\n}", ""]);
 
 // exports
 
@@ -7365,7 +7363,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "btn btn-handup", on: { click: _vm.changeState } },
-      [_c("span", { staticClass: "icon-hand-stop" })]
+      [_c("span", { staticClass: "icon-hand-stop" }), _vm._v("Posso ajudar")]
     )
   ])
 }
@@ -7375,7 +7373,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "bottombar-logo text-center col" }, [
-      _c("img", { attrs: { src: "/images/teajudome.png", alt: "" } })
+      _c("img", { attrs: { src: "/images/teajudome.png?c=1", alt: "" } })
     ])
   },
   function() {
@@ -7471,7 +7469,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "sidebar-logo text-center" }, [
-      _c("img", { attrs: { src: "/images/teajudome.png", alt: "" } })
+      _c("img", { attrs: { src: "/images/teajudome.png?c=1", alt: "" } })
     ])
   },
   function() {
