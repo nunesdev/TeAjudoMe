@@ -33,6 +33,20 @@
             <div class="form-group">
               <h4>Posso ajudar com:</h4>
               <hr>
+              <div class="row">
+                <div class="col-12">
+                  <label for="psicologo" class="checklabel">
+                    <input  type="checkbox" id="psicologo" v-model="info.support.psicologo" name="" value="">
+                    <small >Sou psicólogo</small>
+                  </label>
+                </div>
+                <div class="col-6" v-if="info.support.psicologo">
+                  <div class="form-group">
+                    <input class="form-control" type="text" v-model="info.support.document" name="" placeholder="Ex: CRP - 03/202021" value="">
+                  </div>
+                </div>
+
+              </div>
               <div class="row helps text-center">
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.market}">
@@ -74,7 +88,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="check_truth" for="veracidade">
+              <label class="check_truth checklabel" for="veracidade">
                 <input type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
                 <small>Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários
                 </small>

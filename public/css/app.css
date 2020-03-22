@@ -12330,3 +12330,7 @@ body {
   color: #fff;
 }
 
+body .checklabel small {
+  display: inline-flex !important;
+}
+

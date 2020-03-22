@@ -42,11 +42,9 @@ class UserController extends BaseController
       $user->lng = $request->input('location.lon');
       $user->type = 'volunteer';
       $user->city_id = 25;
-      $user->options = $request->input('support') !== null ? json_encode($request->input('support')) : '';
+      $user->options = $request->input('support') !== null ? json_encode($request->input('support')) : null;
       $user->status = 'a';
       $user->save();
-
-      $id = $user->id;
 
       return response()->json(['status'=>true, 'message'=>'Inserido com sucesso!','data'=>$user]);
 

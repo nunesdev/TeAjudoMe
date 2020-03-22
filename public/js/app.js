@@ -2147,6 +2147,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2564,6 +2578,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2583,7 +2607,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
-      isLocated: this.$cookies.get('isLocated') ? true : false,
+      isLocated: this.$cookies.get('isLocated') ? true : true,
       errorStr: null,
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/mapbox/streets-v11',
@@ -2663,6 +2687,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }, _callee2, null, [[1, 10]]);
       }))();
+    },
+    getColor: function getColor(item) {
+      return item.options && item.options.psicologo ? '#1cccaa' : '#3FB1CE';
     },
     onSidebarOpen: function onSidebarOpen(v) {
       this.sidebarOpen = v;
@@ -2744,7 +2771,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".location {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 180px;\n}\n@media only screen and (max-width: 600px) {\n.location {\n    left: 0;\n}\n}\n.location .popup {\n  border: 1px solid #dedede;\n  border-radius: 4px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 300px;\n  color: #273141;\n  padding: 10px;\n}\n.location .popup span {\n  font-size: 18px;\n}\n.map {\n  position: absolute;\n  top: 0;\n  left: 180px;\n  width: 100%;\n  height: 100%;\n  transition: left 0.2s linear;\n}\n@media only screen and (max-width: 600px) {\n.map {\n    left: 0;\n}\n}\n.map .popup {\n  color: #3e5c88;\n}\n.map .popup h4 {\n  font-size: 18px;\n}\n.map .popup span {\n  display: block;\n  background: aliceblue;\n}\n.map .popup .support {\n  padding-top: 10px;\n}\n.map .popup .support span {\n  background: none;\n}", ""]);
+exports.push([module.i, ".location {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 180px;\n}\n@media only screen and (max-width: 600px) {\n.location {\n    left: 0;\n}\n}\n.location .popup {\n  border: 1px solid #dedede;\n  border-radius: 4px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 300px;\n  color: #273141;\n  padding: 10px;\n}\n.location .popup span {\n  font-size: 18px;\n}\n.map {\n  position: absolute;\n  top: 0;\n  left: 180px;\n  width: 100%;\n  height: 100%;\n  transition: left 0.2s linear;\n}\n@media only screen and (max-width: 600px) {\n.map {\n    left: 0;\n}\n}\n.map .popup {\n  color: #3e5c88;\n}\n.map .popup-head h3 {\n  font-size: 22px;\n}\n.map .popup hr {\n  margin-top: 180px;\n  margin-bottom: 10px;\n}\n.map .popup h4 {\n  font-size: 18px;\n  margin-top: 10px;\n}\n.map .popup span {\n  display: inline-block;\n  background: aliceblue;\n  padding: 5px;\n}\n.map .popup .support {\n  padding-top: 10px;\n}", ""]);
 
 // exports
 
@@ -6741,6 +6768,105 @@ var render = function() {
               _vm._v(" "),
               _c("hr"),
               _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-12" }, [
+                  _c(
+                    "label",
+                    { staticClass: "checklabel", attrs: { for: "psicologo" } },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.info.support.psicologo,
+                            expression: "info.support.psicologo"
+                          }
+                        ],
+                        attrs: {
+                          type: "checkbox",
+                          id: "psicologo",
+                          name: "",
+                          value: ""
+                        },
+                        domProps: {
+                          checked: Array.isArray(_vm.info.support.psicologo)
+                            ? _vm._i(_vm.info.support.psicologo, "") > -1
+                            : _vm.info.support.psicologo
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$a = _vm.info.support.psicologo,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = "",
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  _vm.$set(
+                                    _vm.info.support,
+                                    "psicologo",
+                                    $$a.concat([$$v])
+                                  )
+                              } else {
+                                $$i > -1 &&
+                                  _vm.$set(
+                                    _vm.info.support,
+                                    "psicologo",
+                                    $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                  )
+                              }
+                            } else {
+                              _vm.$set(_vm.info.support, "psicologo", $$c)
+                            }
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("small", [_vm._v("Sou psicólogo")])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm.info.support.psicologo
+                  ? _c("div", { staticClass: "col-6" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.info.support.document,
+                              expression: "info.support.document"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "",
+                            placeholder: "Ex: CRP - 03/202021",
+                            value: ""
+                          },
+                          domProps: { value: _vm.info.support.document },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.info.support,
+                                "document",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
               _c("div", { staticClass: "row helps text-center" }, [
                 _c("div", { staticClass: "col-6" }, [
                   _c(
@@ -7023,7 +7149,10 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c(
                 "label",
-                { staticClass: "check_truth", attrs: { for: "veracidade" } },
+                {
+                  staticClass: "check_truth checklabel",
+                  attrs: { for: "veracidade" }
+                },
                 [
                   _c("input", {
                     directives: [
@@ -7413,14 +7542,69 @@ var render = function() {
                       "MglMarker",
                       {
                         key: index,
-                        attrs: { coordinates: [item.lng, item.lat] }
+                        attrs: {
+                          coordinates: [item.lng, item.lat],
+                          color: _vm.getColor(item)
+                        }
                       },
                       [
                         _c("MglPopup", [
                           _c("div", { staticClass: "popup" }, [
-                            _c("h3", [_vm._v(_vm._s(item.name))]),
+                            item.options && !item.options.document
+                              ? _c("div", { staticClass: "text-center" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/images/voluntario.png",
+                                      width: "48",
+                                      height: "48",
+                                      alt: ""
+                                    }
+                                  })
+                                ])
+                              : _vm._e(),
                             _vm._v(" "),
-                            _c("h4", [_vm._v("Você pode falar comigo por")]),
+                            item.options && item.options.psicologo
+                              ? _c("div", { staticClass: "text-center" }, [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/images/psicologia.png",
+                                      width: "48",
+                                      height: "48",
+                                      alt: ""
+                                    }
+                                  })
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "popup-head row align-items-center"
+                              },
+                              [
+                                _c("h3", { staticClass: "col-11" }, [
+                                  _vm._v(_vm._s(item.name))
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            item.options.psicologo && item.options.document
+                              ? _c("span", [
+                                  _vm._v(
+                                    " " + _vm._s(item.options.document) + " "
+                                  ),
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/images/verified.png",
+                                      width: "16",
+                                      height: "16",
+                                      alt: ""
+                                    }
+                                  })
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c("h4", [_vm._v("Fale comigo por")]),
                             _vm._v(" "),
                             item.email
                               ? _c("span", [
@@ -7438,35 +7622,35 @@ var render = function() {
                                     "a",
                                     { attrs: { href: "tel:" + item.phone } },
                                     [_vm._v(" Telefone ")]
-                                  ),
-                                  _vm._v(" "),
-                                  item.whatsapp
-                                    ? _c("span", [
-                                        _c(
-                                          "a",
-                                          {
-                                            attrs: {
-                                              target: "_blank",
-                                              href:
-                                                "https://api.whatsapp.com/send?phone=+55" +
-                                                item.phone
-                                            }
-                                          },
-                                          [_vm._v(" WhatsApp ")]
-                                        )
-                                      ])
-                                    : _vm._e()
+                                  )
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
-                            item.options
+                            item.whatsapp
+                              ? _c("span", [
+                                  _c(
+                                    "a",
+                                    {
+                                      attrs: {
+                                        target: "_blank",
+                                        href:
+                                          "https://api.whatsapp.com/send?phone=+55" +
+                                          item.phone
+                                      }
+                                    },
+                                    [_vm._v(" WhatsApp ")]
+                                  )
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            item.options && !item.options.document
                               ? _c("div", { staticClass: "support" }, [
                                   _c("h4", [_vm._v("posso ajudar com")]),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "row" }, [
+                                  _c("div", [
                                     item.options.market
-                                      ? _c("div", { staticClass: "col-6" }, [
-                                          _c("span", {
+                                      ? _c("span", [
+                                          _c("i", {
                                             staticClass: "icon-shopping-cart"
                                           }),
                                           _vm._v(" "),
@@ -7475,8 +7659,8 @@ var render = function() {
                                       : _vm._e(),
                                     _vm._v(" "),
                                     item.options.food
-                                      ? _c("div", { staticClass: "col-6" }, [
-                                          _c("span", {
+                                      ? _c("span", [
+                                          _c("i", {
                                             staticClass: "icon-location-food"
                                           }),
                                           _vm._v(" "),
@@ -7485,8 +7669,8 @@ var render = function() {
                                       : _vm._e(),
                                     _vm._v(" "),
                                     item.options.health
-                                      ? _c("div", { staticClass: "col-6" }, [
-                                          _c("span", {
+                                      ? _c("span", [
+                                          _c("i", {
                                             staticClass: "icon-store-front"
                                           }),
                                           _vm._v(" "),
@@ -7495,8 +7679,8 @@ var render = function() {
                                       : _vm._e(),
                                     _vm._v(" "),
                                     item.options.talk
-                                      ? _c("div", { staticClass: "col-6" }, [
-                                          _c("span", {
+                                      ? _c("span", [
+                                          _c("i", {
                                             staticClass: "icon-conversation"
                                           }),
                                           _vm._v(" "),

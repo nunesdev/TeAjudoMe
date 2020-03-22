@@ -30,38 +30,48 @@
           </MglPopup>
         </MglMarker>
 
-        <MglMarker v-for="(item, index) in getMarkers" :key="index" :coordinates="[item.lng,item.lat]">
+        <MglMarker v-for="(item, index) in getMarkers" :key="index" :coordinates="[item.lng,item.lat]" :color="getColor(item)">
           <MglPopup>
+
             <div class="popup">
-              <h3>{{item.name}}</h3>
-              <h4>Você pode falar comigo por</h4>
+              <div class="text-center" v-if="item.options && !item.options.document">
+                <img src="/images/voluntario.png" width="48" height="48" alt="">
+              </div>
+              <div class="text-center" v-if="item.options && item.options.psicologo">
+                <img src="/images/psicologia.png" width="48" height="48" alt="">
+              </div>
+
+              <div class="popup-head row align-items-center">
+                <h3 class="col-11">{{item.name}}</h3>
+              </div>
+              <span v-if="item.options.psicologo && item.options.document"> {{item.options.document}} <img  src="/images/verified.png" width="16" height="16" alt=""></span>
+
+              <h4>Fale comigo por</h4>
+
               <span v-if="item.email"><a :href="`mailto:${item.email}`"> Email </a></span>
-              <span v-if="item.phone"><a :href="`tel:${item.phone}`"> Telefone </a>
+              <span v-if="item.phone"><a :href="`tel:${item.phone}`"> Telefone </a></span>
+              <span v-if="item.whatsapp"><a target="_blank" :href="`https://api.whatsapp.com/send?phone=+55${item.phone}`"> WhatsApp </a></span>
 
-                <span v-if="item.whatsapp"><a target="_blank" :href="`https://api.whatsapp.com/send?phone=+55${item.phone}`"> WhatsApp </a></span>
-              </span>
-
-
-              <div class="support"  v-if="item.options">
+              <div class="support"  v-if="item.options && !item.options.document">
                 <h4>posso ajudar com</h4>
 
-                <div class="row">
-                  <div class="col-6" v-if="item.options.market">
-                    <span class="icon-shopping-cart"></span>
+                <div>
+                  <span v-if="item.options.market">
+                    <i class="icon-shopping-cart"></i>
                     <small>Compras</small>
-                  </div>
-                  <div class="col-6" v-if="item.options.food">
-                    <span class="icon-location-food"></span>
+                  </span>
+                  <span v-if="item.options.food">
+                    <i class="icon-location-food"></i>
                     <small>Alimentação</small>
-                  </div>
-                  <div class="col-6" v-if="item.options.health">
-                    <span class="icon-store-front"></span>
+                  </span>
+                  <span v-if="item.options.health">
+                    <i class="icon-store-front"></i>
                     <small>Farmácia</small>
-                  </div>
-                  <div class="col-6" v-if="item.options.talk">
-                    <span class="icon-conversation"></span>
+                  </span>
+                  <span v-if="item.options.talk">
+                    <i class="icon-conversation"></i>
                     <small>Conversar</small>
-                  </div>
+                  </span>
                 </div>
               </div>
             </div>
@@ -97,7 +107,7 @@ export default {
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
-      isLocated: this.$cookies.get('isLocated') ? true : false,
+      isLocated: this.$cookies.get('isLocated') ? true : true,
       errorStr: null,
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
@@ -155,7 +165,9 @@ export default {
         this.errorStr = e.message;
       }
     },
-
+    getColor(item) {
+      return item.options && item.options.psicologo ? '#1cccaa' : '#3FB1CE'
+    },
     onSidebarOpen(v) {
       this.sidebarOpen = v
     },
@@ -206,13 +218,20 @@ export default {
 
     .popup
       color: #3e5c88
+      &-head
+        h3
+          font-size: 22px
+      hr
+        margin-top: 180px
+        margin-bottom: 10px
       h4
         font-size: 18px
+        margin-top: 10px
       span
-        display: block
+        display: inline-block
         background: aliceblue
+        padding: 5px
       .support
         padding-top: 10px
         span
-          background: none
 </style>

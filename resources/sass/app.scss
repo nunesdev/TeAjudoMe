@@ -24,4 +24,10 @@
 body {
   font-size: 10px;
   color: $white;
+
+  .checklabel {
+    small {
+      display: inline-flex!important;
+    }
+  }
 }
