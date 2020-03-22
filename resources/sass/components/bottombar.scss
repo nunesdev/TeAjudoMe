@@ -1,5 +1,5 @@
 .bottombar {
-  height: 100px;
+  height: 70px;
   background: $darkblue;
   position: fixed;
   z-index: 2;
@@ -11,25 +11,12 @@
   &.active {
     left: -100%
   }
-  .btn-handup {
-    background: $yellow;
-    transition: background .25s ease-in;
-
-    @media only screen and (max-width: 600px) {
-
-    }
-
-    &:hover {
-      color: $darkblue;
-      background: $white;
-    }
-  }
 
   &-logo {
     margin: 0 auto;
     img {
       max-width: 100%;
-      width: 80px;
+      width: 60px;
     }
   }
   &-volunteers {

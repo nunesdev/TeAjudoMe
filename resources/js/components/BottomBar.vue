@@ -4,13 +4,11 @@
       <div class="bottombar-logo text-center col">
         <img src="/images/teajudome.png"  alt="">
       </div>
-      <div class="col">
-        <div @click="changeState" class="btn btn-handup">Posso ajudar
-          <span class="icon-hand-stop"></span>
-        </div>
-      </div>
-      <div class="col bottombar-volunteers-count text-center">
+      <div class="col bottombar-volunteers-count">
         {{getMarkers.length}} <small>voluntários</small>
+      </div>
+      <div class="col  text-center">
+
         <small>Contato:  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a> </small>
       </div>
     </div>
@@ -22,6 +20,10 @@
       <div class="bottombar--secondary__body">
         <AddVoluntario :address.async="address" @closeSidebar="closeSidebar" />
       </div>
+    </div>
+
+    <div @click="changeState" class="btn btn-handup">
+      <span class="icon-hand-stop"></span>
     </div>
   </div>
 </template>
@@ -59,5 +61,26 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
+.btn-handup {
+  position: fixed;
+  bottom: 90px;
+  right: 3px;
+  border-radius: 50%;
+  font-size: 3em;
+  width: 60PX;
+  height: 60px;
+  background: #ffed4a;
+  transition: background .25s ease-in;
+  z-index: 1;
+
+  @media only screen and (max-width: 600px) {
+
+  }
+
+  &:hover {
+    color: #313a4a;
+    background: #fff;
+  }
+}
 </style>

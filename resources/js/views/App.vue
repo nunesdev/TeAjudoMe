@@ -15,6 +15,9 @@
     </div>
 
     <div class="map" v-if="isLocated">
+      <div class="loading-markers" v-if="!loaded">
+        carregando dados...
+      </div>
       <MglMap
         :accessToken="accessToken"
         :mapStyle.sync="mapStyle"
@@ -22,6 +25,9 @@
         :zoom="zoom"
       >
         <MglMarker :draggable="true" @dragend="onDragEnd" :coordinates="coordinates" color="yellow">
+          <div class="" slot="marker">
+            <img src="/images/voce_aqui.png" width="32" height="32" alt="">
+          </div>
           <MglPopup :showed="true">
             <div class="popup">
               <h3>Você está aqui</h3>
@@ -30,15 +36,19 @@
           </MglPopup>
         </MglMarker>
 
-        <MglMarker v-for="(item, index) in getMarkers" :key="index" :coordinates="[item.lng,item.lat]" :color="getColor(item)">
+        <MglMarker v-for="(item, index) in markers" :key="index" :coordinates="[item.lng,item.lat]">
+          <div class="" slot="marker">
+            <img v-if="item.options && !item.options.document" src="/images/voluntario_2.png" width="32" height="32" alt="">
+            <img v-if="item.options && item.options.document" src="/images/psicologia.png" width="32" height="32" alt="">
+          </div>
           <MglPopup>
 
             <div class="popup">
               <div class="text-center" v-if="item.options && !item.options.document">
-                <img src="/images/voluntario.png" width="48" height="48" alt="">
+                voluntário(a)
               </div>
               <div class="text-center" v-if="item.options && item.options.psicologo">
-                <img src="/images/psicologia.png" width="48" height="48" alt="">
+                psicólogo(a)
               </div>
 
               <div class="popup-head row align-items-center">
@@ -103,6 +113,9 @@ export default {
   },
   data() {
     return {
+      items: [],
+      loaded: false,
+
       isMobile: isMobile,
       sidebarOpen: false,
       location: null,
@@ -121,17 +134,18 @@ export default {
     this.actionGetAllUsers()
   },
   computed: {
-    ...mapGetters([
-      'getMarkers',
-    ]),
+    markers() {
+      this.items = this.$store.getters.getMarkers;
+      if(this.items[0]) this.loaded = true
+
+      return this.items
+    }
   },
   methods: {
-
     ...mapActions([
       'actionGetAllUsers',
       'actionSetNewPosition'
     ]),
-
     async getLocation() {
 
       return new Promise((resolve, reject) => {
@@ -165,13 +179,9 @@ export default {
         this.errorStr = e.message;
       }
     },
-    getColor(item) {
-      return item.options && item.options.psicologo ? '#1cccaa' : '#3FB1CE'
-    },
     onSidebarOpen(v) {
       this.sidebarOpen = v
     },
-
     onDragEnd(v) {
       var lngLat = v.marker.getLngLat();
       this.coordinates = [lngLat.lng,lngLat.lat]
@@ -215,7 +225,15 @@ export default {
     transition: left .2s linear
     @media only screen and (max-width: 600px)
       left: 0
-
+    .loading-markers
+      position: absolute
+      top: 90px
+      z-index: 1
+      background: #ffed4a
+      color: black
+      padding: 5px
+      left: 50%
+      transform: translate(-50%)
     .popup
       color: #3e5c88
       &-head

@@ -12174,8 +12174,9 @@ a.text-dark:focus {
 }
 
 .sidebar-logo img {
-  max-width: 100%;
-  width: 100%;
+  max-width: 80%;
+  width: 80%;
+  padding-top: 20px;
 }
 
 .sidebar-volunteers-count {
@@ -12236,7 +12237,7 @@ a.text-dark:focus {
 }
 
 .bottombar {
-  height: 100px;
+  height: 70px;
   background: #283241;
   position: fixed;
   z-index: 2;
@@ -12250,23 +12251,13 @@ a.text-dark:focus {
   left: -100%;
 }
 
-.bottombar .btn-handup {
-  background: #ffed4a;
-  transition: background 0.25s ease-in;
-}
-
-.bottombar .btn-handup:hover {
-  color: #283241;
-  background: #fff;
-}
-
 .bottombar-logo {
   margin: 0 auto;
 }
 
 .bottombar-logo img {
   max-width: 100%;
-  width: 80px;
+  width: 60px;
 }
 
 .bottombar-volunteers-count {
