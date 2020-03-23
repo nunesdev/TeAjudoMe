@@ -11,9 +11,10 @@
             <small>Contato:  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a> </small>
           </div>
           <div class="col-12">
-            <div @click="changeState" class="btn btn-handup">Posso ajudar
+            <div v-if="showHandUp" @click="changeState" class="btn btn-handup">Posso ajudar
               <span class="icon-hand-stop"></span>
             </div>
+            <router-link v-if="showMapUp" class="btn btn-handup" :to="{ name: 'home' }">Ir para Mapa <span class="icon-map"></span></router-link>
           </div>
 
           <footer>
@@ -48,8 +49,20 @@ export default {
   },
   data() {
     return {
-      isActive: false
+      isActive: false,
+      showHandUp: true,
+      showMapUp: true
     }
+  },
+  watch:{
+    $route (to, from){
+      this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false
+      this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false
+    }
+  },
+  mounted() {
+    this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false
+    this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false
   },
   computed: {
     ...mapGetters([

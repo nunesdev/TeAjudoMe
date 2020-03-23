@@ -2536,6 +2536,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2546,8 +2547,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      isActive: false
+      isActive: false,
+      showHandUp: true,
+      showMapUp: true
     };
+  },
+  watch: {
+    $route: function $route(to, from) {
+      this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false;
+      this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false;
+    }
+  },
+  mounted: function mounted() {
+    this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false;
+    this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false;
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['getMarkers'])),
   methods: {
@@ -7675,16 +7688,40 @@ var render = function() {
             _vm._m(1)
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-12" }, [
-            _c(
-              "div",
-              { staticClass: "btn btn-handup", on: { click: _vm.changeState } },
-              [
-                _vm._v("Posso ajudar\n            "),
-                _c("span", { staticClass: "icon-hand-stop" })
-              ]
-            )
-          ]),
+          _c(
+            "div",
+            { staticClass: "col-12" },
+            [
+              _vm.showHandUp
+                ? _c(
+                    "div",
+                    {
+                      staticClass: "btn btn-handup",
+                      on: { click: _vm.changeState }
+                    },
+                    [
+                      _vm._v("Posso ajudar\n            "),
+                      _c("span", { staticClass: "icon-hand-stop" })
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.showMapUp
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-handup",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _vm._v("Ir para Mapa "),
+                      _c("span", { staticClass: "icon-map" })
+                    ]
+                  )
+                : _vm._e()
+            ],
+            1
+          ),
           _vm._v(" "),
           _c(
             "footer",
