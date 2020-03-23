@@ -1,0 +1,23 @@
+{
+  "menu" : {
+    "mapa" : "Map",
+    "sobre" : "About",
+    "seguranca" : "Stay Safe",
+    "handup" : "I can help",
+    "mapup" : "Go to map",
+    "contato" : "Contact",
+    "voluntarios": "Volunteers"
+  },
+  "home": {
+    "map" : {
+      "marker" : {
+        "esta_aqui" :  "You are here",
+        "drag" : "If necessary, drag the pin to another point!"
+      }
+    }
+  },
+  "about": {
+    "title" : "About",
+    "text" : "<p>TeAjudoME was created exclusively because of the pandemic COVID-19 (new coronavirus),<br/>with the aim of connecting people who want to help and who need help with shopping at the market, pharmacy or just chatting, and especially people in the risk group. The platform also counts on the help of psychologists duly registered with the regional psychology council.<hr>The code is open-source and available on <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, you can collaborate and send your Pull request. To contact:<a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>"
+  }
+}

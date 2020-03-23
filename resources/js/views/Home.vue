@@ -24,8 +24,8 @@
             </div>
             <MglPopup :showed="true">
               <div class="popup">
-                <h3>Você está aqui</h3>
-                <small>Se necessário, arraste o pin para outro ponto!</small>
+                <h3 v-text="$ml.get('home.map.marker.esta_aqui')"></h3>
+                <small v-text="$ml.get('home.map.marker.drag')"></small>
               </div>
             </MglPopup>
           </MglMarker>
@@ -217,6 +217,7 @@ export default {
     transition: left .2s linear
     @media only screen and (max-width: 600px)
       left: 0
+      padding-top: 70px
     .loading-markers
       position: absolute
       top: 90px

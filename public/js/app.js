@@ -2401,6 +2401,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AddVoluntario__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/AddVoluntario */ "./resources/js/components/AddVoluntario.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue_multilanguage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-multilanguage */ "./node_modules/vue-multilanguage/dist/index.js");
+/* harmony import */ var vue_multilanguage__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_multilanguage__WEBPACK_IMPORTED_MODULE_2__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2441,6 +2443,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2492,6 +2510,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AddVoluntario__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/AddVoluntario */ "./resources/js/components/AddVoluntario.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue_multilanguage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-multilanguage */ "./node_modules/vue-multilanguage/dist/index.js");
+/* harmony import */ var vue_multilanguage__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_multilanguage__WEBPACK_IMPORTED_MODULE_2__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -2537,6 +2557,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2586,14 +2611,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2970,7 +2987,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".location {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 180px;\n}\n@media only screen and (max-width: 600px) {\n.location {\n    left: 0;\n}\n}\n.location .popup {\n  border: 1px solid #dedede;\n  border-radius: 4px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 300px;\n  color: #273141;\n  padding: 10px;\n}\n.location .popup span {\n  font-size: 18px;\n}\n.map {\n  position: absolute;\n  top: 0;\n  left: 180px;\n  width: 100%;\n  height: 100%;\n  transition: left 0.2s linear;\n}\n@media only screen and (max-width: 600px) {\n.map {\n    left: 0;\n}\n}\n.map .loading-markers {\n  position: absolute;\n  top: 90px;\n  z-index: 1;\n  background: #ffed4a;\n  color: black;\n  padding: 5px;\n  left: 50%;\n  transform: translate(-50%);\n}\n.map .popup {\n  color: #3e5c88;\n}\n.map .popup-head h3 {\n  font-size: 22px;\n}\n.map .popup hr {\n  margin-top: 180px;\n  margin-bottom: 10px;\n}\n.map .popup h4 {\n  font-size: 18px;\n  margin-top: 10px;\n}\n.map .popup span {\n  display: inline-block;\n  background: aliceblue;\n  padding: 5px;\n}\n.map .popup .support {\n  padding-top: 10px;\n}", ""]);
+exports.push([module.i, ".location {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 180px;\n}\n@media only screen and (max-width: 600px) {\n.location {\n    left: 0;\n}\n}\n.location .popup {\n  border: 1px solid #dedede;\n  border-radius: 4px;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 300px;\n  color: #273141;\n  padding: 10px;\n}\n.location .popup span {\n  font-size: 18px;\n}\n.map {\n  position: absolute;\n  top: 0;\n  left: 180px;\n  width: 100%;\n  height: 100%;\n  transition: left 0.2s linear;\n}\n@media only screen and (max-width: 600px) {\n.map {\n    left: 0;\n    padding-top: 70px;\n}\n}\n.map .loading-markers {\n  position: absolute;\n  top: 90px;\n  z-index: 1;\n  background: #ffed4a;\n  color: black;\n  padding: 5px;\n  left: 50%;\n  transform: translate(-50%);\n}\n.map .popup {\n  color: #3e5c88;\n}\n.map .popup-head h3 {\n  font-size: 22px;\n}\n.map .popup hr {\n  margin-top: 180px;\n  margin-bottom: 10px;\n}\n.map .popup h4 {\n  font-size: 18px;\n  margin-top: 10px;\n}\n.map .popup span {\n  display: inline-block;\n  background: aliceblue;\n  padding: 5px;\n}\n.map .popup .support {\n  padding-top: 10px;\n}", ""]);
 
 // exports
 
@@ -8061,43 +8078,117 @@ var render = function() {
     "div",
     {},
     [
-      _c(
-        "div",
-        {
-          staticClass: "bottombar row align-items-center",
-          class: { active: _vm.isActive }
-        },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-3 bottombar-volunteers-count" }, [
-            _vm._v("\n      " + _vm._s(_vm.getMarkers.length) + " "),
-            _c("small", [_vm._v("voluntários")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col  text-center" }, [
+      _c("div", { staticClass: "bottombar container" }, [
+        _c(
+          "div",
+          {
+            staticClass: "bottombar-logo row align-items-center",
+            class: { active: _vm.isActive }
+          },
+          [
             _c(
-              "footer",
+              "div",
+              { staticClass: "col" },
               [
-                _c("router-link", { attrs: { to: "/" } }, [_vm._v("Mapa")]),
-                _vm._v(" "),
-                _c("router-link", { attrs: { to: "/sobre" } }, [
-                  _vm._v("Sobre")
-                ]),
-                _vm._v(" "),
-                _c("router-link", { attrs: { to: "/fique-seguro" } }, [
-                  _vm._v("Fique Seguro")
+                _c("router-link", { attrs: { to: { name: "home" } } }, [
+                  _c("img", {
+                    attrs: { src: "/images/teajudome.png?c=1", alt: "" }
+                  })
                 ])
               ],
               1
             ),
-            _vm._v("\n      Contato:  "),
-            _c("a", { attrs: { href: "mailto:teajudome@gmail.com" } }, [
-              _vm._v("teajudome@gmail.com")
+            _vm._v(" "),
+            _c("div", { staticClass: "col bottombar-links" }, [
+              _c("div", { staticClass: "row align-items-start" }, [
+                _c(
+                  "div",
+                  { staticClass: "col-12" },
+                  [
+                    _c("router-link", {
+                      attrs: { to: "/" },
+                      domProps: {
+                        textContent: _vm._s(_vm.$ml.get("menu.mapa"))
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("router-link", {
+                      attrs: { to: "/sobre" },
+                      domProps: {
+                        textContent: _vm._s(_vm.$ml.get("menu.sobre"))
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("router-link", {
+                      attrs: { to: "/fique-seguro" },
+                      domProps: {
+                        textContent: _vm._s(_vm.$ml.get("menu.seguranca"))
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row align-items-end" }, [
+                _c("div", { staticClass: "col-12 bottombar-flags" }, [
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          return _vm.$ml.change("portuguese")
+                        }
+                      }
+                    },
+                    [_vm._v("PT")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          return _vm.$ml.change("spanish")
+                        }
+                      }
+                    },
+                    [_vm._v("ES")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          return _vm.$ml.change("english")
+                        }
+                      }
+                    },
+                    [_vm._v("EN")]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col bottombar-volunteers-count" }, [
+              _vm._v("\n        " + _vm._s(_vm.getMarkers.length) + " "),
+              _c(
+                "small",
+                {
+                  domProps: {
+                    textContent: _vm._s(_vm.$ml.get("menu.voluntarios"))
+                  }
+                },
+                [_vm._v("voluntários")]
+              )
             ])
-          ])
-        ]
-      ),
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "div",
@@ -8131,8 +8222,11 @@ var render = function() {
             "div",
             { staticClass: "btn btn-handup", on: { click: _vm.changeState } },
             [
-              _c("span", { staticClass: "icon-hand-stop" }),
-              _vm._v("Posso ajudar")
+              _c("strong", {
+                domProps: { textContent: _vm._s(_vm.$ml.get("menu.handup")) }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "icon-hand-stop" })
             ]
           )
         : _vm._e(),
@@ -8141,23 +8235,20 @@ var render = function() {
         ? _c(
             "router-link",
             { staticClass: "btn btn-handup", attrs: { to: { name: "home" } } },
-            [_c("span", { staticClass: "icon-map" }), _vm._v("Ir para Mapa")]
+            [
+              _c("strong", {
+                domProps: { textContent: _vm._s(_vm.$ml.get("menu.mapup")) }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "icon-map" })
+            ]
           )
         : _vm._e()
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "bottombar-logo text-center col-3" }, [
-      _c("img", { attrs: { src: "/images/teajudome.png?c=1", alt: "" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -8181,15 +8272,36 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("div", { staticClass: "sidebar" }, [
-      _vm._m(0),
+      _c(
+        "div",
+        { staticClass: "sidebar-logo text-center" },
+        [
+          _c("router-link", { attrs: { to: { name: "home" } } }, [
+            _c("img", { attrs: { src: "/images/teajudome.png?c=1", alt: "" } })
+          ])
+        ],
+        1
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "sidebar-volunteers-count text-center" }, [
         _c("div", { staticClass: "row justify-content-center" }, [
           _c("div", { staticClass: "col-12" }, [
             _vm._v("\n          " + _vm._s(_vm.getMarkers.length) + " "),
-            _c("small", [_vm._v("voluntários")]),
+            _c("small", {
+              domProps: { textContent: _vm._s(_vm.$ml.get("menu.voluntarios")) }
+            }),
             _vm._v(" "),
-            _vm._m(1)
+            _c(
+              "small",
+              {
+                domProps: { textContent: _vm._s(_vm.$ml.get("menu.contato")) }
+              },
+              [
+                _c("a", { attrs: { href: "mailto:teajudome@gmail.com" } }, [
+                  _vm._v("teajudome@gmail.com")
+                ])
+              ]
+            )
           ]),
           _vm._v(" "),
           _c(
@@ -8201,6 +8313,9 @@ var render = function() {
                     "div",
                     {
                       staticClass: "btn btn-handup",
+                      domProps: {
+                        textContent: _vm._s(_vm.$ml.get("menu.handup"))
+                      },
                       on: { click: _vm.changeState }
                     },
                     [
@@ -8215,12 +8330,12 @@ var render = function() {
                     "router-link",
                     {
                       staticClass: "btn btn-handup",
-                      attrs: { to: { name: "home" } }
+                      attrs: { to: { name: "home" } },
+                      domProps: {
+                        textContent: _vm._s(_vm.$ml.get("menu.mapup"))
+                      }
                     },
-                    [
-                      _vm._v("Ir para Mapa "),
-                      _c("span", { staticClass: "icon-map" })
-                    ]
+                    [_c("span", { staticClass: "icon-map" })]
                   )
                 : _vm._e()
             ],
@@ -8230,13 +8345,61 @@ var render = function() {
           _c(
             "footer",
             [
-              _c("router-link", { attrs: { to: "/" } }, [_vm._v("Mapa")]),
+              _c("router-link", {
+                attrs: { to: "/" },
+                domProps: { textContent: _vm._s(_vm.$ml.get("menu.mapa")) }
+              }),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: "/sobre" } }, [_vm._v("Sobre")]),
+              _c("router-link", {
+                attrs: { to: "/sobre" },
+                domProps: { textContent: _vm._s(_vm.$ml.get("menu.sobre")) }
+              }),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: "/fique-seguro" } }, [
-                _vm._v("Fique Seguro")
-              ])
+              _c("router-link", {
+                attrs: { to: "/fique-seguro" },
+                domProps: { textContent: _vm._s(_vm.$ml.get("menu.seguranca")) }
+              }),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$ml.change("portuguese")
+                    }
+                  }
+                },
+                [_vm._v("PT")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$ml.change("spanish")
+                    }
+                  }
+                },
+                [_vm._v("ES")]
+              ),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  attrs: { href: "#" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$ml.change("english")
+                    }
+                  }
+                },
+                [_vm._v("EN")]
+              )
             ],
             1
           )
@@ -8269,27 +8432,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "sidebar-logo text-center" }, [
-      _c("img", { attrs: { src: "/images/teajudome.png?c=1", alt: "" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("small", [
-      _vm._v("Contato:  "),
-      _c("a", { attrs: { href: "mailto:teajudome@gmail.com" } }, [
-        _vm._v("teajudome@gmail.com")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -8311,56 +8454,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("h1", [_vm._v("Sobre")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "\n          O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),\n          "
-              ),
-              _c("br"),
-              _vm._v(
-                "com o intuíto de conectar pessoas que querem\n          ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco."
-              ),
-              _c("br"),
-              _vm._v(
-                "\n          A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.\n          "
-              )
-            ]),
-            _c("hr"),
-            _vm._v(
-              "\n          A ferramenta é open-source e está disponível no "
-            ),
-            _c(
-              "a",
-              {
-                attrs: {
-                  target: "_blank",
-                  href: "https://github.com/nunesdev/TeAjudoMe"
-                }
-              },
-              [_vm._v("Git hub")]
-            ),
-            _vm._v(
-              ", você pode colaborar e enviar seu Pull request.\n\n        "
-            ),
-            _c("p")
-          ])
+  return _c("div", { staticClass: "content" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c("h1", {
+            domProps: { textContent: _vm._s(_vm.$ml.get("about.title")) }
+          }),
+          _vm._v(" "),
+          _c("div", {
+            domProps: { innerHTML: _vm._s(_vm.$ml.get("about.text")) }
+          })
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -8462,13 +8572,21 @@ var render = function() {
                     _vm._v(" "),
                     _c("MglPopup", { attrs: { showed: true } }, [
                       _c("div", { staticClass: "popup" }, [
-                        _c("h3", [_vm._v("Você está aqui")]),
+                        _c("h3", {
+                          domProps: {
+                            textContent: _vm._s(
+                              _vm.$ml.get("home.map.marker.esta_aqui")
+                            )
+                          }
+                        }),
                         _vm._v(" "),
-                        _c("small", [
-                          _vm._v(
-                            "Se necessário, arraste o pin para outro ponto!"
-                          )
-                        ])
+                        _c("small", {
+                          domProps: {
+                            textContent: _vm._s(
+                              _vm.$ml.get("home.map.marker.drag")
+                            )
+                          }
+                        })
                       ])
                     ])
                   ],
@@ -10918,6 +11036,414 @@ const MglPopup = _components_UI_Popup_vue__WEBPACK_IMPORTED_MODULE_7__["default"
 
 /* harmony default export */ __webpack_exports__["default"] = (_components_map_GlMap_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-multilanguage/dist/enums/getting-strategy.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/vue-multilanguage/dist/enums/getting-strategy.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var GettingStrategy = exports.GettingStrategy = {
+  DEFAULT: 'default',
+  RETURN_PATH_BY_DEFAULT: 'return-path-by-default',
+  RETURN_PATH_BY_DEFAULT_WITHOUT_ERROR: 'return-path-by-default-without-error'
+};
+
+/***/ }),
+
+/***/ "./node_modules/vue-multilanguage/dist/index.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vue-multilanguage/dist/index.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MLBuilder = exports.MLanguage = exports.MLCreate = exports.MLInstaller = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+var _install2 = __webpack_require__(/*! ./install */ "./node_modules/vue-multilanguage/dist/install.js");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /* eslint-disable */
+// @ts-check
+
+
+/**
+ * @typedef {Object} VueMultiLanguageParams
+ * @property {String} initial
+ * @property {Array} languages
+ * @property {Boolean} [save]
+ * @property {Function} [middleware]
+ * @property {String} [gettingStrategy]
+ */
+
+/**  @type {VueMultiLanguageParams} */
+var options = {
+  initial: null,
+  languages: [],
+  save: false,
+  middleware: null,
+  gettingStrategy: ''
+
+  /** @type {VueConstructor} */
+};var Vue = void 0;
+
+var MLInstaller =
+/**
+   * function for install plugin with Vue.use
+   * @param {VueConstructor} _Vue Vue constructor
+   */
+exports.MLInstaller = function MLInstaller(_Vue) {
+  Vue = _Vue;
+};
+
+var MLCreate =
+/**
+ * Constructor
+ * @param {VueMultiLanguageParams} _options object of settings
+ */
+exports.MLCreate = function MLCreate(_options) {
+  _classCallCheck(this, MLCreate);
+
+  options = _options;
+  (0, _install2._install)(Vue, options);
+};
+
+var MLanguage = exports.MLanguage = function () {
+  /**
+   * Create new language
+   * @param {string} name language name
+   */
+  function MLanguage(name) {
+    _classCallCheck(this, MLanguage);
+
+    this.name = name;
+  }
+
+  /**
+   * Create new language with pharses
+   * @param {Object}  database object with all language pharses
+   * @return {Object} object with language sentences
+   */
+
+
+  _createClass(MLanguage, [{
+    key: 'create',
+    value: function create(database) {
+      var name = this.name;
+
+      return { name: name, database: database };
+    }
+  }]);
+
+  return MLanguage;
+}();
+
+var MLBuilder = exports.MLBuilder = function () {
+  /**
+   * Create new language builder
+   * @param {string} path language path
+   */
+  function MLBuilder(path) {
+    _classCallCheck(this, MLBuilder);
+
+    this.path = path;
+    this._with = null;
+  }
+
+  /**
+   * Create new language with pharses
+   * @param {String}  name name or value from message
+   * @param {String|Boolean}  value value from message
+   * @return {MLBuilder} builder
+   */
+
+
+  _createClass(MLBuilder, [{
+    key: 'with',
+    value: function _with(name) {
+      var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+      if (value !== false) {
+        if (this._with === null) {
+          this._with = [];
+        }
+        // @ts-ignore
+        this._with.push({
+          name: name,
+          value: value
+        });
+      } else {
+        this._with = [name];
+      }
+      return this;
+    }
+  }]);
+
+  return MLBuilder;
+}();
+
+/***/ }),
+
+/***/ "./node_modules/vue-multilanguage/dist/install.js":
+/*!********************************************************!*\
+  !*** ./node_modules/vue-multilanguage/dist/install.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports._install = undefined;
+
+var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+var _mixin = __webpack_require__(/*! ./mixin */ "./node_modules/vue-multilanguage/dist/mixin.js");
+
+var _gettingStrategy = __webpack_require__(/*! ./enums/getting-strategy */ "./node_modules/vue-multilanguage/dist/enums/getting-strategy.js");
+
+/**
+ * @typedef {Object} VueMultiLanguageParams
+ * @property {String} initial
+ * @property {Array} languages
+ * @property {Boolean} [save]
+ * @property {Function} [middleware]
+ */
+
+/**
+ * Function for install plugin with Vue.use
+ * @function
+ * @param {VueConstructor} _Vue
+ * @param {VueMultiLanguageParams} options
+ */
+var _install = exports._install = function _install(_Vue, options) {
+  var initial = options.initial,
+      languages = options.languages,
+      save = options.save,
+      middleware = options.middleware,
+      gettingStrategy = options.gettingStrategy;
+
+
+  var mixin = (0, _mixin.register)(initial, languages, save || false, middleware || function (self, path) {
+    return path;
+  }, gettingStrategy || _gettingStrategy.GettingStrategy.DEFAULT);
+
+  // @ts-ignore
+  if (mixin !== undefined) {
+    // @ts-ignore
+    _Vue.mixin(mixin);
+  }
+}; // @ts-check
+
+/***/ }),
+
+/***/ "./node_modules/vue-multilanguage/dist/mixin.js":
+/*!******************************************************!*\
+  !*** ./node_modules/vue-multilanguage/dist/mixin.js ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.register = undefined;
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; // @ts-check
+
+
+var _vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _gettingStrategy = __webpack_require__(/*! ./enums/getting-strategy */ "./node_modules/vue-multilanguage/dist/enums/getting-strategy.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var EventBus = new _vue2.default();
+
+var currentGlobal = null;
+/** @type {Array} */
+var _with2 = null;
+/**
+ * Register all plugin actions
+ *
+ * @param {String} initial initial language
+ * @param {Array} languages array with languages
+ * @param {Boolean} save if save language in local storage
+ * @param {Function} middleware function for handler get
+ * @param {String} gettingStrategy translation getting strategy
+ */
+var register = exports.register = function register(initial, languages, save, middleware, gettingStrategy) {
+  if (save) {
+    var lang = window.localStorage.getItem('vueml-lang');
+    if (lang === null) {
+      window.localStorage.setItem('vueml-lang', initial);
+    } else {
+      initial = lang;
+    }
+  }
+
+  if (initial === null) {
+    return console.error('[vue-multilanguage] initial language is null, please set a value');
+  }
+  currentGlobal = initial;
+  return {
+    /**
+     * Called before create component
+     */
+    beforeCreate: function beforeCreate() {
+      var _this = this;
+
+      var self = this;
+
+      this.$ml = {
+        /**
+         * Change current language
+         * @param {string} param new language
+         */
+        change: function change(param) {
+          var current = languages.filter(function (l) {
+            return l.name === param;
+          });
+          if (current.length === 0) {
+            return console.error('[vue-multilanguage] \'' + param + '\' language not found');
+          }
+
+          if (currentGlobal !== param) {
+            if (save) {
+              window.localStorage.setItem('vueml-lang', param);
+            }
+            EventBus.$emit('vueml-language-changed', param);
+          }
+        },
+        with: function _with(name) {
+          var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+          if (value !== false) {
+            if (_with2 === null) {
+              _with2 = [];
+            }
+            _with2.push({ name: name, value: value });
+          } else {
+            _with2 = [name];
+          }
+          return this;
+        },
+        get: function get(path) {
+          var initialPath = path;
+
+          var current = languages.filter(function (l) {
+            return l.name === currentGlobal;
+          });
+          if (current.length > 1) {
+            return console.error('[vue-multilanguage] you define \'' + currentGlobal + '\' language two or more times');
+          }
+          var db = current[0].database;
+
+          if ('ml' + path in self) {
+            path = 'ml' + path;
+            _with2 = self[path]._with;
+            path = self[path].path;
+          }
+
+          path = middleware(self, path);
+
+          /** @type {Array} */
+          var splitedPath = path.split('.');
+
+          splitedPath.forEach(function (ph) {
+            if (ph in db) {
+              db = db[ph];
+            } else {
+              if (gettingStrategy !== _gettingStrategy.GettingStrategy.RETURN_PATH_BY_DEFAULT_WITHOUT_ERROR) {
+                console.error('[vue-multilanguage] path \'' + path + '\' unknown from \'' + ph + '\'');
+              }
+              if (gettingStrategy === _gettingStrategy.GettingStrategy.RETURN_PATH_BY_DEFAULT || gettingStrategy === _gettingStrategy.GettingStrategy.RETURN_PATH_BY_DEFAULT_WITHOUT_ERROR) {
+                db = initialPath;
+              } else {
+                return db = false;
+              }
+            }
+          });
+
+          if (db !== false) {
+            if (Array.isArray(_with2)) {
+              _with2.forEach(function (w) {
+                if ((typeof w === 'undefined' ? 'undefined' : _typeof(w)) !== 'object') {
+                  db = db.replace(/\{0\}/g, _with2[0]);
+                } else {
+                  var replace = '{' + w.name + '}';
+                  while (db.includes(replace)) {
+                    db = db.replace(replace, w.value);
+                  }
+                }
+              });
+            }
+            _with2 = null;
+
+            return db;
+          }
+        },
+
+
+        /**
+         * get current permission
+         */
+        get current() {
+          return currentGlobal;
+        },
+
+        /**
+         * get languages list
+         */
+        get list() {
+          return languages.map(function (l) {
+            return l.name;
+          });
+        },
+
+        /**
+         * get languages database list
+         */
+        get db() {
+          return languages.map(function (l) {
+            return l.database;
+          });
+        }
+      };
+
+      EventBus.$on('vueml-language-changed', function (newLanguage) {
+        currentGlobal = newLanguage;
+        _this.$forceUpdate();
+      });
+    }
+  };
+};
 
 /***/ }),
 
@@ -30949,7 +31475,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
 /* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var vue_gtag__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-gtag */ "./node_modules/vue-gtag/dist/vue-gtag.esm.js");
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
+/* harmony import */ var _ml__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./ml */ "./resources/js/ml.js");
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
+
 
 
 
@@ -30995,7 +31523,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: _routers_index__WEBPACK_IMPORTED_MODULE_3__["default"],
   store: store,
   render: function render(h) {
-    return h(_App_vue__WEBPACK_IMPORTED_MODULE_10__["default"]);
+    return h(_App_vue__WEBPACK_IMPORTED_MODULE_11__["default"]);
   }
 }).$mount('#app');
 
@@ -31241,6 +31769,72 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Sidebar_vue_vue_type_template_id_81fbb27e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/langs/en.json":
+/*!************************************!*\
+  !*** ./resources/js/langs/en.json ***!
+  \************************************/
+/*! exports provided: menu, home, about, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Map\",\"sobre\":\"About\",\"seguranca\":\"Stay Safe\",\"handup\":\"I can help\",\"mapup\":\"Go to map\",\"contato\":\"Contact\",\"voluntarios\":\"Volunteers\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"You are here\",\"drag\":\"If necessary, drag the pin to another point!\"}}},\"about\":{\"title\":\"About\",\"text\":\"<p>TeAjudoME was created exclusively because of the pandemic COVID-19 (new coronavirus),<br/>with the aim of connecting people who want to help and who need help with shopping at the market, pharmacy or just chatting, and especially people in the risk group. The platform also counts on the help of psychologists duly registered with the regional psychology council.<hr>The code is open-source and available on <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, you can collaborate and send your Pull request. To contact:<a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>\"}}");
+
+/***/ }),
+
+/***/ "./resources/js/langs/es.json":
+/*!************************************!*\
+  !*** ./resources/js/langs/es.json ***!
+  \************************************/
+/*! exports provided: menu, home, about, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Acerca\",\"seguranca\":\"Seguridad\",\"handup\":\"Puedo ayudar\",\"mapup\":\"Ve al mapa\",\"contato\":\"Contacto\",\"voluntarios\":\"Voluntarios\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"Tu estás aquí\",\"drag\":\"Si es necesario, arrastre el pin a otro punto.\"}}},\"about\":{\"title\":\"Acerca\",\"text\":\"<p>TeAjudoME se creó exclusivamente debido a la pandemia COVID-19 (nuevo coronavirus),<br/>con el objetivo de conectar a las personas que desean ayudar y que necesitan ayuda para comprar en el mercado, farmacia o simplemente para conversar, y especialmente las personas en el grupo de riesgo.La plataforma también cuenta con la ayuda de psicólogos debidamente registrados en el consejo regional de psicología.<hr>La herramienta es de código abierto y está disponible en <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, puedes colaborar y enviar tu solicitud de Pull.Para contactar: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>\"}}");
+
+/***/ }),
+
+/***/ "./resources/js/langs/pt.json":
+/*!************************************!*\
+  !*** ./resources/js/langs/pt.json ***!
+  \************************************/
+/*! exports provided: menu, home, about, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Sobre\",\"seguranca\":\"Segurança\",\"handup\":\"Posso ajudar\",\"mapup\":\"Ir ao mapa\",\"contato\":\"Contato\",\"voluntarios\":\"Voluntários\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"Você está aqui\",\"drag\":\"Se necessário, arraste o pin para outro ponto!\"}}},\"about\":{\"title\":\"Sobre\",\"text\":\"<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr> A ferramenta é open-source e está disponível no <a target='_blank' href='https:/github.com/nunesdev/TeAjudoMe'>Git hub</a>, você pode colaborar e enviar seu Pull request. Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>\"}}");
+
+/***/ }),
+
+/***/ "./resources/js/ml.js":
+/*!****************************!*\
+  !*** ./resources/js/ml.js ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-multilanguage */ "./node_modules/vue-multilanguage/dist/index.js");
+/* harmony import */ var vue_multilanguage__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _langs_es_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./langs/es.json */ "./resources/js/langs/es.json");
+var _langs_es_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./langs/es.json */ "./resources/js/langs/es.json", 1);
+/* harmony import */ var _langs_en_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./langs/en.json */ "./resources/js/langs/en.json");
+var _langs_en_json__WEBPACK_IMPORTED_MODULE_3___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./langs/en.json */ "./resources/js/langs/en.json", 1);
+/* harmony import */ var _langs_pt_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./langs/pt.json */ "./resources/js/langs/pt.json");
+var _langs_pt_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./langs/pt.json */ "./resources/js/langs/pt.json", 1);
+
+
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLInstaller"]);
+/* harmony default export */ __webpack_exports__["default"] = (new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLCreate"]({
+  initial: 'english',
+  save: "development" === 'production',
+  languages: [new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLanguage"]('english').create(_langs_en_json__WEBPACK_IMPORTED_MODULE_3__), new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLanguage"]('portuguese').create(_langs_pt_json__WEBPACK_IMPORTED_MODULE_4__), new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLanguage"]('spanish').create(_langs_es_json__WEBPACK_IMPORTED_MODULE_2__)]
+}));
 
 /***/ }),
 

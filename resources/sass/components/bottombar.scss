@@ -1,5 +1,5 @@
 .bottombar {
-  height: 70px;
+
   background: $darkblue;
   position: fixed;
   z-index: 2;
@@ -11,23 +11,60 @@
   &.active {
     left: -100%
   }
+  &-links {
+    font-size: 14px;
 
+    > a{
+      background: red;
+      color: $white;
+      padding: 2px;
+      &:visited {
+        color: $white;
+      }
+    }
+  }
   &-logo {
-    margin: 0 auto;
+    padding: 10px 0;
     img {
       max-width: 100%;
       width: 60px;
     }
+
+    .col {
+      padding-left: 6px;
+      padding-right: 6px;
+
+      &:first-child {
+        max-width: 80px;
+      }
+      &:last-child {
+        max-width: 80px;
+      }
+    }
+  }
+  &-flags {
+    font-size: 14px;
+    a {
+      padding: 2px;
+      color: $white;
+      background: #2f4056;
+    }
   }
   &-volunteers {
     &-count {
-      font-size: 2em;
+      font-size: 18px;
+      line-height: 20px;
       small {
         font-size: 14px;
-        display: block;
+
         color: $light-gray;
       }
     }
+  }
+
+  &-menu {
+    padding: 10px 0;
+    background: #313f50;
   }
 
   &--close {

@@ -1,21 +1,36 @@
 <template>
   <div class="">
-    <div class="bottombar row align-items-center"  :class="{active:isActive}">
-      <div class="bottombar-logo text-center col-3">
-        <img src="/images/teajudome.png?c=1"  alt="">
-      </div>
-      <div class="col-3 bottombar-volunteers-count">
-        {{getMarkers.length}} <small>voluntários</small>
-      </div>
-      <div class="col  text-center">
+    <div class="bottombar container">
+      <div class="bottombar-logo row align-items-center"  :class="{active:isActive}">
+        <div class="col">
+          <router-link :to="{ name: 'home' }"><img src="/images/teajudome.png?c=1"  alt=""></router-link>
+        </div>
 
-        <footer>
-          <router-link to="/">Mapa</router-link>
-          <router-link to="/sobre">Sobre</router-link>
-          <router-link to="/fique-seguro">Fique Seguro</router-link>
-        </footer>
-        Contato:  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a>
+        <div class="col bottombar-links">
+          <div class="row align-items-start">
+            <div class="col-12">
+              <router-link to="/" v-text="$ml.get('menu.mapa')"></router-link>
+              <router-link to="/sobre" v-text="$ml.get('menu.sobre')"></router-link>
+              <router-link to="/fique-seguro" v-text="$ml.get('menu.seguranca')"></router-link>
+            </div>
+          </div>
+
+          <div class="row align-items-end">
+            <div class="col-12 bottombar-flags">
+              <a @click="$ml.change('portuguese')" href="#">PT</a>
+              <a @click="$ml.change('spanish')" href="#">ES</a>
+              <a @click="$ml.change('english')" href="#">EN</a>
+            </div>
+          </div>
+        </div>
+        <div class="col bottombar-volunteers-count">
+          {{getMarkers.length}} <small v-text="$ml.get('menu.voluntarios')">voluntários</small>
+        </div>
       </div>
+      <!-- <div class="row bottombar-menu align-items-center">
+
+
+      </div> -->
     </div>
     <div class="bottombar--secondary" :class="{active:isActive}">
       <div class="bottombar--close" @click="changeState">
@@ -27,14 +42,15 @@
       </div>
     </div>
 
-    <div v-if="showHandUp" @click="changeState" class="btn btn-handup"><span class="icon-hand-stop"></span>Posso ajudar</div>
-    <router-link v-if="showMapUp" class="btn btn-handup" :to="{ name: 'home' }"><span class="icon-map"></span>Ir para Mapa</router-link>
+    <div v-if="showHandUp" @click="changeState" class="btn btn-handup"><strong v-text="$ml.get('menu.handup')"></strong> <span class="icon-hand-stop"></span></div>
+    <router-link v-if="showMapUp" class="btn btn-handup" :to="{ name: 'home' }"><strong v-text="$ml.get('menu.mapup')"></strong> <span class="icon-map"></span></router-link>
   </div>
 </template>
 
 <script>
  import AddVoluntario from '@components/AddVoluntario';
  import { mapGetters, mapActions } from 'vuex'
+ import { MLBuilder } from 'vue-multilanguage'
 
 export default {
   props: ['address'],

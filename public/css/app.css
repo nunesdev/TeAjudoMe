@@ -12237,7 +12237,6 @@ a.text-dark:focus {
 }
 
 .bottombar {
-  height: 70px;
   background: #283241;
   position: fixed;
   z-index: 2;
@@ -12251,8 +12250,22 @@ a.text-dark:focus {
   left: -100%;
 }
 
+.bottombar-links {
+  font-size: 14px;
+}
+
+.bottombar-links > a {
+  background: red;
+  color: #fff;
+  padding: 2px;
+}
+
+.bottombar-links > a:visited {
+  color: #fff;
+}
+
 .bottombar-logo {
-  margin: 0 auto;
+  padding: 10px 0;
 }
 
 .bottombar-logo img {
@@ -12260,14 +12273,42 @@ a.text-dark:focus {
   width: 60px;
 }
 
+.bottombar-logo .col {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+.bottombar-logo .col:first-child {
+  max-width: 80px;
+}
+
+.bottombar-logo .col:last-child {
+  max-width: 80px;
+}
+
+.bottombar-flags {
+  font-size: 14px;
+}
+
+.bottombar-flags a {
+  padding: 2px;
+  color: #fff;
+  background: #2f4056;
+}
+
 .bottombar-volunteers-count {
-  font-size: 2em;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .bottombar-volunteers-count small {
   font-size: 14px;
-  display: block;
   color: #b8c1c8;
+}
+
+.bottombar-menu {
+  padding: 10px 0;
+  background: #313f50;
 }
 
 .bottombar--close {

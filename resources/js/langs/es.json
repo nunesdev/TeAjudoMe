@@ -1,0 +1,23 @@
+{
+  "menu" : {
+    "mapa" : "Mapa",
+    "sobre" : "Acerca",
+    "seguranca" : "Seguridad",
+    "handup" : "Puedo ayudar",
+    "mapup" : "Ve al mapa",
+    "contato" : "Contacto",
+    "voluntarios": "Voluntarios"
+  },
+  "home": {
+    "map" : {
+      "marker" : {
+        "esta_aqui" :  "Tu estás aquí",
+        "drag" : "Si es necesario, arrastre el pin a otro punto."
+      }
+    }
+  },
+  "about": {
+    "title" : "Acerca",
+    "text" : "<p>TeAjudoME se creó exclusivamente debido a la pandemia COVID-19 (nuevo coronavirus),<br/>con el objetivo de conectar a las personas que desean ayudar y que necesitan ayuda para comprar en el mercado, farmacia o simplemente para conversar, y especialmente las personas en el grupo de riesgo.La plataforma también cuenta con la ayuda de psicólogos debidamente registrados en el consejo regional de psicología.<hr>La herramienta es de código abierto y está disponible en <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, puedes colaborar y enviar tu solicitud de Pull.Para contactar: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>"
+  }
+}

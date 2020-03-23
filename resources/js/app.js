@@ -10,6 +10,7 @@ import Notifications from 'vue-notification'
 import Store from './store/store';
 import VueCookies from 'vue-cookies'
 import VueGtag from "vue-gtag";
+import './ml';
 
 Vue.use(VueGtag, {
   config: { id: "UA-161392946-1" }
