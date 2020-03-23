@@ -113,7 +113,7 @@ export default {
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
-      isLocated: this.$cookies.get('isLocated') ? true : false,
+      isLocated: this.$cookies.get('isLocated') ? true : true,
       errorStr: null,
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
@@ -124,7 +124,6 @@ export default {
   },
   created() {
     if(this.$cookies.get('isLocated')) this.locateMe()
-
   },
   computed: {
     markers() {

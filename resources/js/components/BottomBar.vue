@@ -27,7 +27,8 @@
       </div>
     </div>
 
-    <div @click="changeState" class="btn btn-handup"><span class="icon-hand-stop"></span>Posso ajudar</div>
+    <div v-if="showHandUp" @click="changeState" class="btn btn-handup"><span class="icon-hand-stop"></span>Posso ajudar</div>
+    <router-link v-if="showMapUp" class="btn btn-handup" :to="{ name: 'home' }"><span class="icon-map"></span>Ir para Mapa</router-link>
   </div>
 </template>
 
@@ -43,13 +44,25 @@ export default {
   },
   data() {
     return {
-      isActive: false
+      isActive: false,
+      showHandUp: true,
+      showMapUp: true,
+    }
+  },
+  watch:{
+    $route (to, from){
+      this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false
+      this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false
     }
   },
   computed: {
     ...mapGetters([
       'getMarkers',
     ]),
+  },
+  mounted() {
+    this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false
+    this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false
   },
   methods: {
     changeState() {

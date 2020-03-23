@@ -2440,6 +2440,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2450,10 +2451,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      isActive: false
+      isActive: false,
+      showHandUp: true,
+      showMapUp: true
     };
   },
+  watch: {
+    $route: function $route(to, from) {
+      this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false;
+      this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false;
+    }
+  },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['getMarkers'])),
+  mounted: function mounted() {
+    this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false;
+    this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false;
+  },
   methods: {
     changeState: function changeState() {
       this.isActive = !this.isActive;
@@ -2726,7 +2739,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
-      isLocated: this.$cookies.get('isLocated') ? true : false,
+      isLocated: this.$cookies.get('isLocated') ? true : true,
       errorStr: null,
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/mapbox/streets-v11',
@@ -7527,73 +7540,96 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c(
-      "div",
-      {
-        staticClass: "bottombar row align-items-center",
-        class: { active: _vm.isActive }
-      },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 bottombar-volunteers-count" }, [
-          _vm._v("\n      " + _vm._s(_vm.getMarkers.length) + " "),
-          _c("small", [_vm._v("voluntários")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col  text-center" }, [
+  return _c(
+    "div",
+    {},
+    [
+      _c(
+        "div",
+        {
+          staticClass: "bottombar row align-items-center",
+          class: { active: _vm.isActive }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-3 bottombar-volunteers-count" }, [
+            _vm._v("\n      " + _vm._s(_vm.getMarkers.length) + " "),
+            _c("small", [_vm._v("voluntários")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col  text-center" }, [
+            _c(
+              "footer",
+              [
+                _c("router-link", { attrs: { to: "/" } }, [_vm._v("Mapa")]),
+                _vm._v(" "),
+                _c("router-link", { attrs: { to: "/sobre" } }, [
+                  _vm._v("Sobre")
+                ]),
+                _vm._v(" "),
+                _c("router-link", { attrs: { to: "/fique-seguro" } }, [
+                  _vm._v("Fique Seguro")
+                ])
+              ],
+              1
+            ),
+            _vm._v("\n      Contato:  "),
+            _c("a", { attrs: { href: "mailto:teajudome@gmail.com" } }, [
+              _vm._v("teajudome@gmail.com")
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "bottombar--secondary",
+          class: { active: _vm.isActive }
+        },
+        [
           _c(
-            "footer",
+            "div",
+            { staticClass: "bottombar--close", on: { click: _vm.changeState } },
+            [_c("span", { staticClass: "icon-circle-left" })]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "bottombar--secondary__body" },
             [
-              _c("router-link", { attrs: { to: "/" } }, [_vm._v("Mapa")]),
-              _vm._v(" "),
-              _c("router-link", { attrs: { to: "/sobre" } }, [_vm._v("Sobre")]),
-              _vm._v(" "),
-              _c("router-link", { attrs: { to: "/fique-seguro" } }, [
-                _vm._v("Fique Seguro")
-              ])
+              _c("AddVoluntario", {
+                attrs: { address: _vm.address },
+                on: { closeSidebar: _vm.closeSidebar }
+              })
             ],
             1
-          ),
-          _vm._v("\n      Contato:  "),
-          _c("a", { attrs: { href: "mailto:teajudome@gmail.com" } }, [
-            _vm._v("teajudome@gmail.com")
-          ])
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "bottombar--secondary", class: { active: _vm.isActive } },
-      [
-        _c(
-          "div",
-          { staticClass: "bottombar--close", on: { click: _vm.changeState } },
-          [_c("span", { staticClass: "icon-circle-left" })]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "bottombar--secondary__body" },
-          [
-            _c("AddVoluntario", {
-              attrs: { address: _vm.address },
-              on: { closeSidebar: _vm.closeSidebar }
-            })
-          ],
-          1
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "btn btn-handup", on: { click: _vm.changeState } },
-      [_c("span", { staticClass: "icon-hand-stop" }), _vm._v("Posso ajudar")]
-    )
-  ])
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm.showHandUp
+        ? _c(
+            "div",
+            { staticClass: "btn btn-handup", on: { click: _vm.changeState } },
+            [
+              _c("span", { staticClass: "icon-hand-stop" }),
+              _vm._v("Posso ajudar")
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showMapUp
+        ? _c(
+            "router-link",
+            { staticClass: "btn btn-handup", attrs: { to: { name: "home" } } },
+            [_c("span", { staticClass: "icon-map" }), _vm._v("Ir para Mapa")]
+          )
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
