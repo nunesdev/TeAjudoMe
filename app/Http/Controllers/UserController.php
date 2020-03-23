@@ -27,7 +27,7 @@ class UserController extends BaseController
 
 
       if(!$request->input('location.lat') || !$request->input('location.lon'))
-        throw new \Exception("Mova o PIN AMARELO, para encontrar uma localização", 1);
+        throw new \Exception("Vá para o MAPA, Mova o PIN AMARELO, para atualizar sua localização", 1);
 
 
 
