@@ -1,21 +1,30 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-
-
 Vue.use(Router)
 
 import Home from '../views/Home'
+import About from '../views/About'
+import StaySafe from '../views/StaySafe'
 
 
-const baseRoutes = [
-  {
-    path: '/dash',
-    component : Home,
-  }
-]
 
 export default new Router({
-  mode: 'history', 
-  baseRoutes,
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/fique-seguro',
+      component : StaySafe,
+      name: 'seguranca'
+    },
+    {
+      path: '/sobre',
+      component : About,
+      name: 'sobre'
+    }
+  ]
 })

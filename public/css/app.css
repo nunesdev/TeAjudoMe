@@ -12325,3 +12325,31 @@ body .checklabel small {
   display: inline-flex !important;
 }
 
+body .content {
+  padding-top: 80px;
+  padding-left: 180px;
+  color: #283241;
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+  body .content {
+    padding-left: 0;
+  }
+}
+
+body footer {
+  padding-top: 20px;
+}
+
+body footer a {
+  font-size: 12px;
+  display: inline-block;
+  color: #fff;
+}
+
+body .list {
+  list-style: circle;
+  margin-left: 1rem;
+}
+

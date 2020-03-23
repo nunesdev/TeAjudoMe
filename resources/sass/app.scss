@@ -30,4 +30,29 @@ body {
       display: inline-flex!important;
     }
   }
+
+  .content {
+    padding-top: 80px;
+    padding-left: 180px;
+    color: $darkblue;
+    font-size: 16px;
+
+    @media only screen and (max-width: 600px) {
+      padding-left: 0;
+    }
+  }
+
+  footer {
+    padding-top: 20px;
+    a {
+      font-size: 12px;
+      display: inline-block;
+      color: $white;
+    }
+  }
+
+  .list {
+    list-style: circle;
+    margin-left: 1rem;
+  }
 }

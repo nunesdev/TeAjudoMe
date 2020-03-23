@@ -1,15 +1,20 @@
 <template>
   <div class="">
     <div class="bottombar row align-items-center"  :class="{active:isActive}">
-      <div class="bottombar-logo text-center col">
+      <div class="bottombar-logo text-center col-3">
         <img src="/images/teajudome.png?c=1"  alt="">
       </div>
-      <div class="col bottombar-volunteers-count">
+      <div class="col-3 bottombar-volunteers-count">
         {{getMarkers.length}} <small>voluntários</small>
       </div>
       <div class="col  text-center">
 
-        <small>Contato:  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a> </small>
+        <footer>
+          <router-link to="/">Mapa</router-link>
+          <router-link to="/sobre">Sobre</router-link>
+          <router-link to="/fique-seguro">Fique Seguro</router-link>
+        </footer>
+        Contato:  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a>
       </div>
     </div>
     <div class="bottombar--secondary" :class="{active:isActive}">
@@ -60,6 +65,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+footer {
+  padding-top: 0;
+}
 .btn-handup {
   position: fixed;
   bottom: 90px;
