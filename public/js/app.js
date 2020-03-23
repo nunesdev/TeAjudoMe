@@ -31831,8 +31831,8 @@ var _langs_pt_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpa
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLInstaller"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLCreate"]({
-  initial: 'english',
-  save: "development" === 'production',
+  initial: 'portuguese',
+  save: true,
   languages: [new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLanguage"]('english').create(_langs_en_json__WEBPACK_IMPORTED_MODULE_3__), new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLanguage"]('portuguese').create(_langs_pt_json__WEBPACK_IMPORTED_MODULE_4__), new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLanguage"]('spanish').create(_langs_es_json__WEBPACK_IMPORTED_MODULE_2__)]
 }));
 

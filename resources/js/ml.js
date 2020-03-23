@@ -7,8 +7,8 @@ import pt from './langs/pt.json'
 Vue.use(MLInstaller)
 
 export default new MLCreate({
-  initial: 'english',
-  save: process.env.NODE_ENV === 'production',
+  initial: 'portuguese',
+  save: true,
   languages: [
     new MLanguage('english').create(en),
     new MLanguage('portuguese').create(pt),
