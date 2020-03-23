@@ -5922,6 +5922,510 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-gtag/dist/vue-gtag.esm.js":
+/*!****************************************************!*\
+  !*** ./node_modules/vue-gtag/dist/vue-gtag.esm.js ***!
+  \****************************************************/
+/*! exports provided: default, bootstrap, config, customMap, event, exception, install, linker, optIn, optOut, pageview, purchase, query, screenview, set, setOptions, time */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bootstrap", function() { return bootstrap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "config", function() { return config$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "customMap", function() { return customMap$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "event", function() { return event$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exception", function() { return exception$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "linker", function() { return linker$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "optIn", function() { return optIn$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "optOut", function() { return optOut$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pageview", function() { return pageview$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "purchase", function() { return purchase$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "query", function() { return query$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "screenview", function() { return screenview$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set", function() { return set$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setOptions", function() { return setOptions$1; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "time", function() { return time$1; });
+function _typeof(obj) {
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+var noop = function noop() {};
+function loadScript(url, domain) {
+  return new Promise(function (resolve, reject) {
+    var head = document.head || document.getElementsByTagName("head")[0];
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = url;
+    script.charset = "utf-8";
+
+    if (domain) {
+      var link = document.createElement("link");
+      link.href = domain;
+      link.rel = "preconnect";
+      head.appendChild(link);
+    }
+
+    head.appendChild(script);
+    script.onload = resolve;
+    script.onerror = reject;
+  });
+}
+function warn(msg, err) {
+  console.warn("[vue-gtag] " + msg);
+
+  if (err && err.stack) {
+    console.warn(err.stack);
+  }
+}
+function isFn(item) {
+  return typeof item === "function";
+}
+function isObject(item) {
+  return item && _typeof(item) === "object" && !Array.isArray(item);
+}
+function mergeDeep(target) {
+  for (var _len = arguments.length, sources = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    sources[_key - 1] = arguments[_key];
+  }
+
+  if (!sources.length) {
+    return target;
+  }
+
+  var source = sources.shift();
+
+  if (!isObject(target) || !isObject(source)) {
+    return;
+  }
+
+  for (var key in source) {
+    if (isObject(source[key])) {
+      if (!target[key]) {
+        Object.assign(target, _defineProperty({}, key, {}));
+      }
+
+      mergeDeep(target[key], source[key]);
+    } else {
+      Object.assign(target, _defineProperty({}, key, source[key]));
+    }
+  }
+
+  return mergeDeep.apply(void 0, [target].concat(sources));
+}
+
+function query () {
+  var _window;
+
+  var _getOptions = getOptions(),
+      globalObjectName = _getOptions.globalObjectName;
+
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  (_window = window)[globalObjectName].apply(_window, arguments);
+}
+
+var config = (function () {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  var _getOptions = getOptions(),
+      config = _getOptions.config,
+      includes = _getOptions.includes;
+
+  query.apply(void 0, ["config", config.id].concat(args));
+
+  if (Array.isArray(includes)) {
+    includes.forEach(function (domain) {
+      query.apply(void 0, ["config", domain.id].concat(args));
+    });
+  }
+});
+
+var event = (function (name) {
+  var _params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var _getOptions = getOptions(),
+      defaultGroupName = _getOptions.defaultGroupName,
+      includes = _getOptions.includes;
+
+  var params = _params;
+
+  if (includes && params.send_to == null) {
+    params.send_to = includes.map(function (include) {
+      return include.id;
+    }).concat(defaultGroupName);
+  }
+
+  query("event", name, params);
+});
+
+var pageview = (function () {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  var arg = args[0];
+  var params = {};
+
+  if (typeof arg === "string") {
+    params = {
+      page_path: arg,
+      page_location: window.location.href
+    };
+  } else {
+    params = arg;
+  }
+
+  event("page_view", params);
+});
+
+var screenview = (function () {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  event.apply(void 0, ["screen_view"].concat(args));
+});
+
+var customMap = (function (map) {
+  config({
+    custom_map: map
+  });
+});
+
+var time = (function () {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  event.apply(void 0, ["timing_complete"].concat(args));
+});
+
+var exception = (function () {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  event.apply(void 0, ["exception"].concat(args));
+});
+
+var linker = (function (params) {
+  config("linker", params);
+});
+
+var purchase = (function () {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  event.apply(void 0, ["purchase"].concat(args));
+});
+
+var refund = (function () {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  event.apply(void 0, ["refund"].concat(args));
+});
+
+var set = (function () {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  query.apply(void 0, ["set"].concat(args));
+});
+
+var disable = (function () {
+  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+  var _getOptions = getOptions(),
+      includes = _getOptions.includes,
+      config = _getOptions.config;
+
+  window["ga-disable-".concat(config.id)] = value;
+
+  if (Array.isArray(includes)) {
+    includes.forEach(function (domain) {
+      window["ga-disable-".concat(domain.id)] = value;
+    });
+  }
+});
+
+var optIn = (function () {
+  disable(false);
+});
+
+var optOut = (function () {
+  disable(true);
+});
+
+var api = {
+  query: query,
+  config: config,
+  event: event,
+  pageview: pageview,
+  screenview: screenview,
+  customMap: customMap,
+  time: time,
+  exception: exception,
+  linker: linker,
+  purchase: purchase,
+  refund: refund,
+  set: set,
+  optIn: optIn,
+  optOut: optOut
+};
+
+var extend = (function () {
+  var Vue = getVue();
+  Vue.$gtag = Vue.prototype.$gtag = api;
+});
+
+var trackPage = function trackPage(to, from) {
+  if (to.path === from.path) {
+    return;
+  }
+
+  var _getOptions = getOptions(),
+      pageTrackerTemplate = _getOptions.pageTrackerTemplate,
+      pageTrackerScreenviewEnabled = _getOptions.pageTrackerScreenviewEnabled,
+      appName = _getOptions.appName;
+
+  var template;
+  var customTemplate = pageTrackerTemplate(to, from);
+
+  if (customTemplate) {
+    template = customTemplate;
+  } else if (pageTrackerScreenviewEnabled) {
+    template = {
+      app_name: appName,
+      screen_name: to.name
+    };
+  } else {
+    template = {
+      page_title: to.name,
+      page_path: to.path,
+      page_location: window.location.href
+    };
+  }
+
+  if (pageTrackerScreenviewEnabled && !template.app_name) {
+    warn("To use the screenview, add the appName to the plugin options");
+    return;
+  }
+
+  if (pageTrackerScreenviewEnabled && !template.screen_name) {
+    warn("To use the screenview, name your routes");
+    return;
+  }
+
+  if (pageTrackerScreenviewEnabled) {
+    screenview(template);
+    return;
+  }
+
+  pageview(template);
+};
+var init = function init(Router) {
+  var Vue = getVue();
+
+  var _getOptions2 = getOptions(),
+      onBeforeTrack = _getOptions2.onBeforeTrack,
+      onAfterTrack = _getOptions2.onAfterTrack;
+  /* istanbul ignore next */
+
+
+  Router.onReady(function () {
+    Router.afterEach(function (to, from) {
+      Vue.nextTick().then(function () {
+        onBeforeTrack(to, from);
+        trackPage(to, from);
+        onAfterTrack(to, from);
+      });
+    });
+  });
+};
+var pageTracker = (function () {
+  var Router = getRouter();
+
+  if (!Router) {
+    return;
+  }
+
+  init(Router);
+});
+
+function _bootstrap () {
+  if (typeof document === "undefined" || typeof window === "undefined") {
+    return;
+  }
+
+  var _getOptions = getOptions(),
+      enabled = _getOptions.enabled,
+      globalObjectName = _getOptions.globalObjectName,
+      _getOptions$config = _getOptions.config,
+      id = _getOptions$config.id,
+      params = _getOptions$config.params,
+      includes = _getOptions.includes,
+      pageTrackerEnabled = _getOptions.pageTrackerEnabled,
+      onReady = _getOptions.onReady,
+      disableScriptLoad = _getOptions.disableScriptLoad;
+
+  if (!enabled) {
+    optOut();
+  }
+
+  if (window[globalObjectName] == null) {
+    window.dataLayer = window.dataLayer || [];
+
+    window[globalObjectName] = function () {
+      window.dataLayer.push(arguments);
+    };
+  }
+
+  window[globalObjectName]("js", new Date());
+
+  if (params) {
+    window[globalObjectName]("config", id, params);
+  } else {
+    window[globalObjectName]("config", id);
+  }
+
+  if (Array.isArray(includes)) {
+    includes.forEach(function (domain) {
+      if (domain.params) {
+        window[globalObjectName]("config", domain.id, domain.params);
+      } else {
+        window[globalObjectName]("config", domain.id);
+      }
+    });
+  }
+
+  if (pageTrackerEnabled) {
+    pageTracker();
+  }
+
+  if (disableScriptLoad) {
+    return;
+  }
+
+  var domain = "https://www.googletagmanager.com";
+  var resource = "".concat(domain, "/gtag/js?id=").concat(id);
+  return loadScript(resource, domain).then(function () {
+    var library = window[globalObjectName];
+
+    if (isFn(onReady)) {
+      onReady(library);
+    }
+
+    return library;
+  }).catch(function (error) {
+    warn("Ops! Something happened and gtag.js couldn't be loaded", error);
+    return error;
+  });
+}
+
+var Vue;
+var Router;
+var options = {
+  pageTrackerTemplate: noop,
+  onBeforeTrack: noop,
+  onAfterTrack: noop,
+  onReady: noop,
+  enabled: true,
+  disableScriptLoad: false,
+  bootstrap: true,
+  globalObjectName: "gtag",
+  pageTrackerEnabled: true,
+  pageTrackerScreenviewEnabled: false,
+  defaultGroupName: "default",
+  includes: null,
+  config: null
+};
+var getOptions = function getOptions() {
+  return options;
+};
+var setOptions = function setOptions(_options) {
+  return mergeDeep(options, _options);
+};
+var getVue = function getVue() {
+  return Vue;
+};
+var getRouter = function getRouter() {
+  return Router;
+};
+function install(_Vue) {
+  var _options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  var _Router = arguments.length > 2 ? arguments[2] : undefined;
+
+  Vue = _Vue;
+  Router = _Router;
+  setOptions(_options);
+  extend();
+
+  if (!options.bootstrap) {
+    return;
+  }
+
+  _bootstrap();
+}
+
+var bootstrap = _bootstrap;
+var setOptions$1 = setOptions; // export api for usages outside Vuejs context
+
+var query$1 = api.query;
+var config$1 = api.config;
+var event$1 = api.event;
+var pageview$1 = api.pageview;
+var screenview$1 = api.screenview;
+var customMap$1 = api.customMap;
+var time$1 = api.time;
+var exception$1 = api.exception;
+var linker$1 = api.linker;
+var purchase$1 = api.purchase;
+var set$1 = api.set;
+var optIn$1 = api.optIn;
+var optOut$1 = api.optOut;
+
+/* harmony default export */ __webpack_exports__["default"] = (install);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/index.js?!./node_modules/vue-mapbox/src/components/UI/Marker.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib??vue-loader-options!./node_modules/vue-mapbox/src/components/UI/Marker.vue?vue&type=script&lang=js& ***!
@@ -30444,7 +30948,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store/store */ "./resources/js/store/store.js");
 /* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-cookies */ "./node_modules/vue-cookies/vue-cookies.js");
 /* harmony import */ var vue_cookies__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_cookies__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
+/* harmony import */ var vue_gtag__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-gtag */ "./node_modules/vue-gtag/dist/vue-gtag.esm.js");
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
 
 
 
@@ -30454,6 +30959,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_gtag__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  config: {
+    id: "UA-161392946-1"
+  }
+}, _routers_index__WEBPACK_IMPORTED_MODULE_3__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookies__WEBPACK_IMPORTED_MODULE_8___default.a);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_recaptcha_v3__WEBPACK_IMPORTED_MODULE_5__["VueReCaptcha"], {
@@ -30484,7 +30995,7 @@ new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   router: _routers_index__WEBPACK_IMPORTED_MODULE_3__["default"],
   store: store,
   render: function render(h) {
-    return h(_App_vue__WEBPACK_IMPORTED_MODULE_9__["default"]);
+    return h(_App_vue__WEBPACK_IMPORTED_MODULE_10__["default"]);
   }
 }).$mount('#app');
 

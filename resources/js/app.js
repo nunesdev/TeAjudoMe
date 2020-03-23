@@ -9,7 +9,11 @@ import { VueReCaptcha } from 'vue-recaptcha-v3'
 import Notifications from 'vue-notification'
 import Store from './store/store';
 import VueCookies from 'vue-cookies'
+import VueGtag from "vue-gtag";
 
+Vue.use(VueGtag, {
+  config: { id: "UA-161392946-1" }
+}, router);
 
 Vue.use(VueCookies)
 Vue.use(Vuex);
@@ -19,7 +23,7 @@ Vue.use(Notifications)
 const store = new Vuex.Store(Store);
 
 
-sync(store, router); 
+sync(store, router);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
