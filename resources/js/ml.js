@@ -8,7 +8,7 @@ Vue.use(MLInstaller)
 
 export default new MLCreate({
   initial: 'portuguese',
-  save: false,
+  save: true,
   languages: [
     new MLanguage('english').create(en),
     new MLanguage('portuguese').create(pt),
