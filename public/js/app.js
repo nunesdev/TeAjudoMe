@@ -2227,7 +2227,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -2271,22 +2270,107 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
               case 0:
                 e.preventDefault();
 
-                if (_this.getMarkerPosition().lat && _this.getMarkerPosition().lng) {
-                  _this.info.location.lat = _this.getMarkerPosition().lat;
-                  _this.info.location.lon = _this.getMarkerPosition().lng;
+                if (!(_this.getMarkerPosition().lat && _this.getMarkerPosition().lng)) {
+                  _context.next = 6;
+                  break;
                 }
 
-                _context.next = 4;
+                _this.info.location.lat = _this.getMarkerPosition().lat;
+                _this.info.location.lon = _this.getMarkerPosition().lng;
+                _context.next = 9;
+                break;
+
+              case 6:
+                _this.$notify({
+                  group: 'foo',
+                  title: 'Ops!',
+                  text: _this.$ml.get('sidebar.form.msg.error_location'),
+                  type: 'warning'
+                });
+
+                _this.$gtag.event('add_voluntario', {
+                  'event_category': 'warning',
+                  'event_label': 'field',
+                  'event_value': 'location'
+                });
+
+                return _context.abrupt("return");
+
+              case 9:
+                if (!(!_this.info.support.market && !_this.info.support.food && !_this.info.support.health && !_this.info.support.talk)) {
+                  _context.next = 13;
+                  break;
+                }
+
+                _this.$notify({
+                  group: 'foo',
+                  title: 'Ops!',
+                  text: _this.$ml.get('sidebar.form.msg.error'),
+                  type: 'warning'
+                });
+
+                _this.$gtag.event('add_voluntario', {
+                  'event_category': 'warning',
+                  'event_label': 'field',
+                  'event_value': 'support'
+                });
+
+                return _context.abrupt("return");
+
+              case 13:
+                if (!(_this.info.support.psicologo && !_this.info.support.document)) {
+                  _context.next = 17;
+                  break;
+                }
+
+                _this.$notify({
+                  group: 'foo',
+                  title: 'Ops!',
+                  text: _this.$ml.get('sidebar.form.msg.error_document'),
+                  type: 'warning'
+                });
+
+                _this.$gtag.event('add_voluntario', {
+                  'event_category': 'warning',
+                  'event_label': 'field',
+                  'event_value': 'document'
+                });
+
+                return _context.abrupt("return");
+
+              case 17:
+                if (_this.info.support.veracidade) {
+                  _context.next = 21;
+                  break;
+                }
+
+                _this.$notify({
+                  group: 'foo',
+                  title: 'Ops!',
+                  text: _this.$ml.get('sidebar.form.msg.error_truth'),
+                  type: 'warning'
+                });
+
+                _this.$gtag.event('add_voluntario', {
+                  'event_category': 'warning',
+                  'event_label': 'field',
+                  'event_value': 'check_veracidade'
+                });
+
+                return _context.abrupt("return");
+
+              case 21:
+                _context.next = 23;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api', _this.info);
 
-              case 4:
+              case 23:
                 payload = _context.sent;
 
                 if (payload.data.status) {
                   _this.$notify({
                     group: 'foo',
-                    title: 'Dados inseridos',
-                    text: 'Obrigado por fazer parte!',
+                    title: 'Yeah!',
+                    text: _this.$ml.get('sidebar.form.msg.success'),
                     type: 'success'
                   });
 
@@ -2294,12 +2378,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                   _this.$emit('closeSidebar', false);
 
+                  _this.$gtag.event('add_voluntario', {
+                    'event_category': 'success',
+                    'event_label': 'ok_ao_inserir',
+                    'event_value': _this.info
+                  });
+
                   _this.info = {
                     location: {},
                     support: {}
-                  }; // if(isLogged)
-                  //   this.$cookies.set('ta_isLogged', this.info)
+                  };
                 } else {
+                  _this.$gtag.event('add_voluntario', {
+                    'event_category': 'error',
+                    'event_label': 'erro_ao_inserir',
+                    'event_value': _this.info
+                  });
+
                   _this.$notify({
                     group: 'foo',
                     title: 'Ops!',
@@ -2311,7 +2406,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                 return _context.abrupt("return", false);
 
-              case 7:
+              case 26:
               case "end":
                 return _context.stop();
             }
@@ -2769,7 +2864,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
-      isLocated: this.$cookies.get('isLocated') ? true : true,
+      isLocated: this.$cookies.get('isLocated') ? true : false,
       errorStr: null,
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/mapbox/streets-v11',
@@ -2949,7 +3044,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".form-horizontal .form-group small[data-v-195abf85] {\n  font-size: 15px;\n  display: block;\n}\n.form-horizontal .form-group label[data-v-195abf85] {\n  line-height: 1rem;\n  display: block;\n}\n.form-horizontal .helps .help[data-v-195abf85] {\n  border-radius: 4px;\n  margin-bottom: 12px;\n  cursor: pointer;\n  background: #3f5c88;\n  padding: 10px;\n  position: relative;\n}\n.form-horizontal .helps .help span[data-v-195abf85] {\n  font-size: 16px;\n}\n.form-horizontal .helps .help[data-v-195abf85]:hover, .form-horizontal .helps .help.active[data-v-195abf85] {\n  background: #00bc99;\n}\n.form-horizontal .helps .help input[data-v-195abf85] {\n  opacity: 0;\n  height: 0;\n  width: 0;\n  position: absolute;\n}", ""]);
+exports.push([module.i, "@media only screen and (max-width: 600px) {\n.form-horizontal .form-group .form-control[data-v-195abf85] {\n    font-size: 14px;\n}\n}\n.form-horizontal .form-group small[data-v-195abf85] {\n  font-size: 15px;\n  display: block;\n}\n@media only screen and (max-width: 600px) {\n.form-horizontal .form-group small[data-v-195abf85] {\n    font-size: 12px;\n}\n}\n.form-horizontal .form-group label[data-v-195abf85] {\n  line-height: 1rem;\n  display: block;\n}\n.form-horizontal .helps .help[data-v-195abf85] {\n  border-radius: 4px;\n  margin-bottom: 12px;\n  cursor: pointer;\n  background: #3f5c88;\n  padding: 10px;\n  position: relative;\n}\n.form-horizontal .helps .help span[data-v-195abf85] {\n  font-size: 16px;\n}\n.form-horizontal .helps .help.active[data-v-195abf85] {\n  background: #00bc99;\n}\n.form-horizontal .helps .help input[data-v-195abf85] {\n  opacity: 0;\n  height: 0;\n  width: 0;\n  position: absolute;\n}", ""]);
 
 // exports
 
@@ -7360,7 +7455,9 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12" }, [
-        _c("h3", [_vm._v("Seus dados")]),
+        _c("h3", {
+          domProps: { textContent: _vm._s(_vm.$ml.get("sidebar.title")) }
+        }),
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
@@ -7382,7 +7479,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-info",
+                      staticClass: "btn btn-block btn-info",
                       class: { disabled: !_vm.info.name },
                       attrs: {
                         type: "submit",
@@ -7409,7 +7506,7 @@ var render = function() {
                 attrs: {
                   type: "text",
                   name: "name",
-                  placeholder: "Seu nome",
+                  placeholder: _vm.$ml.get("sidebar.form.name"),
                   required: ""
                 },
                 domProps: { value: _vm.info.name },
@@ -7438,7 +7535,7 @@ var render = function() {
                 attrs: {
                   type: "text",
                   name: "phone",
-                  placeholder: "Telefone",
+                  placeholder: _vm.$ml.get("sidebar.form.phone"),
                   required: ""
                 },
                 domProps: { value: _vm.info.phone },
@@ -7453,7 +7550,12 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("small", [
-                _vm._v("Pode chamar via whatsapp ? "),
+                _c("span", {
+                  domProps: {
+                    textContent: _vm._s(_vm.$ml.get("sidebar.form.whatsapp"))
+                  }
+                }),
+                _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
@@ -7511,7 +7613,7 @@ var render = function() {
                 attrs: {
                   type: "text",
                   name: "email",
-                  placeholder: "Email",
+                  placeholder: _vm.$ml.get("sidebar.form.email"),
                   required: ""
                 },
                 domProps: { value: _vm.info.email },
@@ -7540,7 +7642,7 @@ var render = function() {
                 attrs: {
                   type: "text",
                   name: "city",
-                  placeholder: "Cidade",
+                  placeholder: _vm.$ml.get("sidebar.form.city"),
                   required: ""
                 },
                 domProps: { value: _vm.info.city },
@@ -7569,7 +7671,7 @@ var render = function() {
                 attrs: {
                   type: "text",
                   name: "state",
-                  placeholder: "Qual o seu estado",
+                  placeholder: _vm.$ml.get("sidebar.form.state"),
                   required: ""
                 },
                 domProps: { value: _vm.info.state },
@@ -7585,7 +7687,11 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
-              _c("h4", [_vm._v("Posso ajudar com:")]),
+              _c("h4", {
+                domProps: {
+                  textContent: _vm._s(_vm.$ml.get("sidebar.form.subtitle"))
+                }
+              }),
               _vm._v(" "),
               _c("hr"),
               _vm._v(" "),
@@ -7645,13 +7751,19 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _c("small", [_vm._v("Sou psicólogo")])
+                      _c("small", {
+                        domProps: {
+                          textContent: _vm._s(
+                            _vm.$ml.get("sidebar.form.i_am_doctor")
+                          )
+                        }
+                      })
                     ]
                   )
                 ]),
                 _vm._v(" "),
                 _vm.info.support.psicologo
-                  ? _c("div", { staticClass: "col-6" }, [
+                  ? _c("div", { staticClass: "col-12" }, [
                       _c("div", { staticClass: "form-group" }, [
                         _c("input", {
                           directives: [
@@ -7666,7 +7778,7 @@ var render = function() {
                           attrs: {
                             type: "text",
                             name: "",
-                            placeholder: "Ex: CRP - 03/202021",
+                            placeholder: _vm.$ml.get("sidebar.form.document"),
                             value: ""
                           },
                           domProps: { value: _vm.info.support.document },
@@ -7700,7 +7812,13 @@ var render = function() {
                       _c("label", { attrs: { for: "market" } }, [
                         _c("span", { staticClass: "icon-shopping-cart" }),
                         _vm._v(" "),
-                        _c("small", [_vm._v("Compras")]),
+                        _c("small", {
+                          domProps: {
+                            textContent: _vm._s(
+                              _vm.$ml.get("sidebar.form.help.market")
+                            )
+                          }
+                        }),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -7769,7 +7887,13 @@ var render = function() {
                       _c("label", { attrs: { for: "food" } }, [
                         _c("span", { staticClass: "icon-location-food" }),
                         _vm._v(" "),
-                        _c("small", [_vm._v("Alimentação")]),
+                        _c("small", {
+                          domProps: {
+                            textContent: _vm._s(
+                              _vm.$ml.get("sidebar.form.help.food")
+                            )
+                          }
+                        }),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -7838,7 +7962,13 @@ var render = function() {
                       _c("label", { attrs: { for: "talk" } }, [
                         _c("span", { staticClass: "icon-conversation" }),
                         _vm._v(" "),
-                        _c("small", [_vm._v("Posso conversar")]),
+                        _c("small", {
+                          domProps: {
+                            textContent: _vm._s(
+                              _vm.$ml.get("sidebar.form.help.talk")
+                            )
+                          }
+                        }),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -7907,7 +8037,13 @@ var render = function() {
                       _c("label", { attrs: { for: "health" } }, [
                         _c("span", { staticClass: "icon-store-front" }),
                         _vm._v(" "),
-                        _c("small", [_vm._v("Farmácia")]),
+                        _c("small", {
+                          domProps: {
+                            textContent: _vm._s(
+                              _vm.$ml.get("sidebar.form.help.health")
+                            )
+                          }
+                        }),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -8025,25 +8161,24 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _c("small", [
-                    _vm._v(
-                      "Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários\n            "
-                    )
-                  ])
+                  _c("small", {
+                    domProps: {
+                      textContent: _vm._s(_vm.$ml.get("sidebar.form.truth"))
+                    }
+                  })
                 ]
               )
             ]),
             _vm._v(" "),
             !_vm.isMobile
               ? _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-info btn-block",
-                      attrs: { type: "submit", name: "button" }
-                    },
-                    [_vm._v("Salvar")]
-                  )
+                  _c("button", {
+                    staticClass: "btn btn-info btn-block",
+                    attrs: { type: "submit", name: "button" },
+                    domProps: {
+                      textContent: _vm._s(_vm.$ml.get("sidebar.form.save"))
+                    }
+                  })
                 ])
               : _vm._e()
           ]
@@ -31776,10 +31911,10 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************************!*\
   !*** ./resources/js/langs/en.json ***!
   \************************************/
-/*! exports provided: menu, home, about, default */
+/*! exports provided: menu, home, about, sidebar, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Map\",\"sobre\":\"About\",\"seguranca\":\"Stay Safe\",\"handup\":\"I can help\",\"mapup\":\"Go to map\",\"contato\":\"Contact\",\"voluntarios\":\"Volunteers\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"You are here\",\"drag\":\"If necessary, drag the pin to another point!\"}}},\"about\":{\"title\":\"About\",\"text\":\"<p>TeAjudoME was created exclusively because of the pandemic COVID-19 (new coronavirus),<br/>with the aim of connecting people who want to help and who need help with shopping at the market, pharmacy or just chatting, and especially people in the risk group. The platform also counts on the help of psychologists duly registered with the regional psychology council.<hr>The code is open-source and available on <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, you can collaborate and send your Pull request. To contact:<a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>\"}}");
+module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Map\",\"sobre\":\"About\",\"seguranca\":\"Stay Safe\",\"handup\":\"I can help\",\"mapup\":\"Go to map\",\"contato\":\"Contact\",\"voluntarios\":\"Volunteers\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"You are here\",\"drag\":\"If necessary, drag the pin to another point!\"}}},\"about\":{\"title\":\"About\",\"text\":\"<p>TeAjudoME was created exclusively because of the pandemic COVID-19 (new coronavirus),<br/>with the aim of connecting people who want to help and who need help with shopping at the market, pharmacy or just chatting, and especially people in the risk group. The platform also counts on the help of psychologists duly registered with the regional psychology council.<hr>The code is open-source and available on <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, you can collaborate and send your Pull request. To contact:<a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>\"},\"sidebar\":{\"title\":\"Your personal data\",\"form\":{\"name\":\"Your name\",\"phone\":\"Phone\",\"whatsapp\":\"Can you chat by whatsapp?\",\"email\":\"E-mail\",\"city\":\"City\",\"state\":\"What's your state?\",\"subtitle\":\"I can help with:\",\"i_am_doctor\":\"I'm a psychologist\",\"document\":\"Please put your NPI\",\"help\":{\"market\":\"Market shopping\",\"food\":\"Give food\",\"talk\":\"Can i talk\",\"health\":\"Go to the pharmacy\"},\"truth\":\"I confirm the veracity of the information provided, I assume full responsibility for such information and agree to have that information shared with other users\",\"save\":\"Save\",\"msg\":{\"error\":\"Complete what can help :)\",\"success\":\"Thank you for being part!\",\"error_truth\":\"Confirm the veracity of the data.\",\"error_location\":\"Please drag the yellow pin to update the location, close the arrow up there\",\"error_document\":\"Please put your NPI\"}}}}");
 
 /***/ }),
 
@@ -31787,10 +31922,10 @@ module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Map\",\"sobre\":\"About\",\"s
 /*!************************************!*\
   !*** ./resources/js/langs/es.json ***!
   \************************************/
-/*! exports provided: menu, home, about, default */
+/*! exports provided: menu, home, about, sidebar, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Acerca\",\"seguranca\":\"Seguridad\",\"handup\":\"Puedo ayudar\",\"mapup\":\"Ve al mapa\",\"contato\":\"Contacto\",\"voluntarios\":\"Voluntarios\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"Tu estás aquí\",\"drag\":\"Si es necesario, arrastre el pin a otro punto.\"}}},\"about\":{\"title\":\"Acerca\",\"text\":\"<p>TeAjudoME se creó exclusivamente debido a la pandemia COVID-19 (nuevo coronavirus),<br/>con el objetivo de conectar a las personas que desean ayudar y que necesitan ayuda para comprar en el mercado, farmacia o simplemente para conversar, y especialmente las personas en el grupo de riesgo.La plataforma también cuenta con la ayuda de psicólogos debidamente registrados en el consejo regional de psicología.<hr>La herramienta es de código abierto y está disponible en <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, puedes colaborar y enviar tu solicitud de Pull.Para contactar: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>\"}}");
+module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Acerca\",\"seguranca\":\"Seguridad\",\"handup\":\"Puedo ayudar\",\"mapup\":\"Ve al mapa\",\"contato\":\"Contacto\",\"voluntarios\":\"Voluntarios\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"Tu estás aquí\",\"drag\":\"Si es necesario, arrastre el pin a otro punto.\"}}},\"about\":{\"title\":\"Acerca\",\"text\":\"<p>TeAjudoME se creó exclusivamente debido a la pandemia COVID-19 (nuevo coronavirus),<br/>con el objetivo de conectar a las personas que desean ayudar y que necesitan ayuda para comprar en el mercado, farmacia o simplemente para conversar, y especialmente las personas en el grupo de riesgo.La plataforma también cuenta con la ayuda de psicólogos debidamente registrados en el consejo regional de psicología.<hr>La herramienta es de código abierto y está disponible en <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, puedes colaborar y enviar tu solicitud de Pull.Para contactar: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>\"},\"sidebar\":{\"title\":\"Sus datos personales\",\"form\":{\"name\":\"Tu nombre\",\"phone\":\"Teléfono\",\"whatsapp\":\"¿Puedes chatear por whatsapp?\",\"email\":\"E-mail\",\"city\":\"Ciudad\",\"state\":\"Cual es tu estado?\",\"subtitle\":\"Puedo ayudar con:\",\"i_am_doctor\":\"Soy psicóloga(o)\",\"document\":\"Por favor ingrese su número de identificación\",\"help\":{\"market\":\"Compras en el mercado\",\"food\":\"Dar comida\",\"talk\":\"Puedo hablar\",\"health\":\"Ir a la farmacia\"},\"truth\":\"Confirmo la veracidad de la información proporcionada, asumo toda la responsabilidad por dicha información y acepto compartirla con otros usuarios\",\"save\":\"Salvar\",\"msg\":{\"error\":\"Complete lo que puede ayudar :)\",\"success\":\"¡Gracias por ser parte!\",\"error_truth\":\"Confirme la veracidad de los datos.\",\"error_location\":\"Arrastra el marcador amarillo para actualizar la ubicación, cierra la flecha hacia arriba\",\"error_document\":\"Por favor ingrese su número de identificación\"}}}}");
 
 /***/ }),
 
@@ -31798,10 +31933,10 @@ module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Acerca\",\
 /*!************************************!*\
   !*** ./resources/js/langs/pt.json ***!
   \************************************/
-/*! exports provided: menu, home, about, default */
+/*! exports provided: menu, home, about, sidebar, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Sobre\",\"seguranca\":\"Segurança\",\"handup\":\"Posso ajudar\",\"mapup\":\"Ir ao mapa\",\"contato\":\"Contato\",\"voluntarios\":\"Voluntários\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"Você está aqui\",\"drag\":\"Se necessário, arraste o pin para outro ponto!\"}}},\"about\":{\"title\":\"Sobre\",\"text\":\"<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr> A ferramenta é open-source e está disponível no <a target='_blank' href='https:/github.com/nunesdev/TeAjudoMe'>Git hub</a>, você pode colaborar e enviar seu Pull request. Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>\"}}");
+module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Sobre\",\"seguranca\":\"Segurança\",\"handup\":\"Posso ajudar\",\"mapup\":\"Ir ao mapa\",\"contato\":\"Contato\",\"voluntarios\":\"Voluntários\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"Você está aqui\",\"drag\":\"Se necessário, arraste o pin para outro ponto!\"}}},\"about\":{\"title\":\"Sobre\",\"text\":\"<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr> A ferramenta é open-source e está disponível no <a target='_blank' href='https:/github.com/nunesdev/TeAjudoMe'>Git hub</a>, você pode colaborar e enviar seu Pull request. Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>\"},\"sidebar\":{\"title\":\"Seus dados\",\"form\":{\"name\":\"Seu nome\",\"phone\":\"Telefone\",\"whatsapp\":\"Pode chamar via WhatsApp ?\",\"email\":\"E-mail\",\"city\":\"Cidade\",\"state\":\"Qual o seu estado\",\"subtitle\":\"Posso ajudar com:\",\"i_am_doctor\":\"Sou psicológo\",\"document\":\"EX: CRP - 03/121212\",\"help\":{\"market\":\"Compras\",\"food\":\"Alimentação\",\"talk\":\"Posso conversar\",\"health\":\"Farmácia\"},\"truth\":\"Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários\",\"save\":\"Salvar\",\"msg\":{\"error\":\"Preencha com o que você pode ajudar :)\",\"success\":\"Obrigado por fazer parte\",\"error_truth\":\"Por favor confirme a veracidade dos dados\",\"error_location\":\"Por favor mova o PIN amarelo para atualizar a localização, feche na seta lá em cima\",\"error_document\":\"Por favor, insira seu CRP/CFP\"}}}}");
 
 /***/ }),
 
@@ -31832,7 +31967,7 @@ var _langs_pt_json__WEBPACK_IMPORTED_MODULE_4___namespace = /*#__PURE__*/__webpa
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLInstaller"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLCreate"]({
   initial: 'portuguese',
-  save: true,
+  save: false,
   languages: [new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLanguage"]('english').create(_langs_en_json__WEBPACK_IMPORTED_MODULE_3__), new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLanguage"]('portuguese').create(_langs_pt_json__WEBPACK_IMPORTED_MODULE_4__), new vue_multilanguage__WEBPACK_IMPORTED_MODULE_1__["MLanguage"]('spanish').create(_langs_es_json__WEBPACK_IMPORTED_MODULE_2__)]
 }));
 

@@ -19,5 +19,34 @@
   "about": {
     "title" : "Sobre",
     "text" : "<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr> A ferramenta é open-source e está disponível no <a target='_blank' href='https:/github.com/nunesdev/TeAjudoMe'>Git hub</a>, você pode colaborar e enviar seu Pull request. Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>"
+  },
+  "sidebar": {
+    "title" : "Seus dados",
+    "form" : {
+      "name" : "Seu nome",
+      "phone" : "Telefone",
+      "whatsapp" : "Pode chamar via WhatsApp ?",
+      "email" : "E-mail",
+      "city":  "Cidade",
+      "state" : "Qual o seu estado",
+      "subtitle" : "Posso ajudar com:",
+      "i_am_doctor": "Sou psicológo",
+      "document" : "EX: CRP - 03/121212",
+      "help" : {
+        "market" : "Compras",
+        "food" : "Alimentação",
+        "talk" : "Posso conversar",
+        "health" : "Farmácia"
+      },
+      "truth": "Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários",
+      "save" : "Salvar",
+      "msg": {
+        "error" : "Preencha com o que você pode ajudar :)",
+        "success" : "Obrigado por fazer parte",
+        "error_truth" : "Por favor confirme a veracidade dos dados",
+        "error_location" : "Por favor mova o PIN amarelo para atualizar a localização, feche na seta lá em cima",
+        "error_document" : "Por favor, insira seu CRP/CFP"
+      }
+    }
   }
 }

@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h3>Seus dados</h3>
+          <h3 v-text="$ml.get('sidebar.title')"></h3>
           <hr>
           <!-- <div class="" v-if="!isLogged">
             <GoogleLogin  :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure"></GoogleLogin>
@@ -11,38 +11,38 @@
 
           <form  class="form-horizontal" action="/api" v-on:submit.prevent="onSubmit" method="post">
             <div class="form-group text-right" v-if="isMobile && info.name">
-              <button type="submit" class="btn btn-info" :disabled="!info.name"  :class="{'disabled':!info.name}" name="button">Salvar</button>
+              <button type="submit" class="btn btn-block btn-info" :disabled="!info.name"  :class="{'disabled':!info.name}" name="button">Salvar</button>
             </div>
             <div class="form-group">
-               <input type="text" class="form-control" v-model="info.name" name="name" placeholder="Seu nome"  required>
+               <input type="text" class="form-control" v-model="info.name" name="name" :placeholder="$ml.get('sidebar.form.name')"  required>
             </div>
             <div class="form-group">
-               <input type="text" class="form-control" v-model="info.phone" name="phone" placeholder="Telefone"  required>
-               <small>Pode chamar via whatsapp ? <input type="checkbox" v-model="info.whatsapp" name="" value=""> </small>
+               <input type="text" class="form-control" v-model="info.phone" name="phone" :placeholder="$ml.get('sidebar.form.phone')"  required>
+               <small><span v-text="$ml.get('sidebar.form.whatsapp')"></span>  <input type="checkbox" v-model="info.whatsapp" name="" value=""> </small>
             </div>
             <div class="form-group">
-               <input type="text" class="form-control" v-model="info.email" name="email" placeholder="Email" required>
+               <input type="text" class="form-control" v-model="info.email" name="email" :placeholder="$ml.get('sidebar.form.email')" required>
             </div>
 
             <div class="form-group">
-               <input type="text" class="form-control" v-model="info.city" name="city" placeholder="Cidade" required>
+               <input type="text" class="form-control" v-model="info.city" name="city" :placeholder="$ml.get('sidebar.form.city')" required>
             </div>
             <div class="form-group">
-               <input type="text" class="form-control" v-model="info.state" name="state" placeholder="Qual o seu estado" required>
+               <input type="text" class="form-control" v-model="info.state" name="state" :placeholder="$ml.get('sidebar.form.state')" required>
             </div>
             <div class="form-group">
-              <h4>Posso ajudar com:</h4>
+              <h4 v-text="$ml.get('sidebar.form.subtitle')"></h4>
               <hr>
               <div class="row">
                 <div class="col-12">
                   <label for="psicologo" class="checklabel">
                     <input  type="checkbox" id="psicologo" v-model="info.support.psicologo" name="" value="">
-                    <small >Sou psicólogo</small>
+                    <small v-text="$ml.get('sidebar.form.i_am_doctor')"></small>
                   </label>
                 </div>
-                <div class="col-6" v-if="info.support.psicologo">
+                <div class="col-12" v-if="info.support.psicologo">
                   <div class="form-group">
-                    <input class="form-control" type="text" v-model="info.support.document" name="" placeholder="Ex: CRP - 03/202021" value="">
+                    <input class="form-control" type="text" v-model="info.support.document" name="" :placeholder="$ml.get('sidebar.form.document')" value="">
                   </div>
                 </div>
 
@@ -53,7 +53,7 @@
                     <label for="market" >
 
                       <span class="icon-shopping-cart"></span>
-                      <small>Compras</small>
+                      <small v-text="$ml.get('sidebar.form.help.market')"></small>
                       <input type="checkbox" name="support[]" v-model="info.support.market" id="market" value="market">
                     </label>
                   </div>
@@ -62,7 +62,7 @@
                   <div class="help" :class="{active: info.support.food}">
                     <label for="food">
                       <span class="icon-location-food"></span>
-                      <small>Alimentação</small>
+                      <small v-text="$ml.get('sidebar.form.help.food')"></small>
                       <input type="checkbox" name="support[]" v-model="info.support.food" id="food" value="food">
                     </label>
                   </div>
@@ -71,7 +71,7 @@
                   <div class="help" :class="{active: info.support.talk}">
                     <label for="talk">
                       <span class="icon-conversation"></span>
-                      <small>Posso conversar</small>
+                      <small v-text="$ml.get('sidebar.form.help.talk')"></small>
                       <input type="checkbox" name="support[]" v-model="info.support.talk" id="talk" value="talk">
                     </label>
                   </div>
@@ -80,7 +80,7 @@
                   <div class="help" :class="{active: info.support.health}">
                     <label for="health">
                       <span class="icon-store-front"></span>
-                      <small>Farmácia</small>
+                      <small v-text="$ml.get('sidebar.form.help.health')"></small>
                       <input type="checkbox" name="support[]" v-model="info.support.health" id="health" value="health">
                     </label>
                   </div>
@@ -90,12 +90,11 @@
             <div class="form-group">
               <label class="check_truth checklabel" for="veracidade">
                 <input type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
-                <small>Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários
-                </small>
+                <small v-text="$ml.get('sidebar.form.truth')"></small>
               </label>
             </div>
             <div class="form-group" v-if="!isMobile">
-              <button type="submit" class="btn btn-info btn-block" name="button">Salvar</button>
+              <button type="submit" class="btn btn-info btn-block" name="button" v-text="$ml.get('sidebar.form.save')"></button>
             </div>
           </form>
         </div>
@@ -152,6 +151,66 @@ export default {
         if(this.getMarkerPosition().lat && this.getMarkerPosition().lng) {
           this.info.location.lat = this.getMarkerPosition().lat
           this.info.location.lon = this.getMarkerPosition().lng
+        } else {
+          this.$notify({
+            group: 'foo',
+            title: 'Ops!',
+            text: this.$ml.get('sidebar.form.msg.error_location'),
+            type: 'warning'
+          });
+          this.$gtag.event('add_voluntario', {
+              'event_category': 'warning',
+              'event_label': 'field',
+              'event_value': 'location'
+            })
+          return;
+        }
+
+        if(!this.info.support.market && !this.info.support.food && !this.info.support.health && !this.info.support.talk) {
+          this.$notify({
+            group: 'foo',
+            title: 'Ops!',
+            text: this.$ml.get('sidebar.form.msg.error'),
+            type: 'warning'
+          });
+          this.$gtag.event('add_voluntario', {
+              'event_category': 'warning',
+              'event_label': 'field',
+              'event_value': 'support'
+            })
+          return;
+        }
+
+        if(this.info.support.psicologo && !this.info.support.document) {
+          this.$notify({
+            group: 'foo',
+            title: 'Ops!',
+            text: this.$ml.get('sidebar.form.msg.error_document'),
+            type: 'warning'
+          });
+          this.$gtag.event('add_voluntario', {
+              'event_category': 'warning',
+              'event_label': 'field',
+              'event_value': 'document'
+            })
+          return;
+        }
+
+        if(!this.info.support.veracidade) {
+          this.$notify({
+            group: 'foo',
+            title: 'Ops!',
+            text: this.$ml.get('sidebar.form.msg.error_truth'),
+            type: 'warning'
+          });
+
+          this.$gtag.event('add_voluntario', {
+              'event_category': 'warning',
+              'event_label': 'field',
+              'event_value': 'check_veracidade'
+            })
+          return;
+
         }
 
         const payload = await axios.post('/api', this.info)
@@ -160,18 +219,28 @@ export default {
 
           this.$notify({
             group: 'foo',
-            title: 'Dados inseridos',
-            text: 'Obrigado por fazer parte!',
+            title: 'Yeah!',
+            text: this.$ml.get('sidebar.form.msg.success'),
             type: 'success'
           });
 
           this.actionSetNewUser(payload.data)
           this.$emit('closeSidebar', false);
-          this.info = {location:{}, support:{}}
 
-          // if(isLogged)
-          //   this.$cookies.set('ta_isLogged', this.info)
+          this.$gtag.event('add_voluntario', {
+              'event_category': 'success',
+              'event_label': 'ok_ao_inserir',
+              'event_value': this.info
+            })
+
+            this.info = {location:{}, support:{}}
         } else {
+          this.$gtag.event('add_voluntario', {
+              'event_category': 'error',
+              'event_label': 'erro_ao_inserir',
+              'event_value': this.info
+            })
+
           this.$notify({
             group: 'foo',
             title: 'Ops!',
@@ -222,9 +291,14 @@ export default {
 <style lang="sass" scoped>
   .form-horizontal
     .form-group
+      .form-control
+        @media only screen and (max-width: 600px)
+          font-size: 14px
       small
         font-size: 15px
         display: block
+        @media only screen and (max-width: 600px)
+          font-size: 12px
       label
         line-height: 1rem
         display: block
@@ -239,7 +313,7 @@ export default {
 
         span
           font-size: 16px
-        &:hover, &.active
+        &.active
           background: #00bc99
         input
           opacity: 0
