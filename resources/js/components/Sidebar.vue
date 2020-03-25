@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
           <div class="col-12">
             {{getMarkers.length}} <small v-text="$ml.get('menu.voluntarios')"></small>
-            <small v-text="$ml.get('menu.contato')">  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a> </small>
+            <small> <span v-text="$ml.get('menu.contato')"></span>  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a> </small>
           </div>
           <div class="col-12">
             <div v-if="showHandUp" @click="changeStateMember" class="btn btn-needup">

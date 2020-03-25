@@ -12519,17 +12519,15 @@ var render = function() {
               domProps: { textContent: _vm._s(_vm.$ml.get("menu.voluntarios")) }
             }),
             _vm._v(" "),
-            _c(
-              "small",
-              {
+            _c("small", [
+              _c("span", {
                 domProps: { textContent: _vm._s(_vm.$ml.get("menu.contato")) }
-              },
-              [
-                _c("a", { attrs: { href: "mailto:teajudome@gmail.com" } }, [
-                  _vm._v("teajudome@gmail.com")
-                ])
-              ]
-            )
+              }),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "mailto:teajudome@gmail.com" } }, [
+                _vm._v("teajudome@gmail.com")
+              ])
+            ])
           ]),
           _vm._v(" "),
           _c(
