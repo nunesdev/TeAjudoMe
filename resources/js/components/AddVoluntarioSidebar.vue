@@ -35,7 +35,7 @@
               <hr>
               <div class="row">
                 <div class="col-12">
-                  <label for="m_psicologo" class="checklabel">
+                  <label for="s_psicologo" class="checklabel">
                     <input  type="checkbox" id="s_psicologo" v-model="info.support.psicologo" name="" value="">
                     <small v-text="$ml.get('sidebar.form.i_am_doctor')"></small>
                   </label>
@@ -50,7 +50,7 @@
               <div class="row helps text-center">
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.market}">
-                    <label for="m_market" >
+                    <label for="s_market" >
 
                       <span class="icon-shopping-cart"></span>
                       <small v-text="$ml.get('sidebar.form.help.market')"></small>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.food}">
-                    <label for="m_food">
+                    <label for="s_food">
                       <span class="icon-location-food"></span>
                       <small v-text="$ml.get('sidebar.form.help.food')"></small>
                       <input type="checkbox" name="support[]" v-model="info.support.food" id="s_food" value="food">
@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.talk}">
-                    <label for="m_talk">
+                    <label for="s_talk">
                       <span class="icon-conversation"></span>
                       <small v-text="$ml.get('sidebar.form.help.talk')"></small>
                       <input type="checkbox" name="support[]" v-model="info.support.talk" id="s_talk" value="talk">
@@ -78,7 +78,7 @@
                 </div>
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.health}">
-                    <label for="m_health">
+                    <label for="s_health">
                       <span class="icon-store-front"></span>
                       <small v-text="$ml.get('sidebar.form.help.health')"></small>
                       <input type="checkbox" name="support[]" v-model="info.support.health" id="s_health" value="health">
@@ -87,7 +87,7 @@
                 </div>
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.dog}">
-                    <label for="m_dog">
+                    <label for="s_dog">
                       <span>
                         <svg version="1.0" viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg">
                         <g transform="matrix(1.6886 0 0 1.6886 -.40426 .14628)" fill="#1e1916" stroke-miterlimit="10.433" stroke-width="0">

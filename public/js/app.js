@@ -11629,7 +11629,7 @@ var render = function() {
                     "label",
                     {
                       staticClass: "checklabel",
-                      attrs: { for: "m_psicologo" }
+                      attrs: { for: "s_psicologo" }
                     },
                     [
                       _c("input", {
@@ -11740,7 +11740,7 @@ var render = function() {
                       class: { active: _vm.info.support.market }
                     },
                     [
-                      _c("label", { attrs: { for: "m_market" } }, [
+                      _c("label", { attrs: { for: "s_market" } }, [
                         _c("span", { staticClass: "icon-shopping-cart" }),
                         _vm._v(" "),
                         _c("small", {
@@ -11815,7 +11815,7 @@ var render = function() {
                       class: { active: _vm.info.support.food }
                     },
                     [
-                      _c("label", { attrs: { for: "m_food" } }, [
+                      _c("label", { attrs: { for: "s_food" } }, [
                         _c("span", { staticClass: "icon-location-food" }),
                         _vm._v(" "),
                         _c("small", {
@@ -11890,7 +11890,7 @@ var render = function() {
                       class: { active: _vm.info.support.talk }
                     },
                     [
-                      _c("label", { attrs: { for: "m_talk" } }, [
+                      _c("label", { attrs: { for: "s_talk" } }, [
                         _c("span", { staticClass: "icon-conversation" }),
                         _vm._v(" "),
                         _c("small", {
@@ -11965,7 +11965,7 @@ var render = function() {
                       class: { active: _vm.info.support.health }
                     },
                     [
-                      _c("label", { attrs: { for: "m_health" } }, [
+                      _c("label", { attrs: { for: "s_health" } }, [
                         _c("span", { staticClass: "icon-store-front" }),
                         _vm._v(" "),
                         _c("small", {
@@ -12040,7 +12040,7 @@ var render = function() {
                       class: { active: _vm.info.support.dog }
                     },
                     [
-                      _c("label", { attrs: { for: "m_dog" } }, [
+                      _c("label", { attrs: { for: "s_dog" } }, [
                         _c("span", [
                           _c(
                             "svg",
