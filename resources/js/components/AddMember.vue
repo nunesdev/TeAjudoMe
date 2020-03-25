@@ -31,63 +31,50 @@
                <input type="text" class="form-control" v-model="info.state" name="state" :placeholder="$ml.get('sidebar.form.state')" required>
             </div>
             <div class="form-group">
-              <h4 v-text="$ml.get('sidebar.form.subtitle')"></h4>
+              <h4 v-text="$ml.get('sidebar.form.subtitle_2')">Preciso de ajuda com:</h4>
               <hr>
-              <div class="row">
-                <div class="col-12">
-                  <label for="m_psicologo" class="checklabel">
-                    <input  type="checkbox" id="m_psicologo" v-model="info.support.psicologo" name="" value="">
-                    <small v-text="$ml.get('sidebar.form.i_am_doctor')"></small>
-                  </label>
-                </div>
-                <div class="col-12" v-if="info.support.psicologo">
-                  <div class="form-group">
-                    <input class="form-control" type="text" v-model="info.support.document" name="" :placeholder="$ml.get('sidebar.form.document')" value="">
-                  </div>
-                </div>
 
-              </div>
               <div class="row helps text-center">
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.market}">
-                    <label for="m_market" >
+                    <label for="market" >
 
                       <span class="icon-shopping-cart"></span>
                       <small v-text="$ml.get('sidebar.form.help.market')"></small>
-                      <input type="checkbox" name="support[]" v-model="info.support.market" id="m_market" value="market">
+                      <input type="checkbox" name="support[]" v-model="info.support.market" id="market" value="market">
                     </label>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.food}">
-                    <label for="m_food">
+                    <label for="food">
                       <span class="icon-location-food"></span>
                       <small v-text="$ml.get('sidebar.form.help.food')"></small>
-                      <input type="checkbox" name="support[]" v-model="info.support.food" id="m_food" value="food">
+                      <input type="checkbox" name="support[]" v-model="info.support.food" id="food" value="food">
                     </label>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.talk}">
-                    <label for="m_talk">
+                    <label for="talk">
                       <span class="icon-conversation"></span>
                       <small v-text="$ml.get('sidebar.form.help.talk')"></small>
-                      <input type="checkbox" name="support[]" v-model="info.support.talk" id="m_talk" value="talk">
+                      <input type="checkbox" name="support[]" v-model="info.support.talk" id="talk" value="talk">
                     </label>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.health}">
-                    <label for="m_health">
+                    <label for="health">
                       <span class="icon-store-front"></span>
                       <small v-text="$ml.get('sidebar.form.help.health')"></small>
-                      <input type="checkbox" name="support[]" v-model="info.support.health" id="m_health" value="health">
+                      <input type="checkbox" name="support[]" v-model="info.support.health" id="health" value="health">
                     </label>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="help" :class="{active: info.support.dog}">
-                    <label for="m_dog">
+                    <label for="dog">
                       <span>
                         <svg version="1.0" viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg">
                         <g transform="matrix(1.6886 0 0 1.6886 -.40426 .14628)" fill="#1e1916" stroke-miterlimit="10.433" stroke-width="0">
@@ -98,15 +85,21 @@
 
                       </span>
                       <small v-text="$ml.get('sidebar.form.help.dog')"></small>
-                      <input type="checkbox" name="support[]" v-model="info.support.dog" id="m_dog" value="dog">
+                      <input type="checkbox" name="support[]" v-model="info.support.dog" id="dog" value="dog">
                     </label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group text-left">
+                    <label for="" v-text="$ml.get('sidebar.form.help.others')"></label>
+                    <input type="text" class="form-control" name="" v-model="info.support.others" value="">
                   </div>
                 </div>
               </div>
             </div>
             <div class="form-group extra-bottom">
               <label class="check_truth checklabel" for="veracidade">
-                <input type="checkbox" id="m_eracidade" name="support[]" v-model="info.support.veracidade" value="">
+                <input type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
                 <small v-text="$ml.get('sidebar.form.truth')"></small>
               </label>
             </div>
@@ -126,7 +119,7 @@ import { isMobile } from 'mobile-device-detect';
 import GoogleLogin from 'vue-google-login';
 
 export default {
-    name: 'AddVoluntario',
+    name: 'AddMember',
     components: {
       GoogleLogin
     },
@@ -135,7 +128,7 @@ export default {
       //  isLogged: this.$cookies.get('ta_isLogged') ? true : false,
         isMobile: isMobile,
         info: {
-          member: 'volunteer',
+          type: 'user',
           location: {},
           support: {}
         },
@@ -176,7 +169,7 @@ export default {
             text: this.$ml.get('sidebar.form.msg.error_location'),
             type: 'warning'
           });
-          this.$gtag.event('add_voluntario', {
+          this.$gtag.event('add_member', {
               'event_category': 'warning',
               'event_label': 'field',
               'event_value': 'location'
@@ -193,25 +186,10 @@ export default {
             text: this.$ml.get('sidebar.form.msg.error'),
             type: 'warning'
           });
-          this.$gtag.event('add_voluntario', {
+          this.$gtag.event('add_member', {
               'event_category': 'warning',
               'event_label': 'field',
               'event_value': 'support'
-            })
-          return;
-        }
-
-        if(this.info.support.psicologo && !this.info.support.document) {
-          this.$notify({
-            group: 'foo',
-            title: 'Ops!',
-            text: this.$ml.get('sidebar.form.msg.error_document'),
-            type: 'warning'
-          });
-          this.$gtag.event('add_voluntario', {
-              'event_category': 'warning',
-              'event_label': 'field',
-              'event_value': 'document'
             })
           return;
         }
@@ -224,7 +202,7 @@ export default {
             type: 'warning'
           });
 
-          this.$gtag.event('add_voluntario', {
+          this.$gtag.event('add_member', {
               'event_category': 'warning',
               'event_label': 'field',
               'event_value': 'check_veracidade'
@@ -247,7 +225,7 @@ export default {
           this.actionSetNewUser(payload.data)
           this.$emit('closeSidebar', false);
 
-          this.$gtag.event('add_voluntario', {
+          this.$gtag.event('add_member', {
               'event_category': 'success',
               'event_label': 'ok_ao_inserir',
               'event_value': this.info
@@ -255,7 +233,7 @@ export default {
 
             this.info = {location:{}, support:{}}
         } else {
-          this.$gtag.event('add_voluntario', {
+          this.$gtag.event('add_member', {
               'event_category': 'error',
               'event_label': 'erro_ao_inserir',
               'event_value': this.info

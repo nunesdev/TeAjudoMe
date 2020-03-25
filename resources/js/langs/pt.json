@@ -4,6 +4,7 @@
     "sobre" : "Sobre",
     "seguranca" : "Segurança",
     "handup" : "Posso ajudar",
+    "needup" : "Preciso de ajuda",
     "mapup" : "Ir ao mapa",
     "contato" : "Contato",
     "voluntarios": "Voluntários"
@@ -13,12 +14,28 @@
       "marker" : {
         "esta_aqui" :  "Você está aqui",
         "drag" : "Se necessário, arraste o pin para outro ponto!"
+      },
+      "popup" : {
+        "type_volunteer" : "Voluntário(a)",
+        "type_user" : "Solicitante",
+        "type_doctor" : "Psicólogo(a)",
+        "talk_to" : "Fale comigo por",
+        "phone" : "Telefone",
+        "help_with" :  "posso ajudar com",
+        "help_with_user" :  "preciso de ajuda com",
+        "help" : {
+          "market" : "Compras",
+          "food" : "Alimentação",
+          "talk" : "Posso conversar",
+          "health" : "Farmácia",
+          "dog" : "Passear com o dog"
+        }
       }
     }
   },
   "about": {
     "title" : "Sobre",
-    "text" : "<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr> A ferramenta é open-source e está disponível no <a target='_blank' href='https:/github.com/nunesdev/TeAjudoMe'>Git hub</a>, você pode colaborar e enviar seu Pull request. Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>"
+    "text" : "<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr> A ferramenta é open-source e está disponível no <a target='_blank' href='https:/github.com/nunesdev/TeAjudoMe'>Git hub</a>, você pode colaborar e enviar seu Pull request. Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>"
   },
   "sidebar": {
     "title" : "Seus dados",
@@ -30,13 +47,16 @@
       "city":  "Cidade",
       "state" : "Qual o seu estado",
       "subtitle" : "Posso ajudar com:",
+      "subtitle_2" : "Preciso de ajuda com:",
       "i_am_doctor": "Sou psicológo",
       "document" : "EX: CRP - 03/121212",
       "help" : {
         "market" : "Compras",
         "food" : "Alimentação",
         "talk" : "Posso conversar",
-        "health" : "Farmácia"
+        "health" : "Farmácia",
+        "dog" : "Passear com o dog",
+        "others" : "Outras solicitações"
       },
       "truth": "Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários",
       "save" : "Salvar",
@@ -44,9 +64,10 @@
         "error" : "Preencha com o que você pode ajudar :)",
         "success" : "Obrigado por fazer parte",
         "error_truth" : "Por favor confirme a veracidade dos dados",
-        "error_location" : "Por favor mova o PIN amarelo para atualizar a localização, feche na seta lá em cima",
+        "error_location" : "Por favor mova o PIN amarelo para atualizar a localização",
         "error_document" : "Por favor, insira seu CRP/CFP"
       }
-    }
+    },
+    "sponsor" : "Obrigado mapbox por patrocinar o nosso mapa"
   }
 }

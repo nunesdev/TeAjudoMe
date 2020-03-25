@@ -98,6 +98,16 @@
     content: $icon-chart;
   }
 }
+.icon-close-outline {
+  &:before {
+    content: $icon-close-outline;
+  }
+}
+.icon-close-solid {
+  &:before {
+    content: $icon-close-solid;
+  }
+}
 .icon-coffee {
   &:before {
     content: $icon-coffee;
@@ -156,6 +166,16 @@
 .icon-store-front {
   &:before {
     content: $icon-store-front;
+  }
+}
+.icon-target {
+  &:before {
+    content: $icon-target;
+  }
+}
+.icon-tuning {
+  &:before {
+    content: $icon-tuning;
   }
 }
 .icon-view-carousel {

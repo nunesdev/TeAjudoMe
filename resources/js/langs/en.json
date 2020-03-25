@@ -4,6 +4,7 @@
     "sobre" : "About",
     "seguranca" : "Stay Safe",
     "handup" : "I can help",
+    "needup" : "Need help",
     "mapup" : "Go to map",
     "contato" : "Contact",
     "voluntarios": "Volunteers"
@@ -13,12 +14,28 @@
       "marker" : {
         "esta_aqui" :  "You are here",
         "drag" : "If necessary, drag the pin to another point!"
+      },
+      "popup" : {
+        "type_volunteer" : "Volunteer",
+        "type_user" : "Requester",
+        "type_doctor" : "Psychologist",
+        "talk_to" : "Talk to me by",
+        "phone" : "Phone",
+        "help_with" :  "I can help with",
+        "help_with_user" :  "I need help with",
+        "help" : {
+          "market" : "Market shopping",
+          "food" : "Give food",
+          "talk" : "Can i talk",
+          "health" : "Go to the pharmacy",
+          "dog" : "Walk the dog"
+        }
       }
     }
   },
   "about": {
     "title" : "About",
-    "text" : "<p>TeAjudoME was created exclusively because of the pandemic COVID-19 (new coronavirus),<br/>with the aim of connecting people who want to help and who need help with shopping at the market, pharmacy or just chatting, and especially people in the risk group. The platform also counts on the help of psychologists duly registered with the regional psychology council.<hr>The code is open-source and available on <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, you can collaborate and send your Pull request. To contact:<a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p>"
+    "text" : "<p>TeAjudoME was created exclusively because of the pandemic COVID-19 (new coronavirus),<br/>with the aim of connecting people who want to help and who need help with shopping at the market, pharmacy or just chatting, and especially people in the risk group. The platform also counts on the help of psychologists duly registered with the regional psychology council.<hr>The code is open-source and available on <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, you can collaborate and send your Pull request. To contact:<a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>"
   },
   "sidebar": {
     "title" : "Your personal data",
@@ -30,13 +47,16 @@
       "city":  "City",
       "state" : "What's your state?",
       "subtitle" : "I can help with:",
+      "subtitle_2" : "I need help with:",
       "i_am_doctor": "I'm a psychologist",
       "document" : "Please put your NPI",
       "help" : {
         "market" : "Market shopping",
         "food" : "Give food",
         "talk" : "Can i talk",
-        "health" : "Go to the pharmacy"
+        "health" : "Go to the pharmacy",
+        "dog" : "Walk the dog",
+        "others" : "Other requests"
       },
       "truth": "I confirm the veracity of the information provided, I assume full responsibility for such information and agree to have that information shared with other users",
       "save" : "Save",
@@ -44,9 +64,10 @@
         "error" : "Complete what can help :)",
         "success" : "Thank you for being part!",
         "error_truth" : "Confirm the veracity of the data.",
-        "error_location" : "Please drag the yellow pin to update the location, close the arrow up there",
+        "error_location" : "Please drag the yellow pin to update the location.",
         "error_document" : "Please put your NPI"
       }
-    }
+    },
+    "sponsor" : "Thank you mapbox for the support and sponsorship on our map"
   }
 }

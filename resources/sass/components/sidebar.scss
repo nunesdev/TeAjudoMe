@@ -25,6 +25,21 @@
       background: $white;
     }
   }
+  .btn-needup {
+    background: #d43e66;
+    color: white;
+    margin-top: 20px;
+    transition: background .25s ease-in;
+
+    @media only screen and (max-width: 600px) {
+
+    }
+
+    &:hover {
+      color: $darkblue;
+      background: $white;
+    }
+  }
 
   &-active {
     .map {
@@ -69,6 +84,40 @@
   }
 
   &--secondary {
+    transition: left .2s linear;
+    background: lighten($darkblue, 5%);
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: -380px;
+    width: 380px;
+    height: 100%;
+    overflow-y: scroll;
+
+    .check_truth {
+      small {
+        font-size: 13px!important;
+        line-height: 18px;
+      }
+    }
+
+    h3 {
+      font-size: 20px
+    }
+
+    h4 {
+      font-size: 18px
+    }
+
+    &.active {
+      left: 180px;
+    }
+
+    &__body {
+      padding-top: 20px;
+    }
+  }
+  &--third {
     transition: left .2s linear;
     background: lighten($darkblue, 5%);
     position: fixed;

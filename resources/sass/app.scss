@@ -49,10 +49,23 @@ body {
       display: inline-block;
       color: $white;
     }
+
+    .sponsors {
+      small {
+        font-size: 13px;
+        padding: 5px;
+      }
+      padding-top: 40px;
+    }
   }
 
   .list {
     list-style: circle;
     margin-left: 1rem;
   }
+
+  // .grecaptcha-badge {
+  //   bottom: 95px!important;
+  //   height: 40px!important;
+  // }
 }

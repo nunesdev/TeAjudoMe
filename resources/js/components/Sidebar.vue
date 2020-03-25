@@ -11,8 +11,11 @@
             <small v-text="$ml.get('menu.contato')">  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a> </small>
           </div>
           <div class="col-12">
-            <div v-if="showHandUp" @click="changeState" class="btn btn-handup" v-text="$ml.get('menu.handup')">Posso ajudar
-              <span class="icon-hand-stop"></span>
+            <div v-if="showHandUp" @click="changeStateMember" class="btn btn-needup">
+              <span v-text="$ml.get('menu.needup')"></span>
+            </div>
+            <div v-if="showHandUp" @click="changeState" class="btn btn-handup">
+              <span v-text="$ml.get('menu.handup')"></span> <span class="icon-hand-stop"></span>
             </div>
             <router-link v-if="showMapUp" class="btn btn-handup" :to="{ name: 'home' }" v-text="$ml.get('menu.mapup')"> <span class="icon-map"></span></router-link>
           </div>
@@ -25,6 +28,13 @@
             <a @click="$ml.change('portuguese')" href="#">PT</a>
             <a @click="$ml.change('spanish')" href="#">ES</a>
             <a @click="$ml.change('english')" href="#">EN</a>
+
+            <div class="sponsors">
+            <div class="col-12">
+              <small v-text="$ml.get('sidebar.sponsor')"></small>
+              <a target="_blank" href="https://mapbox.com"><img src="/images/mapbox-logo-white.png" width="80" alt=""></a>
+            </div>
+            </div>
           </footer>
         </div>
       </div>
@@ -38,11 +48,22 @@
         <AddVoluntario :address.async="address" @closeSidebar="closeSidebar" />
       </div>
     </div>
+    <div class="sidebar--third" :class="{active:isActiveSidebarMember}">
+      <div class="sidebar--close" @click="changeState">
+        <span class="icon-circle-left"></span>
+      </div>
+
+      <div class="sidebar--third__body">
+        <AddMember :address.async="address" @closeSidebar="closeSidebar" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
- import AddVoluntario from '@components/AddVoluntario';
+ import AddVoluntario from '@components/AddVoluntarioSidebar';
+ import AddMember from '@components/AddMemberSidebar';
+
  import { mapGetters, mapActions } from 'vuex'
  import { MLBuilder } from 'vue-multilanguage'
 
@@ -50,11 +71,13 @@ export default {
   props: ['address'],
   name: 'Sidebar',
   components: {
-    AddVoluntario
+    AddVoluntario,
+    AddMember
   },
   data() {
     return {
       isActive: false,
+      isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true
     }
@@ -75,14 +98,18 @@ export default {
     ]),
   },
   methods: {
-
+    changeStateMember() {
+      this.isActiveSidebarMember = !this.isActiveSidebarMember
+      this.$emit('sidebarOpen', this.isActiveSidebarMember);
+    },
     changeState() {
       this.isActive = !this.isActive
       this.$emit('sidebarOpen', this.isActive);
     },
     closeSidebar(v) {
       this.isActive = v;
-      this.$emit('sidebarOpen', this.isActive);
+      this.isActiveSidebarMember = v;
+      this.$emit('sidebarOpen', v);
     },
   }
 }

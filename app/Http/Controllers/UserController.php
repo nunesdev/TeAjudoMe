@@ -40,7 +40,7 @@ class UserController extends BaseController
       $user->address = '';
       $user->lat = $request->input('location.lat');
       $user->lng = $request->input('location.lon');
-      $user->type = 'volunteer';
+      $user->type = $request->input('type') ? $request->input('type') : 'volunteer';
       $user->city_id = 25;
       $user->options = $request->input('support') !== null ? json_encode($request->input('support')) : null;
       $user->status = 'a';
@@ -68,7 +68,8 @@ class UserController extends BaseController
           'whatsapp' => $d->whatsapp,
           'lat' => $d->lat,
           'lng' => $d->lng,
-          'options' => json_decode($d->options)
+          'options' => json_decode($d->options),
+          'type' => $d->type
         ];
 
       endforeach;

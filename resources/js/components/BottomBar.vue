@@ -42,13 +42,26 @@
       </div>
     </div>
 
+    <div class="bottombar--third" :class="{active:isActiveSidebarMember}">
+      <div class="bottombar--close" @click="changeStateMember">
+        <span class="icon-circle-left"></span>
+      </div>
+
+      <div class="bottombar--secondary__body">
+        <AddMember :address.async="address" @closeSidebar="closeSidebar" />
+      </div>
+    </div>
+
     <div v-if="showHandUp" @click="changeState" class="btn btn-handup"><strong v-text="$ml.get('menu.handup')"></strong> <span class="icon-hand-stop"></span></div>
+    <div v-if="showHandUp" @click="changeStateMember" class="btn btn-needup"><strong v-text="$ml.get('menu.needup')"></strong></div>
     <router-link v-if="showMapUp" class="btn btn-handup" :to="{ name: 'home' }"><strong v-text="$ml.get('menu.mapup')"></strong> <span class="icon-map"></span></router-link>
   </div>
 </template>
 
 <script>
  import AddVoluntario from '@components/AddVoluntario';
+ import AddMember from '@components/AddMember';
+
  import { mapGetters, mapActions } from 'vuex'
  import { MLBuilder } from 'vue-multilanguage'
 
@@ -56,11 +69,13 @@ export default {
   props: ['address'],
   name: 'BottomBar',
   components: {
-    AddVoluntario
+    AddVoluntario,
+    AddMember
   },
   data() {
     return {
       isActive: false,
+      isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true,
     }
@@ -85,9 +100,15 @@ export default {
       this.isActive = !this.isActive
       this.$emit('sidebarOpen', this.isActive);
     },
+    changeStateMember() {
+      this.isActiveSidebarMember = !this.isActiveSidebarMember
+      this.$emit('sidebarOpen', this.isActiveSidebarMember);
+    },
     closeSidebar(v) {
+
       this.isActive = v;
-      this.$emit('sidebarOpen', this.isActive);
+      this.isActiveSidebarMember = v;
+      this.$emit('sidebarOpen', v);
     },
   }
 }
@@ -107,6 +128,33 @@ footer {
   height: 60px;
   background: #ffed4a;
   transition: background .25s ease-in;
+  z-index: 1;
+
+  span {
+    display: block;
+    font-size: 3em;
+  }
+
+  @media only screen and (max-width: 600px) {
+
+  }
+
+  &:hover {
+    color: #313a4a;
+    background: #fff;
+  }
+}
+.btn-needup {
+  position: fixed;
+  bottom: 155px;
+  right: 8px;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 8px;
+  width: 50PX;
+  height: 50px;
+  background: #d43e66;
+  transition: background 0.25s ease-in;
   z-index: 1;
 
   span {

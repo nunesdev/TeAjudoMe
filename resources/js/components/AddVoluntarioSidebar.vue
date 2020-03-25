@@ -36,7 +36,7 @@
               <div class="row">
                 <div class="col-12">
                   <label for="m_psicologo" class="checklabel">
-                    <input  type="checkbox" id="m_psicologo" v-model="info.support.psicologo" name="" value="">
+                    <input  type="checkbox" id="s_psicologo" v-model="info.support.psicologo" name="" value="">
                     <small v-text="$ml.get('sidebar.form.i_am_doctor')"></small>
                   </label>
                 </div>
@@ -54,7 +54,7 @@
 
                       <span class="icon-shopping-cart"></span>
                       <small v-text="$ml.get('sidebar.form.help.market')"></small>
-                      <input type="checkbox" name="support[]" v-model="info.support.market" id="m_market" value="market">
+                      <input type="checkbox" name="support[]" v-model="info.support.market" id="s_market" value="market">
                     </label>
                   </div>
                 </div>
@@ -63,7 +63,7 @@
                     <label for="m_food">
                       <span class="icon-location-food"></span>
                       <small v-text="$ml.get('sidebar.form.help.food')"></small>
-                      <input type="checkbox" name="support[]" v-model="info.support.food" id="m_food" value="food">
+                      <input type="checkbox" name="support[]" v-model="info.support.food" id="s_food" value="food">
                     </label>
                   </div>
                 </div>
@@ -72,7 +72,7 @@
                     <label for="m_talk">
                       <span class="icon-conversation"></span>
                       <small v-text="$ml.get('sidebar.form.help.talk')"></small>
-                      <input type="checkbox" name="support[]" v-model="info.support.talk" id="m_talk" value="talk">
+                      <input type="checkbox" name="support[]" v-model="info.support.talk" id="s_talk" value="talk">
                     </label>
                   </div>
                 </div>
@@ -81,7 +81,7 @@
                     <label for="m_health">
                       <span class="icon-store-front"></span>
                       <small v-text="$ml.get('sidebar.form.help.health')"></small>
-                      <input type="checkbox" name="support[]" v-model="info.support.health" id="m_health" value="health">
+                      <input type="checkbox" name="support[]" v-model="info.support.health" id="s_health" value="health">
                     </label>
                   </div>
                 </div>
@@ -98,7 +98,7 @@
 
                       </span>
                       <small v-text="$ml.get('sidebar.form.help.dog')"></small>
-                      <input type="checkbox" name="support[]" v-model="info.support.dog" id="m_dog" value="dog">
+                      <input type="checkbox" name="support[]" v-model="info.support.dog" id="s_dog" value="dog">
                     </label>
                   </div>
                 </div>
@@ -106,7 +106,7 @@
             </div>
             <div class="form-group extra-bottom">
               <label class="check_truth checklabel" for="veracidade">
-                <input type="checkbox" id="m_eracidade" name="support[]" v-model="info.support.veracidade" value="">
+                <input type="checkbox" id="s_eracidade" name="support[]" v-model="info.support.veracidade" value="">
                 <small v-text="$ml.get('sidebar.form.truth')"></small>
               </label>
             </div>

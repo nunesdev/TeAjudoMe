@@ -2,8 +2,8 @@
 
 @font-face {
   font-family: "empub";
-  src: url(/fonts/empub.eot?26ef57557557b227ece6fd1c7591328c);
-  src: url(/fonts/empub.eot?26ef57557557b227ece6fd1c7591328c) format("embedded-opentype"), url(/fonts/empub.ttf?e8464e4fd80cac3f202443a99aab0f2c) format("truetype"), url(/fonts/empub.woff?1e628c3ea76e456cfe107964585d16b9) format("woff"), url(/fonts/empub.svg?99e7aa85d2ea3263662505d6cc1d6aae) format("svg");
+  src: url(/fonts/empub.eot?921159fa340a478cfa365ad2330bcdae);
+  src: url(/fonts/empub.eot?921159fa340a478cfa365ad2330bcdae) format("embedded-opentype"), url(/fonts/empub.ttf?800b73033147021cf1dafa6a1b26489d) format("truetype"), url(/fonts/empub.woff?785a307dfad2927db89a722d7edccf54) format("woff"), url(/fonts/empub.svg?a8ea5b61ce0b69a87c3e5d19d1257b46) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -79,6 +79,14 @@
   content: "\E943";
 }
 
+.icon-close-outline:before {
+  content: "\E979";
+}
+
+.icon-close-solid:before {
+  content: "\E97A";
+}
+
 .icon-coffee:before {
   content: "\E947";
 }
@@ -125,6 +133,14 @@
 
 .icon-store-front:before {
   content: "\E96D";
+}
+
+.icon-target:before {
+  content: "\E976";
+}
+
+.icon-tuning:before {
+  content: "\E97C";
 }
 
 .icon-view-carousel:before {
@@ -12159,6 +12175,18 @@ a.text-dark:focus {
   background: #fff;
 }
 
+.sidebar .btn-needup {
+  background: #d43e66;
+  color: white;
+  margin-top: 20px;
+  transition: background 0.25s ease-in;
+}
+
+.sidebar .btn-needup:hover {
+  color: #283241;
+  background: #fff;
+}
+
 .sidebar-active .map {
   left: 560px;
 }
@@ -12236,10 +12264,43 @@ a.text-dark:focus {
   padding-top: 20px;
 }
 
+.sidebar--third {
+  transition: left 0.2s linear;
+  background: #323e51;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: -380px;
+  width: 380px;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.sidebar--third .check_truth small {
+  font-size: 13px !important;
+  line-height: 18px;
+}
+
+.sidebar--third h3 {
+  font-size: 20px;
+}
+
+.sidebar--third h4 {
+  font-size: 18px;
+}
+
+.sidebar--third.active {
+  left: 180px;
+}
+
+.sidebar--third__body {
+  padding-top: 20px;
+}
+
 .bottombar {
   background: #283241;
   position: fixed;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   left: 0;
   width: 100%;
@@ -12328,7 +12389,7 @@ a.text-dark:focus {
   transition: left 0.2s linear;
   background: #323e51;
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   top: 0;
   left: -100%;
   width: 100%;
@@ -12349,6 +12410,34 @@ a.text-dark:focus {
 }
 
 .bottombar--secondary__body {
+  padding-top: 20px;
+}
+
+.bottombar--third {
+  transition: left 0.2s linear;
+  background: #323e51;
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.bottombar--third h3 {
+  font-size: 20px;
+}
+
+.bottombar--third h4 {
+  font-size: 18px;
+}
+
+.bottombar--third.active {
+  left: 0;
+}
+
+.bottombar--third__body {
   padding-top: 20px;
 }
 
@@ -12387,6 +12476,15 @@ body footer a {
   font-size: 12px;
   display: inline-block;
   color: #fff;
+}
+
+body footer .sponsors {
+  padding-top: 40px;
+}
+
+body footer .sponsors small {
+  font-size: 13px;
+  padding: 5px;
 }
 
 body .list {
