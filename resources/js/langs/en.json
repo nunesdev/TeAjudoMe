@@ -44,6 +44,12 @@
     "form" : {
       "name" : "Your name",
       "phone" : "Phone",
+      "input" : {
+        "example" : "Example",
+        "countrySelectorLabel" : "Code",
+        "countrySelectorError" : "Choose a code",
+        "phoneNumberLabel" : "Phone number"
+      },
       "whatsapp" : "Can you chat by whatsapp?",
       "email" : "E-mail",
       "city":  "City",

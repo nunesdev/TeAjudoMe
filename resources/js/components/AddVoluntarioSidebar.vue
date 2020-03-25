@@ -17,11 +17,11 @@
                <input type="text" class="form-control" v-model="info.name" name="name" :placeholder="$ml.get('sidebar.form.name')"  required>
             </div>
             <div class="form-group">
-               <input type="text" class="form-control" v-model="info.phone" name="phone" :placeholder="$ml.get('sidebar.form.phone')"  required>
+              <VuePhoneNumberInput @update="updatePhone" :translations="translations"  v-model="info.phone_" required />
                <small><span v-text="$ml.get('sidebar.form.whatsapp')"></span>  <input type="checkbox" v-model="info.whatsapp" name="" value=""> </small>
             </div>
             <div class="form-group">
-               <input type="text" class="form-control" v-model="info.email" name="email" :placeholder="$ml.get('sidebar.form.email')" required>
+               <input type="email" class="form-control" v-model="info.email" name="creditcard" :placeholder="$ml.get('sidebar.form.email')" required>
             </div>
 
             <div class="form-group">
@@ -125,10 +125,14 @@ import { mapActions, mapGetters, mapMutations } from 'vuex';
 import { isMobile } from 'mobile-device-detect';
 import GoogleLogin from 'vue-google-login';
 
+import VuePhoneNumberInput from 'vue-phone-number-input';
+import 'vue-phone-number-input/dist/vue-phone-number-input.css';
+
 export default {
     name: 'AddVoluntario',
     components: {
-      GoogleLogin
+      GoogleLogin,
+      VuePhoneNumberInput
     },
     data(){
       return {
@@ -146,6 +150,13 @@ export default {
           width: 250,
           height: 50,
           longtitle: true
+        },
+
+        translations: {
+          countrySelectorLabel: this.$ml.get('sidebar.form.input.countrySelectorLabel'),
+          countrySelectorError: this.$ml.get('sidebar.form.input.countrySelectorError'),
+          phoneNumberLabel: this.$ml.get('sidebar.form.input.phoneNumberLabel'),
+          example: this.$ml.get('sidebar.form.input.example')
         }
       }
     },
@@ -304,6 +315,9 @@ export default {
       },
       onFailure() {
 
+      },
+      updatePhone(v) {
+        this.info.phone = v.formattedNumber
       }
     }
 }

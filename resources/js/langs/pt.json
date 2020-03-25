@@ -44,6 +44,12 @@
     "form" : {
       "name" : "Seu nome",
       "phone" : "Telefone",
+      "input" : {
+        "example" : "Exemplo",
+        "countrySelectorLabel" : "Código",
+        "countrySelectorError" : "Escolha um código",
+        "phoneNumberLabel" : "Número de telefone"
+      },
       "whatsapp" : "Pode chamar via WhatsApp ?",
       "email" : "E-mail",
       "city":  "Cidade",

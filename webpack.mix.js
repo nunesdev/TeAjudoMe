@@ -17,7 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
     .copyDirectory('resources/fonts', 'public/fonts');
 
  mix.browserSync({
-   proxy: 'teajudo.me',
+   proxy: 'http://dev-teajudo.me/',
    port: '3001'
  });
 

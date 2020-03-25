@@ -65,13 +65,13 @@
                 <div class="popup-head row align-items-center">
                   <h3 class="col-11">{{item.name}}</h3>
                 </div>
-                <span v-if="item.options.psicologo && item.options.document"> {{item.options.document}} <img  src="/images/verified.png" width="16" height="16" alt=""></span>
+                <span v-if="item.options && item.options.psicologo && item.options.document"> {{item.options.document}} <img  src="/images/verified.png" width="16" height="16" alt=""></span>
 
                 <h4 v-text="$ml.get('home.map.popup.talk_to')"></h4>
 
                 <span v-if="item.email"><a :href="`mailto:${item.email}`"> Email </a></span>
                 <span v-if="item.phone"><a :href="`tel:${item.phone}`" v-text="$ml.get('home.map.popup.phone')"></a></span>
-                <span v-if="item.whatsapp"><a target="_blank" :href="`https://api.whatsapp.com/send?phone=+55${item.phone}`"> WhatsApp </a></span>
+                <span v-if="item.whatsapp"><a target="_blank" :href="`https://api.whatsapp.com/send?phone=${item.phone}`"> WhatsApp </a></span>
 
                 <div class="support"  v-if="item.options && !item.options.document">
                   <h4 v-if="item.type == 'volunteer'" v-text="$ml.get('home.map.popup.help_with')"></h4>
@@ -149,13 +149,13 @@ export default {
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
-      isLocated: this.$cookies.get('isLocated') ? true : false,
+      isLocated: this.$cookies.get('isLocated') ? true : true,
       errorStr: null,
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/brunodevsp/ck8561s7l04me1imoc1r5jk3x',
       coordinates: [-60.943904,-10.5705057],
-      zoom: 2
+      zoom: 2,
     };
   },
   created() {
