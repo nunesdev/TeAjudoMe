@@ -58,7 +58,7 @@
                   <div class="help" :class="{active: info.support.talk}">
                     <label for="talk">
                       <span class="icon-conversation"></span>
-                      <small v-text="$ml.get('sidebar.form.help.talk')"></small>
+                      <small v-text="$ml.get('sidebar.form.help.talk_2')"></small>
                       <input type="checkbox" name="support[]" v-model="info.support.talk" id="talk" value="talk">
                     </label>
                   </div>

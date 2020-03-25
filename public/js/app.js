@@ -4123,6 +4123,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -4145,7 +4148,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
-      isLocated: this.$cookies.get('isLocated') ? true : true,
+      isLocated: this.$cookies.get('isLocated') ? true : false,
       errorStr: null,
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/brunodevsp/ck8561s7l04me1imoc1r5jk3x',
@@ -9292,7 +9295,7 @@ var render = function() {
                         _c("small", {
                           domProps: {
                             textContent: _vm._s(
-                              _vm.$ml.get("sidebar.form.help.talk")
+                              _vm.$ml.get("sidebar.form.help.talk_2")
                             )
                           }
                         }),
@@ -10100,7 +10103,7 @@ var render = function() {
                         _c("small", {
                           domProps: {
                             textContent: _vm._s(
-                              _vm.$ml.get("sidebar.form.help.talk")
+                              _vm.$ml.get("sidebar.form.help.talk_2")
                             )
                           }
                         }),
@@ -12696,7 +12699,10 @@ var render = function() {
       [
         _c(
           "div",
-          { staticClass: "sidebar--close", on: { click: _vm.changeState } },
+          {
+            staticClass: "sidebar--close",
+            on: { click: _vm.changeStateMember }
+          },
           [_c("span", { staticClass: "icon-circle-left" })]
         ),
         _vm._v(" "),
@@ -12798,7 +12804,12 @@ var render = function() {
               _c("div", { staticClass: "col-12" }, [
                 _c("a", { staticClass: "btn", on: { click: _vm.locateMe } }, [
                   _c("span", { staticClass: "icon-target" }),
-                  _vm._v("\n            use minha localização\n          ")
+                  _vm._v(" "),
+                  _c("span", {
+                    domProps: {
+                      textContent: _vm._s(_vm.$ml.get("home.map.location"))
+                    }
+                  })
                 ])
               ])
             ])
@@ -13112,15 +13123,25 @@ var render = function() {
                                       staticClass: "icon-conversation"
                                     }),
                                     _vm._v(" "),
-                                    _c("small", {
-                                      domProps: {
-                                        textContent: _vm._s(
-                                          _vm.$ml.get(
-                                            "home.map.popup.help.talk"
-                                          )
-                                        )
-                                      }
-                                    })
+                                    item.type == "volunteer"
+                                      ? _c("small", {
+                                          domProps: {
+                                            textContent: _vm._s(
+                                              _vm.$ml.get(
+                                                "home.map.popup.help.talk"
+                                              )
+                                            )
+                                          }
+                                        })
+                                      : _c("small", {
+                                          domProps: {
+                                            textContent: _vm._s(
+                                              _vm.$ml.get(
+                                                "home.map.popup.help.talk_2"
+                                              )
+                                            )
+                                          }
+                                        })
                                   ])
                                 : _vm._e(),
                               _vm._v(" "),
@@ -36476,7 +36497,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! exports provided: menu, home, about, sidebar, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Map\",\"sobre\":\"About\",\"seguranca\":\"Stay Safe\",\"handup\":\"I can help\",\"needup\":\"Need help\",\"mapup\":\"Go to map\",\"contato\":\"Contact\",\"voluntarios\":\"Volunteers\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"You are here\",\"drag\":\"If necessary, drag the pin to another point!\"},\"popup\":{\"type_volunteer\":\"Volunteer\",\"type_user\":\"Requester\",\"type_doctor\":\"Psychologist\",\"talk_to\":\"Talk to me by\",\"phone\":\"Phone\",\"help_with\":\"I can help with\",\"help_with_user\":\"I need help with\",\"help\":{\"market\":\"Market shopping\",\"food\":\"Give food\",\"talk\":\"Can i talk\",\"health\":\"Go to the pharmacy\",\"dog\":\"Walk the dog\"}}}},\"about\":{\"title\":\"About\",\"text\":\"<p>TeAjudoME was created exclusively because of the pandemic COVID-19 (new coronavirus),<br/>with the aim of connecting people who want to help and who need help with shopping at the market, pharmacy or just chatting, and especially people in the risk group. The platform also counts on the help of psychologists duly registered with the regional psychology council.<hr>The code is open-source and available on <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, you can collaborate and send your Pull request. To contact:<a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>\"},\"sidebar\":{\"title\":\"Your personal data\",\"form\":{\"name\":\"Your name\",\"phone\":\"Phone\",\"whatsapp\":\"Can you chat by whatsapp?\",\"email\":\"E-mail\",\"city\":\"City\",\"state\":\"What's your state?\",\"subtitle\":\"I can help with:\",\"subtitle_2\":\"I need help with:\",\"i_am_doctor\":\"I'm a psychologist\",\"document\":\"Please put your NPI\",\"help\":{\"market\":\"Market shopping\",\"food\":\"Give food\",\"talk\":\"Can i talk\",\"health\":\"Go to the pharmacy\",\"dog\":\"Walk the dog\",\"others\":\"Other requests\"},\"truth\":\"I confirm the veracity of the information provided, I assume full responsibility for such information and agree to have that information shared with other users\",\"save\":\"Save\",\"msg\":{\"error\":\"Complete what can help :)\",\"success\":\"Thank you for being part!\",\"error_truth\":\"Confirm the veracity of the data.\",\"error_location\":\"Please drag the yellow pin to update the location.\",\"error_document\":\"Please put your NPI\"}},\"sponsor\":\"Thank you mapbox for the support and sponsorship on our map\"}}");
+module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Map\",\"sobre\":\"About\",\"seguranca\":\"Stay Safe\",\"handup\":\"I can help\",\"needup\":\"Need help\",\"mapup\":\"Go to map\",\"contato\":\"Contact\",\"voluntarios\":\"Volunteers\"},\"home\":{\"map\":{\"location\":\"use my location\",\"marker\":{\"esta_aqui\":\"You are here\",\"drag\":\"If necessary, drag the pin to another point!\"},\"popup\":{\"type_volunteer\":\"Volunteer\",\"type_user\":\"Requester\",\"type_doctor\":\"Psychologist\",\"talk_to\":\"Talk to me by\",\"phone\":\"Phone\",\"help_with\":\"I can help with\",\"help_with_user\":\"I need help with\",\"help\":{\"market\":\"Market shopping\",\"food\":\"Give food\",\"talk\":\"Can i talk\",\"talk_2\":\"I Need to Talk\",\"health\":\"Go to the pharmacy\",\"dog\":\"Walk the dog\"}}}},\"about\":{\"title\":\"About\",\"text\":\"<p>TeAjudoME was created exclusively because of the pandemic COVID-19 (new coronavirus),<br/>with the aim of connecting people who want to help and who need help with shopping at the market, pharmacy or just chatting, and especially people in the risk group. The platform also counts on the help of psychologists duly registered with the regional psychology council.<hr>The code is open-source and available on <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, you can collaborate and send your Pull request. To contact:<a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>\"},\"sidebar\":{\"title\":\"Your personal data\",\"form\":{\"name\":\"Your name\",\"phone\":\"Phone\",\"whatsapp\":\"Can you chat by whatsapp?\",\"email\":\"E-mail\",\"city\":\"City\",\"state\":\"What's your state?\",\"subtitle\":\"I can help with:\",\"subtitle_2\":\"I need help with:\",\"i_am_doctor\":\"I'm a psychologist\",\"document\":\"Please put your NPI\",\"help\":{\"market\":\"Market shopping\",\"food\":\"Give food\",\"talk\":\"Can i talk\",\"talk_2\":\"I Need to Talk\",\"health\":\"Go to the pharmacy\",\"dog\":\"Walk the dog\",\"others\":\"Other requests\"},\"truth\":\"I confirm the veracity of the information provided, I assume full responsibility for such information and agree to have that information shared with other users\",\"save\":\"Save\",\"msg\":{\"error\":\"Complete what can help :)\",\"success\":\"Thank you for being part!\",\"error_truth\":\"Confirm the veracity of the data.\",\"error_location\":\"Please drag the yellow pin to update the location.\",\"error_document\":\"Please put your NPI\"}},\"sponsor\":\"Thank you mapbox for the support and sponsorship on our map\"}}");
 
 /***/ }),
 
@@ -36487,7 +36508,7 @@ module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Map\",\"sobre\":\"About\",\"s
 /*! exports provided: menu, home, about, sidebar, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Acerca\",\"seguranca\":\"Seguridad\",\"handup\":\"Puedo ayudar\",\"needup\":\"Necesito ayuda\",\"mapup\":\"Ve al mapa\",\"contato\":\"Contacto\",\"voluntarios\":\"Voluntarios\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"Tu estás aquí\",\"drag\":\"Si es necesario, arrastre el pin a otro punto.\"},\"popup\":{\"type_volunteer\":\"Voluntario\",\"type_user\":\"Solicitante\",\"type_doctor\":\"Psicólogo(a)\",\"talk_to\":\"Habla conmigo por\",\"phone\":\"Teléfono\",\"help_with\":\"Puedo ayudar con\",\"help_with_user\":\"Necesito ayuda con\",\"help\":{\"market\":\"Compras en el mercado\",\"food\":\"Dar comida\",\"talk\":\"Puedo hablar\",\"health\":\"Ir a la farmacia\",\"dog\":\"pasear con el perro\"}}}},\"about\":{\"title\":\"Acerca\",\"text\":\"<p>TeAjudoME se creó exclusivamente debido a la pandemia COVID-19 (nuevo coronavirus),<br/>con el objetivo de conectar a las personas que desean ayudar y que necesitan ayuda para comprar en el mercado, farmacia o simplemente para conversar, y especialmente las personas en el grupo de riesgo.La plataforma también cuenta con la ayuda de psicólogos debidamente registrados en el consejo regional de psicología.<hr>La herramienta es de código abierto y está disponible en <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, puedes colaborar y enviar tu solicitud de Pull.Para contactar: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>\"},\"sidebar\":{\"title\":\"Sus datos personales\",\"form\":{\"name\":\"Tu nombre\",\"phone\":\"Teléfono\",\"whatsapp\":\"¿Puedes chatear por whatsapp?\",\"email\":\"E-mail\",\"city\":\"Ciudad\",\"state\":\"Cual es tu estado?\",\"subtitle\":\"Puedo ayudar con:\",\"subtitle_2\":\"Necesito ayuda con\",\"i_am_doctor\":\"Soy psicóloga(o)\",\"document\":\"Por favor ingrese su número de identificación\",\"help\":{\"market\":\"Compras en el mercado\",\"food\":\"Dar comida\",\"talk\":\"Puedo hablar\",\"health\":\"Ir a la farmacia\",\"dog\":\"pasear con el perro\",\"others\":\"Otras solicitudes\"},\"truth\":\"Confirmo la veracidad de la información proporcionada, asumo toda la responsabilidad por dicha información y acepto compartirla con otros usuarios\",\"save\":\"Salvar\",\"msg\":{\"error\":\"Complete lo que puede ayudar :)\",\"success\":\"¡Gracias por ser parte!\",\"error_truth\":\"Confirme la veracidad de los datos.\",\"error_location\":\"Arrastra el marcador amarillo para actualizar la ubicación.\",\"error_document\":\"Por favor ingrese su número de identificación\"}},\"sponsor\":\"Gracias mapbox por patrocinar nuestro mapa\"}}");
+module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Acerca\",\"seguranca\":\"Seguridad\",\"handup\":\"Puedo ayudar\",\"needup\":\"Necesito ayuda\",\"mapup\":\"Ve al mapa\",\"contato\":\"Contacto\",\"voluntarios\":\"Voluntarios\"},\"home\":{\"map\":{\"location\":\"Usa mi ubicación\",\"marker\":{\"esta_aqui\":\"Tu estás aquí\",\"drag\":\"Si es necesario, arrastre el pin a otro punto.\"},\"popup\":{\"type_volunteer\":\"Voluntario\",\"type_user\":\"Solicitante\",\"type_doctor\":\"Psicólogo(a)\",\"talk_to\":\"Habla conmigo por\",\"phone\":\"Teléfono\",\"help_with\":\"Puedo ayudar con\",\"help_with_user\":\"Necesito ayuda con\",\"help\":{\"market\":\"Compras en el mercado\",\"food\":\"Dar comida\",\"talk\":\"Puedo hablar\",\"talk_2\":\"I Need to Talk\",\"health\":\"Ir a la farmacia\",\"dog\":\"pasear con el perro\"}}}},\"about\":{\"title\":\"Acerca\",\"text\":\"<p>TeAjudoME se creó exclusivamente debido a la pandemia COVID-19 (nuevo coronavirus),<br/>con el objetivo de conectar a las personas que desean ayudar y que necesitan ayuda para comprar en el mercado, farmacia o simplemente para conversar, y especialmente las personas en el grupo de riesgo.La plataforma también cuenta con la ayuda de psicólogos debidamente registrados en el consejo regional de psicología.<hr>La herramienta es de código abierto y está disponible en <a target='_blank' href='https://github.com/nunesdev/TeAjudoMe'>Git hub</a>, puedes colaborar y enviar tu solicitud de Pull.Para contactar: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>\"},\"sidebar\":{\"title\":\"Sus datos personales\",\"form\":{\"name\":\"Tu nombre\",\"phone\":\"Teléfono\",\"whatsapp\":\"¿Puedes chatear por whatsapp?\",\"email\":\"E-mail\",\"city\":\"Ciudad\",\"state\":\"Cual es tu estado?\",\"subtitle\":\"Puedo ayudar con:\",\"subtitle_2\":\"Necesito ayuda con\",\"i_am_doctor\":\"Soy psicóloga(o)\",\"document\":\"Por favor ingrese su número de identificación\",\"help\":{\"market\":\"Compras en el mercado\",\"food\":\"Dar comida\",\"talk\":\"Puedo hablar\",\"talk_2\":\"Necesito hablar\",\"health\":\"Ir a la farmacia\",\"dog\":\"pasear con el perro\",\"others\":\"Otras solicitudes\"},\"truth\":\"Confirmo la veracidad de la información proporcionada, asumo toda la responsabilidad por dicha información y acepto compartirla con otros usuarios\",\"save\":\"Salvar\",\"msg\":{\"error\":\"Complete lo que puede ayudar :)\",\"success\":\"¡Gracias por ser parte!\",\"error_truth\":\"Confirme la veracidad de los datos.\",\"error_location\":\"Arrastra el marcador amarillo para actualizar la ubicación.\",\"error_document\":\"Por favor ingrese su número de identificación\"}},\"sponsor\":\"Gracias mapbox por patrocinar nuestro mapa\"}}");
 
 /***/ }),
 
@@ -36498,7 +36519,7 @@ module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Acerca\",\
 /*! exports provided: menu, home, about, sidebar, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Sobre\",\"seguranca\":\"Segurança\",\"handup\":\"Posso ajudar\",\"needup\":\"Preciso de ajuda\",\"mapup\":\"Ir ao mapa\",\"contato\":\"Contato\",\"voluntarios\":\"Voluntários\"},\"home\":{\"map\":{\"marker\":{\"esta_aqui\":\"Você está aqui\",\"drag\":\"Se necessário, arraste o pin para outro ponto!\"},\"popup\":{\"type_volunteer\":\"Voluntário(a)\",\"type_user\":\"Solicitante\",\"type_doctor\":\"Psicólogo(a)\",\"talk_to\":\"Fale comigo por\",\"phone\":\"Telefone\",\"help_with\":\"posso ajudar com\",\"help_with_user\":\"preciso de ajuda com\",\"help\":{\"market\":\"Compras\",\"food\":\"Alimentação\",\"talk\":\"Posso conversar\",\"health\":\"Farmácia\",\"dog\":\"Passear com o dog\"}}}},\"about\":{\"title\":\"Sobre\",\"text\":\"<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr> A ferramenta é open-source e está disponível no <a target='_blank' href='https:/github.com/nunesdev/TeAjudoMe'>Git hub</a>, você pode colaborar e enviar seu Pull request. Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>\"},\"sidebar\":{\"title\":\"Seus dados\",\"form\":{\"name\":\"Seu nome\",\"phone\":\"Telefone\",\"whatsapp\":\"Pode chamar via WhatsApp ?\",\"email\":\"E-mail\",\"city\":\"Cidade\",\"state\":\"Qual o seu estado\",\"subtitle\":\"Posso ajudar com:\",\"subtitle_2\":\"Preciso de ajuda com:\",\"i_am_doctor\":\"Sou psicológo\",\"document\":\"EX: CRP - 03/121212\",\"help\":{\"market\":\"Compras\",\"food\":\"Alimentação\",\"talk\":\"Posso conversar\",\"health\":\"Farmácia\",\"dog\":\"Passear com o dog\",\"others\":\"Outras solicitações\"},\"truth\":\"Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários\",\"save\":\"Salvar\",\"msg\":{\"error\":\"Preencha com o que você pode ajudar :)\",\"success\":\"Obrigado por fazer parte\",\"error_truth\":\"Por favor confirme a veracidade dos dados\",\"error_location\":\"Por favor mova o PIN amarelo para atualizar a localização\",\"error_document\":\"Por favor, insira seu CRP/CFP\"}},\"sponsor\":\"Obrigado mapbox por patrocinar o nosso mapa\"}}");
+module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Sobre\",\"seguranca\":\"Segurança\",\"handup\":\"Posso ajudar\",\"needup\":\"Preciso de ajuda\",\"mapup\":\"Ir ao mapa\",\"contato\":\"Contato\",\"voluntarios\":\"Voluntários\"},\"home\":{\"map\":{\"location\":\"use minha localização\",\"marker\":{\"esta_aqui\":\"Você está aqui\",\"drag\":\"Se necessário, arraste o pin para outro ponto!\"},\"popup\":{\"type_volunteer\":\"Voluntário(a)\",\"type_user\":\"Solicitante\",\"type_doctor\":\"Psicólogo(a)\",\"talk_to\":\"Fale comigo por\",\"phone\":\"Telefone\",\"help_with\":\"posso ajudar com\",\"help_with_user\":\"preciso de ajuda com\",\"help\":{\"market\":\"Compras\",\"food\":\"Alimentação\",\"talk\":\"Posso conversar\",\"talk_2\":\"Preciso conversar\",\"health\":\"Farmácia\",\"dog\":\"Passear com o dog\"}}}},\"about\":{\"title\":\"Sobre\",\"text\":\"<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr> A ferramenta é open-source e está disponível no <a target='_blank' href='https:/github.com/nunesdev/TeAjudoMe'>Git hub</a>, você pode colaborar e enviar seu Pull request. Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>\"},\"sidebar\":{\"title\":\"Seus dados\",\"form\":{\"name\":\"Seu nome\",\"phone\":\"Telefone\",\"whatsapp\":\"Pode chamar via WhatsApp ?\",\"email\":\"E-mail\",\"city\":\"Cidade\",\"state\":\"Qual o seu estado\",\"subtitle\":\"Posso ajudar com:\",\"subtitle_2\":\"Preciso de ajuda com:\",\"i_am_doctor\":\"Sou psicológo\",\"document\":\"EX: CRP - 03/121212\",\"help\":{\"market\":\"Compras\",\"food\":\"Alimentação\",\"talk\":\"Posso conversar\",\"talk_2\":\"Preciso conversar\",\"health\":\"Farmácia\",\"dog\":\"Passear com o dog\",\"others\":\"Outras solicitações\"},\"truth\":\"Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários\",\"save\":\"Salvar\",\"msg\":{\"error\":\"Preencha com o que você pode ajudar :)\",\"success\":\"Obrigado por fazer parte\",\"error_truth\":\"Por favor confirme a veracidade dos dados\",\"error_location\":\"Por favor mova o PIN amarelo para atualizar a localização\",\"error_document\":\"Por favor, insira seu CRP/CFP\"}},\"sponsor\":\"Obrigado mapbox por patrocinar o nosso mapa\"}}");
 
 /***/ }),
 

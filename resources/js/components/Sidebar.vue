@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="sidebar--third" :class="{active:isActiveSidebarMember}">
-      <div class="sidebar--close" @click="changeState">
+      <div class="sidebar--close" @click="changeStateMember">
         <span class="icon-circle-left"></span>
       </div>
 

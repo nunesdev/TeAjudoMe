@@ -6,7 +6,7 @@
             <div class="col-12">
               <a class="btn" @click="locateMe">
                 <span class="icon-target"></span>
-                use minha localização
+                <span v-text="$ml.get('home.map.location')"></span>
               </a>
             </div>
           </div>
@@ -92,8 +92,11 @@
                     </span>
                     <span v-if="item.options.talk">
                       <i class="icon-conversation"></i>
-                      <small v-text="$ml.get('home.map.popup.help.talk')"></small>
+                      <small v-if="item.type == 'volunteer'" v-text="$ml.get('home.map.popup.help.talk')"></small>
+                      <small v-else v-text="$ml.get('home.map.popup.help.talk_2')"></small>
                     </span>
+
+
                     <span v-if="item.options.dog">
                       <i class="icon-dog">
                         <svg version="1.0" viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg">
@@ -146,7 +149,7 @@ export default {
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
-      isLocated: this.$cookies.get('isLocated') ? true : true,
+      isLocated: this.$cookies.get('isLocated') ? true : false,
       errorStr: null,
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',

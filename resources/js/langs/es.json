@@ -11,6 +11,7 @@
   },
   "home": {
     "map" : {
+      "location" : "Usa mi ubicación",
       "marker" : {
         "esta_aqui" :  "Tu estás aquí",
         "drag" : "Si es necesario, arrastre el pin a otro punto."
@@ -27,6 +28,7 @@
           "market" : "Compras en el mercado",
           "food" : "Dar comida",
           "talk" : "Puedo hablar",
+          "talk_2" : "I Need to Talk",
           "health" : "Ir a la farmacia",
           "dog" : "pasear con el perro"
         }
@@ -54,6 +56,7 @@
         "market" : "Compras en el mercado",
         "food" : "Dar comida",
         "talk" : "Puedo hablar",
+        "talk_2" : "Necesito hablar",
         "health" : "Ir a la farmacia",
         "dog" : "pasear con el perro",
         "others" : "Otras solicitudes"
