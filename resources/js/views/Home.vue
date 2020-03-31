@@ -174,7 +174,8 @@ export default {
         });
 
         this.coordinates = [this.location.coords.longitude, this.location.coords.latitude];
-        this.zoom = 14.95
+
+        setTimeout(()=>this.zoom = 13, 2000)
 
       } catch(e) {
         console.error(e);

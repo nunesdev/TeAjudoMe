@@ -7833,7 +7833,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 });
 
                 _this2.coordinates = [_this2.location.coords.longitude, _this2.location.coords.latitude];
-                _this2.zoom = 14.95;
+                setTimeout(function () {
+                  return _this2.zoom = 13;
+                }, 2000);
                 _context2.next = 13;
                 break;
 
