@@ -29,7 +29,7 @@
 
           @results="handleSearch"
         /> -->
-        <MglNavigationControl position="bottom-right" />
+        <MglNavigationControl v-if="!isMobile" :position="positionControl" />
         <!-- <MglGeolocateControl position="bottom-right" /> -->
 
 
@@ -39,9 +39,11 @@
             <div class="popup">
               <h3 v-text="$ml.get('home.map.marker.esta_aqui')"></h3>
 
-              <router-link class="btn btn-active  btn-sm btn-white" to="/preciso-de-ajuda" v-text="$ml.get('menu.needup')">Preciso de ajuda</router-link>
-              <router-link class="btn btn-sm btn-white" to="/posso-ajudar" v-text="$ml.get('menu.handup')">Posso ajudar</router-link>
-              <router-link class="btn btn-sm btn-white" to="/negocio" v-text="$ml.get('menu.marketup')">Tenho um pequeno negócio</router-link>
+              <div class="" v-if="!isMobile">
+                <router-link class="btn btn-active  btn-sm btn-white" to="/preciso-de-ajuda" v-text="$ml.get('menu.needup')">Preciso de ajuda</router-link>
+                <router-link class="btn btn-sm btn-white" to="/posso-ajudar" v-text="$ml.get('menu.handup')">Posso ajudar</router-link>
+                <router-link class="btn btn-sm btn-white" to="/negocio" v-text="$ml.get('menu.marketup')">Tenho um pequeno negócio</router-link>
+              </div>
 
             </div>
           </MglPopup>
@@ -122,6 +124,7 @@ export default {
       mapStyle: 'mapbox://styles/brunodevsp/ck8561s7l04me1imoc1r5jk3x',
       coordinates: this.$cookies.get('isLocated') ? [this.$cookies.get('isLocated').lng, this.$cookies.get('isLocated').lat] : [-60.943904,-10.5705057],
       zoom: this.$cookies.get('isLocated') ? 12.5 : 2,
+      positionControl: isMobile ? 'top-right' : 'bottom-right'
     };
   },
   created() {

@@ -1,12 +1,17 @@
 .bottombar {
 
-  background: $darkblue;
+  background: $white;
   position: fixed;
-  z-index: 3;
-  top: 0;
+  z-index: 4;
+  top: 20px;
   left: 0;
-  width: 100%;
+  width: 90%;
   margin: 0;
+  -webkit-box-shadow: 2px 2px 32px -13px rgba(184,184,184,1);
+  -moz-box-shadow: 2px 2px 32px -13px rgba(184,184,184,1);
+  box-shadow: 2px 2px 32px -13px rgba(184,184,184,1);
+  left: 50%;
+  transform: translate(-50%);
 
   &.active {
     left: -100%
@@ -43,21 +48,20 @@
     }
   }
   &-flags {
-    font-size: 14px;
+    font-size: 12px;
     a {
       padding: 2px;
-      color: $white;
-      background: #2f4056;
+      //color: $white;
+      //background: #2f4056;
     }
   }
   &-volunteers {
     &-count {
-      font-size: 18px;
-      line-height: 20px;
+      font-size: 14px;
+      line-height: 18px;
       small {
-        font-size: 14px;
-
-        color: $light-gray;
+        font-size: 12px;
+        color: #4c5c69;
       }
     }
   }
@@ -132,6 +136,37 @@
 
     &__body {
       padding-top: 20px;
+    }
+  }
+
+  &--actions {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: $white;
+    padding: 10px;
+    z-index: 3;
+    -webkit-box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
+    -moz-box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
+    box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
+    .btn {
+      margin-bottom: 10px;
+      line-height: 18px;
+    }
+
+    .btn-showmap {
+      background: $yellow;
+      transition: background .25s ease-in;
+
+      @media only screen and (max-width: 600px) {
+
+      }
+
+      &:hover {
+        color: $darkblue;
+        background: $white;
+      }
     }
   }
 }

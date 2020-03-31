@@ -35,7 +35,11 @@ export default {
       sidebarOpen: false,
       location: null,
       gettingLocation: false,
+      // showBottomBar : this.$router.currentRoute.path != '/negocio'
+      // && this.$router.currentRoute.path != '/preciso-de-ajuda' && this.$router.currentRoute.path != '/posso-ajudar' ? true : false
     };
+  },
+  mounted() {
   },
   created() {
     this.actionGetAllUsers()

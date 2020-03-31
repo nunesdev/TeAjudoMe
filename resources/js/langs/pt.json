@@ -46,7 +46,8 @@
     "total" : {
       "requests" : "Pedidos",
       "volunteers" : "Voluntários",
-      "small_business" : "Pequenos negócios"
+      "small_business" : "Pequenos negócios",
+      "small_business_mobile" : "Peq. negócios"
     },
     "form" : {
       "name" : "Seu nome",

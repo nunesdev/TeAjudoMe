@@ -5450,9 +5450,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isMobile: mobile_device_detect__WEBPACK_IMPORTED_MODULE_0__["isMobile"],
       sidebarOpen: false,
       location: null,
-      gettingLocation: false
+      gettingLocation: false // showBottomBar : this.$router.currentRoute.path != '/negocio'
+      // && this.$router.currentRoute.path != '/preciso-de-ajuda' && this.$router.currentRoute.path != '/posso-ajudar' ? true : false
+
     };
   },
+  mounted: function mounted() {},
   created: function created() {
     this.actionGetAllUsers();
   },
@@ -5839,12 +5842,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var mobile_device_detect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobile-device-detect */ "./node_modules/mobile-device-detect/dist/index.js");
 /* harmony import */ var mobile_device_detect__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(mobile_device_detect__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var vue_google_login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-google-login */ "./node_modules/vue-google-login/dist/vue-google-login.min.js");
-/* harmony import */ var vue_google_login__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_google_login__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vue_phone_number_input__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-phone-number-input */ "./node_modules/vue-phone-number-input/dist/vue-phone-number-input.common.js");
-/* harmony import */ var vue_phone_number_input__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_phone_number_input__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-phone-number-input/dist/vue-phone-number-input.css */ "./node_modules/vue-phone-number-input/dist/vue-phone-number-input.css");
-/* harmony import */ var vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var vue_phone_number_input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-phone-number-input */ "./node_modules/vue-phone-number-input/dist/vue-phone-number-input.common.js");
+/* harmony import */ var vue_phone_number_input__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_phone_number_input__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-phone-number-input/dist/vue-phone-number-input.css */ "./node_modules/vue-phone-number-input/dist/vue-phone-number-input.css");
+/* harmony import */ var vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../helper */ "./resources/js/helper.js");
 /* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @components/Map */ "./resources/js/components/Map.vue");
 
 
@@ -6078,8 +6080,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AddVoluntario',
   components: {
-    GoogleLogin: vue_google_login__WEBPACK_IMPORTED_MODULE_4___default.a,
-    VuePhoneNumberInput: vue_phone_number_input__WEBPACK_IMPORTED_MODULE_5___default.a,
+    VuePhoneNumberInput: vue_phone_number_input__WEBPACK_IMPORTED_MODULE_4___default.a,
     Map: _components_Map__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   data: function data() {
@@ -6102,10 +6103,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   created: function created() {
+    if (this.isMobile) this.getLocationMobile();
     if (this.getMarkerPosition().lat && this.getMarkerPosition().lng) this.isLocated = true;
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])(['getMarkerPosition']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])(['actionSetNewUser', 'actionSetNewPosition']), {
-    onSubmit: function onSubmit(e) {
+    getLocationMobile: function getLocationMobile() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -6114,156 +6116,187 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                console.log('Mobile', _this.isMobile);
+                _context.next = 3;
+                return _helper__WEBPACK_IMPORTED_MODULE_6__["default"].locateMe();
+
+              case 3:
+                payload = _context.sent;
+
+                _this.actionSetNewPosition({
+                  'lng': payload.coords.longitude,
+                  'lat': payload.coords.latitude
+                });
+
+                if (_this.getMarkerPosition().lat && _this.getMarkerPosition().lng) _this.isLocated = true;
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    onSubmit: function onSubmit(e) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
                 e.preventDefault();
 
-                if (!(_this.getMarkerPosition().lat && _this.getMarkerPosition().lng)) {
-                  _context.next = 6;
+                if (!(_this2.getMarkerPosition().lat && _this2.getMarkerPosition().lng)) {
+                  _context2.next = 6;
                   break;
                 }
 
-                _this.info.location.lat = _this.getMarkerPosition().lat;
-                _this.info.location.lon = _this.getMarkerPosition().lng;
-                _context.next = 10;
+                _this2.info.location.lat = _this2.getMarkerPosition().lat;
+                _this2.info.location.lon = _this2.getMarkerPosition().lng;
+                _context2.next = 10;
                 break;
 
               case 6:
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error_location'),
+                  text: _this2.$ml.get('sidebar.form.msg.error_location'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_store', {
+                _this2.$gtag.event('add_store', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'location'
                 });
 
-                _this.isLocated = false;
-                return _context.abrupt("return");
+                _this2.isLocated = false;
+                return _context2.abrupt("return");
 
               case 10:
-                if (!(!_this.info.support.market && !_this.info.support.market_garden && !_this.info.support.food && !_this.info.support.health && !_this.info.support.mechanical && !_this.info.support.others)) {
-                  _context.next = 14;
+                if (!(!_this2.info.support.market && !_this2.info.support.market_garden && !_this2.info.support.food && !_this2.info.support.health && !_this2.info.support.mechanical && !_this2.info.support.others)) {
+                  _context2.next = 14;
                   break;
                 }
 
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error'),
+                  text: _this2.$ml.get('sidebar.form.msg.error'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_store', {
+                _this2.$gtag.event('add_store', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'support'
                 });
 
-                return _context.abrupt("return");
+                return _context2.abrupt("return");
 
               case 14:
-                if (!(!_this.info.support.available.anytime && !_this.info.support.available.anytime_hours && !_this.info.support.available.week && !_this.info.support.available.weekend && !_this.info.support.available.expedient && !_this.info.support.available.others)) {
-                  _context.next = 18;
+                if (!(!_this2.info.support.available.anytime && !_this2.info.support.available.anytime_hours && !_this2.info.support.available.week && !_this2.info.support.available.weekend && !_this2.info.support.available.expedient && !_this2.info.support.available.others)) {
+                  _context2.next = 18;
                   break;
                 }
 
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error_2'),
+                  text: _this2.$ml.get('sidebar.form.msg.error_2'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_store', {
+                _this2.$gtag.event('add_store', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'support.available'
                 });
 
-                return _context.abrupt("return");
+                return _context2.abrupt("return");
 
               case 18:
-                if (!(_this.info.support.psicologo && !_this.info.support.document)) {
-                  _context.next = 22;
+                if (!(_this2.info.support.psicologo && !_this2.info.support.document)) {
+                  _context2.next = 22;
                   break;
                 }
 
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error_document'),
+                  text: _this2.$ml.get('sidebar.form.msg.error_document'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_store', {
+                _this2.$gtag.event('add_store', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'document'
                 });
 
-                return _context.abrupt("return");
+                return _context2.abrupt("return");
 
               case 22:
-                if (_this.info.support.veracidade) {
-                  _context.next = 26;
+                if (_this2.info.support.veracidade) {
+                  _context2.next = 26;
                   break;
                 }
 
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error_truth'),
+                  text: _this2.$ml.get('sidebar.form.msg.error_truth'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_store', {
+                _this2.$gtag.event('add_store', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'check_veracidade'
                 });
 
-                return _context.abrupt("return");
+                return _context2.abrupt("return");
 
               case 26:
-                _context.next = 28;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/saveStore', _this.info);
+                _context2.next = 28;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/saveStore', _this2.info);
 
               case 28:
-                payload = _context.sent;
+                payload = _context2.sent;
 
                 if (payload.data.status) {
-                  _this.$notify({
+                  _this2.$notify({
                     group: 'foo',
                     title: 'Yeah!',
-                    text: _this.$ml.get('sidebar.form.msg.success'),
+                    text: _this2.$ml.get('sidebar.form.msg.success'),
                     type: 'success'
                   });
 
-                  _this.actionSetNewUser(payload.data.data);
+                  _this2.actionSetNewUser(payload.data.data);
 
-                  _this.$router.push('/');
+                  _this2.$router.push('/');
 
-                  _this.$gtag.event('add_store', {
+                  _this2.$gtag.event('add_store', {
                     'event_category': 'success',
                     'event_label': 'ok_ao_inserir',
-                    'event_value': _this.info
+                    'event_value': _this2.info
                   });
 
-                  _this.info = {
+                  _this2.info = {
                     location: {},
                     support: {}
                   };
                 } else {
-                  _this.$gtag.event('add_store', {
+                  _this2.$gtag.event('add_store', {
                     'event_category': 'error',
                     'event_label': 'erro_ao_inserir',
-                    'event_value': _this.info
+                    'event_value': _this2.info
                   });
 
-                  _this.$notify({
+                  _this2.$notify({
                     group: 'foo',
                     title: 'Ops!',
                     text: payload.data.message,
@@ -6272,41 +6305,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   });
                 }
 
-                return _context.abrupt("return", false);
+                return _context2.abrupt("return", false);
 
               case 31:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    recaptcha: function recaptcha() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var token;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return _this2.$recaptchaLoaded();
-
-              case 2:
-                _context2.next = 4;
-                return _this2.$recaptcha('login');
-
-              case 4:
-                token = _context2.sent;
-
-              case 5:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    recaptcha: function recaptcha() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var token;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _this3.$recaptchaLoaded();
+
+              case 2:
+                _context3.next = 4;
+                return _this3.$recaptcha('login');
+
+              case 4:
+                token = _context3.sent;
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     },
     updatePhone: function updatePhone(v) {
@@ -6764,6 +6797,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6789,6 +6847,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false;
   },
   methods: {
+    getTotal: function getTotal(type) {
+      return this.getMarkers.filter(function (item) {
+        return item.type == type;
+      }).length;
+    },
     changeState: function changeState() {
       this.isActive = !this.isActive;
       this.$emit('sidebarOpen', this.isActive);
@@ -7583,6 +7646,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -7622,7 +7687,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/brunodevsp/ck8561s7l04me1imoc1r5jk3x',
       coordinates: this.$cookies.get('isLocated') ? [this.$cookies.get('isLocated').lng, this.$cookies.get('isLocated').lat] : [-60.943904, -10.5705057],
-      zoom: this.$cookies.get('isLocated') ? 12.5 : 2
+      zoom: this.$cookies.get('isLocated') ? 12.5 : 2,
+      positionControl: mobile_device_detect__WEBPACK_IMPORTED_MODULE_1__["isMobile"] ? 'top-right' : 'bottom-right'
     };
   },
   created: function created() {
@@ -22774,14 +22840,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c(
-        "div",
-        { staticClass: "col-7" },
-        [_c("Map", { on: { onDragEnd: _vm.onDragEnd } })],
-        1
-      ),
+      !_vm.isMobile
+        ? _c(
+            "div",
+            { staticClass: "col-md-7 col-sm-12" },
+            [_c("Map", { on: { onDragEnd: _vm.onDragEnd } })],
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "col-5" }, [
+      _c("div", { staticClass: "col-md-5 col-sm-12" }, [
         _c("div", { staticClass: "container" }, [
           !_vm.isLocated
             ? _c("div", { staticClass: "overlay" }, [
@@ -25273,167 +25341,199 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {},
-    [
-      _c("div", { staticClass: "bottombar container" }, [
-        _c(
-          "div",
-          {
-            staticClass: "bottombar-logo row align-items-center",
-            class: { active: _vm.isActive }
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "col" },
-              [
-                _c("router-link", { attrs: { to: { name: "home" } } }, [
-                  _c("img", {
-                    attrs: { src: "/images/teajudome.png?c=1", alt: "" }
-                  })
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col bottombar-links" }, [
-              _c("div", { staticClass: "row align-items-start" }, [
+  return _c("div", {}, [
+    _c("div", { staticClass: "bottombar container" }, [
+      _c(
+        "div",
+        {
+          staticClass: "bottombar-logo row align-items-center",
+          class: { active: _vm.isActive }
+        },
+        [
+          _c("div", { staticClass: "col-12 bottombar-volunteers-count" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-3" }, [
                 _c(
-                  "div",
-                  { staticClass: "col-12" },
-                  [
-                    _c("router-link", {
-                      attrs: { to: "/" },
-                      domProps: {
-                        textContent: _vm._s(_vm.$ml.get("menu.mapa"))
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("router-link", {
-                      attrs: { to: "/sobre" },
-                      domProps: {
-                        textContent: _vm._s(_vm.$ml.get("menu.sobre"))
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("router-link", {
-                      attrs: { to: "/fique-seguro" },
-                      domProps: {
-                        textContent: _vm._s(_vm.$ml.get("menu.seguranca"))
-                      }
-                    })
-                  ],
-                  1
-                )
+                  "small",
+                  {
+                    domProps: {
+                      textContent: _vm._s(_vm.$ml.get("sidebar.total.requests"))
+                    }
+                  },
+                  [_vm._v("Solicitações")]
+                ),
+                _c("br"),
+                _c("span", [_vm._v(_vm._s(_vm.getTotal("user")))])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "row align-items-end" }, [
-                _c("div", { staticClass: "col-12 bottombar-flags" }, [
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          return _vm.$ml.change("portuguese")
-                        }
-                      }
-                    },
-                    [_vm._v("PT")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          return _vm.$ml.change("spanish")
-                        }
-                      }
-                    },
-                    [_vm._v("ES")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          return _vm.$ml.change("english")
-                        }
-                      }
-                    },
-                    [_vm._v("EN")]
-                  )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col bottombar-volunteers-count" }, [
-              _vm._v("\n        " + _vm._s(_vm.getMarkers.length) + " "),
-              _c(
-                "small",
-                {
+              _c("div", { staticClass: "col-4" }, [
+                _c("small", {
                   domProps: {
-                    textContent: _vm._s(_vm.$ml.get("menu.voluntarios"))
+                    textContent: _vm._s(_vm.$ml.get("sidebar.total.volunteers"))
                   }
-                },
-                [_vm._v("voluntários")]
-              )
+                }),
+                _c("br"),
+                _c("span", [_vm._v(_vm._s(_vm.getTotal("volunteer")) + " ")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-5" }, [
+                _c(
+                  "small",
+                  {
+                    domProps: {
+                      textContent: _vm._s(
+                        _vm.$ml.get("sidebar.total.small_business_mobile")
+                      )
+                    }
+                  },
+                  [_vm._v("Peq. negócios")]
+                ),
+                _vm._v(" "),
+                _c("br"),
+                _c("span", [_vm._v(_vm._s(_vm.getTotal("store")))])
+              ])
             ])
-          ]
+          ])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "bottombar--actions" }, [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-12" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "btn btn-active btn-white",
+                attrs: { to: "/preciso-de-ajuda" }
+              },
+              [
+                _c("span", { staticClass: "icon-hand-stop" }),
+                _vm._v(" "),
+                _c("span", {
+                  domProps: { textContent: _vm._s(_vm.$ml.get("menu.needup")) }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              { staticClass: "btn btn-white", attrs: { to: "/negocio" } },
+              [
+                _c("span", {
+                  domProps: {
+                    textContent: _vm._s(_vm.$ml.get("menu.marketup"))
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              { staticClass: "btn btn-white", attrs: { to: "/posso-ajudar" } },
+              [
+                _c("span", {
+                  domProps: { textContent: _vm._s(_vm.$ml.get("menu.handup")) }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _vm.showMapUp
+              ? _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-showmap",
+                    attrs: { to: { name: "home" } }
+                  },
+                  [
+                    _c("span", { staticClass: "icon-map" }),
+                    _vm._v(" "),
+                    _c("span", {
+                      domProps: {
+                        textContent: _vm._s(_vm.$ml.get("menu.mapup"))
+                      }
+                    })
+                  ]
+                )
+              : _vm._e()
+          ],
+          1
         )
       ]),
       _vm._v(" "),
-      _vm.showHandUp
-        ? _c(
+      _c("div", { staticClass: "col-12 bottombar-links" }, [
+        _c("div", { staticClass: "row align-items-start" }, [
+          _c(
             "div",
-            { staticClass: "btn btn-handup", on: { click: _vm.changeState } },
+            { staticClass: "col-6" },
             [
-              _c("strong", {
-                domProps: { textContent: _vm._s(_vm.$ml.get("menu.handup")) }
+              _c("router-link", {
+                attrs: { to: "/" },
+                domProps: { textContent: _vm._s(_vm.$ml.get("menu.mapa")) }
               }),
               _vm._v(" "),
-              _c("span", { staticClass: "icon-hand-stop" })
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.showHandUp
-        ? _c(
-            "div",
-            {
-              staticClass: "btn btn-needup",
-              on: { click: _vm.changeStateMember }
-            },
-            [
-              _c("strong", {
-                domProps: { textContent: _vm._s(_vm.$ml.get("menu.needup")) }
+              _c("router-link", {
+                attrs: { to: "/sobre" },
+                domProps: { textContent: _vm._s(_vm.$ml.get("menu.sobre")) }
+              }),
+              _vm._v(" "),
+              _c("router-link", {
+                attrs: { to: "/fique-seguro" },
+                domProps: { textContent: _vm._s(_vm.$ml.get("menu.seguranca")) }
               })
-            ]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.showMapUp
-        ? _c(
-            "router-link",
-            { staticClass: "btn btn-handup", attrs: { to: { name: "home" } } },
-            [
-              _c("strong", {
-                domProps: { textContent: _vm._s(_vm.$ml.get("menu.mapup")) }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "icon-map" })
-            ]
-          )
-        : _vm._e()
-    ],
-    1
-  )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-6 bottombar-flags" }, [
+            _c(
+              "a",
+              {
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    return _vm.$ml.change("portuguese")
+                  }
+                }
+              },
+              [_vm._v("Português")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    return _vm.$ml.change("spanish")
+                  }
+                }
+              },
+              [_vm._v("English")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                attrs: { href: "#" },
+                on: {
+                  click: function($event) {
+                    return _vm.$ml.change("english")
+                  }
+                }
+              },
+              [_vm._v("Spanish")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row align-items-end" })
+      ])
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -26661,9 +26761,11 @@ var render = function() {
                 }
               },
               [
-                _c("MglNavigationControl", {
-                  attrs: { position: "bottom-right" }
-                }),
+                !_vm.isMobile
+                  ? _c("MglNavigationControl", {
+                      attrs: { position: _vm.positionControl }
+                    })
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "MglMarker",
@@ -26677,58 +26779,67 @@ var render = function() {
                   },
                   [
                     _c("MglPopup", { attrs: { showed: true } }, [
-                      _c(
-                        "div",
-                        { staticClass: "popup" },
-                        [
-                          _c("h3", {
-                            domProps: {
-                              textContent: _vm._s(
-                                _vm.$ml.get("home.map.marker.esta_aqui")
-                              )
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-active  btn-sm btn-white",
-                              attrs: { to: "/preciso-de-ajuda" },
-                              domProps: {
-                                textContent: _vm._s(_vm.$ml.get("menu.needup"))
-                              }
-                            },
-                            [_vm._v("Preciso de ajuda")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-sm btn-white",
-                              attrs: { to: "/posso-ajudar" },
-                              domProps: {
-                                textContent: _vm._s(_vm.$ml.get("menu.handup"))
-                              }
-                            },
-                            [_vm._v("Posso ajudar")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "router-link",
-                            {
-                              staticClass: "btn btn-sm btn-white",
-                              attrs: { to: "/negocio" },
-                              domProps: {
-                                textContent: _vm._s(
-                                  _vm.$ml.get("menu.marketup")
+                      _c("div", { staticClass: "popup" }, [
+                        _c("h3", {
+                          domProps: {
+                            textContent: _vm._s(
+                              _vm.$ml.get("home.map.marker.esta_aqui")
+                            )
+                          }
+                        }),
+                        _vm._v(" "),
+                        !_vm.isMobile
+                          ? _c(
+                              "div",
+                              {},
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    staticClass:
+                                      "btn btn-active  btn-sm btn-white",
+                                    attrs: { to: "/preciso-de-ajuda" },
+                                    domProps: {
+                                      textContent: _vm._s(
+                                        _vm.$ml.get("menu.needup")
+                                      )
+                                    }
+                                  },
+                                  [_vm._v("Preciso de ajuda")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "btn btn-sm btn-white",
+                                    attrs: { to: "/posso-ajudar" },
+                                    domProps: {
+                                      textContent: _vm._s(
+                                        _vm.$ml.get("menu.handup")
+                                      )
+                                    }
+                                  },
+                                  [_vm._v("Posso ajudar")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "btn btn-sm btn-white",
+                                    attrs: { to: "/negocio" },
+                                    domProps: {
+                                      textContent: _vm._s(
+                                        _vm.$ml.get("menu.marketup")
+                                      )
+                                    }
+                                  },
+                                  [_vm._v("Tenho um pequeno negócio")]
                                 )
-                              }
-                            },
-                            [_vm._v("Tenho um pequeno negócio")]
-                          )
-                        ],
-                        1
-                      )
+                              ],
+                              1
+                            )
+                          : _vm._e()
+                      ])
                     ])
                   ],
                   1
@@ -64063,6 +64174,40 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/helper.js":
+/*!********************************!*\
+  !*** ./resources/js/helper.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getLocation: function getLocation() {
+    return new Promise(function (resolve, reject) {
+      if (!("geolocation" in navigator)) {
+        reject(new Error('Geolocation is not available.'));
+      }
+
+      navigator.geolocation.getCurrentPosition(function (pos) {
+        resolve(pos);
+      }, function (err) {
+        reject(err);
+      });
+    });
+  },
+  locateMe: function locateMe() {
+    try {
+      return this.getLocation();
+    } catch (e) {
+      console.error(e);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/langs/en.json":
 /*!************************************!*\
   !*** ./resources/js/langs/en.json ***!
@@ -64092,7 +64237,7 @@ module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Acerca\",\
 /*! exports provided: menu, home, about, sidebar, store, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Sobre\",\"seguranca\":\"Segurança\",\"handup\":\"Posso ajudar\",\"needup\":\"Preciso de ajuda\",\"marketup\":\"Tenho um pequeno negócio\",\"mapup\":\"Ir ao mapa\",\"contato\":\"Contato\",\"voluntarios\":\"Voluntários\"},\"home\":{\"map\":{\"location\":\"use minha localização\",\"marker\":{\"esta_aqui\":\"Você está aqui\",\"drag\":\"Arraste o pin para o ponto aproximado\"},\"popup\":{\"type_volunteer\":\"Voluntário(a)\",\"type_user\":\"Solicitante\",\"type_doctor\":\"Psicólogo(a)\",\"type_store\":\"Pequeno Negócio\",\"talk_to\":\"Fale comigo por\",\"phone\":\"Telefone\",\"help_with\":\"posso ajudar com\",\"help_with_user\":\"preciso de ajuda com\",\"help\":{\"market\":\"Compras\",\"food\":\"Alimentação\",\"talk\":\"Posso conversar\",\"talk_2\":\"Preciso conversar\",\"health\":\"Farmácia\",\"dog\":\"Passear com o dog\"}}}},\"about\":{\"title\":\"Sobre\",\"text\":\"<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr> A ferramenta é open-source e está disponível no <a target='_blank' href='https:/github.com/nunesdev/TeAjudoMe'>Git hub</a>, você pode colaborar e enviar seu Pull request. Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>\"},\"sidebar\":{\"title\":\"Seus dados\",\"total\":{\"requests\":\"Pedidos\",\"volunteers\":\"Voluntários\",\"small_business\":\"Pequenos negócios\"},\"form\":{\"name\":\"Seu nome\",\"phone\":\"Telefone\",\"input\":{\"example\":\"Exemplo\",\"countrySelectorLabel\":\"Código\",\"countrySelectorError\":\"Escolha um código\",\"phoneNumberLabel\":\"Número de telefone\"},\"whatsapp\":\"Pode chamar via WhatsApp ?\",\"email\":\"E-mail\",\"city\":\"Cidade\",\"state\":\"Qual o seu estado\",\"subtitle\":\"Posso ajudar com:\",\"subtitle_2\":\"Preciso de ajuda com:\",\"i_am_doctor\":\"Sou psicológo\",\"document\":\"EX: CRP - 03/121212\",\"help\":{\"market\":\"Compras\",\"food\":\"Alimentação\",\"talk\":\"Posso conversar\",\"talk_2\":\"Preciso conversar\",\"health\":\"Farmácia\",\"dog\":\"Passear com o dog\",\"others\":\"Outras solicitações\"},\"truth\":\"Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários\",\"save\":\"Salvar\",\"msg\":{\"error\":\"Preencha com o que você pode ajudar :)\",\"error_2\":\"Preencha seu horário de funcionamento :)\",\"success\":\"Obrigado por fazer parte\",\"success_2\":\"Em breve alguém entrara em contato, qualquer dúvida nos chame pelo whatsapp\",\"error_truth\":\"Por favor confirme a veracidade dos dados\",\"error_location\":\"Precisamos da sua localização, permita e mova o PIN VERDE para atualizar\",\"error_document\":\"Por favor, insira seu CRP/CFP\"}},\"sponsor\":\"Obrigado mapbox por patrocinar o nosso mapa\"},\"store\":{\"title\":\"Dados do seu negócio\",\"form\":{\"subtitle\":\"Meu negócio é:\",\"name\":\"Nome do seu negócio\",\"owner\":\"Nome do responsável\",\"address\":\"Endereço do seu negócio\",\"help\":{\"others\":\"Outros\",\"others_placeholder\":\"Ex: Pizzaria, Costura etc\",\"market\":\"Mercado\",\"mechanical\":\"Mecânica\",\"food\":\"Restaurante / Padaria\",\"market_garden\":\"Feira Livre / Horta\",\"health\":\"Farmácia\"},\"available\":{\"title\":\"Horário de Funcionamento\",\"title_2\":\"Fazem entregas?\",\"anytime\":\"Todos os dias\",\"week\":\"Seg à Sexta\",\"weekend\":\"Fim de Semana\",\"anytime_hours\":\"24 Horas\",\"expedient\":\"9h ás 18h\",\"delivery\":\"Fazemos entregas\",\"others\":\"Outros horários?\",\"others_placeholder\":\"Ex: Seg à Sexta - 10h ás 15h\"}}}}");
+module.exports = JSON.parse("{\"menu\":{\"mapa\":\"Mapa\",\"sobre\":\"Sobre\",\"seguranca\":\"Segurança\",\"handup\":\"Posso ajudar\",\"needup\":\"Preciso de ajuda\",\"marketup\":\"Tenho um pequeno negócio\",\"mapup\":\"Ir ao mapa\",\"contato\":\"Contato\",\"voluntarios\":\"Voluntários\"},\"home\":{\"map\":{\"location\":\"use minha localização\",\"marker\":{\"esta_aqui\":\"Você está aqui\",\"drag\":\"Arraste o pin para o ponto aproximado\"},\"popup\":{\"type_volunteer\":\"Voluntário(a)\",\"type_user\":\"Solicitante\",\"type_doctor\":\"Psicólogo(a)\",\"type_store\":\"Pequeno Negócio\",\"talk_to\":\"Fale comigo por\",\"phone\":\"Telefone\",\"help_with\":\"posso ajudar com\",\"help_with_user\":\"preciso de ajuda com\",\"help\":{\"market\":\"Compras\",\"food\":\"Alimentação\",\"talk\":\"Posso conversar\",\"talk_2\":\"Preciso conversar\",\"health\":\"Farmácia\",\"dog\":\"Passear com o dog\"}}}},\"about\":{\"title\":\"Sobre\",\"text\":\"<p>O TeAjudoME foi criado exclusivamente por causa da pandemia COVID-19 (novo coronavirus),<br/>com o intuíto de conectar pessoas que querem ajudar e com quem precisa de ajuda com compras no mercado, farmácia ou apenas conversar, e principalmente pessoas no grupo de risco.<br/>A plataforma também conta com o auxílio de psicólogos devidamente registrados no conselho regional de psicologia.<hr> A ferramenta é open-source e está disponível no <a target='_blank' href='https:/github.com/nunesdev/TeAjudoMe'>Git hub</a>, você pode colaborar e enviar seu Pull request. Para entrar em contato: <a href='mailto:teajudome@gmail.com'>teajudome@gmail.com</a></p><hr><div>Ícones feitos por <a href='https://www.flaticon.com/br/autores/freepik' title='Freepik'>Freepik</a> from <a href='https://www.flaticon.com/br/' title='Flaticon'>www.flaticon.com</a></div>\"},\"sidebar\":{\"title\":\"Seus dados\",\"total\":{\"requests\":\"Pedidos\",\"volunteers\":\"Voluntários\",\"small_business\":\"Pequenos negócios\",\"small_business_mobile\":\"Peq. negócios\"},\"form\":{\"name\":\"Seu nome\",\"phone\":\"Telefone\",\"input\":{\"example\":\"Exemplo\",\"countrySelectorLabel\":\"Código\",\"countrySelectorError\":\"Escolha um código\",\"phoneNumberLabel\":\"Número de telefone\"},\"whatsapp\":\"Pode chamar via WhatsApp ?\",\"email\":\"E-mail\",\"city\":\"Cidade\",\"state\":\"Qual o seu estado\",\"subtitle\":\"Posso ajudar com:\",\"subtitle_2\":\"Preciso de ajuda com:\",\"i_am_doctor\":\"Sou psicológo\",\"document\":\"EX: CRP - 03/121212\",\"help\":{\"market\":\"Compras\",\"food\":\"Alimentação\",\"talk\":\"Posso conversar\",\"talk_2\":\"Preciso conversar\",\"health\":\"Farmácia\",\"dog\":\"Passear com o dog\",\"others\":\"Outras solicitações\"},\"truth\":\"Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários\",\"save\":\"Salvar\",\"msg\":{\"error\":\"Preencha com o que você pode ajudar :)\",\"error_2\":\"Preencha seu horário de funcionamento :)\",\"success\":\"Obrigado por fazer parte\",\"success_2\":\"Em breve alguém entrara em contato, qualquer dúvida nos chame pelo whatsapp\",\"error_truth\":\"Por favor confirme a veracidade dos dados\",\"error_location\":\"Precisamos da sua localização, permita e mova o PIN VERDE para atualizar\",\"error_document\":\"Por favor, insira seu CRP/CFP\"}},\"sponsor\":\"Obrigado mapbox por patrocinar o nosso mapa\"},\"store\":{\"title\":\"Dados do seu negócio\",\"form\":{\"subtitle\":\"Meu negócio é:\",\"name\":\"Nome do seu negócio\",\"owner\":\"Nome do responsável\",\"address\":\"Endereço do seu negócio\",\"help\":{\"others\":\"Outros\",\"others_placeholder\":\"Ex: Pizzaria, Costura etc\",\"market\":\"Mercado\",\"mechanical\":\"Mecânica\",\"food\":\"Restaurante / Padaria\",\"market_garden\":\"Feira Livre / Horta\",\"health\":\"Farmácia\"},\"available\":{\"title\":\"Horário de Funcionamento\",\"title_2\":\"Fazem entregas?\",\"anytime\":\"Todos os dias\",\"week\":\"Seg à Sexta\",\"weekend\":\"Fim de Semana\",\"anytime_hours\":\"24 Horas\",\"expedient\":\"9h ás 18h\",\"delivery\":\"Fazemos entregas\",\"others\":\"Outros horários?\",\"others_placeholder\":\"Ex: Seg à Sexta - 10h ás 15h\"}}}}");
 
 /***/ }),
 
