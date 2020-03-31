@@ -7757,13 +7757,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isLocated: this.$cookies.get('isLocated') ? true : false,
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/brunodevsp/ck8561s7l04me1imoc1r5jk3x',
-      coordinates: this.$cookies.get('isLocated') ? [this.$cookies.get('isLocated').lng, this.$cookies.get('isLocated').lat] : [-60.943904, -10.5705057],
-      zoom: this.$cookies.get('isLocated') ? 12.5 : 2,
+      coordinates: [-60.943904, -10.5705057],
+      zoom: 2,
       positionControl: mobile_device_detect__WEBPACK_IMPORTED_MODULE_1__["isMobile"] ? 'top-right' : 'bottom-right'
     };
   },
   created: function created() {
-    if (!this.$cookies.get('isLocated')) this.locateMe();
+    this.locateMe();
     this.mapbox = mapbox_gl__WEBPACK_IMPORTED_MODULE_2___default.a;
   },
   computed: {
@@ -7819,11 +7819,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
+                console.log('a');
+                _context2.prev = 1;
+                _context2.next = 4;
                 return _this2.getLocation();
 
-              case 3:
+              case 4:
                 _this2.location = _context2.sent;
 
                 _this2.actionSetNewPosition({
@@ -7833,20 +7834,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                 _this2.coordinates = [_this2.location.coords.longitude, _this2.location.coords.latitude];
                 _this2.zoom = 14.95;
-                _context2.next = 12;
+                _context2.next = 13;
                 break;
 
-              case 9:
-                _context2.prev = 9;
-                _context2.t0 = _context2["catch"](0);
+              case 10:
+                _context2.prev = 10;
+                _context2.t0 = _context2["catch"](1);
                 console.error(_context2.t0);
 
-              case 12:
+              case 13:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee2, null, [[1, 10]]);
       }))();
     },
     onSidebarOpen: function onSidebarOpen(v) {
