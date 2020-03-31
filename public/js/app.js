@@ -5490,7 +5490,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_phone_number_input__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_phone_number_input__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-phone-number-input/dist/vue-phone-number-input.css */ "./node_modules/vue-phone-number-input/dist/vue-phone-number-input.css");
 /* harmony import */ var vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @components/Map */ "./resources/js/components/Map.vue");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../helper */ "./resources/js/helper.js");
+/* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @components/Map */ "./resources/js/components/Map.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5625,12 +5626,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AddMember',
   components: {
     GoogleLogin: vue_google_login__WEBPACK_IMPORTED_MODULE_4___default.a,
     VuePhoneNumberInput: vue_phone_number_input__WEBPACK_IMPORTED_MODULE_5___default.a,
-    Map: _components_Map__WEBPACK_IMPORTED_MODULE_7__["default"]
+    Map: _components_Map__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   data: function data() {
     return {
@@ -5650,10 +5652,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   created: function created() {
+    if (this.isMobile) this.getLocationMobile();
     if (this.getMarkerPosition().lat && this.getMarkerPosition().lng) this.isLocated = true;
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])(['getMarkerPosition']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])(['actionSetNewUser', 'actionSetNewPosition']), {
-    onSubmit: function onSubmit(e) {
+    getLocationMobile: function getLocationMobile() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -5662,114 +5665,145 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                console.log('Mobile', _this.isMobile);
+                _context.next = 3;
+                return _helper__WEBPACK_IMPORTED_MODULE_7__["default"].locateMe();
+
+              case 3:
+                payload = _context.sent;
+
+                _this.actionSetNewPosition({
+                  'lng': payload.coords.longitude,
+                  'lat': payload.coords.latitude
+                });
+
+                if (_this.getMarkerPosition().lat && _this.getMarkerPosition().lng) _this.isLocated = true;
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    onSubmit: function onSubmit(e) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
                 e.preventDefault();
 
-                if (!(_this.getMarkerPosition().lat && _this.getMarkerPosition().lng)) {
-                  _context.next = 6;
+                if (!(_this2.getMarkerPosition().lat && _this2.getMarkerPosition().lng)) {
+                  _context2.next = 6;
                   break;
                 }
 
-                _this.info.location.lat = _this.getMarkerPosition().lat;
-                _this.info.location.lon = _this.getMarkerPosition().lng;
-                _context.next = 10;
+                _this2.info.location.lat = _this2.getMarkerPosition().lat;
+                _this2.info.location.lon = _this2.getMarkerPosition().lng;
+                _context2.next = 10;
                 break;
 
               case 6:
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error_location'),
+                  text: _this2.$ml.get('sidebar.form.msg.error_location'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_member', {
+                _this2.$gtag.event('add_member', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'location'
                 });
 
-                _this.isLocated = false;
-                return _context.abrupt("return");
+                _this2.isLocated = false;
+                return _context2.abrupt("return");
 
               case 10:
-                if (!(!_this.info.support.market && !_this.info.support.food && !_this.info.support.health && !_this.info.support.talk)) {
-                  _context.next = 14;
+                if (!(!_this2.info.support.market && !_this2.info.support.food && !_this2.info.support.health && !_this2.info.support.talk)) {
+                  _context2.next = 14;
                   break;
                 }
 
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error'),
+                  text: _this2.$ml.get('sidebar.form.msg.error'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_member', {
+                _this2.$gtag.event('add_member', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'support'
                 });
 
-                return _context.abrupt("return");
+                return _context2.abrupt("return");
 
               case 14:
-                if (_this.info.support.veracidade) {
-                  _context.next = 18;
+                if (_this2.info.support.veracidade) {
+                  _context2.next = 18;
                   break;
                 }
 
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error_truth'),
+                  text: _this2.$ml.get('sidebar.form.msg.error_truth'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_member', {
+                _this2.$gtag.event('add_member', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'check_veracidade'
                 });
 
-                return _context.abrupt("return");
+                return _context2.abrupt("return");
 
               case 18:
-                _context.next = 20;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api', _this.info);
+                _context2.next = 20;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api', _this2.info);
 
               case 20:
-                payload = _context.sent;
+                payload = _context2.sent;
 
                 if (payload.data.status) {
-                  _this.$notify({
+                  _this2.$notify({
                     group: 'foo',
                     title: 'Pronto!',
-                    text: _this.$ml.get('sidebar.form.msg.success_2'),
+                    text: _this2.$ml.get('sidebar.form.msg.success_2'),
                     type: 'success'
                   });
 
-                  _this.actionSetNewUser(payload.data.data);
+                  _this2.actionSetNewUser(payload.data.data);
 
-                  _this.$router.push('/');
+                  _this2.$router.push('/');
 
-                  _this.$gtag.event('add_member', {
+                  _this2.$gtag.event('add_member', {
                     'event_category': 'success',
                     'event_label': 'ok_ao_inserir',
-                    'event_value': _this.info
+                    'event_value': _this2.info
                   });
 
-                  _this.info = {
+                  _this2.info = {
                     location: {},
                     support: {}
                   };
                 } else {
-                  _this.$gtag.event('add_member', {
+                  _this2.$gtag.event('add_member', {
                     'event_category': 'error',
                     'event_label': 'erro_ao_inserir',
-                    'event_value': _this.info
+                    'event_value': _this2.info
                   });
 
-                  _this.$notify({
+                  _this2.$notify({
                     group: 'foo',
                     title: 'Ops!',
                     text: payload.data.message,
@@ -5778,41 +5812,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   });
                 }
 
-                return _context.abrupt("return", false);
+                return _context2.abrupt("return", false);
 
               case 23:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    recaptcha: function recaptcha() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var token;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return _this2.$recaptchaLoaded();
-
-              case 2:
-                _context2.next = 4;
-                return _this2.$recaptcha('login');
-
-              case 4:
-                token = _context2.sent;
-
-              case 5:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    recaptcha: function recaptcha() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var token;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _this3.$recaptchaLoaded();
+
+              case 2:
+                _context3.next = 4;
+                return _this3.$recaptcha('login');
+
+              case 4:
+                token = _context3.sent;
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     },
     updatePhone: function updatePhone(v) {
@@ -6375,7 +6409,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_phone_number_input__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_phone_number_input__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-phone-number-input/dist/vue-phone-number-input.css */ "./node_modules/vue-phone-number-input/dist/vue-phone-number-input.css");
 /* harmony import */ var vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_phone_number_input_dist_vue_phone_number_input_css__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @components/Map */ "./resources/js/components/Map.vue");
+/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../helper */ "./resources/js/helper.js");
+/* harmony import */ var _components_Map__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @components/Map */ "./resources/js/components/Map.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6519,12 +6554,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AddVoluntario',
   components: {
     GoogleLogin: vue_google_login__WEBPACK_IMPORTED_MODULE_4___default.a,
     VuePhoneNumberInput: vue_phone_number_input__WEBPACK_IMPORTED_MODULE_5___default.a,
-    Map: _components_Map__WEBPACK_IMPORTED_MODULE_7__["default"]
+    Map: _components_Map__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   data: function data() {
     return {
@@ -6544,10 +6580,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   created: function created() {
+    if (this.isMobile) this.getLocationMobile();
     if (this.getMarkerPosition().lat && this.getMarkerPosition().lng) this.isLocated = true;
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapGetters"])(['getMarkerPosition']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])(['actionSetNewUser', 'actionSetNewPosition']), {
-    onSubmit: function onSubmit(e) {
+    getLocationMobile: function getLocationMobile() {
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
@@ -6556,135 +6593,166 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                console.log('Mobile', _this.isMobile);
+                _context.next = 3;
+                return _helper__WEBPACK_IMPORTED_MODULE_7__["default"].locateMe();
+
+              case 3:
+                payload = _context.sent;
+
+                _this.actionSetNewPosition({
+                  'lng': payload.coords.longitude,
+                  'lat': payload.coords.latitude
+                });
+
+                if (_this.getMarkerPosition().lat && _this.getMarkerPosition().lng) _this.isLocated = true;
+
+              case 6:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    onSubmit: function onSubmit(e) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var payload;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
                 e.preventDefault();
 
-                if (!(_this.getMarkerPosition().lat && _this.getMarkerPosition().lng)) {
-                  _context.next = 6;
+                if (!(_this2.getMarkerPosition().lat && _this2.getMarkerPosition().lng)) {
+                  _context2.next = 6;
                   break;
                 }
 
-                _this.info.location.lat = _this.getMarkerPosition().lat;
-                _this.info.location.lon = _this.getMarkerPosition().lng;
-                _context.next = 10;
+                _this2.info.location.lat = _this2.getMarkerPosition().lat;
+                _this2.info.location.lon = _this2.getMarkerPosition().lng;
+                _context2.next = 10;
                 break;
 
               case 6:
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error_location'),
+                  text: _this2.$ml.get('sidebar.form.msg.error_location'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_voluntario', {
+                _this2.$gtag.event('add_voluntario', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'location'
                 });
 
-                _this.isLocated = false;
-                return _context.abrupt("return");
+                _this2.isLocated = false;
+                return _context2.abrupt("return");
 
               case 10:
-                if (!(!_this.info.support.market && !_this.info.support.food && !_this.info.support.health && !_this.info.support.talk)) {
-                  _context.next = 14;
+                if (!(!_this2.info.support.market && !_this2.info.support.food && !_this2.info.support.health && !_this2.info.support.talk)) {
+                  _context2.next = 14;
                   break;
                 }
 
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error'),
+                  text: _this2.$ml.get('sidebar.form.msg.error'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_voluntario', {
+                _this2.$gtag.event('add_voluntario', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'support'
                 });
 
-                return _context.abrupt("return");
+                return _context2.abrupt("return");
 
               case 14:
-                if (!(_this.info.support.psicologo && !_this.info.support.document)) {
-                  _context.next = 18;
+                if (!(_this2.info.support.psicologo && !_this2.info.support.document)) {
+                  _context2.next = 18;
                   break;
                 }
 
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error_document'),
+                  text: _this2.$ml.get('sidebar.form.msg.error_document'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_voluntario', {
+                _this2.$gtag.event('add_voluntario', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'document'
                 });
 
-                return _context.abrupt("return");
+                return _context2.abrupt("return");
 
               case 18:
-                if (_this.info.support.veracidade) {
-                  _context.next = 22;
+                if (_this2.info.support.veracidade) {
+                  _context2.next = 22;
                   break;
                 }
 
-                _this.$notify({
+                _this2.$notify({
                   group: 'foo',
                   title: 'Ops!',
-                  text: _this.$ml.get('sidebar.form.msg.error_truth'),
+                  text: _this2.$ml.get('sidebar.form.msg.error_truth'),
                   type: 'warning'
                 });
 
-                _this.$gtag.event('add_voluntario', {
+                _this2.$gtag.event('add_voluntario', {
                   'event_category': 'warning',
                   'event_label': 'field',
                   'event_value': 'check_veracidade'
                 });
 
-                return _context.abrupt("return");
+                return _context2.abrupt("return");
 
               case 22:
-                _context.next = 24;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api', _this.info);
+                _context2.next = 24;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api', _this2.info);
 
               case 24:
-                payload = _context.sent;
+                payload = _context2.sent;
 
                 if (payload.data.status) {
-                  _this.$notify({
+                  _this2.$notify({
                     group: 'foo',
                     title: 'Yeah!',
-                    text: _this.$ml.get('sidebar.form.msg.success'),
+                    text: _this2.$ml.get('sidebar.form.msg.success'),
                     type: 'success'
                   });
 
-                  _this.actionSetNewUser(payload.data.data);
+                  _this2.actionSetNewUser(payload.data.data);
 
-                  _this.$router.push('/');
+                  _this2.$router.push('/');
 
-                  _this.$gtag.event('add_voluntario', {
+                  _this2.$gtag.event('add_voluntario', {
                     'event_category': 'success',
                     'event_label': 'ok_ao_inserir',
-                    'event_value': _this.info
+                    'event_value': _this2.info
                   });
 
-                  _this.info = {
+                  _this2.info = {
                     location: {},
                     support: {}
                   };
                 } else {
-                  _this.$gtag.event('add_voluntario', {
+                  _this2.$gtag.event('add_voluntario', {
                     'event_category': 'error',
                     'event_label': 'erro_ao_inserir',
-                    'event_value': _this.info
+                    'event_value': _this2.info
                   });
 
-                  _this.$notify({
+                  _this2.$notify({
                     group: 'foo',
                     title: 'Ops!',
                     text: payload.data.message,
@@ -6693,41 +6761,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                   });
                 }
 
-                return _context.abrupt("return", false);
+                return _context2.abrupt("return", false);
 
               case 27:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    recaptcha: function recaptcha() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var token;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return _this2.$recaptchaLoaded();
-
-              case 2:
-                _context2.next = 4;
-                return _this2.$recaptcha('login');
-
-              case 4:
-                token = _context2.sent;
-
-              case 5:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    recaptcha: function recaptcha() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var token;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _this3.$recaptchaLoaded();
+
+              case 2:
+                _context3.next = 4;
+                return _this3.$recaptcha('login');
+
+              case 4:
+                token = _context3.sent;
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     },
     updatePhone: function updatePhone(v) {
@@ -6759,6 +6827,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
 //
 //
 //
@@ -20443,6 +20514,125 @@ if (GlobalVue) {
 
 /***/ }),
 
+/***/ "./node_modules/vue-body-class/dist/index.js":
+/*!***************************************************!*\
+  !*** ./node_modules/vue-body-class/dist/index.js ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var VueBodyClass = function () {
+    function VueBodyClass(routes) {
+        _classCallCheck(this, VueBodyClass);
+
+        this.bodyClass = document.body.className;
+        this.routes = routes;
+    }
+
+    _createClass(VueBodyClass, [{
+        key: 'guard',
+        value: function guard(to, next) {
+
+            var parent = this.routes;
+            var matched = this.parseMatched(to.matched);
+            var additionalClassName = "";
+
+            //is a home page?
+            if (to.path == '/') {
+
+                additionalClassName = this.updateClassFromRoute(additionalClassName, to);
+            }
+            //not homepage
+            else if (matched.length > 0) {
+
+                    for (var index in matched) {
+
+                        var routes = parent.children ? parent.children : parent;
+                        var found = this.findMatchInRoutesByPath(routes, matched[index]);
+
+                        if (found) {
+
+                            parent = found;
+                            additionalClassName = this.updateClassFromRoute(additionalClassName, found);
+                        }
+                    }
+                }
+
+            document.body.className = (this.bodyClass + additionalClassName).trim();
+
+            next();
+        }
+    }, {
+        key: 'parseMatched',
+        value: function parseMatched(matchedArray) {
+
+            var matched = [];
+
+            for (var index in matchedArray) {
+
+                var prev = matched.join('/');
+
+                matched.push(matchedArray[index].path.replace(/^\/|\/$/g, '').replace(prev, '').replace(/^\/|\/$/g, ''));
+            }
+
+            return matched;
+        }
+    }, {
+        key: 'findMatchInRoutesByPath',
+        value: function findMatchInRoutesByPath(routes, matchedItem) {
+
+            return routes.find(function (o) {
+
+                return o.path.replace(/^\/|\/$/g, '') == matchedItem;
+            });
+        }
+    }, {
+        key: 'getClassForRoute',
+        value: function getClassForRoute(route) {
+
+            return route.meta ? route.meta.bodyClass : null;
+        }
+    }, {
+        key: 'updateClassFromRoute',
+        value: function updateClassFromRoute(className, route) {
+
+            var routeClass = this.getClassForRoute(route);
+
+            if (routeClass) {
+
+                var routeBodyClass = routeClass.replace(/^!/, '');
+
+                if (routeClass.indexOf('!') === 0) {
+
+                    className = " " + routeBodyClass;
+                } else {
+
+                    className += " " + routeBodyClass;
+                }
+            }
+
+            return className;
+        }
+    }]);
+
+    return VueBodyClass;
+}();
+
+exports.default = VueBodyClass;
+
+/***/ }),
+
 /***/ "./node_modules/vue-cookies/vue-cookies.js":
 /*!*************************************************!*\
   !*** ./node_modules/vue-cookies/vue-cookies.js ***!
@@ -22021,14 +22211,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c(
-        "div",
-        { staticClass: "col-7" },
-        [_c("Map", { on: { onDragEnd: _vm.onDragEnd } })],
-        1
-      ),
+      !_vm.isMobile
+        ? _c(
+            "div",
+            { staticClass: "col-md-7 col-sm-12" },
+            [_c("Map", { on: { onDragEnd: _vm.onDragEnd } })],
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "col-5" }, [
+      _c("div", { staticClass: "col-md-5 col-sm-12" }, [
         _c("div", { staticClass: "container" }, [
           !_vm.isLocated
             ? _c("div", { staticClass: "overlay" }, [
@@ -22887,7 +23079,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-info",
+                        staticClass: "btn btn-block btn-info",
                         class: { disabled: !_vm.info.name },
                         attrs: {
                           type: "submit",
@@ -24459,14 +24651,16 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c(
-        "div",
-        { staticClass: "col-7" },
-        [_c("Map", { on: { onDragEnd: _vm.onDragEnd } })],
-        1
-      ),
+      !_vm.isMobile
+        ? _c(
+            "div",
+            { staticClass: "col-md-7 col-sm-12" },
+            [_c("Map", { on: { onDragEnd: _vm.onDragEnd } })],
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "col-5" }, [
+      _c("div", { staticClass: "col-md-5 col-sm-12" }, [
         _c("div", { staticClass: "container" }, [
           !_vm.isLocated
             ? _c("div", { staticClass: "overlay" }, [
@@ -24504,7 +24698,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-info",
+                        staticClass: "btn btn-block btn-info",
                         class: { disabled: !_vm.info.name },
                         attrs: {
                           type: "submit",
@@ -25404,6 +25598,32 @@ var render = function() {
           "div",
           { staticClass: "col-12" },
           [
+            _vm.showMapUp
+              ? _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-showmap",
+                    attrs: { to: { name: "home" } }
+                  },
+                  [
+                    _c("span", { staticClass: "icon-map" }),
+                    _vm._v(" "),
+                    _c("span", {
+                      domProps: {
+                        textContent: _vm._s(_vm.$ml.get("menu.mapup"))
+                      }
+                    })
+                  ]
+                )
+              : _vm._e()
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "col-12" },
+          [
             _c(
               "router-link",
               {
@@ -25439,26 +25659,7 @@ var render = function() {
                   domProps: { textContent: _vm._s(_vm.$ml.get("menu.handup")) }
                 })
               ]
-            ),
-            _vm._v(" "),
-            _vm.showMapUp
-              ? _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-showmap",
-                    attrs: { to: { name: "home" } }
-                  },
-                  [
-                    _c("span", { staticClass: "icon-map" }),
-                    _vm._v(" "),
-                    _c("span", {
-                      domProps: {
-                        textContent: _vm._s(_vm.$ml.get("menu.mapup"))
-                      }
-                    })
-                  ]
-                )
-              : _vm._e()
+            )
           ],
           1
         )
@@ -64286,12 +64487,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _views_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../views/Home */ "./resources/js/views/Home.vue");
-/* harmony import */ var _views_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/About */ "./resources/js/views/About.vue");
-/* harmony import */ var _views_StaySafe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/StaySafe */ "./resources/js/views/StaySafe.vue");
-/* harmony import */ var _views_Store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/Store */ "./resources/js/views/Store.vue");
-/* harmony import */ var _views_NeedHelp__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/NeedHelp */ "./resources/js/views/NeedHelp.vue");
-/* harmony import */ var _views_Volunteer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../views/Volunteer */ "./resources/js/views/Volunteer.vue");
+/* harmony import */ var vue_body_class__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-body-class */ "./node_modules/vue-body-class/dist/index.js");
+/* harmony import */ var vue_body_class__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_body_class__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _views_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/Home */ "./resources/js/views/Home.vue");
+/* harmony import */ var _views_About__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/About */ "./resources/js/views/About.vue");
+/* harmony import */ var _views_StaySafe__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/StaySafe */ "./resources/js/views/StaySafe.vue");
+/* harmony import */ var _views_Store__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/Store */ "./resources/js/views/Store.vue");
+/* harmony import */ var _views_NeedHelp__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../views/NeedHelp */ "./resources/js/views/NeedHelp.vue");
+/* harmony import */ var _views_Volunteer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../views/Volunteer */ "./resources/js/views/Volunteer.vue");
+
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -64301,33 +64505,57 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  routes: [{
-    path: '/',
-    name: 'home',
-    component: _views_Home__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }, {
-    path: '/fique-seguro',
-    component: _views_StaySafe__WEBPACK_IMPORTED_MODULE_4__["default"],
-    name: 'seguranca'
-  }, {
-    path: '/sobre',
-    component: _views_About__WEBPACK_IMPORTED_MODULE_3__["default"],
-    name: 'sobre'
-  }, {
-    path: '/negocio',
-    component: _views_Store__WEBPACK_IMPORTED_MODULE_5__["default"],
-    name: 'Negócio'
-  }, {
-    path: '/preciso-de-ajuda',
-    component: _views_NeedHelp__WEBPACK_IMPORTED_MODULE_6__["default"],
-    name: 'Preciso de Ajuda'
-  }, {
-    path: '/posso-ajudar',
-    component: _views_Volunteer__WEBPACK_IMPORTED_MODULE_7__["default"],
-    name: 'Posso Ajudar'
-  }]
-}));
+var routes = [{
+  path: '/',
+  name: 'home',
+  component: _views_Home__WEBPACK_IMPORTED_MODULE_3__["default"],
+  meta: {
+    bodyClass: 'dashboard'
+  }
+}, {
+  path: '/fique-seguro',
+  component: _views_StaySafe__WEBPACK_IMPORTED_MODULE_5__["default"],
+  name: 'seguranca',
+  meta: {
+    bodyClass: 'staysafe'
+  }
+}, {
+  path: '/sobre',
+  component: _views_About__WEBPACK_IMPORTED_MODULE_4__["default"],
+  name: 'sobre',
+  meta: {
+    bodyClass: 'about'
+  }
+}, {
+  path: '/negocio',
+  component: _views_Store__WEBPACK_IMPORTED_MODULE_6__["default"],
+  name: 'Negócio',
+  meta: {
+    bodyClass: 'small_business'
+  }
+}, {
+  path: '/preciso-de-ajuda',
+  component: _views_NeedHelp__WEBPACK_IMPORTED_MODULE_7__["default"],
+  name: 'Preciso de Ajuda',
+  meta: {
+    bodyClass: 'needhelp'
+  }
+}, {
+  path: '/posso-ajudar',
+  component: _views_Volunteer__WEBPACK_IMPORTED_MODULE_8__["default"],
+  name: 'Posso Ajudar',
+  meta: {
+    bodyClass: 'canhelp'
+  }
+}];
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  routes: routes
+});
+var vueBodyClass = new vue_body_class__WEBPACK_IMPORTED_MODULE_2___default.a(routes);
+router.beforeEach(function (to, from, next) {
+  vueBodyClass.guard(to, next);
+});
+/* harmony default export */ __webpack_exports__["default"] = (router);
 
 /***/ }),
 

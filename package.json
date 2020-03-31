@@ -32,6 +32,7 @@
         "mobile-device-detect": "^0.3.3",
         "reset-css": "^5.0.1",
         "v-tooltip": "^2.0.3",
+        "vue-body-class": "^3.0.2",
         "vue-cookies": "^1.7.0",
         "vue-google-login": "^2.0.3",
         "vue-gtag": "^1.6.2",

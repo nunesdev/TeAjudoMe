@@ -43,7 +43,7 @@ body {
     font-size: 16px;
 
     @media only screen and (max-width: 600px) {
-      padding-top: 80px;
+      padding-top: 20px;
       padding-right: 0;
     }
   }
@@ -72,10 +72,12 @@ body {
     margin-left: 1rem;
   }
 
-  // .grecaptcha-badge {
-  //   bottom: 95px!important;
-  //   height: 40px!important;
-  // }
+  .grecaptcha-badge {
+    @media only screen and (max-width: 600px) {
+      bottom: 0px!important;
+      height: 40px!important;
+    }
+  }
   .overlay {
     position: absolute;
     width: 100%;

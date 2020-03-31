@@ -14,7 +14,7 @@
 
             <form  class="form-horizontal" action="/api" v-on:submit.prevent="onSubmit" method="post">
               <div class="form-group text-right" v-if="info.name">
-                <button type="submit" class="btn btn-info" :disabled="!info.name"  :class="{'disabled':!info.name}" name="button">Salvar</button>
+                <button type="submit" class="btn btn-block btn-info" :disabled="!info.name"  :class="{'disabled':!info.name}" name="button">Salvar</button>
               </div>
 
               <div class="form-group">

@@ -2,11 +2,11 @@
     <div class="">
       <div class="row justify-content-center">
 
-        <div class="col-7">
+        <div v-if="!isMobile" class="col-md-7 col-sm-12">
           <Map @onDragEnd="onDragEnd"></Map>
         </div>
 
-        <div class="col-5">
+        <div class="col-md-5 col-sm-12">
           <div class="container">
             <div class="overlay" v-if="!isLocated">
               <span v-text="$ml.get('sidebar.form.msg.error_location')"></span>
@@ -16,7 +16,7 @@
 
             <form  class="form-horizontal" action="/api" v-on:submit.prevent="onSubmit" method="post">
               <div class="form-group text-right" v-if="info.name">
-                <button type="submit" class="btn btn-info" :disabled="!info.name"  :class="{'disabled':!info.name}" name="button">Salvar</button>
+                <button type="submit" class="btn btn-block btn-info" :disabled="!info.name"  :class="{'disabled':!info.name}" name="button">Salvar</button>
               </div>
               <div class="form-group">
                  <input type="text" class="form-control" v-model="info.name" name="name" :placeholder="$ml.get('sidebar.form.name')"  required>
@@ -131,6 +131,8 @@ import GoogleLogin from 'vue-google-login';
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 
+import Helper from '../../helper'
+
 import Map from '@components/Map'
 
 export default {
@@ -159,6 +161,9 @@ export default {
       }
     },
     created() {
+      if(this.isMobile)
+        this.getLocationMobile();
+
       if(this.getMarkerPosition().lat && this.getMarkerPosition().lng)
         this.isLocated = true
     },
@@ -170,6 +175,19 @@ export default {
         'actionSetNewUser',
         'actionSetNewPosition'
       ]),
+
+      async getLocationMobile() {
+        console.log('Mobile',this.isMobile);
+        const payload = await Helper.locateMe()
+
+        this.actionSetNewPosition({
+          'lng': payload.coords.longitude,
+          'lat': payload.coords.latitude
+        });
+
+        if(this.getMarkerPosition().lat && this.getMarkerPosition().lng)
+          this.isLocated = true
+      },
 
       async onSubmit(e) {
         e.preventDefault();

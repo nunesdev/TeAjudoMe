@@ -12329,6 +12329,19 @@ a.text-dark:focus {
   background: #fff;
 }
 
+.small_business .bottombar,
+.needhelp .bottombar,
+.canhelp .bottombar {
+  top: -60px;
+  width: 100%;
+}
+
+.small_business .bottombar--actions,
+.needhelp .bottombar--actions,
+.canhelp .bottombar--actions {
+  bottom: -140px;
+}
+
 .bottombar {
   background: #fff;
   position: fixed;
@@ -12340,6 +12353,7 @@ a.text-dark:focus {
   box-shadow: 2px 2px 32px -13px #b8b8b8;
   left: 50%;
   transform: translate(-50%);
+  transition: all 0.2s ease-in;
 }
 
 .bottombar.active {
@@ -12483,6 +12497,7 @@ a.text-dark:focus {
   padding: 10px;
   z-index: 3;
   box-shadow: 2px -5px 32px -13px #b8b8b8;
+  transition: all 0.2s ease-in;
 }
 
 .bottombar--actions .btn {
@@ -12809,7 +12824,7 @@ body .content {
 
 @media only screen and (max-width: 600px) {
   body .content {
-    padding-top: 80px;
+    padding-top: 20px;
     padding-right: 0;
   }
 }
@@ -12838,6 +12853,13 @@ body footer .sponsors small {
 body .list {
   list-style: circle;
   margin-left: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  body .grecaptcha-badge {
+    bottom: 0px !important;
+    height: 40px !important;
+  }
 }
 
 body .overlay {

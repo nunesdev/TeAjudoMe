@@ -1,3 +1,14 @@
+
+.small_business, .needhelp, .canhelp {
+  .bottombar {
+    top: -60px;
+    width: 100%;
+  }
+  .bottombar--actions {
+    bottom: -140px;
+  }
+}
+
 .bottombar {
 
   background: $white;
@@ -12,6 +23,7 @@
   box-shadow: 2px 2px 32px -13px rgba(184,184,184,1);
   left: 50%;
   transform: translate(-50%);
+  transition: all .2s ease-in;
 
   &.active {
     left: -100%
@@ -150,6 +162,8 @@
     -webkit-box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
     -moz-box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
     box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
+    transition: all .2s ease-in;
+
     .btn {
       margin-bottom: 10px;
       line-height: 18px;

@@ -13,6 +13,7 @@ import VueGtag from "vue-gtag";
 import VModal from 'vue-js-modal'
 import VTooltip from 'v-tooltip'
 
+
 import './ml';
 
 Vue.use(VueGtag, {
@@ -27,9 +28,9 @@ Vue.use(Notifications)
 Vue.use(VModal)
 
 const store = new Vuex.Store(Store);
-
-
 sync(store, router);
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

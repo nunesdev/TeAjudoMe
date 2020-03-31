@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import VueBodyClass from 'vue-body-class';
 
 Vue.use(Router)
 
@@ -10,39 +11,53 @@ import Store from '../views/Store'
 import NeedHelp from '../views/NeedHelp'
 import Volunteer from '../views/Volunteer'
 
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: Home,
+    meta: { bodyClass: 'dashboard'  }
+  },
+  {
+    path: '/fique-seguro',
+    component : StaySafe,
+    name: 'seguranca',
+    meta: { bodyClass: 'staysafe'  }
+  },
+  {
+    path: '/sobre',
+    component : About,
+    name: 'sobre',
+    meta: { bodyClass: 'about'  }
+  },
+  {
+    path: '/negocio',
+    component : Store,
+    name: 'Negócio',
+    meta: { bodyClass: 'small_business'  }
+  },
+  {
+    path: '/preciso-de-ajuda',
+    component : NeedHelp,
+    name: 'Preciso de Ajuda',
+    meta: { bodyClass: 'needhelp'  }
+  },
+  {
+    path: '/posso-ajudar',
+    component : Volunteer,
+    name: 'Posso Ajudar',
+    meta: { bodyClass: 'canhelp'  }
+  }
+]
 
-
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/fique-seguro',
-      component : StaySafe,
-      name: 'seguranca'
-    },
-    {
-      path: '/sobre',
-      component : About,
-      name: 'sobre'
-    },
-    {
-      path: '/negocio',
-      component : Store,
-      name: 'Negócio'
-    },
-    {
-      path: '/preciso-de-ajuda',
-      component : NeedHelp,
-      name: 'Preciso de Ajuda'
-    },
-    {
-      path: '/posso-ajudar',
-      component : Volunteer,
-      name: 'Posso Ajudar'
-    }
-  ]
+const router = new Router({
+  routes
 })
+
+
+
+const vueBodyClass = new VueBodyClass(routes);
+
+router.beforeEach((to, from, next) => { vueBodyClass.guard(to, next) });
+
+export default router;
