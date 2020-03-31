@@ -25710,7 +25710,7 @@ var render = function() {
                 attrs: { href: "#" },
                 on: {
                   click: function($event) {
-                    return _vm.$ml.change("spanish")
+                    return _vm.$ml.change("english")
                   }
                 }
               },
@@ -25723,7 +25723,7 @@ var render = function() {
                 attrs: { href: "#" },
                 on: {
                   click: function($event) {
-                    return _vm.$ml.change("english")
+                    return _vm.$ml.change("spanish")
                   }
                 }
               },

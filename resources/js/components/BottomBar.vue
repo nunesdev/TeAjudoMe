@@ -51,8 +51,8 @@
           </div>
           <div class="col-6 bottombar-flags">
             <a @click="$ml.change('portuguese')" href="#">Português</a>
-            <a @click="$ml.change('spanish')" href="#">English</a>
-            <a @click="$ml.change('english')" href="#">Spanish</a>
+            <a @click="$ml.change('english')" href="#">English</a>
+            <a @click="$ml.change('spanish')" href="#">Spanish</a>
           </div>
         </div>
 
