@@ -1,68 +1,93 @@
 <template>
   <div class="">
     <div class="sidebar">
-      <div class="sidebar-logo text-center">
-        <router-link :to="{ name: 'home' }"><img src="/images/teajudome.png?c=1"  alt=""></router-link>
-      </div>
-      <div class="sidebar-volunteers-count text-center">
-        <div class="row justify-content-center">
-          <div class="col-12">
-            {{getMarkers.length}} <small v-text="$ml.get('menu.voluntarios')"></small>
-            <small> <span v-text="$ml.get('menu.contato')"></span>  <a href="mailto:teajudome@gmail.com">teajudome@gmail.com</a> </small>
+
+      <!-- <div class="row">
+        <div class="col-12">
+          <ul class="list-unstyled">
+            <li>
+              <img src="/images/supermercado.png" width="32" height="32" alt="">
+            </li>
+            <li>
+              <img src="/images/voluntario.png" width="32" height="32" alt="">
+            </li>
+            <li>
+              <img src="/images/perfil.png" width="32" height="32" alt="">
+            </li>
+
+          </ul>
+        </div>
+      </div> -->
+
+      <div class="sidebar-volunteers-count">
+        <div class="row">
+          <div class="col-6">
+            <small v-text="$ml.get('sidebar.total.requests')">Solicitações</small><span>{{getTotal('user')}}</span>
+          </div>
+          <div class="col-6">
+            <small v-text="$ml.get('sidebar.total.volunteers')"></small><span>{{getTotal('volunteer')}} </span>
           </div>
           <div class="col-12">
-            <div v-if="showHandUp" @click="changeStateMember" class="btn btn-needup">
-              <span v-text="$ml.get('menu.needup')"></span>
-            </div>
-            <div v-if="showHandUp" @click="changeState" class="btn btn-handup">
-              <span v-text="$ml.get('menu.handup')"></span> <span class="icon-hand-stop"></span>
-            </div>
-            <router-link v-if="showMapUp" class="btn btn-handup" :to="{ name: 'home' }" v-text="$ml.get('menu.mapup')"> <span class="icon-map"></span></router-link>
+          <small v-text="$ml.get('sidebar.total.small_business')">Pequenos negócios</small>  <span>{{getTotal('store')}}</span>
           </div>
-
-          <footer>
-            <router-link to="/" v-text="$ml.get('menu.mapa')"></router-link>
-            <router-link to="/sobre" v-text="$ml.get('menu.sobre')"></router-link>
-            <router-link to="/fique-seguro" v-text="$ml.get('menu.seguranca')"></router-link>
-            <hr>
-            <a @click="$ml.change('portuguese')" href="#">PT</a>
-            <a @click="$ml.change('spanish')" href="#">ES</a>
-            <a @click="$ml.change('english')" href="#">EN</a>
-
-            <div class="sponsors">
-            <div class="col-12">
-              <small v-text="$ml.get('sidebar.sponsor')"></small>
-              <a target="_blank" href="https://mapbox.com"><img src="/images/mapbox-logo-white.png" width="80" alt=""></a>
-            </div>
-            </div>
-          </footer>
         </div>
       </div>
-    </div>
-    <div class="sidebar--secondary" :class="{active:isActive}">
-      <div class="sidebar--close" @click="changeState">
-        <span class="icon-circle-left"></span>
-      </div>
+      <div class="row">
+        <div class="col-12">
+          <hr>
 
-      <div class="sidebar--secondary__body">
-        <AddVoluntario :address.async="address" @closeSidebar="closeSidebar" />
-      </div>
-    </div>
-    <div class="sidebar--third" :class="{active:isActiveSidebarMember}">
-      <div class="sidebar--close" @click="changeStateMember">
-        <span class="icon-circle-left"></span>
-      </div>
+          <div class="sidebar--actions">
+            <router-link to="/preciso-de-ajuda" v-tooltip.left="msg"  class="btn btn-active btn-white">
+              <span class="icon-hand-stop"></span> <span v-text="$ml.get('menu.needup')"></span>
+            </router-link>
 
-      <div class="sidebar--third__body">
-        <AddMember :address.async="address" @closeSidebar="closeSidebar" />
+            <router-link to="/posso-ajudar"  class="btn btn-white">
+              <span v-text="$ml.get('menu.handup')"></span>
+            </router-link>
+            <router-link  class="btn btn-white" to="/negocio">
+              <span v-text="$ml.get('menu.marketup')"></span>
+            </router-link>
+            <router-link v-if="showMapUp" class="btn btn-showmap" :to="{ name: 'home' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
+          </div>
+        </div>
+
+        <footer class="container">
+
+
+
+          <div class="sponsors">
+            <div class="sidebar-logo">
+              <div class="row align-items-center">
+                <div class="col-12">
+                  <router-link :to="{ name: 'home' }"><img src="/images/teajudome.png?c=1"  alt=""></router-link>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <a @click="$ml.change('portuguese')" href="#">Português</a>
+              <a @click="$ml.change('english')" href="#">English</a>
+              <a @click="$ml.change('spanish')" href="#">Spanish</a>
+            </div>
+            <div class="col-12">
+              <router-link to="/" v-text="$ml.get('menu.mapa')"></router-link>
+              <router-link to="/sobre" v-text="$ml.get('menu.sobre')"></router-link>
+              <router-link to="/fique-seguro" v-text="$ml.get('menu.seguranca')"></router-link>
+                <a href="mailto:teajudome@gmail.com"><span v-text="$ml.get('menu.contato')"></span></a>
+              <br/>
+              <br>
+            </div>
+            <div class="col-12">
+              <small v-text="$ml.get('sidebar.sponsor')"></small>
+              <a target="_blank" href="https://mapbox.com"><img src="/images/mapbox-logo-black.png" width="80" alt=""></a>
+            </div>
+          </div>
+        </footer>
       </div>
     </div>
   </div>
 </template>
 
 <script>
- import AddVoluntario from '@components/AddVoluntarioSidebar';
- import AddMember from '@components/AddMemberSidebar';
 
  import { mapGetters, mapActions } from 'vuex'
  import { MLBuilder } from 'vue-multilanguage'
@@ -70,16 +95,13 @@
 export default {
   props: ['address'],
   name: 'Sidebar',
-  components: {
-    AddVoluntario,
-    AddMember
-  },
   data() {
     return {
       isActive: false,
       isActiveSidebarMember: false,
       showHandUp: true,
-      showMapUp: true
+      showMapUp: true,
+      msg: "teste teste"
     }
   },
   watch:{
@@ -88,6 +110,9 @@ export default {
       this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false
     }
   },
+  created() {
+    this.show();
+  },
   mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false
     this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false
@@ -95,9 +120,20 @@ export default {
   computed: {
     ...mapGetters([
       'getMarkers',
-    ]),
+    ])
   },
   methods: {
+    getTotal(type) {
+      return this.getMarkers.filter((item)=>{
+        return item.type == type
+      }).length
+    },
+    show () {
+      this.$modal.show('board');
+    },
+    hide () {
+      this.$modal.hide('hello-world');
+    },
     changeStateMember() {
       this.isActiveSidebarMember = !this.isActiveSidebarMember
       this.$emit('sidebarOpen', this.isActiveSidebarMember);

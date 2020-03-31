@@ -5,6 +5,7 @@
     "seguranca" : "Seguridad",
     "handup" : "Puedo ayudar",
     "needup" : "Necesito ayuda",
+    "marketup" : "Tengo un pequeño negocio",
     "mapup" : "Ve al mapa",
     "contato" : "Contacto",
     "voluntarios": "Voluntarios"
@@ -41,6 +42,11 @@
   },
   "sidebar": {
     "title" : "Sus datos personales",
+    "total" : {
+      "requests" : "Pedidos",
+      "volunteers" : "Voluntarios",
+      "small_business" : "Pequeña empresa"
+    },
     "form" : {
       "name" : "Tu nombre",
       "phone" : "Teléfono",
@@ -73,10 +79,38 @@
         "error" : "Complete lo que puede ayudar :)",
         "success" : "¡Gracias por ser parte!",
         "error_truth" : "Confirme la veracidad de los datos.",
-        "error_location" : "Arrastra el marcador amarillo para actualizar la ubicación.",
+        "error_location" : "Mueva el PIN VERDE para actualizar la ubicación.",
         "error_document" : "Por favor ingrese su número de identificación"
       }
     },
     "sponsor" : "Gracias mapbox por patrocinar nuestro mapa"
+  },
+  "store": {
+    "title" : "Sus datos comerciales",
+    "form" : {
+      "subtitle" : "Mi negocio es:",
+      "name" : "Nombre de su negocio",
+      "owner" : "Nombre del dueño",
+      "address" : "Su dirección comercial",
+      "help" : {
+        "others" : "Otras",
+        "others_placeholder" : "Ingrese el tipo de su negocio",
+        "market" : "Mercado",
+        "mechanical" : "Servicios mecanicos",
+        "food" : "Restaurante / Panaderia",
+        "market_garden" : "Feira",
+        "health" : "Farmacia"
+      },
+      "available" : {
+        "title" : "Atención (oficina)",
+        "anytime" : "Todos los dias",
+        "week" : "Lunes a viernes",
+        "weekend" : "Solo fin de semana",
+        "anytime_hours" : "24 horas",
+        "expedient" : "horario comercial",
+        "others" : "Outros horários",
+        "others_placeholder" : "Ex: Lunes a viernes - 10h a 16h"
+      }
+    }
   }
 }

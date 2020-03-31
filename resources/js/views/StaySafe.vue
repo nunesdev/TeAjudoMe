@@ -1,8 +1,8 @@
 <template>
   <div class="content">
     <div class="container">
-      <div class="row">
-        <div class="col-12">
+      <div class="row justify-content-center">
+        <div class="col-8">
           <h1>Fique Seguro</h1>
           <div class="text">
             <p>Para orientar os voluntários do TeAjudoMe abaixo segue algumas medidas de segurança

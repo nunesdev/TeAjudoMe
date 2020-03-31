@@ -18,5 +18,6 @@ Route::get('/', function () {
 
 Route::prefix('api')->group(function () {
   Route::post('/',['uses'=>'UserController@save']);
+  Route::post('/saveStore',['uses'=>'UserController@saveStore']);
   Route::get('/',['uses'=>'UserController@all']);
 });

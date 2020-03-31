@@ -5,6 +5,7 @@
     "seguranca" : "Segurança",
     "handup" : "Posso ajudar",
     "needup" : "Preciso de ajuda",
+    "marketup" : "Tenho um pequeno negócio",
     "mapup" : "Ir ao mapa",
     "contato" : "Contato",
     "voluntarios": "Voluntários"
@@ -14,12 +15,13 @@
       "location" : "use minha localização",
       "marker" : {
         "esta_aqui" :  "Você está aqui",
-        "drag" : "Se necessário, arraste o pin para outro ponto!"
+        "drag" : "Arraste o pin para o ponto aproximado"
       },
       "popup" : {
         "type_volunteer" : "Voluntário(a)",
         "type_user" : "Solicitante",
         "type_doctor" : "Psicólogo(a)",
+        "type_store" : "Pequeno Negócio",
         "talk_to" : "Fale comigo por",
         "phone" : "Telefone",
         "help_with" :  "posso ajudar com",
@@ -41,6 +43,11 @@
   },
   "sidebar": {
     "title" : "Seus dados",
+    "total" : {
+      "requests" : "Pedidos",
+      "volunteers" : "Voluntários",
+      "small_business" : "Pequenos negócios"
+    },
     "form" : {
       "name" : "Seu nome",
       "phone" : "Telefone",
@@ -71,12 +78,44 @@
       "save" : "Salvar",
       "msg": {
         "error" : "Preencha com o que você pode ajudar :)",
+        "error_2" : "Preencha seu horário de funcionamento :)",
         "success" : "Obrigado por fazer parte",
+        "success_2" : "Em breve alguém entrara em contato, qualquer dúvida nos chame pelo whatsapp",
         "error_truth" : "Por favor confirme a veracidade dos dados",
-        "error_location" : "Por favor mova o PIN amarelo para atualizar a localização",
+        "error_location" : "Por favor mova o PIN VERDE para atualizar a localização",
         "error_document" : "Por favor, insira seu CRP/CFP"
       }
     },
     "sponsor" : "Obrigado mapbox por patrocinar o nosso mapa"
+  },
+  "store": {
+    "title" : "Dados do seu negócio",
+    "form" : {
+      "subtitle" : "Meu negócio é:",
+      "name" : "Nome do seu negócio",
+      "owner" : "Nome do responsável",
+      "address" : "Endereço do seu negócio",
+      "help" : {
+        "others" : "Outros",
+        "others_placeholder" : "Ex: Pizzaria, Costura etc",
+        "market" : "Mercado",
+        "mechanical" : "Mecânica",
+        "food" : "Restaurante / Padaria",
+        "market_garden" : "Feira Livre / Horta",
+        "health" : "Farmácia"
+      },
+      "available" : {
+        "title" : "Horário de Funcionamento",
+        "title_2" : "Fazem entregas?",
+        "anytime" : "Todos os dias",
+        "week" : "Seg à Sexta",
+        "weekend" : "Fim de Semana",
+        "anytime_hours" : "24 Horas",
+        "expedient" : "9h ás 18h",
+        "delivery" : "Fazemos entregas",
+        "others" : "Outros horários?",
+        "others_placeholder" : "Ex: Seg à Sexta - 10h ás 15h"
+      }
+    }
   }
 }

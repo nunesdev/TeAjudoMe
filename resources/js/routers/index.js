@@ -6,6 +6,9 @@ Vue.use(Router)
 import Home from '../views/Home'
 import About from '../views/About'
 import StaySafe from '../views/StaySafe'
+import Store from '../views/Store'
+import NeedHelp from '../views/NeedHelp'
+import Volunteer from '../views/Volunteer'
 
 
 
@@ -25,6 +28,21 @@ export default new Router({
       path: '/sobre',
       component : About,
       name: 'sobre'
+    },
+    {
+      path: '/negocio',
+      component : Store,
+      name: 'Negócio'
+    },
+    {
+      path: '/preciso-de-ajuda',
+      component : NeedHelp,
+      name: 'Preciso de Ajuda'
+    },
+    {
+      path: '/posso-ajudar',
+      component : Volunteer,
+      name: 'Posso Ajudar'
     }
   ]
 })

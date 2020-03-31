@@ -5,6 +5,7 @@
     "seguranca" : "Stay Safe",
     "handup" : "I can help",
     "needup" : "Need help",
+    "marketup" : "I've a small business",
     "mapup" : "Go to map",
     "contato" : "Contact",
     "voluntarios": "Volunteers"
@@ -41,6 +42,11 @@
   },
   "sidebar": {
     "title" : "Your personal data",
+    "total" : {
+      "requests" : "Requests",
+      "volunteers" : "Volunteers",
+      "small_business" : "Small Business"
+    },
     "form" : {
       "name" : "Your name",
       "phone" : "Phone",
@@ -72,11 +78,40 @@
       "msg": {
         "error" : "Complete what can help :)",
         "success" : "Thank you for being part!",
+        "success_2" : "Soon someone will contact you, any questions call us on whatsapp!",
         "error_truth" : "Confirm the veracity of the data.",
-        "error_location" : "Please drag the yellow pin to update the location.",
+        "error_location" : "Please move the GREEN PIN to update the location",
         "error_document" : "Please put your NPI"
       }
     },
     "sponsor" : "Thank you mapbox for the support and sponsorship on our map"
+  },
+  "store": {
+    "title" : "Your business data",
+    "form" : {
+      "subtitle" : "My business is:",
+      "name" : "Name of your business",
+      "owner" : "Owner name",
+      "address" : "Your business address",
+      "help" : {
+        "others" : "Others",
+        "others_placeholder" : "Enter the type of your business",
+        "market" : "Market",
+        "mechanical" : " Mechanic Services",
+        "food" : "Restaurant / Bakery",
+        "market_garden" : "Farmers Market",
+        "health" : "Drugstore"
+      },
+      "available" : {
+        "title" : "Business hours",
+        "anytime" : "Every day",
+        "week" : "Mon to Friday",
+        "weekend" : "Weekend only",
+        "anytime_hours" : "24 hours",
+        "expedient" : "business hours",
+        "others" : "Other times",
+        "others_placeholder" : "Ex: Mon to Friday - 10pm to 4pm"
+      }
+    }
   }
 }

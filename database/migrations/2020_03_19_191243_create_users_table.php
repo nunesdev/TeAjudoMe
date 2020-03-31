@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
           $table->string('lat')->nullable()->default(null);
           $table->string('lng')->nullable()->default(null);
           $table->string('image')->nullable()->default(null);
-          $table->enum('type', ['volunteer', 'user']);
+          $table->enum('type', ['volunteer', 'user','store']);
           $table->enum('status', ['a', 'p'])->comment('a=active, p=pending');
           $table->rememberToken();
           $table->timestamps();

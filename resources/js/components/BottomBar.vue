@@ -27,30 +27,8 @@
           {{getMarkers.length}} <small v-text="$ml.get('menu.voluntarios')">voluntários</small>
         </div>
       </div>
-      <!-- <div class="row bottombar-menu align-items-center">
-
-
-      </div> -->
-    </div>
-    <div class="bottombar--secondary" :class="{active:isActive}">
-      <div class="bottombar--close" @click="changeState">
-        <span class="icon-circle-left"></span>
-      </div>
-
-      <div class="bottombar--secondary__body">
-        <AddVoluntario :address.async="address" @closeSidebar="closeSidebar" />
-      </div>
     </div>
 
-    <div class="bottombar--third" :class="{active:isActiveSidebarMember}">
-      <div class="bottombar--close" @click="changeStateMember">
-        <span class="icon-circle-left"></span>
-      </div>
-
-      <div class="bottombar--secondary__body">
-        <AddMember :address.async="address" @closeSidebar="closeSidebar" />
-      </div>
-    </div>
 
     <div v-if="showHandUp" @click="changeState" class="btn btn-handup"><strong v-text="$ml.get('menu.handup')"></strong> <span class="icon-hand-stop"></span></div>
     <div v-if="showHandUp" @click="changeStateMember" class="btn btn-needup"><strong v-text="$ml.get('menu.needup')"></strong></div>
@@ -59,19 +37,12 @@
 </template>
 
 <script>
- import AddVoluntario from '@components/AddVoluntario';
- import AddMember from '@components/AddMember';
-
  import { mapGetters, mapActions } from 'vuex'
  import { MLBuilder } from 'vue-multilanguage'
 
 export default {
   props: ['address'],
   name: 'BottomBar',
-  components: {
-    AddVoluntario,
-    AddMember
-  },
   data() {
     return {
       isActive: false,

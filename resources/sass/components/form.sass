@@ -1,0 +1,45 @@
+.form-horizontal
+  .form-group
+    h4
+      font-size: 20px
+      + hr
+        display: none
+    margin-bottom: 10px
+    &.extra-bottom
+      margin-bottom: 6rem
+    .form-control
+      font-size: 13px
+      @media only screen and (max-width: 600px)
+        font-size: 13px
+    small
+      font-size: 13px
+      display: block
+      @media only screen and (max-width: 600px)
+        font-size: 12px
+    label
+      line-height: 1rem
+      display: block
+  .helps
+    .help
+      border-radius: 4px
+      margin-bottom: 12px
+      cursor: pointer
+      background: #3f5c88
+      color: $white
+      position: relative
+      label
+        padding: 10px
+      span
+        font-size: 16px
+      svg
+        width: 16px
+        height: 16px
+      &.featured
+        background: #6684b1
+      &.active
+        background: #3fb567
+      input
+        opacity: 0
+        height: 0
+        width: 0
+        position: absolute

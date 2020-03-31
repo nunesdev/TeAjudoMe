@@ -3,16 +3,21 @@
 
 // Variables
 @import 'variables';
-@import 'icons';
+
 
 @import '~reset-css/sass/reset';
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import 'buttons';
+@import 'icons';
 
 // Components
 @import 'components/sidebar';
 @import 'components/bottombar';
+@import 'components/map';
+@import 'components/tooltip';
+@import 'components/form';
 
 
 
@@ -23,7 +28,7 @@
 
 body {
   font-size: 10px;
-  color: $white;
+  color: $darkblue;
 
   .checklabel {
     small {
@@ -32,12 +37,13 @@ body {
   }
 
   .content {
-    padding-top: 80px;
-    padding-left: 180px;
+
+    padding-right: 280px;
     color: $darkblue;
     font-size: 16px;
 
     @media only screen and (max-width: 600px) {
+      padding-top: 80px;
       padding-left: 0;
     }
   }
@@ -47,15 +53,17 @@ body {
     a {
       font-size: 12px;
       display: inline-block;
-      color: $white;
     }
 
     .sponsors {
+      text-align: center;
       small {
         font-size: 13px;
         padding: 5px;
+        display: block;
       }
-      padding-top: 40px;
+      position: absolute;
+      bottom: 20px;
     }
   }
 
@@ -68,4 +76,21 @@ body {
   //   bottom: 95px!important;
   //   height: 40px!important;
   // }
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.5);
+    z-index: 1;
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      background: #0cca4c;
+      padding: 10px;
+      color: #16542b;
+    }
+  }
 }

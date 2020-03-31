@@ -10,16 +10,21 @@ import Notifications from 'vue-notification'
 import Store from './store/store';
 import VueCookies from 'vue-cookies'
 import VueGtag from "vue-gtag";
+import VModal from 'vue-js-modal'
+import VTooltip from 'v-tooltip'
+
 import './ml';
 
 Vue.use(VueGtag, {
   config: { id: "UA-161392946-1" }
 }, router);
 
+Vue.use(VTooltip)
 Vue.use(VueCookies)
 Vue.use(Vuex);
 Vue.use(VueReCaptcha, { siteKey: '6LfhneIUAAAAAD5iy7oduG0ni8-1ex59VGmxrHP6' })
 Vue.use(Notifications)
+Vue.use(VModal)
 
 const store = new Vuex.Store(Store);
 

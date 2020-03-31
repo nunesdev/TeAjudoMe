@@ -23,7 +23,7 @@ class UserController extends BaseController
       $thereIs = User::where('email', $request->input('email'))->first();
 
       if($thereIs && $thereIs->email)
-        throw new \Exception("Você já faz parte! Se precisar alterar sua localização entre em contato pelo email teajudome@gmail.com, obrigado!", 1);
+        throw new \Exception("Você já faz parte! Se precisar alterar seus dados entre em contato pelo email teajudome@gmail.com, obrigado!", 1);
 
 
       if(!$request->input('location.lat') || !$request->input('location.lon'))
@@ -41,6 +41,52 @@ class UserController extends BaseController
       $user->lat = $request->input('location.lat');
       $user->lng = $request->input('location.lon');
       $user->type = $request->input('type') ? $request->input('type') : 'volunteer';
+      $user->city_id = 25;
+      $user->options = $request->input('support') !== null ? json_encode($request->input('support')) : null;
+      $user->status = 'a';
+      $user->save();
+
+      return response()->json(['status'=>true, 'message'=>'Inserido com sucesso!','data'=>$user]);
+
+    } catch (\Exception $e) {
+      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+    }
+  }
+  public function saveStore(Request $request) {
+    try {
+
+      if(!$request->input('name') || !$request->input('phone'))
+        throw new \Exception("É necessário um nome e telefone válido", 1);
+
+      if(!$request->input('location.lat') || !$request->input('location.lon'))
+        throw new \Exception("Vá para o MAPA, Mova o PIN AMARELO, para atualizar sua localização", 1);
+
+      if($request->input('email'))
+        $query = User::where('email', $request->input('email'));
+
+      if(!$request->input('email')):
+        $query = User::where('phone', $request->input('phone'))
+        ->where('lat', $request->input('location.lat'))
+        ->where('lng', $request->input('location.lon'));
+      endif;
+
+      $thereIs = $query->first();
+
+      if($thereIs && $thereIs->phone)
+        throw new \Exception("Você já faz parte! Se precisa alterar seus dados entre em contato pelo email teajudome@gmail.com, obrigado!", 1);
+
+
+
+      $user = new User;
+      $user->name = $request->input('name');
+      $user->email = $request->input('email');
+      $user->phone = $request->input('phone');
+      $user->whatsapp = $request->input('whatsapp') !== null ? $request->input('whatsapp') : false;
+      $user->slug = str_slug($request->input('name'));
+      $user->address = $request->input('address') !== null ? $request->input('address') : false;
+      $user->lat = $request->input('location.lat');
+      $user->lng = $request->input('location.lon');
+      $user->type = $request->input('type') ? $request->input('type') : 'store';
       $user->city_id = 25;
       $user->options = $request->input('support') !== null ? json_encode($request->input('support')) : null;
       $user->status = 'a';
