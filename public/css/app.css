@@ -12809,6 +12809,7 @@ body .content {
 
 @media only screen and (max-width: 600px) {
   body .content {
+    padding-top: 80px;
     padding-right: 0;
   }
 }
