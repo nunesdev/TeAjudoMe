@@ -22,6 +22,6 @@
     </head>
     <body >
       <div id="app"></div>
-      <script type="text/javascript" src="/js/app.js?c=1"></script>
+      <script type="text/javascript" src="/js/app.js?c=2"></script>
     </body>
 </html>
