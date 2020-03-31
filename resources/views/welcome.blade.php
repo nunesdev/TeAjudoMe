@@ -18,7 +18,7 @@
         <!-- <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet"/> -->
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
         <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="/css/app.css?c=2">
     </head>
     <body >
       <div id="app"></div>
