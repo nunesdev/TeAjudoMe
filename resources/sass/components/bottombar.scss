@@ -165,6 +165,7 @@
     -moz-box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
     box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
     transition: all .2s ease-in;
+    -webkit-backface-visibility: hidden;
 
     .btn {
       margin-bottom: 10px;
