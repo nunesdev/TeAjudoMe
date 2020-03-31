@@ -285,7 +285,7 @@ export default {
           return;
         }
 
-        if(!this.info.support.market && !this.info.support.food && !this.info.support.health && !this.info.support.mechanical && !this.info.support.others) {
+        if(!this.info.support.market && !this.info.support.market_garden && !this.info.support.food && !this.info.support.health && !this.info.support.mechanical && !this.info.support.others) {
           this.$notify({
             group: 'foo',
             title: 'Ops!',

@@ -6144,7 +6144,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return _context.abrupt("return");
 
               case 10:
-                if (!(!_this.info.support.market && !_this.info.support.food && !_this.info.support.health && !_this.info.support.mechanical && !_this.info.support.others)) {
+                if (!(!_this.info.support.market && !_this.info.support.market_garden && !_this.info.support.food && !_this.info.support.health && !_this.info.support.mechanical && !_this.info.support.others)) {
                   _context.next = 14;
                   break;
                 }
