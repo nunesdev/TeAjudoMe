@@ -7754,11 +7754,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isMobile: mobile_device_detect__WEBPACK_IMPORTED_MODULE_1__["isMobile"],
       sidebarOpen: false,
       location: null,
-      isLocated: this.$cookies.get('isLocated') ? true : false,
+      isLocated: this.$cookies.get('_tageocord') ? true : false,
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/brunodevsp/ck8561s7l04me1imoc1r5jk3x',
-      coordinates: [-60.943904, -10.5705057],
-      zoom: 2,
+      coordinates: this.$cookies.get('_tageocord') ? [this.$cookies.get('_tageocord').lng, this.$cookies.get('_tageocord').lat] : [-60.943904, -10.5705057],
+      zoom: this.$cookies.get('_tageocord') ? 14.95 : 2,
       positionControl: mobile_device_detect__WEBPACK_IMPORTED_MODULE_1__["isMobile"] ? 'top-right' : 'bottom-right'
     };
   },
@@ -7792,7 +7792,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                       return _this.isLocated = true;
                     }, 1000);
 
-                    _this.$cookies.set('isLocated', {
+                    _this.$cookies.set('_tageocord', {
                       "lng": pos.coords.longitude,
                       "lat": pos.coords.latitude
                     });
@@ -7834,7 +7834,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
                 _this2.coordinates = [_this2.location.coords.longitude, _this2.location.coords.latitude];
                 setTimeout(function () {
-                  return _this2.zoom = 13;
+                  return _this2.zoom = 14.95;
                 }, 2000);
                 _context2.next = 13;
                 break;
