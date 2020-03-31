@@ -1,5 +1,5 @@
 <template>
-  <div class="store">
+  <div>
     <MglPopup>
       <div class="popup text-center">
         <div class="">Pequeno Negócio</div>
@@ -54,6 +54,9 @@
             </span>
             <span v-if="item.options.available.expedient">
               <small v-text="$ml.get('store.form.available.expedient')"></small>
+            </span>
+            <span v-if="item.options.available.others">
+              <small>{{item.options.available.others}}</small>
             </span>
           </div>
 

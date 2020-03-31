@@ -8,6 +8,7 @@
             <a class="btn" @click="locateMe">
               <span class="icon-target"></span>
               <span v-text="$ml.get('home.map.location')"></span>
+              <small v-if="!isLocated">loading...</small>
             </a>
           </div>
         </div>
@@ -46,7 +47,7 @@
           </MglPopup>
         </MglMarker>
 
-          <MglMarker v-for="(item, index) in markers" :key="index" :coordinates="[item.lng,item.lat]">
+          <MglMarker v-for="(item, index) in markers" :key="index" :coordinates="[item.lng,item.lat]" color="blue">
             <div class="" slot="marker">
               <img v-if="item && item.type == 'volunteer' && item.options && !item.options.psicologo" src="/images/voluntario.png" width="32" height="32" alt="">
               <img v-if="item && item.type == 'volunteer' && item.options && item.options.psicologo" src="/images/psicologia.png" width="32" height="32" alt="">
@@ -54,8 +55,10 @@
               <img v-if="item && item.type == 'user'" src="/images/perfil.png" width="32" height="32" alt="">
 
               <img v-if="item && item.type == 'store' && item.options && item.options.market" src="/images/supermercado.png" width="32" height="32" alt="">
+              <img v-if="item && item.type == 'store' && item.options && item.options.food" src="/images/comercio.png" width="32" height="32" alt="">
               <img v-if="item && item.type == 'store' && item.options && item.options.health" src="/images/farmacia.png" width="32" height="32" alt="">
               <img v-if="item && item.type == 'store' && item.options && item.options.market_garden" src="/images/feira.png" width="32" height="32" alt="">
+              <img v-if="item && item.type == 'store' && item.options && item.options.mechanical" src="/images/carro.png" width="32" height="32" alt="">
             </div>
             <MarkerVolunteer v-if="item.type == 'volunteer'" :item="item"></MarkerVolunteer>
             <MarkerUser v-if="item.type == 'user'" :item="item"></MarkerUser>
@@ -105,6 +108,7 @@ export default {
   },
   data() {
     return {
+      mapx: undefined,
       mapbox : undefined,
       items: [],
       loaded: false,
@@ -112,9 +116,7 @@ export default {
       isMobile: isMobile,
       sidebarOpen: false,
       location: null,
-      gettingLocation: false,
       isLocated: this.$cookies.get('isLocated') ? true : false,
-      errorStr: null,
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/brunodevsp/ck8561s7l04me1imoc1r5jk3x',
@@ -149,7 +151,7 @@ export default {
         }
 
         navigator.geolocation.getCurrentPosition(pos => {
-          this.isLocated = true
+          setTimeout(()=>this.isLocated = true,1000)
           this.$cookies.set('isLocated', {"lng":pos.coords.longitude,"lat":pos.coords.latitude});
           resolve(pos);
         }, err => {
@@ -160,10 +162,8 @@ export default {
     },
     async locateMe() {
 
-      this.gettingLocation = true;
       try {
 
-        this.gettingLocation = false;
         this.location = await this.getLocation();
 
         this.actionSetNewPosition({
@@ -172,15 +172,11 @@ export default {
         });
 
         this.coordinates = [this.location.coords.longitude, this.location.coords.latitude];
-        this.zoom = 13
+        this.zoom = 14.95
 
       } catch(e) {
-        this.gettingLocation = false;
-        this.errorStr = e.message;
+        console.error(e);
       }
-    },
-    handleSearch(v) {
-      console.log(v);
     },
     onSidebarOpen(v) {
       this.sidebarOpen = v

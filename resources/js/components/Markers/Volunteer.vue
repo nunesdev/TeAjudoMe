@@ -1,22 +1,20 @@
 <template>
   <div class="">
-    
+
     <MglPopup>
-      <div class="popup">
-        <div class="text-center"
+      <div class="popup text-center">
+        <div class=""
+        v-if="item.options && !item.options.psicologo"
         v-text="$ml.get('home.map.popup.type_volunteer')"
         >
         </div>
 
         <div class="text-center"
+
+        v-if="item.options && item.options.psicologo && item.options.document"
         v-text="$ml.get('home.map.popup.type_doctor')"
         ></div>
 
-        <div class="text-center"
-        v-if="item.type && item.type == 'user'"
-        v-text="$ml.get('home.map.popup.type_user')"
-        >
-        </div>
 
         <div class="popup-head row align-items-center">
           <h3 class="col-11">{{item.name}}</h3>

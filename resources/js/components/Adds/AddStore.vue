@@ -358,7 +358,7 @@ export default {
             type: 'success'
           });
 
-          this.actionSetNewUser(payload.data)
+          this.actionSetNewUser(payload.data.data)
           this.$router.push('/');
 
           this.$gtag.event('add_store', {

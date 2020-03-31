@@ -1,26 +1,13 @@
 <template>
   <div class="">
     <MglPopup>
-      <div class="popup">
-        <div class="text-center"
-        v-text="$ml.get('home.map.popup.type_volunteer')"
-        >
-        </div>
+      <div class="popup text-center">
 
-        <div class="text-center"
-        v-text="$ml.get('home.map.popup.type_doctor')"
-        ></div>
-
-        <div class="text-center"
-        v-if="item.type && item.type == 'user'"
-        v-text="$ml.get('home.map.popup.type_user')"
-        >
-        </div>
+        <div v-text="$ml.get('home.map.popup.type_user')"></div>
 
         <div class="popup-head row align-items-center">
           <h3 class="col-11">{{item.name}}</h3>
         </div>
-        <span v-if="item.options && item.options.psicologo && item.options.document"> {{item.options.document}} <img  src="/images/verified.png" width="16" height="16" alt=""></span>
 
         <h4 v-text="$ml.get('home.map.popup.talk_to')"></h4>
 
@@ -28,9 +15,8 @@
         <span v-if="item.phone"><a :href="`tel:${item.phone}`" v-text="$ml.get('home.map.popup.phone')"></a></span>
         <span v-if="item.whatsapp"><a target="_blank" :href="`https://api.whatsapp.com/send?phone=${item.phone}`"> WhatsApp </a></span>
 
-        <div class="support"  v-if="item.options && !item.options.document">
-          <h4 v-if="item.type == 'volunteer'" v-text="$ml.get('home.map.popup.help_with')"></h4>
-          <h4 v-else v-text="$ml.get('home.map.popup.help_with_user')"></h4>
+        <div class="support"  v-if="item.options">
+          <h4 v-text="$ml.get('home.map.popup.help_with_user')"></h4>
 
           <div>
             <span v-if="item.options.market">

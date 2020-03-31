@@ -79,7 +79,7 @@
         "error" : "Complete lo que puede ayudar :)",
         "success" : "¡Gracias por ser parte!",
         "error_truth" : "Confirme la veracidad de los datos.",
-        "error_location" : "Mueva el PIN VERDE para actualizar la ubicación.",
+        "error_location" : "Necesitamos su ubicación, permitir y mover el PIN VERDE para actualizar",
         "error_document" : "Por favor ingrese su número de identificación"
       }
     },

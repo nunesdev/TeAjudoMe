@@ -80,7 +80,7 @@
         "success" : "Thank you for being part!",
         "success_2" : "Soon someone will contact you, any questions call us on whatsapp!",
         "error_truth" : "Confirm the veracity of the data.",
-        "error_location" : "Please move the GREEN PIN to update the location",
+        "error_location" : "We need your location, allow and move the GREEN PIN to update",
         "error_document" : "Please put your NPI"
       }
     },

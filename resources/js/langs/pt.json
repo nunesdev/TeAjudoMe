@@ -82,7 +82,7 @@
         "success" : "Obrigado por fazer parte",
         "success_2" : "Em breve alguém entrara em contato, qualquer dúvida nos chame pelo whatsapp",
         "error_truth" : "Por favor confirme a veracidade dos dados",
-        "error_location" : "Por favor mova o PIN VERDE para atualizar a localização",
+        "error_location" : "Precisamos da sua localização, permita e mova o PIN VERDE para atualizar",
         "error_document" : "Por favor, insira seu CRP/CFP"
       }
     },

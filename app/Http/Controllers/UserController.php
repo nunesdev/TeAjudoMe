@@ -46,7 +46,16 @@ class UserController extends BaseController
       $user->status = 'a';
       $user->save();
 
-      return response()->json(['status'=>true, 'message'=>'Inserido com sucesso!','data'=>$user]);
+      return response()->json(['status'=>true, 'message'=>'Inserido com sucesso!','data'=>[
+        'name' => $user->name,
+        'email' => $user->email,
+        'phone' => $user->phone,
+        'whatsapp' => $user->whatsapp,
+        'lat' => $user->lat,
+        'lng' => $user->lng,
+        'options' => json_decode($user->options),
+        'type' => $user->type
+      ]]);
 
     } catch (\Exception $e) {
       return response()->json(['status'=>false,'message'=>$e->getMessage()]);
@@ -92,7 +101,16 @@ class UserController extends BaseController
       $user->status = 'a';
       $user->save();
 
-      return response()->json(['status'=>true, 'message'=>'Inserido com sucesso!','data'=>$user]);
+      return response()->json(['status'=>true, 'message'=>'Inserido com sucesso!','data'=>[
+        'name' => $user->name,
+        'email' => $user->email,
+        'phone' => $user->phone,
+        'whatsapp' => $user->whatsapp,
+        'lat' => $user->lat,
+        'lng' => $user->lng,
+        'options' => json_decode($user->options),
+        'type' => $user->type
+      ]]);
 
     } catch (\Exception $e) {
       return response()->json(['status'=>false,'message'=>$e->getMessage()]);
