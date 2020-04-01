@@ -1,8 +1,11 @@
 <template>
     <div class="">
       <div class="row justify-content-center">
-        <div v-if="!isMobile" class="col-md-7 col-sm-12">
+        <div :class="{'col-md-7 col-sm-12':!isMobile,'fixed-map':isMobile,'fixed-map-show':isMapShow}">
           <Map @onDragEnd="onDragEnd"></Map>
+          <div class="fixed-map-close" v-if="isMobile">
+            <a @click="isMapShow = false" class="btn btn-showmap">Fechar</a>
+          </div>
         </div>
         <div class="col-md-5 col-sm-12">
           <div class="container">
@@ -29,7 +32,10 @@
               <div class="form-group">
                  <input type="email" class="form-control" v-model="info.email" name="email" :placeholder="$ml.get('sidebar.form.email')" required>
               </div>
-
+              <div class="form-group">
+                <a class="btn btn-sm white btn-success" @click="isMapShow = !isMapShow">Alterar endereço</a>
+                 <!-- <input type="text" class="form-control" id="address" v-model="info.address" name="address" :placeholder="$ml.get('store.form.address')" required> -->
+              </div>
               <div class="form-group">
                  <input type="text" class="form-control" v-model="info.city" name="city" :placeholder="$ml.get('sidebar.form.city')" required>
               </div>
@@ -140,6 +146,7 @@ export default {
       return {
         isLocated: false,
         isMobile: isMobile,
+        isMapShow: false,
         info: {
           type: 'user',
           location: {},
@@ -297,7 +304,35 @@ export default {
     }
 }
 </script>
-<style lang="sass" scoped>
+<style lang="scss">
+  .fixed-map {
+    position: fixed;
+    width: 90%;
+    visibility: hidden;
+    height: 80%;
+    z-index: 10;
+    left: 50%;
+    transform: translate(-50%);
+    -webkit-box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
+    -moz-box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
+    box-shadow: 2px -5px 32px -13px rgba(184,184,184,1);
+    overflow: hidden;
+    border-radius: 15px;
 
+    &.fixed-map-show {
+    visibility: visible;
+    }
+
+    &-close {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    .location {
+      top: 20px;
+      bottom: auto;
+    }
+  }
 
 </style>

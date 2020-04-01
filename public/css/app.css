@@ -11029,33 +11029,45 @@ a.text-dark:focus {
   }
 }
 
-.btn {
+.btn,
+a.btn {
   border-radius: 18px;
   font-size: 0.75rem;
 }
 
 .btn [class^=icon-],
-.btn [class*=" icon-"] {
+.btn [class*=" icon-"],
+a.btn [class^=icon-],
+a.btn [class*=" icon-"] {
   margin-right: 5px;
   font-size: 0.7rem;
 }
 
-.btn:focus {
+.btn:focus,
+a.btn:focus {
   box-shadow: none;
 }
 
 .btn.btn-sm,
-.btn-group-sm > .btn {
+.btn-group-sm > .btn,
+a.btn.btn-sm {
   padding: 0.275rem 0.5rem;
 }
 
-.btn.btn-white {
+.btn.btn-success,
+a.btn.btn-success {
+  color: #fff;
+}
+
+.btn.btn-white,
+a.btn.btn-white {
   background: transparent;
   color: #42526e !important;
   border: 1px solid #ebebf3;
 }
 
-.btn.btn-active {
+.btn.btn-active,
+a.btn.btn-active {
   background: #0eca4c;
   border: none;
   color: #fff !important;
