@@ -37,7 +37,7 @@
           <hr>
 
           <div class="sidebar--actions">
-            <router-link to="/preciso-de-ajuda" v-tooltip.left="msg"  class="btn btn-active btn-white">
+            <router-link to="/preciso-de-ajuda"  class="btn btn-active btn-white">
               <span class="icon-hand-stop"></span> <span v-text="$ml.get('menu.needup')"></span>
             </router-link>
 

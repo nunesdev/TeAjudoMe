@@ -27057,15 +27057,6 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  directives: [
-                    {
-                      name: "tooltip",
-                      rawName: "v-tooltip.left",
-                      value: _vm.msg,
-                      expression: "msg",
-                      modifiers: { left: true }
-                    }
-                  ],
                   staticClass: "btn btn-active btn-white",
                   attrs: { to: "/preciso-de-ajuda" }
                 },
