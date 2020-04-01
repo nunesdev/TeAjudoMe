@@ -7645,6 +7645,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var mobile_device_detect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobile-device-detect */ "./node_modules/mobile-device-detect/dist/index.js");
+/* harmony import */ var mobile_device_detect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mobile_device_detect__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -7658,8 +7660,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'sobre'
+  name: 'sobre',
+  data: function data() {
+    return {
+      isMobile: mobile_device_detect__WEBPACK_IMPORTED_MODULE_0__["isMobile"]
+    };
+  }
 });
 
 /***/ }),
@@ -7963,6 +7974,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var mobile_device_detect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mobile-device-detect */ "./node_modules/mobile-device-detect/dist/index.js");
+/* harmony import */ var mobile_device_detect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mobile_device_detect__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -7995,8 +8008,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'seguranca'
+  name: 'staysafe',
+  data: function data() {
+    return {
+      isMobile: mobile_device_detect__WEBPACK_IMPORTED_MODULE_0__["isMobile"]
+    };
+  }
 });
 
 /***/ }),
@@ -27272,7 +27295,33 @@ var render = function() {
   return _c("div", { staticClass: "content" }, [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-6" }, [
+        _c("div", { staticClass: "col-md-8 col-sm-12" }, [
+          _c(
+            "div",
+            { staticClass: "text-left" },
+            [
+              _vm.isMobile
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-showmap",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _c("span", { staticClass: "icon-map" }),
+                      _vm._v(" "),
+                      _c("span", {
+                        domProps: {
+                          textContent: _vm._s(_vm.$ml.get("menu.mapup"))
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e()
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c("h1", {
             domProps: { textContent: _vm._s(_vm.$ml.get("about.title")) }
           }),
@@ -27650,80 +27699,110 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "content" }, [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-8 col-sm-12" }, [
+          _c(
+            "div",
+            { staticClass: "text-left" },
+            [
+              _vm.isMobile
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-showmap",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _c("span", { staticClass: "icon-map" }),
+                      _vm._v(" "),
+                      _c("span", {
+                        domProps: {
+                          textContent: _vm._s(_vm.$ml.get("menu.mapup"))
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e()
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("h1", [_vm._v("Fique Seguro")]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c("h3", [_vm._v("Para você que vai ajudar")]),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content" }, [
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row justify-content-center" }, [
-          _c("div", { staticClass: "col-8" }, [
-            _c("h1", [_vm._v("Fique Seguro")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text" }, [
-              _c("p", [
-                _vm._v(
-                  "Para orientar os voluntários do TeAjudoMe abaixo segue algumas medidas de segurança\n            e higiene para evitar riscos de contágio, que estão em conformidade com as orientações das autoridades de saúde:"
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("h3", [_vm._v("Para você que vai ajudar")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text" }, [
-              _c("p", [
-                _vm._v(
-                  "É de extrema importância que não haja qualquer tipo de contato físico com as pessoas que ajudará,\n            pois provavelmente são pessoas que se encontram em algum grupo de risco e é imprescindível cuidado redobrado."
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("ul", { staticClass: "list" }, [
-                  _c("li", [
-                    _vm._v("Lavar as mãos ao sair de casa com a água e sabão;")
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _vm._v(
-                      "Evitar ao máximo encostar as mãos em corrimãos, maçanetas, portas e portões ou em móveis públicos;"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _vm._v(
-                      "No caso de compras, passar álcool gel nas mãos antes de levar as compras ao local de entrega;"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _vm._v(
-                      "Não cumprimentar com apertos de mão, beijos e abraços;"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _vm._v(
-                      "Ao chegar, deixar as compras a pelo menos 1 metro de distância das pessoas que vão recebê-las;"
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _vm._v(
-                      "Não tocar olhos, nariz e boca enquanto estiver com os produtos a serem entregues."
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", [
-                    _vm._v(
-                      "Ao tossir e espirrar, cobrir o nariz e boca com o cotovelo flexionado;"
-                    )
-                  ])
-                ])
-              ])
-            ])
+    return _c("div", { staticClass: "text" }, [
+      _c("p", [
+        _vm._v(
+          "Para orientar os voluntários do TeAjudoMe abaixo segue algumas medidas de segurança\n            e higiene para evitar riscos de contágio, que estão em conformidade com as orientações das autoridades de saúde:"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text" }, [
+      _c("p", [
+        _vm._v(
+          "É de extrema importância que não haja qualquer tipo de contato físico com as pessoas que ajudará,\n            pois provavelmente são pessoas que se encontram em algum grupo de risco e é imprescindível cuidado redobrado."
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("ul", { staticClass: "list" }, [
+          _c("li", [
+            _vm._v("Lavar as mãos ao sair de casa com a água e sabão;")
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Evitar ao máximo encostar as mãos em corrimãos, maçanetas, portas e portões ou em móveis públicos;"
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "No caso de compras, passar álcool gel nas mãos antes de levar as compras ao local de entrega;"
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v("Não cumprimentar com apertos de mão, beijos e abraços;")
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Ao chegar, deixar as compras a pelo menos 1 metro de distância das pessoas que vão recebê-las;"
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Não tocar olhos, nariz e boca enquanto estiver com os produtos a serem entregues."
+            )
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _vm._v(
+              "Ao tossir e espirrar, cobrir o nariz e boca com o cotovelo flexionado;"
+            )
           ])
         ])
       ])

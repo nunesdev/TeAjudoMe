@@ -12343,14 +12343,18 @@ a.btn.btn-active {
 
 .small_business .bottombar,
 .needhelp .bottombar,
-.canhelp .bottombar {
+.canhelp .bottombar,
+.about .bottombar,
+.staysafe .bottombar {
   top: -60px;
   width: 100%;
 }
 
 .small_business .bottombar--actions,
 .needhelp .bottombar--actions,
-.canhelp .bottombar--actions {
+.canhelp .bottombar--actions,
+.about .bottombar--actions,
+.staysafe .bottombar--actions {
   bottom: -200px;
 }
 

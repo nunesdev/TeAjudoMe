@@ -2,7 +2,11 @@
   <div class="content">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-md-8 col-sm-12">
+          <div class="text-left">
+            <router-link v-if="isMobile" class="btn btn-showmap" :to="{ name: 'home' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
+          </div>
+
           <h1>Fique Seguro</h1>
           <div class="text">
             <p>Para orientar os voluntários do TeAjudoMe abaixo segue algumas medidas de segurança
@@ -31,8 +35,14 @@
 </template>
 
 <script>
+import { isMobile } from 'mobile-device-detect';
 export default {
-  name: 'seguranca'
+  name: 'staysafe',
+  data() {
+    return {
+      isMobile: isMobile,
+    }
+  }
 }
 </script>
 
