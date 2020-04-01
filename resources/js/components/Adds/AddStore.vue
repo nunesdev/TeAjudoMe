@@ -42,7 +42,7 @@
                  <input type="email" class="form-control" v-model="info.email" name="creditcard" :placeholder="$ml.get('sidebar.form.email')">
               </div>
 
-              <div class="form-group">
+              <div class="form-group" v-if="isMobile">
                 <a class="btn btn-sm white btn-success" @click="isMapShow = !isMapShow">Alterar endereço</a>
                  <!-- <input type="text" class="form-control" id="address" v-model="info.address" name="address" :placeholder="$ml.get('store.form.address')" required> -->
               </div>
