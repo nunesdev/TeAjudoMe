@@ -7281,6 +7281,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['item'],
@@ -26365,6 +26366,14 @@ var render = function() {
                           ])
                         : _vm._e(),
                       _vm._v(" "),
+                      _vm.item.options.available.others
+                        ? _c("span", [
+                            _c("small", [
+                              _vm._v(_vm._s(_vm.item.options.available.others))
+                            ])
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
                       _vm.item.options.available.delivery
                         ? _c("span", [
                             _c("i", [
@@ -26418,14 +26427,6 @@ var render = function() {
                                 )
                               }
                             })
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.item.options.available.others
-                        ? _c("span", [
-                            _c("small", [
-                              _vm._v(_vm._s(_vm.item.options.available.others))
-                            ])
                           ])
                         : _vm._e()
                     ])

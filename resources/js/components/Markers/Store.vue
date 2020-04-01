@@ -55,6 +55,10 @@
             <span v-if="item.options.available.expedient">
               <small v-text="$ml.get('store.form.available.expedient')"></small>
             </span>
+
+            <span v-if="item.options.available.others">
+              <small>{{item.options.available.others}}</small>
+            </span>
             <span v-if="item.options.available.delivery">
               <i>
               <svg width="16" height="16" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -78,9 +82,6 @@
               </svg>
 </i>
               <small v-text="$ml.get('store.form.available.delivery')"></small>
-            </span>
-            <span v-if="item.options.available.others">
-              <small>{{item.options.available.others}}</small>
             </span>
           </div>
 
