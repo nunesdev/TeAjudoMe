@@ -61,6 +61,7 @@
               <img v-if="item && item.type == 'store' && item.options && item.options.health" src="/images/farmacia.png" width="32" height="32" alt="">
               <img v-if="item && item.type == 'store' && item.options && item.options.market_garden" src="/images/feira.png" width="32" height="32" alt="">
               <img v-if="item && item.type == 'store' && item.options && item.options.mechanical" src="/images/carro.png" width="32" height="32" alt="">
+              <img v-if="item && item.type == 'store' && item.options && item.options.others" src="/images/comercio.png" width="32" height="32" alt="">
             </div>
             <MarkerVolunteer v-if="item.type == 'volunteer'" :item="item"></MarkerVolunteer>
             <MarkerUser v-if="item.type == 'user'" :item="item"></MarkerUser>

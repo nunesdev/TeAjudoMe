@@ -7771,6 +7771,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -27560,6 +27561,20 @@ var render = function() {
                           ? _c("img", {
                               attrs: {
                                 src: "/images/carro.png",
+                                width: "32",
+                                height: "32",
+                                alt: ""
+                              }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        item &&
+                        item.type == "store" &&
+                        item.options &&
+                        item.options.others
+                          ? _c("img", {
+                              attrs: {
+                                src: "/images/comercio.png",
                                 width: "32",
                                 height: "32",
                                 alt: ""
