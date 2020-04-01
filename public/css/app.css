@@ -12615,10 +12615,7 @@ a.btn.btn-active {
   border-radius: 20px;
   color: #fff;
   margin-bottom: 4px;
-}
-
-.map .popup span small {
-  line-height: 14px;
+  line-height: 18px;
 }
 
 .map .popup span a {
