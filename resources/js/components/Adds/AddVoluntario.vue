@@ -11,6 +11,9 @@
             <div class="overlay" v-if="!isLocated">
               <span v-text="$ml.get('sidebar.form.msg.error_location')"></span>
             </div>
+            <div class="text-left">
+              <router-link v-if="isMobile" class="btn btn-showmap" :to="{ name: 'home' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
+            </div>
             <h3 v-text="$ml.get('sidebar.title')"></h3>
             <hr>
 

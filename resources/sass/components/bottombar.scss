@@ -5,7 +5,7 @@
     width: 100%;
   }
   .bottombar--actions {
-    bottom: -131px;
+    bottom: -200px;
   }
 }
 
@@ -170,20 +170,6 @@
     .btn {
       margin-bottom: 10px;
       line-height: 18px;
-    }
-
-    .btn-showmap {
-      background: $yellow;
-      transition: background .25s ease-in;
-
-      @media only screen and (max-width: 600px) {
-
-      }
-
-      &:hover {
-        color: $darkblue;
-        background: $white;
-      }
     }
   }
 }

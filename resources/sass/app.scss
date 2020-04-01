@@ -95,4 +95,18 @@ body {
       color: #16542b;
     }
   }
+
+  .btn-showmap {
+    background: $yellow;
+    transition: background .25s ease-in;
+
+    @media only screen and (max-width: 600px) {
+
+    }
+
+    &:hover {
+      color: $darkblue;
+      background: $white;
+    }
+  }
 }

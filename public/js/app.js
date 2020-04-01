@@ -5619,6 +5619,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -5894,6 +5897,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -6547,6 +6554,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -6827,11 +6837,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
 //
 //
 //
@@ -22237,6 +22242,32 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "text-left" },
+            [
+              _vm.isMobile
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-showmap",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _c("span", { staticClass: "icon-map" }),
+                      _vm._v(" "),
+                      _c("span", {
+                        domProps: {
+                          textContent: _vm._s(_vm.$ml.get("menu.mapup"))
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e()
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c("h3", {
             domProps: { textContent: _vm._s(_vm.$ml.get("sidebar.title")) }
           }),
@@ -23057,6 +23088,32 @@ var render = function() {
                 })
               ])
             : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "text-left" },
+            [
+              _vm.isMobile
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-showmap",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _c("span", { staticClass: "icon-map" }),
+                      _vm._v(" "),
+                      _c("span", {
+                        domProps: {
+                          textContent: _vm._s(_vm.$ml.get("menu.mapup"))
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e()
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("h3", {
             domProps: { textContent: _vm._s(_vm.$ml.get("store.title")) }
@@ -24677,6 +24734,32 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "text-left" },
+            [
+              _vm.isMobile
+                ? _c(
+                    "router-link",
+                    {
+                      staticClass: "btn btn-showmap",
+                      attrs: { to: { name: "home" } }
+                    },
+                    [
+                      _c("span", { staticClass: "icon-map" }),
+                      _vm._v(" "),
+                      _c("span", {
+                        domProps: {
+                          textContent: _vm._s(_vm.$ml.get("menu.mapup"))
+                        }
+                      })
+                    ]
+                  )
+                : _vm._e()
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c("h3", {
             domProps: { textContent: _vm._s(_vm.$ml.get("sidebar.title")) }
           }),
@@ -25597,32 +25680,6 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "bottombar--actions" }, [
       _c("div", { staticClass: "row" }, [
-        _c(
-          "div",
-          { staticClass: "col-12" },
-          [
-            _vm.showMapUp
-              ? _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-showmap",
-                    attrs: { to: { name: "home" } }
-                  },
-                  [
-                    _c("span", { staticClass: "icon-map" }),
-                    _vm._v(" "),
-                    _c("span", {
-                      domProps: {
-                        textContent: _vm._s(_vm.$ml.get("menu.mapup"))
-                      }
-                    })
-                  ]
-                )
-              : _vm._e()
-          ],
-          1
-        ),
-        _vm._v(" "),
         _c(
           "div",
           { staticClass: "col-12" },

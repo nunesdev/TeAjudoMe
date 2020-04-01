@@ -25,9 +25,6 @@
 
       <div class="row">
         <div class="col-12">
-          <router-link v-if="showMapUp" class="btn btn-showmap" :to="{ name: 'home' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
-        </div>
-        <div class="col-12">
           <router-link to="/preciso-de-ajuda"  class="btn btn-active btn-white">
             <span class="icon-hand-stop"></span> <span v-text="$ml.get('menu.needup')"></span>
           </router-link>
@@ -37,8 +34,6 @@
           <router-link to="/posso-ajudar"  class="btn btn-white">
             <span v-text="$ml.get('menu.handup')"></span>
           </router-link>
-
-
         </div>
       </div>
 

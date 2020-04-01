@@ -12339,7 +12339,7 @@ a.text-dark:focus {
 .small_business .bottombar--actions,
 .needhelp .bottombar--actions,
 .canhelp .bottombar--actions {
-  bottom: -131px;
+  bottom: -200px;
 }
 
 .bottombar {
@@ -12506,16 +12506,6 @@ a.text-dark:focus {
 .bottombar--actions .btn {
   margin-bottom: 10px;
   line-height: 18px;
-}
-
-.bottombar--actions .btn-showmap {
-  background: #ffed4a;
-  transition: background 0.25s ease-in;
-}
-
-.bottombar--actions .btn-showmap:hover {
-  color: #283241;
-  background: #fff;
 }
 
 .location {
@@ -12881,5 +12871,15 @@ body .overlay span {
   background: #0cca4c;
   padding: 10px;
   color: #16542b;
+}
+
+body .btn-showmap {
+  background: #ffed4a;
+  transition: background 0.25s ease-in;
+}
+
+body .btn-showmap:hover {
+  color: #283241;
+  background: #fff;
 }
 
