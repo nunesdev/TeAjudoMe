@@ -40,7 +40,7 @@
       <div class="col-12 bottombar-links">
         <div class="row align-items-start">
           <div class="col-6">
-            <router-link to="/" v-text="$ml.get('menu.mapa')"></router-link>
+            <!-- <router-link to="/" v-text="$ml.get('menu.mapa')"></router-link> -->
             <router-link to="/sobre" v-text="$ml.get('menu.sobre')"></router-link>
             <router-link to="/fique-seguro" v-text="$ml.get('menu.seguranca')"></router-link>
           </div>

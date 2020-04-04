@@ -23,14 +23,7 @@
           :center="coordinates"
           :zoom="zoom"
         >
-
-        <!-- <MglGeocoderControl
-          :accessToken="accessToken"
-
-          @results="handleSearch"
-        /> -->
         <MglNavigationControl v-if="!isMobile" :position="positionControl" />
-        <!-- <MglGeolocateControl position="bottom-right" /> -->
 
 
         <MglMarker :draggable="true" @dragend="onDragEnd" :coordinates="coordinates" color="#0eca4c">
@@ -77,7 +70,6 @@ import Mapbox from "mapbox-gl";
 import {
   MglMap, MglPopup, MglMarker, MglAttributionControl,
   MglNavigationControl,
-  MglGeolocateControl,
   MglFullscreenControl,
   MglScaleControl  } from "vue-mapbox";
 
@@ -99,8 +91,6 @@ export default {
     MglPopup,
     MglAttributionControl,
     MglNavigationControl,
-    MglGeolocateControl,
-    MglGeocoderControl,
 
     Sidebar,
     BottomBar,
@@ -145,6 +135,11 @@ export default {
       'actionGetAllUsers',
       'actionSetNewPosition'
     ]),
+    filterType(type) {
+      return this.items.filter((item) => {
+        return item.type.match(type);
+      });
+    },
     async getLocation() {
 
       return new Promise((resolve, reject) => {

@@ -2,23 +2,6 @@
   <div class="">
     <div class="sidebar">
 
-      <!-- <div class="row">
-        <div class="col-12">
-          <ul class="list-unstyled">
-            <li>
-              <img src="/images/supermercado.png" width="32" height="32" alt="">
-            </li>
-            <li>
-              <img src="/images/voluntario.png" width="32" height="32" alt="">
-            </li>
-            <li>
-              <img src="/images/perfil.png" width="32" height="32" alt="">
-            </li>
-
-          </ul>
-        </div>
-      </div> -->
-
       <div class="sidebar-volunteers-count">
         <div class="row">
           <div class="col-6">
@@ -35,7 +18,6 @@
       <div class="row">
         <div class="col-12">
           <hr>
-
           <div class="sidebar--actions">
             <router-link to="/preciso-de-ajuda"  class="btn btn-active btn-white">
               <span class="icon-hand-stop"></span> <span v-text="$ml.get('menu.needup')"></span>
@@ -50,11 +32,27 @@
             <router-link v-if="showMapUp" class="btn btn-showmap" :to="{ name: 'home' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
           </div>
         </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-12">
+              <span>Filtro:</span>
+              <ul class="list-unstyled">
+                <li @click="getFilterByType('store')">
+                  <img src="/images/supermercado.png" width="32" height="32" alt="">
+                </li>
+                <li @click="getFilterByType('volunteer')">
+                  <img src="/images/voluntario.png" width="32" height="32" alt="">
+                </li>
+                <li>
+                  <img src="/images/perfil.png" width="32" height="32" alt="">
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
 
         <footer class="container">
-
-
-
           <div class="sponsors">
             <div class="sidebar-logo">
               <div class="row align-items-center">
@@ -111,7 +109,7 @@ export default {
     }
   },
   created() {
-    this.show();
+    this.show()
   },
   mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false
@@ -120,6 +118,7 @@ export default {
   computed: {
     ...mapGetters([
       'getMarkers',
+      'getFilter'
     ])
   },
   methods: {
@@ -127,6 +126,9 @@ export default {
       return this.getMarkers.filter((item)=>{
         return item.type == type
       }).length
+    },
+    getFilterByType(type) {
+      const all_tems = this.getFilter(type)
     },
     show () {
       this.$modal.show('board');

@@ -5628,6 +5628,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -5904,7 +5909,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
 //
 //
 //
@@ -6445,6 +6449,12 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7576,8 +7586,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -7605,12 +7613,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false;
     this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false;
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkers'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkers', 'getFilter'])),
   methods: {
     getTotal: function getTotal(type) {
       return this.getMarkers.filter(function (item) {
         return item.type == type;
       }).length;
+    },
+    getFilterByType: function getFilterByType(type) {
+      var all_tems = this.getFilter(type);
     },
     show: function show() {
       this.$modal.show('board');
@@ -7776,13 +7787,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -7801,8 +7805,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     MglPopup: vue_mapbox__WEBPACK_IMPORTED_MODULE_3__["MglPopup"],
     MglAttributionControl: vue_mapbox__WEBPACK_IMPORTED_MODULE_3__["MglAttributionControl"],
     MglNavigationControl: vue_mapbox__WEBPACK_IMPORTED_MODULE_3__["MglNavigationControl"],
-    MglGeolocateControl: vue_mapbox__WEBPACK_IMPORTED_MODULE_3__["MglGeolocateControl"],
-    MglGeocoderControl: vue_mapbox_geocoder__WEBPACK_IMPORTED_MODULE_4__["default"],
     Sidebar: _components_Sidebar__WEBPACK_IMPORTED_MODULE_6__["default"],
     BottomBar: _components_BottomBar__WEBPACK_IMPORTED_MODULE_7__["default"],
     MarkerVolunteer: _components_Markers_Volunteer__WEBPACK_IMPORTED_MODULE_8__["default"],
@@ -7838,6 +7840,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_5__["mapActions"])(['actionGetAllUsers', 'actionSetNewPosition']), {
+    filterType: function filterType(type) {
+      return this.items.filter(function (item) {
+        return item.type.match(type);
+      });
+    },
     getLocation: function getLocation() {
       var _this = this;
 
@@ -22441,7 +22448,7 @@ var render = function() {
         "div",
         {
           class: {
-            "col-md-7 col-sm-12": !_vm.isMobile,
+            "col-md-7 col-sm-12 full-height": !_vm.isMobile,
             "fixed-map": _vm.isMobile,
             "fixed-map-show": _vm.isMapShow
           }
@@ -22528,24 +22535,6 @@ var render = function() {
               }
             },
             [
-              _vm.info.name
-                ? _c("div", { staticClass: "form-group text-right" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-block btn-info",
-                        class: { disabled: !_vm.info.name },
-                        attrs: {
-                          type: "submit",
-                          disabled: !_vm.info.name,
-                          name: "button"
-                        }
-                      },
-                      [_vm._v("Salvar")]
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("input", {
                   directives: [
@@ -23292,6 +23281,22 @@ var render = function() {
                     })
                   ]
                 )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group text-right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-block btn-info",
+                    class: { disabled: !_vm.info.name },
+                    attrs: {
+                      type: "submit",
+                      disabled: !_vm.info.name,
+                      name: "button"
+                    }
+                  },
+                  [_vm._v("Salvar")]
+                )
               ])
             ]
           )
@@ -23415,24 +23420,6 @@ var render = function() {
               }
             },
             [
-              _vm.info.name
-                ? _c("div", { staticClass: "form-group text-right" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-block btn-info",
-                        class: { disabled: !_vm.info.name },
-                        attrs: {
-                          type: "submit",
-                          disabled: !_vm.info.name,
-                          name: "button"
-                        }
-                      },
-                      [_vm._v("Salvar")]
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("input", {
                   directives: [
@@ -24947,6 +24934,22 @@ var render = function() {
                     })
                   ]
                 )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group text-right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-block btn-info",
+                    class: { disabled: !_vm.info.name },
+                    attrs: {
+                      type: "submit",
+                      disabled: !_vm.info.name,
+                      name: "button"
+                    }
+                  },
+                  [_vm._v("Salvar")]
+                )
               ])
             ]
           )
@@ -24983,7 +24986,7 @@ var render = function() {
         "div",
         {
           class: {
-            "col-md-7 col-sm-12": !_vm.isMobile,
+            "col-md-7 col-sm-12 full-height": !_vm.isMobile,
             "fixed-map": _vm.isMobile,
             "fixed-map-show": _vm.isMapShow
           }
@@ -25070,24 +25073,6 @@ var render = function() {
               }
             },
             [
-              _vm.info.name
-                ? _c("div", { staticClass: "form-group text-right" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-block btn-info",
-                        class: { disabled: !_vm.info.name },
-                        attrs: {
-                          type: "submit",
-                          disabled: !_vm.info.name,
-                          name: "button"
-                        }
-                      },
-                      [_vm._v("Salvar")]
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("input", {
                   directives: [
@@ -25899,6 +25884,22 @@ var render = function() {
                     })
                   ]
                 )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group text-right" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-block btn-info",
+                    class: { disabled: !_vm.info.name },
+                    attrs: {
+                      type: "submit",
+                      disabled: !_vm.info.name,
+                      name: "button"
+                    }
+                  },
+                  [_vm._v("Salvar")]
+                )
               ])
             ]
           )
@@ -26039,11 +26040,6 @@ var render = function() {
             "div",
             { staticClass: "col-6" },
             [
-              _c("router-link", {
-                attrs: { to: "/" },
-                domProps: { textContent: _vm._s(_vm.$ml.get("menu.mapa")) }
-              }),
-              _vm._v(" "),
               _c("router-link", {
                 attrs: { to: "/sobre" },
                 domProps: { textContent: _vm._s(_vm.$ml.get("menu.sobre")) }
@@ -27144,6 +27140,60 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c("span", [_vm._v("Filtro:")]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-unstyled" }, [
+                _c(
+                  "li",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.getFilterByType("store")
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src: "/images/supermercado.png",
+                        width: "32",
+                        height: "32",
+                        alt: ""
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.getFilterByType("volunteer")
+                      }
+                    }
+                  },
+                  [
+                    _c("img", {
+                      attrs: {
+                        src: "/images/voluntario.png",
+                        width: "32",
+                        height: "32",
+                        alt: ""
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _c("footer", { staticClass: "container" }, [
           _c("div", { staticClass: "sponsors" }, [
             _c("div", { staticClass: "sidebar-logo" }, [
@@ -27247,7 +27297,7 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _vm._m(0)
+              _vm._m(1)
             ])
           ])
         ])
@@ -27256,6 +27306,16 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("img", {
+        attrs: { src: "/images/perfil.png", width: "32", height: "32", alt: "" }
+      })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -64554,15 +64614,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************!*\
   !*** ./resources/js/components/Map.vue ***!
   \*****************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Map_vue_vue_type_template_id_479a2f41___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Map.vue?vue&type=template&id=479a2f41& */ "./resources/js/components/Map.vue?vue&type=template&id=479a2f41&");
 /* harmony import */ var _Map_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Map.vue?vue&type=script&lang=js& */ "./resources/js/components/Map.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Map_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Map_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _Map_vue_vue_type_style_index_0_lang_sass___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Map.vue?vue&type=style&index=0&lang=sass& */ "./resources/js/components/Map.vue?vue&type=style&index=0&lang=sass&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Map_vue_vue_type_style_index_0_lang_sass___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Map.vue?vue&type=style&index=0&lang=sass& */ "./resources/js/components/Map.vue?vue&type=style&index=0&lang=sass&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -64594,7 +64653,7 @@ component.options.__file = "resources/js/components/Map.vue"
 /*!******************************************************************!*\
   !*** ./resources/js/components/Map.vue?vue&type=script&lang=js& ***!
   \******************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -65144,13 +65203,14 @@ var actionSetNewPosition = function actionSetNewPosition(_ref3, obj) {
 /*!***************************************!*\
   !*** ./resources/js/store/getters.js ***!
   \***************************************/
-/*! exports provided: getMarkers, getMarkerPosition */
+/*! exports provided: getMarkers, getMarkerPosition, getFilter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMarkers", function() { return getMarkers; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMarkerPosition", function() { return getMarkerPosition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getFilter", function() { return getFilter; });
 /* eslint-disable import/prefer-default-export */
 
 /**
@@ -65161,6 +65221,15 @@ var getMarkers = function getMarkers(state) {
 };
 var getMarkerPosition = function getMarkerPosition(state) {
   return state.markers.markerPosition;
+};
+var getFilter = function getFilter(state) {
+  return function (type) {
+    var items = state.markers.allUsers.filter(function (item) {
+      return item.type.match(type);
+    });
+    state.markers.allUsers = items;
+    return items;
+  };
 };
 
 /***/ }),

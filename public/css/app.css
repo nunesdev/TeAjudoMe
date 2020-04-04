@@ -12826,6 +12826,10 @@ body .checklabel small {
   display: inline-flex !important;
 }
 
+body .full-height {
+  height: 100vh;
+}
+
 body .content {
   padding-right: 280px;
   color: #283241;
