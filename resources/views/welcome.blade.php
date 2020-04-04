@@ -18,7 +18,7 @@
         <!-- <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet"/> -->
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
         <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css?c=3">
+        <link rel="stylesheet" href="/css/app.css?c=4">
         <!-- Hotjar Tracking Code for https://www.teajudo.me -->
 <script>
     (function(h,o,t,j,a,r){
@@ -33,6 +33,6 @@
     </head>
     <body >
       <div id="app"></div>
-      <script type="text/javascript" src="/js/app.js?c=3"></script>
+      <script type="text/javascript" src="/js/app.js?c=4"></script>
     </body>
 </html>
