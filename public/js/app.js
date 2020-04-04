@@ -27140,59 +27140,7 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12" }, [
-              _c("span", [_vm._v("Filtro:")]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "list-unstyled" }, [
-                _c(
-                  "li",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.getFilterByType("store")
-                      }
-                    }
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/supermercado.png",
-                        width: "32",
-                        height: "32",
-                        alt: ""
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.getFilterByType("volunteer")
-                      }
-                    }
-                  },
-                  [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/voluntario.png",
-                        width: "32",
-                        height: "32",
-                        alt: ""
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._m(0)
-              ])
-            ])
-          ])
-        ]),
+        _vm._m(0),
         _vm._v(" "),
         _c("footer", { staticClass: "container" }, [
           _c("div", { staticClass: "sponsors" }, [
@@ -27310,10 +27258,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("img", {
-        attrs: { src: "/images/perfil.png", width: "32", height: "32", alt: "" }
-      })
+    return _c("div", { staticClass: "col-12" }, [
+      _c("div", { staticClass: "row" })
     ])
   },
   function() {
