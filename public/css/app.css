@@ -12524,7 +12524,8 @@ a.btn.btn-active {
   line-height: 18px;
 }
 
-.location {
+.location,
+.search-area {
   position: absolute;
   top: 20px;
   border-radius: 4px;
@@ -12536,15 +12537,36 @@ a.btn.btn-active {
 }
 
 @media only screen and (max-width: 600px) {
-  .location {
+  .location,
+  .search-area {
     right: 0;
     bottom: 190px;
     top: auto;
     width: 40px;
   }
 
-  .location .btn span:last-child {
+  .location .btn span:last-child,
+  .search-area .btn span:last-child {
     display: none;
+  }
+}
+
+.search-area {
+  right: 190px;
+}
+
+@media only screen and (max-width: 600px) {
+  .search-area {
+    right: auto;
+    left: 50%;
+    bottom: auto;
+    transform: translate(-50%);
+    width: 160px;
+    top: 90px;
+  }
+
+  .search-area .btn span:last-child {
+    display: inline-block;
   }
 }
 

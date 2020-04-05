@@ -13,6 +13,12 @@ import VueGtag from "vue-gtag";
 import VModal from 'vue-js-modal'
 import VTooltip from 'v-tooltip'
 
+// Layouts
+import DefaultLayout from './layouts/Default'
+import Movimento117 from './layouts/Movimento117'
+Vue.component('DefaultLayout', DefaultLayout)
+Vue.component('Movimento117', Movimento117)
+
 
 import './ml';
 
