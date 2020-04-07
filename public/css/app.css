@@ -12345,7 +12345,11 @@ a.btn.btn-active {
 .needhelp .bottombar,
 .canhelp .bottombar,
 .about .bottombar,
-.staysafe .bottombar {
+.staysafe .bottombar,
+.m117_volunteer .bottombar,
+.m117_donate .bottombar,
+.m117_staysafe .bottombar,
+.m117_howworks .bottombar {
   top: -60px;
   width: 100%;
 }
@@ -12354,7 +12358,11 @@ a.btn.btn-active {
 .needhelp .bottombar--actions,
 .canhelp .bottombar--actions,
 .about .bottombar--actions,
-.staysafe .bottombar--actions {
+.staysafe .bottombar--actions,
+.m117_volunteer .bottombar--actions,
+.m117_donate .bottombar--actions,
+.m117_staysafe .bottombar--actions,
+.m117_howworks .bottombar--actions {
   bottom: -200px;
 }
 
@@ -12562,7 +12570,7 @@ a.btn.btn-active {
     bottom: auto;
     transform: translate(-50%);
     width: 160px;
-    top: 90px;
+    top: 50px;
   }
 
   .search-area .btn span:last-child {

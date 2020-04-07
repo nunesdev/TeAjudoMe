@@ -10,8 +10,8 @@
 </template>
 <script>
 import { isMobile } from 'mobile-device-detect';
-import Sidebar from '@components/Sidebar';
-import BottomBar from '@components/BottomBar';
+import Sidebar from '@components/Movimento/Sidebar';
+import BottomBar from '@components/Movimento/BottomBar';
 
 
 export default {

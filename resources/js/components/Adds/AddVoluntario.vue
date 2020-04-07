@@ -127,7 +127,7 @@
                   <small v-text="$ml.get('sidebar.form.truth')"></small>
                 </label>
               </div>
-              <div class="form-group text-right"> 
+              <div class="form-group text-right">
                 <button type="submit" class="btn btn-block btn-info" :disabled="!info.name"  :class="{'disabled':!info.name}" name="button">Salvar</button>
               </div>
             </form>
@@ -146,7 +146,7 @@ import GoogleLogin from 'vue-google-login';
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 
-import Helper from '../../helper'
+import Helper from '@src/helper'
 
 import Map from '@components/Map'
 

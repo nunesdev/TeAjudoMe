@@ -20,12 +20,8 @@
           </div>
         </div>
 
-        <div class="loading-markers" v-if="!loadedItems">
-          carregando dados...
-        </div>
-        <div class="loading-markers" v-if="!loadedMap">
-          carregando mapa...
-        </div>
+        <div class="loading-markers" v-if="!loadedItems">carregando dados...</div>
+        <div class="loading-markers" v-if="!loadedMap">carregando mapa...</div>
 
         <MglMap
           v-if="markers"
@@ -36,27 +32,21 @@
           @load="onMapLoad"
         >
         <MglNavigationControl v-if="!isMobile" :position="positionControl" />
-
-
-        <MglMarker :draggable="true" @dragend="onDragEnd" :coordinates="coordinates" color="#0eca4c">
-
+        <MglMarker :draggable="true" @dragend="onDragEnd" :coordinates="coordinates">
           <MglPopup :showed="true">
             <div class="popup">
-              <h3 v-text="$ml.get('home.map.marker.esta_aqui')"></h3>
-
+              <h4>Você está aqui</h4>
               <div class="" v-if="!isMobile">
-                <router-link class="btn btn-active  btn-sm btn-white" to="/preciso-de-ajuda" v-text="$ml.get('menu.needup')">Preciso de ajuda</router-link>
-                <router-link class="btn btn-sm btn-white" to="/posso-ajudar" v-text="$ml.get('menu.handup')">Posso ajudar</router-link>
-                <router-link class="btn btn-sm btn-white" to="/negocio" v-text="$ml.get('menu.marketup')">Tenho um pequeno negócio</router-link>
+                <router-link class="btn btn-active btn-sm btn-white" to="/movimento117/quero-doar">Quero doar</router-link>
+                <router-link class="btn btn-sm btn-white" to="/movimento117/voluntario">Quero ser um voluntário</router-link>
               </div>
-
             </div>
           </MglPopup>
         </MglMarker>
 
           <MglMarker v-for="(item, index) in markers" :key="index" :coordinates="[item.lng,item.lat]" color="blue">
             <div class="" slot="marker">
-              <img v-if="item && item.type == 'volunteer'" src="/images/movimento/coletor.png" width="32" height="32" alt="">
+              <img v-if="item && item.type == 'volunteer'" src="/images/movimento/user.png" width="36" height="36" alt="">
               <img v-if="item && item.type == 'user'" src="/images/movimento/caixa.png" width="38" height="38" alt="">
               <img v-if="item && item.type == 'store'" src="/images/movimento/abrigo.png" width="48" height="48" alt="">
 
@@ -82,12 +72,9 @@ import {
 import MglGeocoderControl from 'vue-mapbox-geocoder'
 import { mapGetters, mapActions } from 'vuex'
 
-import Sidebar from '@components/Sidebar';
-import BottomBar from '@components/BottomBar';
-
-import MarkerVolunteer from '@components/Markers/Movimento/Volunteer';
-import MarkerUser from '@components/Markers/Movimento/User';
-import MarkerStore from '@components/Markers/Movimento/Store';
+import MarkerVolunteer from '@components/Movimento/Markers/Volunteer';
+import MarkerUser from '@components/Movimento/Markers/User';
+import MarkerStore from '@components/Movimento/Markers/Store';
 
 export default {
   name: 'home',
@@ -97,9 +84,6 @@ export default {
     MglPopup,
     MglAttributionControl,
     MglNavigationControl,
-
-    Sidebar,
-    BottomBar,
 
     MarkerVolunteer,
     MarkerStore,
@@ -184,7 +168,7 @@ export default {
         this.actionGetAllUsersMovimento({
           'campaign' : 'movimento117',
           'location': {lat:this.location.coords.latitude, lng: this.location.coords.longitude},
-          'distance' : this.isMobile ? 4 : 8
+          'distance' : this.isMobile ? 7 : 10
         })
 
         this.map.on('zoomend', this.onZoomOut)
@@ -238,6 +222,10 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-
+<style lang="scss" scoped>
+  .btn {
+    &.btn-active {
+      background: #264463;
+    }
+  }
 </style>

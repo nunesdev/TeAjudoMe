@@ -226,7 +226,7 @@ import { isMobile } from 'mobile-device-detect';
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 
-import Helper from '../../helper'
+import Helper from '@src/helper'
 
 import Map from '@components/Map'
 
