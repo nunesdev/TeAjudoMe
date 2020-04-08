@@ -61,12 +61,13 @@
         </div>
       </div>
 
-      <div class="col-12 bottombar-links">
+      <div class="col-12 bottombar-links"> 
         <div class="row align-items-start">
 
           <div class="col-9">
             <router-link to="/movimento117/fique-seguro">Fique seguro</router-link>
             <router-link to="/movimento117/como-funciona">Como funciona</router-link>
+            <router-link to="/movimento117/sobre">Sobre</router-link>
           </div>
           <div class="col-3">
             <div class="row justify-content-center align-items-center  no-gutters">

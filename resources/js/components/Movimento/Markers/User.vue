@@ -22,12 +22,12 @@
             <p v-text="item.options.others"></p>
           </div>
         </div>
-        <div class="actions">
+        <!-- <div class="actions">
           <div @click="collect = !collect" class="btn btn-primary" :class="{'btn-active': collect}">
             <small>{{collect ? 'Concluir Coleta':'Coletar Doação'}}</small>
             <img src="/images/movimento/caixa.png" width="22" alt="">
           </div>
-        </div>
+        </div> -->
       </div>
     </MglPopup>
   </div>

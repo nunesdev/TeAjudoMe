@@ -3,6 +3,7 @@ import Donate from '@views/Movimento117/Donate'
 import Volunteer from '@views/Movimento117/Volunteer'
 import StaySafe from '@views/Movimento117/StaySafe'
 import HowWorks from '@views/Movimento117/HowWorks'
+import About from '@views/Movimento117/About'
 
 export default [
   {
@@ -47,6 +48,15 @@ export default [
     meta: {
       layout: 'Movimento117',
       bodyClass: 'm117_howworks'
+    }
+  },
+  {
+    path: '/movimento117/sobre',
+    name: 'movimento117About',
+    component : About,
+    meta: {
+      layout: 'Movimento117',
+      bodyClass: 'm117_about'
     }
   },
 ]

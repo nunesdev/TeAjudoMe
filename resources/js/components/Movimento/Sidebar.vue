@@ -74,9 +74,9 @@
               </div>
             </div>
             <div class="col-12">
-              <router-link to="/movimento117" v-text="$ml.get('menu.mapa')"></router-link>
-              <router-link to="/sobre" v-text="$ml.get('menu.sobre')"></router-link>
-              <router-link to="/fique-seguro" v-text="$ml.get('menu.seguranca')"></router-link>
+              <router-link to="/movimento117/como-funciona">Como funciona</router-link>
+              <router-link to="/movimento117/sobre" v-text="$ml.get('menu.sobre')"></router-link>
+              <router-link to="/movimento117/fique-seguro">Fique seguro</router-link>
                 <a href="mailto:teajudome@gmail.com"><span v-text="$ml.get('menu.contato')"></span></a>
               <br/>
               <br>

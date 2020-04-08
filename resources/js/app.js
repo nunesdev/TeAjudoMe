@@ -3,6 +3,8 @@ import Vue from 'vue'
 import Vuex from 'vuex';
 import { sync } from 'vuex-router-sync';
 
+import './registerServiceWorker'
+
 import router from './routers/index'
 import * as VueGoogleMaps from "vue2-google-maps";
 import { VueReCaptcha } from 'vue-recaptcha-v3'

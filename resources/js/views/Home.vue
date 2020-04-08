@@ -3,6 +3,41 @@
 
 
       <div class="map">
+        <modal class="select-campaign" height="auto" :adaptive="true" @before-close="beforeClose" name="select-campaign">
+          <div class="modal-header">
+            <h3>Selecione a campanha</h3>
+          </div>
+          <div class="modal-body">
+            <div class="row ">
+              <div class="col-12 pb pt select-campaign-item">
+                <div class="row no-gutters">
+                    <div class="col-3">
+                      <img v-if="!isMobile" src="/images/teajudome.png" width="92" height="92" alt="">
+                      <img v-if="isMobile" src="/images/teajudome.png" width="52" height="52" alt="">
+                    </div>
+                    <div class="col-9">
+                      <h4>TeAjudo - Pequenos Negócios</h4>
+                      <button class="btn btn-info" @click="hide()">Continuar nesse mapa</button>
+                    </div>
+                </div>
+
+              </div>
+              <div class="col-12 pb pt select-campaign-item">
+                <div class="row no-gutters">
+                    <div class="col-3">
+                      <img v-if="!isMobile" src="/images/movimento/user.png" width="92" height="92" alt="">
+                      <img v-if="isMobile" src="/images/movimento/user.png" width="52" height="52" alt="">
+                    </div>
+                    <div class="col-9">
+                      <h4>Movimento 117 - #AmorEmMovimento</h4>
+                      <button class="btn  btn-active btn-info" @click="selectCampaign('movimento117')">Ir para o mapa</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </modal>
+
         <div class="location">
           <div class="text-center">
             <a class="btn" @click="locateMe">
@@ -137,6 +172,10 @@ export default {
   },
   created() {
     this.mapbox = Mapbox;
+
+  },
+  mounted() {
+    //this.show()
   },
   computed: {
     markers() {
@@ -239,11 +278,34 @@ export default {
     	var d = R * c;
     	if (d>1) return Math.round(d);
     	return d;
+    },
+    selectCampaign(c) {
+      this.$cookies.set('_tamodalcampaign', c)
+      this.$router.push('/movimento117')
+    },
+    show () {
+      if($cookies.get('_tamodalcampaign')) return;
+      this.$modal.show('select-campaign');
+    },
+    hide () {
+      this.$modal.hide('select-campaign');
+    },
+    beforeClose() {
+      this.$cookies.set('_tamodalcampaign', true)
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
+  .select-campaign
+    &-item
+      &:hover
+        background: aliceblue
+    .modal-body
 
+      .pb
+        padding-bottom: 20px
+      .pt
+        padding-top: 20px
 </style>

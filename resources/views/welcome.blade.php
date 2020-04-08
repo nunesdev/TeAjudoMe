@@ -20,6 +20,7 @@
         <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/app.css?c=4">
         <!-- Hotjar Tracking Code for https://www.teajudo.me -->
+        <link rel="manifest" href="/manifest.json">
 <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -29,6 +30,16 @@
         r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  var OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "7b37bf81-b1d0-4303-89bd-04a223cece62",
+      // appId: "157b4f4f-3001-4ad3-93f8-8bdf9970e51c",
+    });
+  });
 </script>
     </head>
     <body >

@@ -12349,7 +12349,8 @@ a.btn.btn-active {
 .m117_volunteer .bottombar,
 .m117_donate .bottombar,
 .m117_staysafe .bottombar,
-.m117_howworks .bottombar {
+.m117_howworks .bottombar,
+.m117_about .bottombar {
   top: -60px;
   width: 100%;
 }
@@ -12362,7 +12363,8 @@ a.btn.btn-active {
 .m117_volunteer .bottombar--actions,
 .m117_donate .bottombar--actions,
 .m117_staysafe .bottombar--actions,
-.m117_howworks .bottombar--actions {
+.m117_howworks .bottombar--actions,
+.m117_about .bottombar--actions {
   bottom: -200px;
 }
 

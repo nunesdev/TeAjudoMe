@@ -23,17 +23,14 @@
               <router-link v-if="isMobile" class="btn btn-showmap" to="/movimento117"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
             </div>
             <h3 v-text="$ml.get('sidebar.title')"></h3>
+            <small style="line-height:18px">É importante a sua localização, não precisa ser exata, pode ser aproximada.</small>
             <hr>
 
             <form  class="form-horizontal" action="/api" v-on:submit.prevent="onSubmit" method="post">
-              <!-- <div class="form-group">
-                <label for="">Selecione seu avatar</label>
-                <div class="row no-gutters">
-                  <div class="col" v-for="(item, index) in avatars">
-                    <img src="" :src="'/images/movimento/avatar/'+item" width="32" height="32">
-                  </div>
-                </div>
-              </div> -->
+              <div class="form-group" v-if="isMobile">
+                <a class="btn btn-sm white btn-success" @click="isMapShow = !isMapShow">Alterar localização</a>
+                 <!-- <input type="text" class="form-control" id="address" v-model="info.address" name="address" :placeholder="$ml.get('store.form.address')" required> -->
+              </div>
               <div class="form-group">
                  <input type="text" class="form-control" v-model="info.name" name="name" :placeholder="$ml.get('sidebar.form.name')"  required>
               </div>
@@ -44,10 +41,7 @@
               <div class="form-group">
                  <input type="email" class="form-control" v-model="info.email" name="email" :placeholder="$ml.get('sidebar.form.email')" required>
               </div>
-              <div class="form-group" v-if="isMobile">
-                <a class="btn btn-sm white btn-success" @click="isMapShow = !isMapShow">Alterar endereço</a>
-                 <!-- <input type="text" class="form-control" id="address" v-model="info.address" name="address" :placeholder="$ml.get('store.form.address')" required> -->
-              </div>
+
               <div class="form-group">
                  <input type="text" class="form-control" v-model="info.city" name="city" :placeholder="$ml.get('sidebar.form.city')" required>
               </div>
@@ -60,7 +54,7 @@
 
                 <div class="row helps text-center">
 
-                  <div class="col-6">
+                  <div class="col-md-6 col-sm-12 ">
                     <div class="help" :class="{active: info.support.food}">
                       <label for="m_food">
                         <span>
@@ -72,7 +66,7 @@
 
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-md-6 col-sm-12 ">
                     <div class="help" :class="{active: info.support.dia_d}">
                       <label for="dia_d">
                         <span>
@@ -131,7 +125,7 @@ export default {
         isMapShow: false,
         info: {
           campaign: 'movimento117',
-          member: 'volunteer',
+          type: 'volunteer',
           location: {},
           support: {}
         },
@@ -157,8 +151,7 @@ export default {
         'getMarkerPosition',
       ]),
       ...mapActions([
-        'actionSetNewUser',
-        'actionSetNewPosition'
+        'actionSetNewUserMovimento'
       ]),
 
       async getLocationMobile() {
@@ -256,8 +249,6 @@ export default {
           });
 
           this.actionSetNewUserMovimento(payload.data.data)
-          this.$router.push('/movimento117');
-
           this.$gtag.event('add_voluntario_movimento117', {
               'event_category': 'success',
               'event_label': 'ok_ao_inserir',
@@ -265,6 +256,8 @@ export default {
             })
 
             this.info = {location:{}, support:{}}
+
+            this.$router.push('/movimento117');
         } else {
           this.$gtag.event('add_voluntario_movimento117', {
               'event_category': 'error',

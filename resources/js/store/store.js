@@ -14,5 +14,5 @@ export default {
     movimento
   },
 
-  //plugins: [createPersistedState()],
+  plugins: [createPersistedState()],
 };
