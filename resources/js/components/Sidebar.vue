@@ -126,6 +126,7 @@ export default {
   },
   methods: {
     getTotal(type) {
+      if(!this.getMarkersMovimento) return;
       return this.getMarkers.filter((item)=>{
         return item.type == type
       }).length

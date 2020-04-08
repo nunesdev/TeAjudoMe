@@ -8755,6 +8755,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkersMovimento'])),
   methods: {
     getTotal: function getTotal(type) {
+      if (!this.getMarkersMovimento) return;
       return this.getMarkersMovimento.filter(function (item) {
         return item.type == type;
       }).length;
@@ -8921,6 +8922,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkers', 'getFilter'])),
   methods: {
     getTotal: function getTotal(type) {
+      if (!this.getMarkersMovimento) return;
       return this.getMarkers.filter(function (item) {
         return item.type == type;
       }).length;

@@ -127,6 +127,11 @@ class UserController extends BaseController
     try {
       $data = [];
 
+      if(!$request->input('lat') || !$request->input('lng') || !$request->input('distance'))
+        throw new \Exception("Error Processing Request", 1);
+
+      $total = User::count();
+
       $payload = User::nearby([
         'lat' => $request->input('lat'),
         'lng' => $request->input('lng'),
@@ -148,7 +153,7 @@ class UserController extends BaseController
 
       endforeach;
 
-      return response()->json(['status'=>true, 'message'=>'Dados coletados','data'=>$data]);
+      return response()->json(['status'=>true, 'message'=>'Dados coletados','data'=>$data,'total'=>$total]);
     } catch (\Exception $e) {
       return response()->json(['status'=>false,'message'=>$e->getMessage()]);
     }
@@ -158,6 +163,11 @@ class UserController extends BaseController
   public function allByCampaign(Request $request) {
     try {
       $data = [];
+
+      if(!$request->input('lat') || !$request->input('lng') || !$request->input('distance') || !$request->input('campaign'))
+        throw new \Exception("Error Processing Request", 1);
+    
+      $total = User::where('campaign', $request->input('campaign'))->count();
 
       $payload = User::nearby([
         'lat' => $request->input('lat'),
@@ -182,7 +192,7 @@ class UserController extends BaseController
 
       endforeach;
 
-      return response()->json(['status'=>true, 'message'=>'Dados coletados','data'=>$data]);
+      return response()->json(['status'=>true, 'message'=>'Dados coletados','data'=>$data,'total'=>$total]);
     } catch (\Exception $e) {
       return response()->json(['status'=>false,'message'=>$e->getMessage()]);
     }
