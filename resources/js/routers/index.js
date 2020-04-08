@@ -11,7 +11,7 @@ import Store from '../views/Store'
 import NeedHelp from '../views/NeedHelp'
 import Volunteer from '../views/Volunteer'
 
-const routes = [
+const baseRoutes = [
   {
     path: '/',
     name: 'home',
@@ -49,6 +49,12 @@ const routes = [
     meta: { bodyClass: 'canhelp'  }
   }
 ]
+
+import Movimento from './movimento'
+
+const routes = baseRoutes.concat(
+  Movimento 
+)
 
 const router = new Router({
   routes

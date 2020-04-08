@@ -15,3 +15,10 @@ export const getFilter = state => (type) => {
 
   return items;
 }
+
+
+/**
+ * Movimento
+ */
+export const getMarkersMovimento = state => state.movimento.allUsers
+export const getMarkerPositionMovimento = state => state.movimento.markerPosition

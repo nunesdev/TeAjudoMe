@@ -3,6 +3,41 @@
 
 
       <div class="map">
+        <modal class="select-campaign" height="auto" :adaptive="true" @before-close="beforeClose" name="select-campaign">
+          <div class="modal-header">
+            <h3>Selecione a campanha</h3>
+          </div>
+          <div class="modal-body">
+            <div class="row ">
+              <div class="col-12 pb pt select-campaign-item">
+                <div class="row no-gutters">
+                    <div class="col-3">
+                      <img v-if="!isMobile" src="/images/teajudome.png" width="92" height="92" alt="">
+                      <img v-if="isMobile" src="/images/teajudome.png" width="52" height="52" alt="">
+                    </div>
+                    <div class="col-9">
+                      <h4>TeAjudo - Pequenos Negócios</h4>
+                      <button class="btn btn-info" @click="hide()">Continuar nesse mapa</button>
+                    </div>
+                </div>
+
+              </div>
+              <div class="col-12 pb pt select-campaign-item">
+                <div class="row no-gutters">
+                    <div class="col-3">
+                      <img v-if="!isMobile" src="/images/movimento/user.png" width="92" height="92" alt="">
+                      <img v-if="isMobile" src="/images/movimento/user.png" width="52" height="52" alt="">
+                    </div>
+                    <div class="col-9">
+                      <h4>Movimento 117 - #AmorEmMovimento</h4>
+                      <button class="btn  btn-active btn-info" @click="selectCampaign('movimento117')">Ir para o mapa</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </modal>
+
         <div class="location">
           <div class="text-center">
             <a class="btn" @click="locateMe">
@@ -13,15 +48,29 @@
           </div>
         </div>
 
-        <div class="loading-markers" v-if="!loaded">
+        <div class="search-area" v-if="isSearchByArea">
+          <div class="text-center">
+            <a class="btn" @click="searchByArea">
+              <span class="icon-busca"></span>
+              <span v-text="$ml.get('home.map.search_area')">Pesquisar nesta área</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="loading-markers" v-if="!loadedItems">
           carregando dados...
         </div>
+        <div class="loading-markers" v-if="!loadedMap">
+          carregando mapa...
+        </div>
+
         <MglMap
           v-if="markers"
           :accessToken="accessToken"
           :mapStyle.sync="mapStyle"
           :center="coordinates"
           :zoom="zoom"
+          @load="onMapLoad"
         >
         <MglNavigationControl v-if="!isMobile" :position="positionControl" />
 
@@ -103,8 +152,11 @@ export default {
     return {
       mapx: undefined,
       mapbox : undefined,
+      loadedMap: false,
       items: [],
-      loaded: false,
+      loadedItems: false,
+      isSearchByArea: false,
+      oldZoom: false,
 
       isMobile: isMobile,
       sidebarOpen: false,
@@ -114,18 +166,21 @@ export default {
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/brunodevsp/ck8ngw7go0r6l1ipriw3gi2lk',
       coordinates: this.$cookies.get('_tageocord') ? [this.$cookies.get('_tageocord').lng,this.$cookies.get('_tageocord').lat] : [-60.943904,-10.5705057],
-      zoom: this.$cookies.get('_tageocord') ? 14.95 : 2,
+      zoom: this.$cookies.get('_tageocord') ? 10 : 2,
       positionControl: isMobile ? 'top-right' : 'bottom-right'
     };
   },
   created() {
-    this.locateMe()
     this.mapbox = Mapbox;
+
+  },
+  mounted() {
+    //this.show()
   },
   computed: {
     markers() {
       this.items = this.$store.getters.getMarkers;
-      if(this.items) this.loaded = true
+      if(this.items) this.loadedItems = true
 
       return this.items
     }
@@ -159,20 +214,28 @@ export default {
       });
     },
     async locateMe() {
-      console.log('a');
       try {
 
         this.location = await this.getLocation();
-
         this.actionSetNewPosition({
           'lng': this.location.coords.longitude,
           'lat': this.location.coords.latitude
         });
+        this.map.flyTo({
+          center: [this.location.coords.longitude, this.location.coords.latitude],
+          zoom: 14,
+          easing(t) {
+            return t;
+          }
+        })
+        this.actionGetAllUsers({
+          'location': {lat:this.location.coords.latitude, lng: this.location.coords.longitude},
+          'distance' : this.isMobile ? 2 : 4
+        })
 
-        this.coordinates = [this.location.coords.longitude, this.location.coords.latitude];
+        this.map.on('zoomend', this.onZoomOut)
 
-        setTimeout(()=>this.zoom = 14.95, 2000)
-
+        this.loadedMap = true
       } catch(e) {
         console.error(e);
       }
@@ -188,11 +251,61 @@ export default {
         'lng': lngLat.lng,
         'lat': lngLat.lat
       });
+    },
+    onZoomOut(e) {
+      this.isSearchByArea = true
+    },
+    onMapLoad(event) {
+      this.map = event.map
+      this.locateMe()
+    },
+    searchByArea() {
+      const distance = this.distance(this.map.getCenter().lat,this.map.getCenter().lng,this.location.coords.latitude, this.location.coords.longitude)
+      this.actionGetAllUsers({
+        'location': {lat: this.map.getCenter().lat,lng: this.map.getCenter().lng},
+        'distance' : this.isMobile ? (distance*6) : (distance*3)
+      })
+      this.isSearchByArea = false
+    },
+    distance(lat1,lon1,lat2,lon2) {
+    	var R = 6371; // km (change this constant to get miles)
+    	var dLat = (lat2-lat1) * Math.PI / 180;
+    	var dLon = (lon2-lon1) * Math.PI / 180;
+    	var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+    		Math.cos(lat1 * Math.PI / 180 ) * Math.cos(lat2 * Math.PI / 180 ) *
+    		Math.sin(dLon/2) * Math.sin(dLon/2);
+    	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    	var d = R * c;
+    	if (d>1) return Math.round(d);
+    	return d;
+    },
+    selectCampaign(c) {
+      this.$cookies.set('_tamodalcampaign', c)
+      this.$router.push('/movimento117')
+    },
+    show () {
+      if($cookies.get('_tamodalcampaign')) return;
+      this.$modal.show('select-campaign');
+    },
+    hide () {
+      this.$modal.hide('select-campaign');
+    },
+    beforeClose() {
+      this.$cookies.set('_tamodalcampaign', true)
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
+  .select-campaign
+    &-item
+      &:hover
+        background: aliceblue
+    .modal-body
 
+      .pb
+        padding-bottom: 20px
+      .pt
+        padding-top: 20px
 </style>

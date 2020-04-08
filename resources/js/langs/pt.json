@@ -13,6 +13,7 @@
   "home": {
     "map" : {
       "location" : "use minha localização",
+      "search_area" : "Pesquisar nesta área",
       "marker" : {
         "esta_aqui" :  "Você está aqui",
         "drag" : "Arraste o pin para o ponto aproximado"

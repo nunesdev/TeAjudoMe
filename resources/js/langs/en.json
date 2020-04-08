@@ -13,6 +13,7 @@
   "home": {
     "map" : {
       "location" : "use my location",
+      "search_area" : "Search this area",
       "marker" : {
         "esta_aqui" :  "You are here",
         "drag" : "If necessary, drag the pin to another point!"
@@ -109,6 +110,7 @@
         "weekend" : "Weekend only",
         "anytime_hours" : "24 hours",
         "expedient" : "business hours",
+        "delivery" : "We deliver",
         "others" : "Other times",
         "others_placeholder" : "Ex: Mon to Friday - 10pm to 4pm"
       }

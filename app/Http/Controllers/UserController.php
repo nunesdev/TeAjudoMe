@@ -22,6 +22,10 @@ class UserController extends BaseController
 
       $thereIs = User::where('email', $request->input('email'))->first();
 
+      if($request->input('campaign'))
+        $thereIs = User::where('email', $request->input('email'))->where('campaign', $request->input('campaign'))->first();
+
+
       if($thereIs && $thereIs->email)
         throw new \Exception("Você já faz parte! Se precisar alterar seus dados entre em contato pelo email teajudome@gmail.com, obrigado!", 1);
 
@@ -42,6 +46,7 @@ class UserController extends BaseController
       $user->lng = $request->input('location.lon');
       $user->type = $request->input('type') ? $request->input('type') : 'volunteer';
       $user->city_id = 25;
+      $user->campaign = $request->input('campaign') ? $request->input('campaign') : null;
       $user->options = $request->input('support') !== null ? json_encode($request->input('support')) : null;
       $user->status = 'a';
       $user->save();
@@ -97,6 +102,7 @@ class UserController extends BaseController
       $user->lng = $request->input('location.lon');
       $user->type = $request->input('type') ? $request->input('type') : 'store';
       $user->city_id = 25;
+      $user->campaign = $request->input('campaign') ? $request->input('campaign') : null;
       $user->options = $request->input('support') !== null ? json_encode($request->input('support')) : null;
       $user->status = 'a';
       $user->save();
@@ -121,8 +127,12 @@ class UserController extends BaseController
     try {
       $data = [];
 
-      $payload = User::where('status','a')->get();
-
+      $payload = User::nearby([
+        'lat' => $request->input('lat'),
+        'lng' => $request->input('lng'),
+        'distance' => $request->input('distance'),
+        'limit' => 200
+      ]);
 
       foreach($payload as $d):
         $data[] = [
@@ -143,4 +153,40 @@ class UserController extends BaseController
       return response()->json(['status'=>false,'message'=>$e->getMessage()]);
     }
   }
+
+
+  public function allByCampaign(Request $request) {
+    try {
+      $data = [];
+
+      $payload = User::nearby([
+        'lat' => $request->input('lat'),
+        'lng' => $request->input('lng'),
+        'distance' => $request->input('distance'),
+        'limit' => 200,
+        'campaign' => $request->input('campaign') ? $request->input('campaign') : null,
+      ]);
+
+      foreach($payload as $d):
+        $data[] = [
+          'name' => $d->name,
+          'email' => $d->email,
+          'phone' => $d->phone,
+          'whatsapp' => $d->whatsapp,
+          'lat' => $d->lat,
+          'lng' => $d->lng,
+          'options' => json_decode($d->options),
+          'type' => $d->type,
+          'campaign' => $d->campaign
+        ];
+
+      endforeach;
+
+      return response()->json(['status'=>true, 'message'=>'Dados coletados','data'=>$data]);
+    } catch (\Exception $e) {
+      return response()->json(['status'=>false,'message'=>$e->getMessage()]);
+    }
+  }
+
+
 }

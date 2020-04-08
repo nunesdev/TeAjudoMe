@@ -32,25 +32,28 @@
             <router-link v-if="showMapUp" class="btn btn-showmap" :to="{ name: 'home' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
           </div>
         </div>
-        <div class="col-12">
+        <!-- <div class="col-12">
           <div class="row">
-            <!-- <div class="col-12">
-              <span>Filtro:</span>
+            <div class="col-12">
+              <h6>Campanhas ativas:</h6>
               <ul class="list-unstyled">
                 <li @click="getFilterByType('store')">
-                  <img src="/images/supermercado.png" width="32" height="32" alt="">
-                </li>
-                <li @click="getFilterByType('volunteer')">
-                  <img src="/images/voluntario.png" width="32" height="32" alt="">
-                </li>
-                <li>
-                  <img src="/images/perfil.png" width="32" height="32" alt="">
+                  <div class="row">
+                    <div class="col-3">
+                      <img src="/images/movimento/user.png" width="32" height="32" alt="">
+
+                    </div>
+                    <div class="col-9">
+                      <span>Movimento 117 - #AmorEmMovimento</span>
+                      <router-link class="btn btn-sm btn-info" :to="{ name: 'Movimento117', params: {'utm_source':'home'} }">Ir para o mapa</router-link>
+                    </div>
+                  </div>
                 </li>
 
               </ul>
-            </div> -->
+            </div>
           </div>
-        </div>
+        </div> -->
 
         <footer class="container">
           <div class="sponsors">

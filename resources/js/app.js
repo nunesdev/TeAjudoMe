@@ -3,6 +3,8 @@ import Vue from 'vue'
 import Vuex from 'vuex';
 import { sync } from 'vuex-router-sync';
 
+import './registerServiceWorker'
+
 import router from './routers/index'
 import * as VueGoogleMaps from "vue2-google-maps";
 import { VueReCaptcha } from 'vue-recaptcha-v3'
@@ -12,6 +14,12 @@ import VueCookies from 'vue-cookies'
 import VueGtag from "vue-gtag";
 import VModal from 'vue-js-modal'
 import VTooltip from 'v-tooltip'
+
+// Layouts
+import DefaultLayout from './layouts/Default'
+import Movimento117 from './layouts/Movimento117'
+Vue.component('DefaultLayout', DefaultLayout)
+Vue.component('Movimento117', Movimento117)
 
 
 import './ml';
