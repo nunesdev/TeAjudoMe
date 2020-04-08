@@ -151,6 +151,7 @@ export default {
         'getMarkerPosition',
       ]),
       ...mapActions([
+        'actionSetNewPosition',
         'actionSetNewUserMovimento'
       ]),
 

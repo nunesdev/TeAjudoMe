@@ -4,7 +4,7 @@
       <div class="row align-items-center"  :class="{active:isActive}">
 
         <div class="col-12 bottombar-volunteers-count">
-          <div class="row">
+          <div class="row no-gutters">
             <div class="col-4">
               <div class="row align-items-center no-gutters">
                 <div class="col-6">
@@ -43,6 +43,9 @@
             </div>
           </div>
         </div>
+        <div class="col-12 text-right">
+          <small>Total: {{getTotalMarkersMovimento}}</small>
+        </div>
       </div>
 
 
@@ -61,7 +64,7 @@
         </div>
       </div>
 
-      <div class="col-12 bottombar-links"> 
+      <div class="col-12 bottombar-links">
         <div class="row align-items-start">
 
           <div class="col-9">
@@ -109,6 +112,7 @@ export default {
   computed: {
     ...mapGetters([
       'getMarkersMovimento',
+      'getTotalMarkersMovimento'
     ]),
   },
   mounted() {
@@ -143,6 +147,10 @@ export default {
 .bottombar {
   padding-top: 10px;
   padding-bottom: 10px;
+  &.container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   .bottombar-volunteers-count {
     .col-4 {
       padding-left: 5px;

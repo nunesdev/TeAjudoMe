@@ -3,6 +3,8 @@ import {
   MOVIMENTO_MARKERS_OBJECT,
   MOVIMENTO_ADD_MARKER_OBJECT,
   MOVIMENTO_ADD_MARKER_POSITION,
+  MOVIMENTO_ADD_MARKER_TOTAL,
+  MOVIMENTO_MARKERS_TOTAL,
 } from '../mutation-types';
 
 const mutations = {
@@ -14,10 +16,17 @@ const mutations = {
   },
   [MOVIMENTO_ADD_MARKER_POSITION](state,data) {
     state.markerPosition = data
+  },
+  [MOVIMENTO_MARKERS_TOTAL](state,data) {
+    state.totalUsers = data
+  },
+  [MOVIMENTO_ADD_MARKER_TOTAL](state,data) {
+    state.totalUsers = (state.totalUsers+1)
   }
 };
 
 const state = {
+  totalUsers: 0,
   allUsers: [],
   markerPosition: [],
 };

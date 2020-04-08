@@ -20,7 +20,8 @@ class UserController extends BaseController
       if(!$request->input('email') || !$request->input('phone'))
         throw new \Exception("É necessário um email e telefone válido", 1);
 
-      $thereIs = User::where('email', $request->input('email'))->first();
+      if(!$request->input('campaign'))
+        $thereIs = User::where('email', $request->input('email'))->whereNull('campaign')->first();
 
       if($request->input('campaign'))
         $thereIs = User::where('email', $request->input('email'))->where('campaign', $request->input('campaign'))->first();
@@ -166,7 +167,7 @@ class UserController extends BaseController
 
       if(!$request->input('lat') || !$request->input('lng') || !$request->input('distance') || !$request->input('campaign'))
         throw new \Exception("Error Processing Request", 1);
-    
+
       $total = User::where('campaign', $request->input('campaign'))->count();
 
       $payload = User::nearby([

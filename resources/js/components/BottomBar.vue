@@ -1,20 +1,51 @@
 <template>
   <div class="">
     <div class="bottombar container">
-      <div class="bottombar-logo row align-items-center"  :class="{active:isActive}">
+      <div class=" row align-items-center "  :class="{active:isActive}">
 
         <div class="col-12 bottombar-volunteers-count">
-          <div class="row">
-            <div class="col-3">
-              <small v-text="$ml.get('sidebar.total.requests')">Solicitações</small><br/><span>{{getTotal('user')}}</span>
+          <div class="row no-gutters">
+            <div class="col-4">
+              <div class="row align-items-center no-gutters">
+                <div class="col-6">
+                  <img src="/images/perfil.png" width="22" alt="">
+                </div>
+                <div class="col-6">
+                  <div class="stats">
+                    <span>{{getTotal('user')}}</span> <small v-text="$ml.get('sidebar.total.requests')"></small>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="col-4">
-              <small v-text="$ml.get('sidebar.total.volunteers')"></small><br/><span>{{getTotal('volunteer')}} </span>
+              <div class="row align-items-center no-gutters">
+                <div class="col-6">
+                  <img src="/images/voluntario.png" width="16" alt="">
+                </div>
+                <div class="col-6">
+                  <div class="stats">
+                    <span>{{getTotal('volunteer')}} </span> <small v-text="$ml.get('sidebar.total.volunteers')"></small>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="col-5">
-            <small v-text="$ml.get('sidebar.total.small_business_mobile')">Peq. negócios</small> <br/><span>{{getTotal('store')}}</span>
+            <div class="col-4">
+              <div class="row align-items-center no-gutters">
+                <div class="col-6">
+                  <img src="/images/comercio.png" width="16" alt="">
+                </div>
+                 <div class="col-6">
+                   <div class="stats">
+                     <span>{{getTotal('store')}}</span> <small v-text="$ml.get('sidebar.total.small_business_mobile')"></small>
+                   </div>
+                 </div>
+              </div>
             </div>
           </div>
+        </div>
+
+        <div class="col-12 text-right">
+          <small>Total: {{getTotalMarkers}}</small>
         </div>
       </div>
 
@@ -83,6 +114,7 @@ export default {
   computed: {
     ...mapGetters([
       'getMarkers',
+      'getTotalMarkers',
     ]),
   },
   mounted() {
@@ -114,60 +146,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.bottombar {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  &.container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .bottombar-volunteers-count {
+    .col-4 {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    img {
+      max-width: 100%;
+      width: 32px;
+    }
+    small {
+      font-size: 11px;
+    }
+  }
+}
 footer {
   padding-top: 0;
 }
-.btn-handup {
-  position: fixed;
-  bottom: 90px;
-  right: 3px;
-  border-radius: 50%;
-  font-size: 8px;
-  width: 60PX;
-  height: 60px;
-  background: #ffed4a;
-  transition: background .25s ease-in;
-  z-index: 1;
 
-  span {
-    display: block;
-    font-size: 3em;
-  }
-
-  @media only screen and (max-width: 600px) {
-
-  }
-
-  &:hover {
-    color: #313a4a;
-    background: #fff;
-  }
-}
-.btn-needup {
-  position: fixed;
-  bottom: 155px;
-  right: 8px;
-  color: #fff;
-  border-radius: 50%;
-  font-size: 8px;
-  width: 50PX;
-  height: 50px;
-  background: #d43e66;
-  transition: background 0.25s ease-in;
-  z-index: 1;
-
-  span {
-    display: block;
-    font-size: 3em;
-  }
-
-  @media only screen and (max-width: 600px) {
-
-  }
-
-  &:hover {
-    color: #313a4a;
-    background: #fff;
+.btn {
+  &.btn-active {
+    background: #264463;
   }
 }
 </style>

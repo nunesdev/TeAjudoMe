@@ -1,20 +1,51 @@
 <template>
   <div class="">
     <div class="sidebar">
-
       <div class="sidebar-volunteers-count">
-        <div class="row">
+        <div class="row ">
+
           <div class="col-6">
-            <small v-text="$ml.get('sidebar.total.requests')">Solicitações</small><span>{{getTotal('user')}}</span>
+            <div class="row align-items-center no-gutters">
+              <div class="col-6">
+                <img src="/images/perfil.png" width="44" height="44" alt="">
+              </div>
+              <div class="col-6">
+                <div class="stats">
+                  <span>{{getTotal('user')}}</span> <small v-text="$ml.get('sidebar.total.requests')"></small>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-6">
-            <small v-text="$ml.get('sidebar.total.volunteers')"></small><span>{{getTotal('volunteer')}} </span>
+            <div class="row align-items-center no-gutters">
+              <div class="col-6">
+                <img src="/images/voluntario.png" width="44" height="44" alt="">
+              </div>
+              <div class="col-6">
+                <div class="stats">
+                  <span>{{getTotal('volunteer')}} </span> <small v-text="$ml.get('sidebar.total.volunteers')"></small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row align-items-center no-gutters">
+              <div class="col-6">
+                <img src="/images/comercio.png" width="44" height="44" alt="">
+              </div>
+               <div class="col-6">
+                 <div class="stats">
+                   <span>{{getTotal('store')}}</span> <small v-text="$ml.get('sidebar.total.small_business')"></small>
+                 </div>
+               </div>
+            </div>
           </div>
           <div class="col-12">
-          <small v-text="$ml.get('sidebar.total.small_business')">Pequenos negócios</small>  <span>{{getTotal('store')}}</span>
+            <small>Total: {{getTotalMarkers}}</small>
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-12">
           <hr>
@@ -121,12 +152,12 @@ export default {
   computed: {
     ...mapGetters([
       'getMarkers',
+      'getTotalMarkers',
       'getFilter'
     ])
   },
   methods: {
     getTotal(type) {
-      if(!this.getMarkersMovimento) return;
       return this.getMarkers.filter((item)=>{
         return item.type == type
       }).length
@@ -157,5 +188,31 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss" scoped>
+.sidebar-volunteers-count {
+  .row {
+    .col-6 {
+      // padding-left: 5px;
+      // padding-right: 5px;
+    }
+  }
+  .stats {
+    span {
+      font-size: 22px;
+    }
+    small {
+      line-height: 15px;
+    }
+  }
+}
+
+.btn {
+  &.btn-active {
+    background: #264463;
+  }
+}
+
+.sidebar-logo {
+  padding-bottom: 20px;
+}
 </style>

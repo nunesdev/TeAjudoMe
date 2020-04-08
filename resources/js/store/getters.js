@@ -4,6 +4,7 @@
  * Users
  */
 export const getMarkers = state => state.markers.allUsers
+export const getTotalMarkers = state => state.markers.totalUsers
 export const getMarkerPosition = state => state.markers.markerPosition
 
 export const getFilter = state => (type) => {
@@ -22,3 +23,4 @@ export const getFilter = state => (type) => {
  */
 export const getMarkersMovimento = state => state.movimento.allUsers
 export const getMarkerPositionMovimento = state => state.movimento.markerPosition
+export const getTotalMarkersMovimento = state => state.movimento.totalUsers

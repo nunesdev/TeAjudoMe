@@ -12351,7 +12351,7 @@ a.btn.btn-active {
 .m117_staysafe .bottombar,
 .m117_howworks .bottombar,
 .m117_about .bottombar {
-  top: -60px;
+  top: -80px;
   width: 100%;
 }
 
@@ -12372,7 +12372,7 @@ a.btn.btn-active {
   background: #fff;
   position: fixed;
   z-index: 4;
-  top: 20px;
+  top: 15px;
   left: 0;
   width: 90%;
   margin: 0;
@@ -12572,7 +12572,7 @@ a.btn.btn-active {
     bottom: auto;
     transform: translate(-50%);
     width: 160px;
-    top: 50px;
+    top: 100px;
   }
 
   .search-area .btn span:last-child {
@@ -12597,7 +12597,7 @@ a.btn.btn-active {
 @media only screen and (max-width: 600px) {
   .map {
     right: 0;
-    top: 40px;
+    top: 0;
   }
 }
 

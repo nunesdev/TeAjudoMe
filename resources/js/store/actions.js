@@ -18,12 +18,14 @@ export const actionGetAllUsers = ({ commit }, obj) => {
   })
   .then((result)=>{
     commit(mutations.MARKERS_OBJECT, result.data.data)
+    commit(mutations.MARKERS_TOTAL, result.data.total)
   })
 };
 
 
 export const actionSetNewUser = ({ commit }, obj) => {
   commit(mutations.ADD_MARKET_OBJECT, obj)
+  commit(mutations.ADD_MARKERS_TOTAL, 1)
 };
 
 export const actionSetNewPosition = ({ commit }, obj) => {
@@ -44,6 +46,7 @@ export const actionGetAllUsersMovimento = ({ commit }, obj) => {
   })
   .then((result)=>{
     commit(mutations.MOVIMENTO_MARKERS_OBJECT, result.data.data)
+    commit(mutations.MOVIMENTO_MARKERS_TOTAL, result.data.total)
   })
 };
 
