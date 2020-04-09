@@ -16,11 +16,12 @@
 
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="application-name" content="teajudo">
-        <meta name="apple-mobile-web-app-title" content="teajudo">
+        <meta name="apple-mobile-web-app-title" content="Te Ajudo">
+        <meta name="application-name" content="Te Ajudo" />
+
         <meta name="theme-color" content="#264463">
         <meta name="msapplication-navbutton-color" content="#264463">
-        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <meta name="apple-mobile-web-app-status-bar-style" content="white">
         <meta name="msapplication-starturl" content="/">
 
         <link rel="icon" type="image/png" sizes="72x72" href="images/icons/icon-72x72.png">
@@ -41,6 +42,20 @@
         <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="images/icons/apple/icon-512x512.png">
 
         <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no, shrink-to-fit=no">
+
+
+        <link data-react-helmet="true" rel="apple-touch-startup-image" href="/images/icons/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" />
+    <link data-react-helmet="true" rel="apple-touch-startup-image" href="/images/icons/splash/iphone6_splash" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
+    <link data-react-helmet="true" rel="apple-touch-startup-image" href="/images/icons/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" />
+    <link data-react-helmet="true" rel="apple-touch-startup-image" href="/images/icons/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
+    <link data-react-helmet="true" rel="apple-touch-startup-image" href="/images/icons/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" />
+    <link data-react-helmet="true" rel="apple-touch-startup-image" href="/images/icons/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" />
+    <link data-react-helmet="true" rel="apple-touch-startup-image" href="/images/icons/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" />
+    <link data-react-helmet="true" rel="apple-touch-startup-image" href="/images/icons/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" />
+    <link data-react-helmet="true" rel="apple-touch-startup-image" href="/images/icons/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" />
+    <link data-react-helmet="true" rel="apple-touch-startup-image" href="/images/icons/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" />
+        <link rel="mask-icon" href="/images/icons/splash/safari-pinned-tab.svg" color="#264463" />
+
         <title>Te Ajudo - Me</title>
         <!-- Fonts -->
         <!-- <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet"/> -->
