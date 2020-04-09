@@ -25,7 +25,7 @@
 
             <form  class="form-horizontal" action="/api" v-on:submit.prevent="onSubmit" method="post">
               <div class="form-group" v-if="isMobile">
-                <a class="btn btn-sm white btn-success" @click="isMapShow = !isMapShow">Alterar localização</a>
+                <a class="btn btn-sm white btn-success" @click="isMapShow = !isMapShow">Adicionar endereço(localização)</a>
                  <!-- <input type="text" class="form-control" id="address" v-model="info.address" name="address" :placeholder="$ml.get('store.form.address')" required> -->
               </div>
               <div class="form-group">

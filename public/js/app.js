@@ -30246,7 +30246,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Alterar localização")]
+                      [_vm._v("Adicionar endereço(localização)")]
                     )
                   ])
                 : _vm._e(),
@@ -31008,7 +31008,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Alterar localização")]
+                      [_vm._v("Adicionar endereço(localização)")]
                     )
                   ])
                 : _vm._e(),
