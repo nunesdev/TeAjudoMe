@@ -8862,6 +8862,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8874,7 +8875,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       showHandUp: true,
       showMapUp: true,
       showButtonNotify: false,
-      msg: "teste teste"
+      msg: "teste teste",
+      installedAppPWA: false,
+      showInstall: false
     };
   },
   watch: {
@@ -8883,6 +8886,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false;
     }
   },
+  updated: function updated() {
+    if (self.INSTALLAPPEVENT) this.showInstall = true;
+  },
   created: function created() {
     this.show();
     this.showButtonNotify = true;
@@ -8890,6 +8896,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false;
     this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false;
+
+    if (navigator.standalone) {
+      console.log('Launched: Installed (iOS)');
+      this.$gtag.event('Launched_App', {
+        'event_category': 'Launched',
+        'event_label': 'standalone',
+        'event_value': 'ios'
+      });
+      this.installedAppPWA = true;
+      this.showInstall = false;
+    } else if (matchMedia('(display-mode: standalone)').matches) {
+      console.log('Launched: Installed');
+      this.$gtag.event('Launched_App', {
+        'event_category': 'Launched',
+        'event_label': 'standalone',
+        'event_value': 'android'
+      });
+      this.installedAppPWA = true;
+      this.showInstall = false;
+    } else {
+      console.log('Launched: Browser Tab');
+      this.$gtag.event('Launched_App', {
+        'event_category': 'Launched',
+        'event_label': 'standalone',
+        'event_value': 'Browser'
+      });
+    }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkersMovimento'])),
   methods: {
@@ -8920,6 +8953,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     showCampaigns: function showCampaigns() {
       this.$modal.show('select-campaign');
+    },
+    installApp: function installApp() {
+      var _this = this;
+
+      self.INSTALLAPPEVENT.prompt();
+      self.INSTALLAPPEVENT.userChoice.then(function (choice) {
+        if (choice.outcome === 'accepted') {
+          _this.installedAppPWA = true;
+        }
+
+        self.INSTALLAPPEVENT = null;
+      });
     }
   }
 });
@@ -32053,6 +32098,21 @@ var render = function() {
                 },
                 [_vm._v("Campanhas")]
               ),
+              _vm._v(" "),
+              !_vm.installedAppPWA && _vm.showInstall
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm btn-primary",
+                      attrs: { type: "button", name: "button" },
+                      on: { click: _vm.installApp }
+                    },
+                    [
+                      _c("span", { staticClass: "icon-download" }),
+                      _vm._v("App")
+                    ]
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _vm.showButtonNotify
                 ? _c("div", { staticClass: "onesignal-customlink-container" })

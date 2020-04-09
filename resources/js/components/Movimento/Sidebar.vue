@@ -54,6 +54,7 @@
               <span>Quero ser um voluntário</span>
             </router-link>
             <button @click="showCampaigns" type="button" class="btn btn-sm btn-primary" name="button">Campanhas</button>
+            <button v-if="!installedAppPWA && showInstall" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>App</button>
             <div v-if="showButtonNotify" class='onesignal-customlink-container'></div>
             <router-link v-if="showMapUp" class="btn btn-showmap" to="/movimento117"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
           </div>
@@ -108,7 +109,9 @@ export default {
       showHandUp: true,
       showMapUp: true,
       showButtonNotify: false,
-      msg: "teste teste"
+      msg: "teste teste",
+      installedAppPWA: false,
+      showInstall: false
     }
   },
   watch:{
@@ -117,6 +120,9 @@ export default {
       this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false
     }
   },
+  updated() {
+    if(self.INSTALLAPPEVENT) this.showInstall = true
+  },
   created() {
     this.show()
     this.showButtonNotify = true;
@@ -124,6 +130,33 @@ export default {
   mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false
     this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false
+
+    if (navigator.standalone) {
+      console.log('Launched: Installed (iOS)');
+      this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'ios'
+        })
+      this.installedAppPWA = true;
+      this.showInstall = false
+    } else if (matchMedia('(display-mode: standalone)').matches) {
+      console.log('Launched: Installed');
+      this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'android'
+        })
+      this.installedAppPWA = true;
+        this.showInstall = false
+    } else {
+      console.log('Launched: Browser Tab');
+      this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'Browser'
+        })
+    }
   },
   computed: {
     ...mapGetters([
@@ -158,7 +191,16 @@ export default {
     },
     showCampaigns() {
       this.$modal.show('select-campaign');
-    }
+    },
+    installApp() {
+      self.INSTALLAPPEVENT.prompt();
+      self.INSTALLAPPEVENT.userChoice.then((choice) => {
+        if (choice.outcome === 'accepted') {
+          this.installedAppPWA = true
+        }
+        self.INSTALLAPPEVENT = null;
+      });
+    },
   }
 }
 </script>
