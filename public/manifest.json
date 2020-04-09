@@ -2,7 +2,7 @@
   "name": "Te Ajudo - Plataforma Colaborativa",
   "short_name": "TeAjudo",
   "start_url": "/",
-  "display": "fullscreen", 
+  "display": "fullscreen",
   "orientation": "portrait",
   "theme_color": "#264463",
   "background_color": "#fff",
@@ -48,5 +48,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
+  ]
 }
