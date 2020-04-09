@@ -5,7 +5,8 @@
       <div class="popup text-center">
 
 
-        <img src="/images/movimento/user.png" width="48" height="48" alt="">
+        <img v-if="!item.options.blood" src="/images/movimento/user.png" width="48" height="48" alt="">
+        <img v-if="item.options.blood" src="/images/movimento/user_blood.png" width="48" height="48" alt="">
 
 
         <div class="popup-head row align-items-center">
@@ -25,6 +26,9 @@
           <div>
             <span v-if="item.options.food">
               <small>Coletar doações</small>
+            </span>
+            <span v-if="item.options.blood">
+              <small>Doar sangue</small>
             </span>
             <span v-if="item.options.dia_d">
               <small>Participar do dia D</small>

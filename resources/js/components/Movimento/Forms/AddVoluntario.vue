@@ -60,8 +60,20 @@
                         <span>
                           <img src="/images/movimento/caixa.png" width="32" height="32" alt="">
                         </span>
-                        <small>Coletar doações</small>
+                        <small>Coletar doações de alimentos</small>
                         <input type="checkbox" name="support[]" v-model="info.support.food" id="m_food" value="food">
+                      </label>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12 ">
+                    <div class="help" :class="{active: info.support.blood}">
+                      <label for="blood">
+                        <span>
+                          <img src="/images/movimento/doacao.png" width="32" height="32" alt="">
+                        </span>
+                        <small>Doar sangue</small>
+                        <input type="checkbox" name="support[]" v-model="info.support.blood" id="blood" value="blood">
                       </label>
 
                     </div>

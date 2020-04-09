@@ -8269,6 +8269,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8703,6 +8715,10 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_mapbox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-mapbox */ "./node_modules/vue-mapbox/src/main.js");
+//
+//
+//
+//
 //
 //
 //
@@ -9782,6 +9798,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -31293,7 +31311,7 @@ var render = function() {
                         _c("label", { attrs: { for: "m_food" } }, [
                           _vm._m(0),
                           _vm._v(" "),
-                          _c("small", [_vm._v("Coletar doações")]),
+                          _c("small", [_vm._v("Coletar doações de alimentos")]),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
@@ -31356,11 +31374,80 @@ var render = function() {
                       "div",
                       {
                         staticClass: "help",
+                        class: { active: _vm.info.support.blood }
+                      },
+                      [
+                        _c("label", { attrs: { for: "blood" } }, [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c("small", [_vm._v("Doar sangue")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.info.support.blood,
+                                expression: "info.support.blood"
+                              }
+                            ],
+                            attrs: {
+                              type: "checkbox",
+                              name: "support[]",
+                              id: "blood",
+                              value: "blood"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.info.support.blood)
+                                ? _vm._i(_vm.info.support.blood, "blood") > -1
+                                : _vm.info.support.blood
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.info.support.blood,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "blood",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.info.support,
+                                        "blood",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.info.support,
+                                        "blood",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.info.support, "blood", $$c)
+                                }
+                              }
+                            }
+                          })
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6 col-sm-12 " }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "help",
                         class: { active: _vm.info.support.dia_d }
                       },
                       [
                         _c("label", { attrs: { for: "dia_d" } }, [
-                          _vm._m(1),
+                          _vm._m(2),
                           _vm._v(" "),
                           _c("small", [_vm._v("Participar do dia D")]),
                           _vm._v(" "),
@@ -31520,6 +31607,21 @@ var staticRenderFns = [
       _c("img", {
         attrs: {
           src: "/images/movimento/caixa.png",
+          width: "32",
+          height: "32",
+          alt: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [
+      _c("img", {
+        attrs: {
+          src: "/images/movimento/doacao.png",
           width: "32",
           height: "32",
           alt: ""
@@ -31901,14 +32003,27 @@ var render = function() {
     [
       _c("MglPopup", [
         _c("div", { staticClass: "popup text-center" }, [
-          _c("img", {
-            attrs: {
-              src: "/images/movimento/user.png",
-              width: "48",
-              height: "48",
-              alt: ""
-            }
-          }),
+          !_vm.item.options.blood
+            ? _c("img", {
+                attrs: {
+                  src: "/images/movimento/user.png",
+                  width: "48",
+                  height: "48",
+                  alt: ""
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.item.options.blood
+            ? _c("img", {
+                attrs: {
+                  src: "/images/movimento/user_blood.png",
+                  width: "48",
+                  height: "48",
+                  alt: ""
+                }
+              })
+            : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "popup-head row align-items-center" }, [
             _c("h3", { staticClass: "col-11" }, [_vm._v(_vm._s(_vm.item.name))])
@@ -31978,6 +32093,10 @@ var render = function() {
                 _c("div", [
                   _vm.item.options.food
                     ? _c("span", [_c("small", [_vm._v("Coletar doações")])])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.item.options.blood
+                    ? _c("span", [_c("small", [_vm._v("Doar sangue")])])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.item.options.dia_d
@@ -33695,10 +33814,21 @@ var render = function() {
                     },
                     [
                       _c("div", { attrs: { slot: "marker" }, slot: "marker" }, [
-                        item && item.type == "volunteer"
+                        item && item.type == "volunteer" && !item.options.blood
                           ? _c("img", {
                               attrs: {
                                 src: "/images/movimento/user.png",
+                                width: "36",
+                                height: "36",
+                                alt: ""
+                              }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        item && item.type == "volunteer" && item.options.blood
+                          ? _c("img", {
+                              attrs: {
+                                src: "/images/movimento/user_blood.png",
                                 width: "36",
                                 height: "36",
                                 alt: ""
