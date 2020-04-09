@@ -6916,6 +6916,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6926,7 +6927,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isActive: false,
       isActiveSidebarMember: false,
       showHandUp: true,
-      showMapUp: true
+      showMapUp: true,
+      installAppEvent: undefined,
+      installedAppPWA: false
     };
   },
   watch: {
@@ -6937,8 +6940,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkers', 'getTotalMarkers'])),
   mounted: function mounted() {
+    var _this = this;
+
     this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false;
     this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false;
+    window.addEventListener('load', function () {
+      if (navigator.standalone) {
+        console.log('Launched: Installed (iOS)');
+
+        _this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'ios'
+        });
+
+        _this.installedAppPWA = true;
+      } else if (matchMedia('(display-mode: standalone)').matches) {
+        console.log('Launched: Installed');
+
+        _this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'android'
+        });
+
+        _this.installedAppPWA = true;
+      } else {
+        console.log('Launched: Browser Tab');
+
+        _this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'Browser'
+        });
+      }
+    });
+    window.addEventListener('beforeinstallprompt', function (event) {
+      event.preventDefault();
+      _this.installAppEvent = event;
+      console.log('Can install App', _this.installAppEvent);
+    });
   },
   methods: {
     getTotal: function getTotal(type) {
@@ -6958,6 +6999,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.isActive = v;
       this.isActiveSidebarMember = v;
       this.$emit('sidebarOpen', v);
+    },
+    installApp: function installApp() {
+      var _this2 = this;
+
+      this.installAppEvent.prompt();
+      this.installAppEvent.userChoice.then(function (choice) {
+        if (choice.outcome === 'accepted') {
+          _this2.installedAppPWA = true;
+        }
+
+        _this2.installAppEvent = null;
+      });
     }
   }
 });
@@ -7603,6 +7656,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false;
     this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false;
+    window.addEventListener('load', function () {
+      if (navigator.standalone) {
+        console.log('Launched: Installed (iOS)');
+
+        _this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'ios'
+        });
+
+        _this.installedAppPWA = true;
+      } else if (matchMedia('(display-mode: standalone)').matches) {
+        console.log('Launched: Installed');
+
+        _this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'android'
+        });
+
+        _this.installedAppPWA = true;
+      } else {
+        console.log('Launched: Browser Tab');
+
+        _this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'Browser'
+        });
+      }
+    });
     window.addEventListener('beforeinstallprompt', function (event) {
       event.preventDefault();
       _this.installAppEvent = event;
@@ -28704,7 +28788,19 @@ var render = function() {
                   domProps: { textContent: _vm._s(_vm.$ml.get("menu.handup")) }
                 })
               ]
-            )
+            ),
+            _vm._v(" "),
+            !_vm.installedAppPWA
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-primary",
+                    attrs: { type: "button", name: "button" },
+                    on: { click: _vm.installApp }
+                  },
+                  [_c("span", { staticClass: "icon-download" }), _vm._v("App")]
+                )
+              : _vm._e()
           ],
           1
         )
@@ -29854,10 +29950,7 @@ var render = function() {
                     attrs: { type: "button", name: "button" },
                     on: { click: _vm.installApp }
                   },
-                  [
-                    _c("span", { staticClass: "icon-download" }),
-                    _vm._v("Instalar App")
-                  ]
+                  [_c("span", { staticClass: "icon-download" }), _vm._v("App")]
                 )
               : _vm._e()
           ],

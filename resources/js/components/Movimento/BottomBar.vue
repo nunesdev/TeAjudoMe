@@ -61,7 +61,7 @@
           <router-link  class="btn btn-sm btn-white" to="/movimento117/voluntario">
             <span>Quero ser voluntário</span>
           </router-link>
-          <button v-if="!installedAppPWA" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>Instalar App</button>
+          <button v-if="!installedAppPWA" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>App</button>
         </div>
       </div>
 
@@ -121,6 +121,34 @@ export default {
   mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false
     this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false
+
+    window.addEventListener('load', () => {
+      if (navigator.standalone) {
+        console.log('Launched: Installed (iOS)');
+        this.$gtag.event('Launched_App', {
+            'event_category': 'Launched',
+            'event_label': 'standalone',
+            'event_value': 'ios'
+          })
+        this.installedAppPWA = true;
+      } else if (matchMedia('(display-mode: standalone)').matches) {
+        console.log('Launched: Installed');
+        this.$gtag.event('Launched_App', {
+            'event_category': 'Launched',
+            'event_label': 'standalone',
+            'event_value': 'android'
+          })
+        this.installedAppPWA = true;
+      } else {
+        console.log('Launched: Browser Tab');
+        this.$gtag.event('Launched_App', {
+            'event_category': 'Launched',
+            'event_label': 'standalone',
+            'event_value': 'Browser'
+          })
+      }
+    });
+
     window.addEventListener('beforeinstallprompt', (event) => {
       event.preventDefault();
       this.installAppEvent = event;
