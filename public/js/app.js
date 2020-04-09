@@ -8861,6 +8861,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8914,6 +8915,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.isActive = v;
       this.isActiveSidebarMember = v;
       this.$emit('sidebarOpen', v);
+    },
+    showCampaigns: function showCampaigns() {
+      this.$modal.show('select-campaign');
     }
   }
 });
@@ -32041,6 +32045,18 @@ var render = function() {
                 },
                 [_c("span", [_vm._v("Quero ser um voluntário")])]
               ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-sm btn-primary",
+                  attrs: { type: "button", name: "button" },
+                  on: { click: _vm.showCampaigns }
+                },
+                [_vm._v("Campanhas")]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "onesignal-customlink-container" }),
               _vm._v(" "),
               _vm.showMapUp
                 ? _c(

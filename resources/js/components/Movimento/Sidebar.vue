@@ -53,7 +53,8 @@
             <router-link to="/movimento117/voluntario"  class="btn btn-white">
               <span>Quero ser um voluntário</span>
             </router-link>
-
+            <button @click="showCampaigns" type="button" class="btn btn-sm btn-primary" name="button">Campanhas</button>
+            <div class='onesignal-customlink-container'></div>
             <router-link v-if="showMapUp" class="btn btn-showmap" to="/movimento117"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
           </div>
         </div>
@@ -153,6 +154,9 @@ export default {
       this.isActiveSidebarMember = v;
       this.$emit('sidebarOpen', v);
     },
+    showCampaigns() {
+      this.$modal.show('select-campaign');
+    }
   }
 }
 </script>
