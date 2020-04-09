@@ -69,8 +69,7 @@
   var OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
     OneSignal.init({
-      // appId: "7b37bf81-b1d0-4303-89bd-04a223cece62", //dev
-      appId: "157b4f4f-3001-4ad3-93f8-8bdf9970e51c", // prod
+      appId: window.location.host.includes('dev') ? "7b37bf81-b1d0-4303-89bd-04a223cece62" : "157b4f4f-3001-4ad3-93f8-8bdf9970e51c", // prod
     });
   });
   window.INSTALLAPPEVENT = false;

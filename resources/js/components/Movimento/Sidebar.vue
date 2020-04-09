@@ -54,7 +54,7 @@
               <span>Quero ser um voluntário</span>
             </router-link>
             <button @click="showCampaigns" type="button" class="btn btn-sm btn-primary" name="button">Campanhas</button>
-            <div class='onesignal-customlink-container'></div>
+            <div v-if="showButtonNotify" class='onesignal-customlink-container'></div>
             <router-link v-if="showMapUp" class="btn btn-showmap" to="/movimento117"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
           </div>
         </div>
@@ -107,6 +107,7 @@ export default {
       isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true,
+      showButtonNotify: false,
       msg: "teste teste"
     }
   },
@@ -118,6 +119,7 @@ export default {
   },
   created() {
     this.show()
+    this.showButtonNotify = true;
   },
   mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false

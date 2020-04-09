@@ -8873,6 +8873,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true,
+      showButtonNotify: false,
       msg: "teste teste"
     };
   },
@@ -8884,6 +8885,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   created: function created() {
     this.show();
+    this.showButtonNotify = true;
   },
   mounted: function mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false;
@@ -28874,9 +28876,7 @@ var render = function() {
               _c("router-link", {
                 attrs: { to: "/fique-seguro" },
                 domProps: { textContent: _vm._s(_vm.$ml.get("menu.seguranca")) }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "onesignal-customlink-container" })
+              })
             ],
             1
           ),
@@ -30007,8 +30007,6 @@ var render = function() {
               },
               [_vm._v("Campanhas")]
             ),
-            _vm._v(" "),
-            _c("div", { staticClass: "onesignal-customlink-container" }),
             _vm._v(" "),
             !_vm.installedAppPWA && _vm.showInstall
               ? _c(
@@ -32056,7 +32054,9 @@ var render = function() {
                 [_vm._v("Campanhas")]
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "onesignal-customlink-container" }),
+              _vm.showButtonNotify
+                ? _c("div", { staticClass: "onesignal-customlink-container" })
+                : _vm._e(),
               _vm._v(" "),
               _vm.showMapUp
                 ? _c(
@@ -32400,9 +32400,7 @@ var render = function() {
                       })
                     ]
                   )
-                : _vm._e(),
-              _vm._v(" "),
-              _c("div", { staticClass: "onesignal-customlink-container" })
+                : _vm._e()
             ],
             1
           )

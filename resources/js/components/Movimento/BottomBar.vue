@@ -62,7 +62,7 @@
             <span>Quero ser voluntário</span>
           </router-link>
           <button @click="show" type="button" class="btn btn-sm btn-primary" name="button">Campanhas</button>
-          <div class='onesignal-customlink-container'></div>
+          <!-- <div class='onesignal-customlink-container'></div> -->
           <button v-if="!installedAppPWA && showInstall" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>App</button>
         </div>
       </div>

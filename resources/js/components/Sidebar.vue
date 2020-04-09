@@ -61,7 +61,7 @@
               <span v-text="$ml.get('menu.marketup')"></span>
             </router-link>
             <router-link v-if="showMapUp" class="btn btn-showmap" :to="{ name: 'home' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
-            <div class='onesignal-customlink-container'></div>
+            <!-- <div class='onesignal-customlink-container'></div> -->
           </div>
         </div>
         <div class="col-12">
