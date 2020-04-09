@@ -61,7 +61,8 @@
           <router-link  class="btn btn-sm btn-white" to="/movimento117/voluntario">
             <span>Quero ser voluntário</span>
           </router-link>
-          <button v-if="!installedAppPWA" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>App</button>
+          <button @click="show" type="button" class="btn btn-sm btn-primary" name="button">Campanhas</button>
+          <button v-if="!installedAppPWA && showInstall" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>App</button>
         </div>
       </div>
 
@@ -103,6 +104,7 @@ export default {
       showHandUp: true,
       showMapUp: true,
       installedAppPWA: false,
+      showInstall: false
     }
   },
   watch:{
@@ -117,10 +119,14 @@ export default {
       'getTotalMarkersMovimento'
     ])
   },
+  updated() {
+    if(self.INSTALLAPPEVENT) this.showInstall = true
+  },
   mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false
     this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false
 
+    console.log(self.INSTALLAPPEVENT);
 
     if (navigator.standalone) {
       console.log('Launched: Installed (iOS)');
@@ -130,6 +136,7 @@ export default {
           'event_value': 'ios'
         })
       this.installedAppPWA = true;
+      this.showInstall = false
     } else if (matchMedia('(display-mode: standalone)').matches) {
       console.log('Launched: Installed');
       this.$gtag.event('Launched_App', {
@@ -138,8 +145,10 @@ export default {
           'event_value': 'android'
         })
       this.installedAppPWA = true;
+        this.showInstall = false
     } else {
       console.log('Launched: Browser Tab');
+
       this.$gtag.event('Launched_App', {
           'event_category': 'Launched',
           'event_label': 'standalone',
@@ -175,6 +184,9 @@ export default {
         }
         self.INSTALLAPPEVENT = null;
       });
+    },
+    show () {
+      this.$modal.show('select-campaign');
     }
   }
 }

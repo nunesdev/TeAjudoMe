@@ -52,6 +52,7 @@
 
     </div>
 
+
     <div class="bottombar--actions">
 
       <div class="row">
@@ -65,7 +66,8 @@
           <router-link to="/posso-ajudar"  class="btn btn-white">
             <span v-text="$ml.get('menu.handup')"></span>
           </router-link>
-          <button v-if="!installedAppPWA" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>App</button>
+          <button @click="show" type="button" class="btn btn-sm btn-primary" name="button">Campanhas</button>
+          <button v-if="!installedAppPWA && showInstall" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>App</button>
         </div>
       </div>
 
@@ -105,6 +107,7 @@ export default {
       showHandUp: true,
       showMapUp: true,
       installedAppPWA: false,
+      showInstall: false
     }
   },
   watch:{
@@ -119,6 +122,9 @@ export default {
       'getTotalMarkers',
     ]),
   },
+  updated() {
+    if(self.INSTALLAPPEVENT) this.showInstall = true
+  },
   mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false
     this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false
@@ -131,6 +137,7 @@ export default {
           'event_value': 'ios'
         })
       this.installedAppPWA = true;
+      this.showInstall = false
     } else if (matchMedia('(display-mode: standalone)').matches) {
       console.log('Launched: Installed');
       this.$gtag.event('Launched_App', {
@@ -139,6 +146,7 @@ export default {
           'event_value': 'android'
         })
       this.installedAppPWA = true;
+        this.showInstall = false
     } else {
       console.log('Launched: Browser Tab');
       this.$gtag.event('Launched_App', {
@@ -176,6 +184,9 @@ export default {
         }
         self.INSTALLAPPEVENT = null;
       });
+    },
+    show () {
+      this.$modal.show('select-campaign');
     }
   }
 }

@@ -66,6 +66,7 @@
       appId: "157b4f4f-3001-4ad3-93f8-8bdf9970e51c", // prod
     });
   });
+  window.INSTALLAPPEVENT = false;
   window.addEventListener('beforeinstallprompt', (event) => {
     event.preventDefault();
     window.INSTALLAPPEVENT = event;

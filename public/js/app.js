@@ -6917,6 +6917,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -6928,7 +6930,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true,
-      installedAppPWA: false
+      installedAppPWA: false,
+      showInstall: false
     };
   },
   watch: {
@@ -6938,6 +6941,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkers', 'getTotalMarkers'])),
+  updated: function updated() {
+    if (self.INSTALLAPPEVENT) this.showInstall = true;
+  },
   mounted: function mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false;
     this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false;
@@ -6950,6 +6956,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         'event_value': 'ios'
       });
       this.installedAppPWA = true;
+      this.showInstall = false;
     } else if (matchMedia('(display-mode: standalone)').matches) {
       console.log('Launched: Installed');
       this.$gtag.event('Launched_App', {
@@ -6958,6 +6965,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         'event_value': 'android'
       });
       this.installedAppPWA = true;
+      this.showInstall = false;
     } else {
       console.log('Launched: Browser Tab');
       this.$gtag.event('Launched_App', {
@@ -6997,6 +7005,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         self.INSTALLAPPEVENT = null;
       });
+    },
+    show: function show() {
+      this.$modal.show('select-campaign');
     }
   }
 });
@@ -7615,6 +7626,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -7626,7 +7638,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true,
-      installedAppPWA: false
+      installedAppPWA: false,
+      showInstall: false
     };
   },
   watch: {
@@ -7636,9 +7649,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkersMovimento', 'getTotalMarkersMovimento'])),
+  updated: function updated() {
+    if (self.INSTALLAPPEVENT) this.showInstall = true;
+  },
   mounted: function mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false;
     this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false;
+    console.log(self.INSTALLAPPEVENT);
 
     if (navigator.standalone) {
       console.log('Launched: Installed (iOS)');
@@ -7648,6 +7665,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         'event_value': 'ios'
       });
       this.installedAppPWA = true;
+      this.showInstall = false;
     } else if (matchMedia('(display-mode: standalone)').matches) {
       console.log('Launched: Installed');
       this.$gtag.event('Launched_App', {
@@ -7656,6 +7674,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         'event_value': 'android'
       });
       this.installedAppPWA = true;
+      this.showInstall = false;
     } else {
       console.log('Launched: Browser Tab');
       this.$gtag.event('Launched_App', {
@@ -7695,6 +7714,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         self.INSTALLAPPEVENT = null;
       });
+    },
+    show: function show() {
+      this.$modal.show('select-campaign');
     }
   }
 });
@@ -9764,6 +9786,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -9953,6 +10012,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var d = R * c;
       if (d > 1) return Math.round(d);
       return d;
+    },
+    show: function show() {
+      this.$modal.show('select-campaign');
+    },
+    hide: function hide() {
+      this.$modal.hide('select-campaign');
     }
   })
 });
@@ -28762,7 +28827,17 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            !_vm.installedAppPWA
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-primary",
+                attrs: { type: "button", name: "button" },
+                on: { click: _vm.show }
+              },
+              [_vm._v("Campanhas")]
+            ),
+            _vm._v(" "),
+            !_vm.installedAppPWA && _vm.showInstall
               ? _c(
                   "button",
                   {
@@ -29914,7 +29989,17 @@ var render = function() {
               [_c("span", [_vm._v("Quero ser voluntário")])]
             ),
             _vm._v(" "),
-            !_vm.installedAppPWA
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-primary",
+                attrs: { type: "button", name: "button" },
+                on: { click: _vm.show }
+              },
+              [_vm._v("Campanhas")]
+            ),
+            _vm._v(" "),
+            !_vm.installedAppPWA && _vm.showInstall
               ? _c(
                   "button",
                   {
@@ -33259,6 +33344,122 @@ var render = function() {
       "div",
       { staticClass: "map" },
       [
+        _c(
+          "modal",
+          {
+            staticClass: "select-campaign",
+            attrs: { height: "auto", adaptive: true, name: "select-campaign" }
+          },
+          [
+            _c("div", { staticClass: "modal-header" }, [
+              _c("h3", [_vm._v("Selecione a campanha")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "row " }, [
+                _c(
+                  "div",
+                  { staticClass: "col-12 pb pt select-campaign-item" },
+                  [
+                    _c("div", { staticClass: "row no-gutters" }, [
+                      _c("div", { staticClass: "col-3" }, [
+                        !_vm.isMobile
+                          ? _c("img", {
+                              attrs: {
+                                src: "/images/movimento/user.png",
+                                width: "92",
+                                height: "92",
+                                alt: ""
+                              }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.isMobile
+                          ? _c("img", {
+                              attrs: {
+                                src: "/images/movimento/user.png",
+                                width: "52",
+                                height: "52",
+                                alt: ""
+                              }
+                            })
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-9" }, [
+                        _c("h4", [_vm._v("Movimento 117 - #AmorEmMovimento")]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-info",
+                            on: {
+                              click: function($event) {
+                                return _vm.hide()
+                              }
+                            }
+                          },
+                          [_vm._v("Continuar nesse mapa")]
+                        )
+                      ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-12 pb pt select-campaign-item" },
+                  [
+                    _c("div", { staticClass: "row no-gutters" }, [
+                      _c("div", { staticClass: "col-3" }, [
+                        !_vm.isMobile
+                          ? _c("img", {
+                              attrs: {
+                                src: "/images/teajudome.png",
+                                width: "92",
+                                height: "92",
+                                alt: ""
+                              }
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.isMobile
+                          ? _c("img", {
+                              attrs: {
+                                src: "/images/teajudome.png",
+                                width: "52",
+                                height: "52",
+                                alt: ""
+                              }
+                            })
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-9" },
+                        [
+                          _c("h4", [_vm._v("TeAjudo - Pequenos Negócios")]),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-active btn-info",
+                              attrs: { to: "/" }
+                            },
+                            [_vm._v("Ir para o mapa")]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
         _c("div", { staticClass: "location" }, [
           _c("div", { staticClass: "text-center" }, [
             _c("a", { staticClass: "btn", on: { click: _vm.locateMe } }, [
