@@ -124,21 +124,7 @@ export default {
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false
     this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false
 
-    window.addEventListener('load', () => {
-      if (navigator.standalone) {
-        console.log('Launched: Installed (iOS)');
-      } else if (matchMedia('(display-mode: standalone)').matches) {
-        console.log('Launched: Installed');
-      } else {
-        console.log('Launched: Browser Tab');
-      }
-    });
-
-    window.addEventListener('beforeinstallprompt', (event) => {
-      e.preventDefault();
-      this.installAppEvent = event;
-      console.log('Can install App',event);
-    });
+    this.installAppEvent = window.INSTALLAPPEVENT
   },
   methods: {
     getTotal(type) {

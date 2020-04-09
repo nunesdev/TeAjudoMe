@@ -70,6 +70,23 @@
     </head>
     <body >
       <div id="app"></div>
+      <script type="text/javascript">
+      window.addEventListener('load', () => {
+        if (navigator.standalone) {
+          console.log('Launched: Installed (iOS)');
+        } else if (matchMedia('(display-mode: standalone)').matches) {
+          console.log('Launched: Installed');
+        } else {
+          console.log('Launched: Browser Tab');
+        }
+      });
+
+      window.addEventListener('beforeinstallprompt', (event) => {
+        e.preventDefault();
+        window.INSTALLAPPEVENT = event;
+        console.log('Can install App',event);
+      });
+      </script>
       <script type="text/javascript" src="/js/app.js?c=4"></script>
     </body>
 </html>
