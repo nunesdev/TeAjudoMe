@@ -20,48 +20,18 @@
               <router-link v-if="isMobile" class="btn btn-showmap" :to="{ name: 'Movimento117' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
             </div>
             <h3 v-text="$ml.get('sidebar.title')"></h3>
-            <small style="line-height:18px">É importante a sua localização, não precisa ser exata. Um voluntário próximo à você entrará em contato para retirar a doação (alimentos), seguindo as recomendaçãos de segurança.</small>
+            <small style="line-height:18px">
+              Você pode doar alimentos e/ou doar algum valor, fique à vontade. Ao doar alimentos, será necessário preencher os dados, para que um voluntário
+              próximo à você, possa entrar em contato para retirar.
+            </small>
             <hr>
 
             <form  class="form-horizontal" action="/api" v-on:submit.prevent="onSubmit" method="post">
-              <div class="form-group" v-if="isMobile">
-                <a class="btn btn-sm white btn-success" @click="isMapShow = !isMapShow">Adicionar endereço(localização)</a>
-                 <!-- <input type="text" class="form-control" id="address" v-model="info.address" name="address" :placeholder="$ml.get('store.form.address')" required> -->
-              </div>
               <div class="form-group">
-                 <input type="text" class="form-control" v-model="info.name" name="name" :placeholder="$ml.get('sidebar.form.name')"  required>
-              </div>
-              <div class="form-group">
-                 <VuePhoneNumberInput @update="updatePhone" :translations="translations"  v-model="info.phone_" required />
-                 <small><span v-text="$ml.get('sidebar.form.whatsapp')"></span>  <input type="checkbox" v-model="info.whatsapp" name="" value=""> </small>
-              </div>
-              <div class="form-group">
-                 <input type="email" class="form-control" v-model="info.email" name="email" :placeholder="$ml.get('sidebar.form.email')" required>
-              </div>
-
-              <div class="form-group">
-                 <input type="text" class="form-control" v-model="info.city" name="city" :placeholder="$ml.get('sidebar.form.city')" required>
-              </div>
-              <div class="form-group">
-                 <input type="text" class="form-control" v-model="info.state" name="state" :placeholder="$ml.get('sidebar.form.state')" required>
-              </div>
-              <div class="form-group">
-                <h4>Posso ajudar com</h4>
-                <hr>
 
                 <div class="row helps text-center">
 
-                  <div class="col-md-6 col-sm-12 ">
-                    <div class="help" :class="{active: info.support.food}">
-                      <label for="food">
-                        <span>
-                          <img src="/images/movimento/caixa.png" width="32" height="32" alt="">
-                        </span>
-                        <small>Doar alimentos</small>
-                        <input type="checkbox" name="support[]" v-model="info.support.food" id="food" value="food">
-                      </label>
-                    </div>
-                  </div>
+
                   <div class="col-md-6 col-sm-12 ">
                     <div class="help" :class="{active: info.support.money}">
                       <label for="paypal">
@@ -72,7 +42,18 @@
                         <input type="checkbox" name="support[]" v-model="info.support.money" id="paypal" value="paypal">
                       </label>
                     </div>
-                    <small><label for="doacao_anonima"> <input id="doacao_anonima" type="checkbox" v-model="info.support.donate_anonymous" name="" value=""> <span>Doação anônima ? Caso faça transferência, não será exibido no mapa.</span> </label> </small>
+
+                  </div>
+                  <div class="col-md-6 col-sm-12 ">
+                    <div class="help" :class="{active: info.support.food}">
+                      <label for="food">
+                        <span>
+                          <img src="/images/movimento/caixa.png" width="32" height="32" alt="">
+                        </span>
+                        <small>Doar alimentos</small>
+                        <input type="checkbox" name="support[]" v-model="info.support.food" id="food" value="food">
+                      </label>
+                    </div>
                   </div>
 
                   <div class="col-12" v-if="info.support.money">
@@ -96,24 +77,47 @@
                         </div>
                       </div>
                     </div>
+                    <small><label for="doacao_publica"> <input id="doacao_publica" type="checkbox" v-model="info.support.public_donate" name="" value=""> <span>Quer inserir sua doação no mapa?  O valor da doação não será exibido.</span> </label> </small>
                   </div>
 
-                  <div class="col-12">
-                    <div class="form-group text-left">
-                      <label for="">Observações</label>
-                      <input type="text" class="form-control" name="" v-model="info.support.others" value="">
-                    </div>
-                  </div>
                 </div>
               </div>
-              <div class="form-group">
-                <label class="check_truth checklabel" for="veracidade">
-                  <input type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
-                  <small v-text="$ml.get('sidebar.form.truth')"></small>
-                </label>
-              </div>
-              <div class="form-group text-right">
-                <button type="submit" class="btn btn-block btn-info" :disabled="!info.name"  :class="{'disabled':!info.name}" name="button">Salvar</button>
+
+              <div class="" v-if="info.support.food || info.support.public_donate">
+                <div class="form-group" v-if="isMobile">
+                  <a class="btn btn-sm white btn-success" @click="isMapShow = !isMapShow">Adicionar endereço(localização)</a>
+                   <!-- <input type="text" class="form-control" id="address" v-model="info.address" name="address" :placeholder="$ml.get('store.form.address')" required> -->
+                </div>
+                <div class="form-group">
+                   <input type="text" class="form-control" v-model="info.name" name="name" :placeholder="$ml.get('sidebar.form.name')"  required>
+                </div>
+                <div class="form-group">
+                   <VuePhoneNumberInput @update="updatePhone" :translations="translations"  v-model="info.phone_" required />
+                   <small><span v-text="$ml.get('sidebar.form.whatsapp')"></span>  <input type="checkbox" v-model="info.whatsapp" name="" value=""> </small>
+                </div>
+                <div class="form-group">
+                   <input type="email" class="form-control" v-model="info.email" name="email" :placeholder="$ml.get('sidebar.form.email')" required>
+                </div>
+
+                <div class="form-group">
+                   <input type="text" class="form-control" v-model="info.city" name="city" :placeholder="$ml.get('sidebar.form.city')" required>
+                </div>
+                <div class="form-group">
+                   <input type="text" class="form-control" v-model="info.state" name="state" :placeholder="$ml.get('sidebar.form.state')" required>
+                </div>
+                <div class="form-group text-left">
+                  <label for="">Observações</label>
+                  <input type="text" class="form-control" name="" v-model="info.support.others" value="">
+                </div>
+                <div class="form-group">
+                  <label class="check_truth checklabel" for="veracidade">
+                    <input type="checkbox" id="veracidade" name="support[]" v-model="info.support.veracidade" value="">
+                    <small v-text="$ml.get('sidebar.form.truth')"></small>
+                  </label>
+                </div>
+                <div class="form-group text-right">
+                  <button type="submit" class="btn btn-block btn-info" :disabled="!info.name"  :class="{'disabled':!info.name}" name="button">Salvar</button>
+                </div>
               </div>
             </form>
           </div>

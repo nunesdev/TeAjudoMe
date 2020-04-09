@@ -7885,6 +7885,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -30269,7 +30273,7 @@ var render = function() {
           _vm._v(" "),
           _c("small", { staticStyle: { "line-height": "18px" } }, [
             _vm._v(
-              "É importante a sua localização, não precisa ser exata. Um voluntário próximo à você entrará em contato para retirar a doação (alimentos), seguindo as recomendaçãos de segurança."
+              "\n          Você pode doar alimentos e/ou doar algum valor, fique à vontade. Ao doar alimentos, será necessário preencher os dados, para que um voluntário\n          próximo à você, possa entrar em contato para retirar.\n        "
             )
           ]),
           _vm._v(" "),
@@ -30288,219 +30292,79 @@ var render = function() {
               }
             },
             [
-              _vm.isMobile
-                ? _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-sm white btn-success",
-                        on: {
-                          click: function($event) {
-                            _vm.isMapShow = !_vm.isMapShow
-                          }
-                        }
-                      },
-                      [_vm._v("Adicionar endereço(localização)")]
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.info.name,
-                      expression: "info.name"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    name: "name",
-                    placeholder: _vm.$ml.get("sidebar.form.name"),
-                    required: ""
-                  },
-                  domProps: { value: _vm.info.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.info, "name", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "form-group" },
-                [
-                  _c("VuePhoneNumberInput", {
-                    attrs: { translations: _vm.translations, required: "" },
-                    on: { update: _vm.updatePhone },
-                    model: {
-                      value: _vm.info.phone_,
-                      callback: function($$v) {
-                        _vm.$set(_vm.info, "phone_", $$v)
-                      },
-                      expression: "info.phone_"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("small", [
-                    _c("span", {
-                      domProps: {
-                        textContent: _vm._s(
-                          _vm.$ml.get("sidebar.form.whatsapp")
-                        )
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.info.whatsapp,
-                          expression: "info.whatsapp"
-                        }
-                      ],
-                      attrs: { type: "checkbox", name: "", value: "" },
-                      domProps: {
-                        checked: Array.isArray(_vm.info.whatsapp)
-                          ? _vm._i(_vm.info.whatsapp, "") > -1
-                          : _vm.info.whatsapp
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$a = _vm.info.whatsapp,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = "",
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(
-                                  _vm.info,
-                                  "whatsapp",
-                                  $$a.concat([$$v])
-                                )
-                            } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  _vm.info,
-                                  "whatsapp",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
-                            }
-                          } else {
-                            _vm.$set(_vm.info, "whatsapp", $$c)
-                          }
-                        }
-                      }
-                    })
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.info.email,
-                      expression: "info.email"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "email",
-                    name: "email",
-                    placeholder: _vm.$ml.get("sidebar.form.email"),
-                    required: ""
-                  },
-                  domProps: { value: _vm.info.email },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.info, "email", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.info.city,
-                      expression: "info.city"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    name: "city",
-                    placeholder: _vm.$ml.get("sidebar.form.city"),
-                    required: ""
-                  },
-                  domProps: { value: _vm.info.city },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.info, "city", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.info.state,
-                      expression: "info.state"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    type: "text",
-                    name: "state",
-                    placeholder: _vm.$ml.get("sidebar.form.state"),
-                    required: ""
-                  },
-                  domProps: { value: _vm.info.state },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.info, "state", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c("h4", [_vm._v("Posso ajudar com")]),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
                 _c("div", { staticClass: "row helps text-center" }, [
+                  _c("div", { staticClass: "col-md-6 col-sm-12 " }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "help",
+                        class: { active: _vm.info.support.money }
+                      },
+                      [
+                        _c("label", { attrs: { for: "paypal" } }, [
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _c("small", [
+                            _vm._v("Doar via paypal, transferência")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.info.support.money,
+                                expression: "info.support.money"
+                              }
+                            ],
+                            attrs: {
+                              type: "checkbox",
+                              name: "support[]",
+                              id: "paypal",
+                              value: "paypal"
+                            },
+                            domProps: {
+                              checked: Array.isArray(_vm.info.support.money)
+                                ? _vm._i(_vm.info.support.money, "paypal") > -1
+                                : _vm.info.support.money
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.info.support.money,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "paypal",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.info.support,
+                                        "money",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.info.support,
+                                        "money",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.info.support, "money", $$c)
+                                }
+                              }
+                            }
+                          })
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "col-md-6 col-sm-12 " }, [
                     _c(
                       "div",
@@ -30510,7 +30374,7 @@ var render = function() {
                       },
                       [
                         _c("label", { attrs: { for: "food" } }, [
-                          _vm._m(0),
+                          _vm._m(1),
                           _vm._v(" "),
                           _c("small", [_vm._v("Doar alimentos")]),
                           _vm._v(" "),
@@ -30570,151 +30434,297 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-md-6 col-sm-12 " }, [
+                  _vm.info.support.money
+                    ? _c("div", { staticClass: "col-12" }, [
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c("small", [
+                          _c("label", { attrs: { for: "doacao_publica" } }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.info.support.public_donate,
+                                  expression: "info.support.public_donate"
+                                }
+                              ],
+                              attrs: {
+                                id: "doacao_publica",
+                                type: "checkbox",
+                                name: "",
+                                value: ""
+                              },
+                              domProps: {
+                                checked: Array.isArray(
+                                  _vm.info.support.public_donate
+                                )
+                                  ? _vm._i(_vm.info.support.public_donate, "") >
+                                    -1
+                                  : _vm.info.support.public_donate
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$a = _vm.info.support.public_donate,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = "",
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          _vm.info.support,
+                                          "public_donate",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          _vm.info.support,
+                                          "public_donate",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(
+                                      _vm.info.support,
+                                      "public_donate",
+                                      $$c
+                                    )
+                                  }
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("span", [
+                              _vm._v(
+                                "Quer inserir sua doação no mapa?  O valor da doação não será exibido."
+                              )
+                            ])
+                          ])
+                        ])
+                      ])
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.info.support.food || _vm.info.support.public_donate
+                ? _c("div", {}, [
+                    _vm.isMobile
+                      ? _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "btn btn-sm white btn-success",
+                              on: {
+                                click: function($event) {
+                                  _vm.isMapShow = !_vm.isMapShow
+                                }
+                              }
+                            },
+                            [_vm._v("Adicionar endereço(localização)")]
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.info.name,
+                            expression: "info.name"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          name: "name",
+                          placeholder: _vm.$ml.get("sidebar.form.name"),
+                          required: ""
+                        },
+                        domProps: { value: _vm.info.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.info, "name", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
                     _c(
                       "div",
-                      {
-                        staticClass: "help",
-                        class: { active: _vm.info.support.money }
-                      },
+                      { staticClass: "form-group" },
                       [
-                        _c("label", { attrs: { for: "paypal" } }, [
-                          _vm._m(1),
-                          _vm._v(" "),
-                          _c("small", [
-                            _vm._v("Doar via paypal, transferência")
-                          ]),
+                        _c("VuePhoneNumberInput", {
+                          attrs: {
+                            translations: _vm.translations,
+                            required: ""
+                          },
+                          on: { update: _vm.updatePhone },
+                          model: {
+                            value: _vm.info.phone_,
+                            callback: function($$v) {
+                              _vm.$set(_vm.info, "phone_", $$v)
+                            },
+                            expression: "info.phone_"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("small", [
+                          _c("span", {
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.$ml.get("sidebar.form.whatsapp")
+                              )
+                            }
+                          }),
                           _vm._v(" "),
                           _c("input", {
                             directives: [
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.info.support.money,
-                                expression: "info.support.money"
+                                value: _vm.info.whatsapp,
+                                expression: "info.whatsapp"
                               }
                             ],
-                            attrs: {
-                              type: "checkbox",
-                              name: "support[]",
-                              id: "paypal",
-                              value: "paypal"
-                            },
+                            attrs: { type: "checkbox", name: "", value: "" },
                             domProps: {
-                              checked: Array.isArray(_vm.info.support.money)
-                                ? _vm._i(_vm.info.support.money, "paypal") > -1
-                                : _vm.info.support.money
+                              checked: Array.isArray(_vm.info.whatsapp)
+                                ? _vm._i(_vm.info.whatsapp, "") > -1
+                                : _vm.info.whatsapp
                             },
                             on: {
                               change: function($event) {
-                                var $$a = _vm.info.support.money,
+                                var $$a = _vm.info.whatsapp,
                                   $$el = $event.target,
                                   $$c = $$el.checked ? true : false
                                 if (Array.isArray($$a)) {
-                                  var $$v = "paypal",
+                                  var $$v = "",
                                     $$i = _vm._i($$a, $$v)
                                   if ($$el.checked) {
                                     $$i < 0 &&
                                       _vm.$set(
-                                        _vm.info.support,
-                                        "money",
+                                        _vm.info,
+                                        "whatsapp",
                                         $$a.concat([$$v])
                                       )
                                   } else {
                                     $$i > -1 &&
                                       _vm.$set(
-                                        _vm.info.support,
-                                        "money",
+                                        _vm.info,
+                                        "whatsapp",
                                         $$a
                                           .slice(0, $$i)
                                           .concat($$a.slice($$i + 1))
                                       )
                                   }
                                 } else {
-                                  _vm.$set(_vm.info.support, "money", $$c)
+                                  _vm.$set(_vm.info, "whatsapp", $$c)
                                 }
                               }
                             }
                           })
                         ])
-                      ]
+                      ],
+                      1
                     ),
                     _vm._v(" "),
-                    _c("small", [
-                      _c("label", { attrs: { for: "doacao_anonima" } }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.info.support.donate_anonymous,
-                              expression: "info.support.donate_anonymous"
-                            }
-                          ],
-                          attrs: {
-                            id: "doacao_anonima",
-                            type: "checkbox",
-                            name: "",
-                            value: ""
-                          },
-                          domProps: {
-                            checked: Array.isArray(
-                              _vm.info.support.donate_anonymous
-                            )
-                              ? _vm._i(_vm.info.support.donate_anonymous, "") >
-                                -1
-                              : _vm.info.support.donate_anonymous
-                          },
-                          on: {
-                            change: function($event) {
-                              var $$a = _vm.info.support.donate_anonymous,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = "",
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    _vm.$set(
-                                      _vm.info.support,
-                                      "donate_anonymous",
-                                      $$a.concat([$$v])
-                                    )
-                                } else {
-                                  $$i > -1 &&
-                                    _vm.$set(
-                                      _vm.info.support,
-                                      "donate_anonymous",
-                                      $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1))
-                                    )
-                                }
-                              } else {
-                                _vm.$set(
-                                  _vm.info.support,
-                                  "donate_anonymous",
-                                  $$c
-                                )
-                              }
-                            }
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.info.email,
+                            expression: "info.email"
                           }
-                        }),
-                        _vm._v(" "),
-                        _c("span", [
-                          _vm._v(
-                            "Doação anônima ? Caso faça transferência, não será exibido no mapa."
-                          )
-                        ])
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _vm.info.support.money
-                    ? _c("div", { staticClass: "col-12" }, [_vm._m(2)])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-12" }, [
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "email",
+                          name: "email",
+                          placeholder: _vm.$ml.get("sidebar.form.email"),
+                          required: ""
+                        },
+                        domProps: { value: _vm.info.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.info, "email", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.info.city,
+                            expression: "info.city"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          name: "city",
+                          placeholder: _vm.$ml.get("sidebar.form.city"),
+                          required: ""
+                        },
+                        domProps: { value: _vm.info.city },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.info, "city", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.info.state,
+                            expression: "info.state"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          name: "state",
+                          placeholder: _vm.$ml.get("sidebar.form.state"),
+                          required: ""
+                        },
+                        domProps: { value: _vm.info.state },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.info, "state", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
                     _c("div", { staticClass: "form-group text-left" }, [
                       _c("label", { attrs: { for: "" } }, [
                         _vm._v("Observações")
@@ -30745,93 +30755,98 @@ var render = function() {
                           }
                         }
                       })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "check_truth checklabel",
+                          attrs: { for: "veracidade" }
+                        },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.info.support.veracidade,
+                                expression: "info.support.veracidade"
+                              }
+                            ],
+                            attrs: {
+                              type: "checkbox",
+                              id: "veracidade",
+                              name: "support[]",
+                              value: ""
+                            },
+                            domProps: {
+                              checked: Array.isArray(
+                                _vm.info.support.veracidade
+                              )
+                                ? _vm._i(_vm.info.support.veracidade, "") > -1
+                                : _vm.info.support.veracidade
+                            },
+                            on: {
+                              change: function($event) {
+                                var $$a = _vm.info.support.veracidade,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = "",
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      _vm.$set(
+                                        _vm.info.support,
+                                        "veracidade",
+                                        $$a.concat([$$v])
+                                      )
+                                  } else {
+                                    $$i > -1 &&
+                                      _vm.$set(
+                                        _vm.info.support,
+                                        "veracidade",
+                                        $$a
+                                          .slice(0, $$i)
+                                          .concat($$a.slice($$i + 1))
+                                      )
+                                  }
+                                } else {
+                                  _vm.$set(_vm.info.support, "veracidade", $$c)
+                                }
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("small", {
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.$ml.get("sidebar.form.truth")
+                              )
+                            }
+                          })
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group text-right" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-block btn-info",
+                          class: { disabled: !_vm.info.name },
+                          attrs: {
+                            type: "submit",
+                            disabled: !_vm.info.name,
+                            name: "button"
+                          }
+                        },
+                        [_vm._v("Salvar")]
+                      )
                     ])
                   ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "check_truth checklabel",
-                    attrs: { for: "veracidade" }
-                  },
-                  [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.info.support.veracidade,
-                          expression: "info.support.veracidade"
-                        }
-                      ],
-                      attrs: {
-                        type: "checkbox",
-                        id: "veracidade",
-                        name: "support[]",
-                        value: ""
-                      },
-                      domProps: {
-                        checked: Array.isArray(_vm.info.support.veracidade)
-                          ? _vm._i(_vm.info.support.veracidade, "") > -1
-                          : _vm.info.support.veracidade
-                      },
-                      on: {
-                        change: function($event) {
-                          var $$a = _vm.info.support.veracidade,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = "",
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                _vm.$set(
-                                  _vm.info.support,
-                                  "veracidade",
-                                  $$a.concat([$$v])
-                                )
-                            } else {
-                              $$i > -1 &&
-                                _vm.$set(
-                                  _vm.info.support,
-                                  "veracidade",
-                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                                )
-                            }
-                          } else {
-                            _vm.$set(_vm.info.support, "veracidade", $$c)
-                          }
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("small", {
-                      domProps: {
-                        textContent: _vm._s(_vm.$ml.get("sidebar.form.truth"))
-                      }
-                    })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group text-right" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-block btn-info",
-                    class: { disabled: !_vm.info.name },
-                    attrs: {
-                      type: "submit",
-                      disabled: !_vm.info.name,
-                      name: "button"
-                    }
-                  },
-                  [_vm._v("Salvar")]
-                )
-              ])
+                : _vm._e()
             ]
           )
         ])
@@ -30847,7 +30862,7 @@ var staticRenderFns = [
     return _c("span", [
       _c("img", {
         attrs: {
-          src: "/images/movimento/caixa.png",
+          src: "/images/movimento/doacao_money.png",
           width: "32",
           height: "32",
           alt: ""
@@ -30862,7 +30877,7 @@ var staticRenderFns = [
     return _c("span", [
       _c("img", {
         attrs: {
-          src: "/images/movimento/doacao_money.png",
+          src: "/images/movimento/caixa.png",
           width: "32",
           height: "32",
           alt: ""
