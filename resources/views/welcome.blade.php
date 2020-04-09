@@ -20,7 +20,7 @@
         <meta name="apple-mobile-web-app-title" content="teajudo">
         <meta name="theme-color" content="#264463">
         <meta name="msapplication-navbutton-color" content="#264463">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
         <meta name="msapplication-starturl" content="/">
 
         <link rel="icon" type="image/png" sizes="72x72" href="images/icons/icon-72x72.png">
@@ -81,11 +81,7 @@
         }
       });
 
-      window.addEventListener('beforeinstallprompt', (event) => {
-        event.preventDefault();
-        window.INSTALLAPPEVENT = event;
-        console.log('Can install App',event);
-      });
+      
       </script>
       <script type="text/javascript" src="/js/app.js?c=4"></script>
     </body>

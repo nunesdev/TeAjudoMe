@@ -61,7 +61,7 @@
           <router-link  class="btn btn-sm btn-white" to="/movimento117/voluntario">
             <span>Quero ser voluntário</span>
           </router-link>
-          <button @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>Instalar App</button>
+          <button v-if="!installedAppPWA" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>Instalar App</button>
         </div>
       </div>
 
@@ -102,7 +102,8 @@ export default {
       isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true,
-      installAppEvent: undefined
+      installAppEvent: undefined,
+      installedAppPWA: false,
     }
   },
   watch:{
@@ -117,14 +118,14 @@ export default {
       'getTotalMarkersMovimento'
     ]),
   },
-  created() {
-
-  },
   mounted() {
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false
     this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false
-
-    this.installAppEvent = window.INSTALLAPPEVENT
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      this.installAppEvent = event;
+      console.log('Can install App',this.installAppEvent);
+    });
   },
   methods: {
     getTotal(type) {
@@ -147,16 +148,11 @@ export default {
       this.$emit('sidebarOpen', v);
     },
     installApp() {
-
       this.installAppEvent.prompt();
-      // Wait for the user to respond to the prompt
       this.installAppEvent.userChoice.then((choice) => {
         if (choice.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          console.log('User dismissed the A2HS prompt');
+          this.installedAppPWA = true
         }
-        // Clear the saved prompt since it can't be used again
         this.installAppEvent = null;
       });
     }

@@ -7587,7 +7587,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true,
-      installAppEvent: undefined
+      installAppEvent: undefined,
+      installedAppPWA: false
     };
   },
   watch: {
@@ -7597,11 +7598,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkersMovimento', 'getTotalMarkersMovimento'])),
-  created: function created() {},
   mounted: function mounted() {
+    var _this = this;
+
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false;
     this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false;
-    this.installAppEvent = window.INSTALLAPPEVENT;
+    window.addEventListener('beforeinstallprompt', function (event) {
+      event.preventDefault();
+      _this.installAppEvent = event;
+      console.log('Can install App', _this.installAppEvent);
+    });
   },
   methods: {
     getTotal: function getTotal(type) {
@@ -7623,19 +7629,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$emit('sidebarOpen', v);
     },
     installApp: function installApp() {
-      var _this = this;
+      var _this2 = this;
 
-      this.installAppEvent.prompt(); // Wait for the user to respond to the prompt
-
+      this.installAppEvent.prompt();
       this.installAppEvent.userChoice.then(function (choice) {
         if (choice.outcome === 'accepted') {
-          console.log('User accepted the A2HS prompt');
-        } else {
-          console.log('User dismissed the A2HS prompt');
-        } // Clear the saved prompt since it can't be used again
+          _this2.installedAppPWA = true;
+        }
 
-
-        _this.installAppEvent = null;
+        _this2.installAppEvent = null;
       });
     }
   }
@@ -29843,18 +29845,20 @@ var render = function() {
               [_c("span", [_vm._v("Quero ser voluntário")])]
             ),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-sm btn-primary",
-                attrs: { type: "button", name: "button" },
-                on: { click: _vm.installApp }
-              },
-              [
-                _c("span", { staticClass: "icon-download" }),
-                _vm._v("Instalar App")
-              ]
-            )
+            !_vm.installedAppPWA
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-sm btn-primary",
+                    attrs: { type: "button", name: "button" },
+                    on: { click: _vm.installApp }
+                  },
+                  [
+                    _c("span", { staticClass: "icon-download" }),
+                    _vm._v("Instalar App")
+                  ]
+                )
+              : _vm._e()
           ],
           1
         )
