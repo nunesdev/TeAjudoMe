@@ -17,6 +17,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-title" content="Te Ajudo">
         <meta name="application-name" content="Te Ajudo" />
+        <meta name="apple-touch-fullscreen" content="yes" />
 
         <meta name="theme-color" content="#264463">
         <meta name="msapplication-navbutton-color" content="#264463">
