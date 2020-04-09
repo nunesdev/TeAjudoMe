@@ -30,6 +30,12 @@ body {
   font-size: 10px;
   color: $darkblue;
 
+  @media all and (display-mode: standalone) {
+    body {
+      background-color: #264463;
+    }
+  }
+
   .checklabel {
     small {
       display: inline-flex!important;

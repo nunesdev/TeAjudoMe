@@ -175,7 +175,7 @@ export default {
 
   },
   mounted() {
-    //this.show()
+    this.show()
   },
   computed: {
     markers() {

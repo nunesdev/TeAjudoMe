@@ -63,7 +63,7 @@
             <router-link v-if="showMapUp" class="btn btn-showmap" :to="{ name: 'home' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
           </div>
         </div>
-        <!-- <div class="col-12">
+        <div class="col-12">
           <div class="row">
             <div class="col-12">
               <h6>Campanhas ativas:</h6>
@@ -79,12 +79,12 @@
                       <router-link class="btn btn-sm btn-info" :to="{ name: 'Movimento117', params: {'utm_source':'home'} }">Ir para o mapa</router-link>
                     </div>
                   </div>
-                </li>
+                </li>  
 
               </ul>
             </div>
           </div>
-        </div> -->
+        </div>
 
         <footer class="container">
           <div class="sponsors">

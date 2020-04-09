@@ -12854,6 +12854,12 @@ body {
   color: #283241;
 }
 
+@media all and (display-mode: standalone) {
+  body body {
+    background-color: #264463;
+  }
+}
+
 body .checklabel small {
   display: inline-flex !important;
 }

@@ -9374,7 +9374,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   created: function created() {
     this.mapbox = mapbox_gl__WEBPACK_IMPORTED_MODULE_2___default.a;
   },
-  mounted: function mounted() {//this.show()
+  mounted: function mounted() {
+    this.show();
   },
   computed: {
     markers: function markers() {
@@ -32232,6 +32233,57 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c("h6", [_vm._v("Campanhas ativas:")]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "list-unstyled" }, [
+                _c(
+                  "li",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.getFilterByType("store")
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "col-9" },
+                        [
+                          _c("span", [
+                            _vm._v("Movimento 117 - #AmorEmMovimento")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-sm btn-info",
+                              attrs: {
+                                to: {
+                                  name: "Movimento117",
+                                  params: { utm_source: "home" }
+                                }
+                              }
+                            },
+                            [_vm._v("Ir para o mapa")]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _c("footer", { staticClass: "container" }, [
           _c("div", { staticClass: "sponsors" }, [
             _c("div", { staticClass: "sidebar-logo" }, [
@@ -32335,7 +32387,7 @@ var render = function() {
                 }
               }),
               _vm._v(" "),
-              _vm._m(3)
+              _vm._m(4)
             ])
           ])
         ])
@@ -32379,6 +32431,21 @@ var staticRenderFns = [
           src: "/images/comercio.png",
           width: "44",
           height: "44",
+          alt: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-3" }, [
+      _c("img", {
+        attrs: {
+          src: "/images/movimento/user.png",
+          width: "32",
+          height: "32",
           alt: ""
         }
       })
