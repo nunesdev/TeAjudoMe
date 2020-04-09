@@ -12523,6 +12523,7 @@ a.btn.btn-active {
   width: 100%;
   background: #fff;
   padding: 10px;
+  padding-bottom: 20px;
   z-index: 3;
   box-shadow: 2px -5px 32px -13px #b8b8b8;
   transition: all 0.2s ease-in;
@@ -12860,6 +12861,19 @@ body {
   color: #283241;
 }
 
+body .onesignal-customlink-subscribe.button {
+  border-radius: 18px;
+  box-shadow: none;
+  text-transform: inherit;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 0.75rem !important;
+}
+
+body .onesignal-customlink-subscribe.button:hover {
+  box-shadow: none;
+}
+
 body .checklabel small {
   display: inline-flex !important;
 }
@@ -12877,6 +12891,7 @@ body .content {
 @media only screen and (max-width: 600px) {
   body .content {
     padding-top: 20px;
+    padding-bottom: 40px;
     padding-right: 0;
   }
 }

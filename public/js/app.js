@@ -6919,6 +6919,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -7535,6 +7536,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -8936,6 +8938,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -28867,7 +28870,9 @@ var render = function() {
               _c("router-link", {
                 attrs: { to: "/fique-seguro" },
                 domProps: { textContent: _vm._s(_vm.$ml.get("menu.seguranca")) }
-              })
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "onesignal-customlink-container" })
             ],
             1
           ),
@@ -29998,6 +30003,8 @@ var render = function() {
               },
               [_vm._v("Campanhas")]
             ),
+            _vm._v(" "),
+            _c("div", { staticClass: "onesignal-customlink-container" }),
             _vm._v(" "),
             !_vm.installedAppPWA && _vm.showInstall
               ? _c(
@@ -32377,7 +32384,9 @@ var render = function() {
                       })
                     ]
                   )
-                : _vm._e()
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "onesignal-customlink-container" })
             ],
             1
           )

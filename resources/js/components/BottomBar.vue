@@ -77,6 +77,7 @@
             <!-- <router-link to="/" v-text="$ml.get('menu.mapa')"></router-link> -->
             <router-link to="/sobre" v-text="$ml.get('menu.sobre')"></router-link>
             <router-link to="/fique-seguro" v-text="$ml.get('menu.seguranca')"></router-link>
+            <div class='onesignal-customlink-container'></div>
           </div>
           <div class="col-6 bottombar-flags">
             <a @click="$ml.change('portuguese')" href="#">Português</a>
