@@ -82,7 +82,7 @@
       });
 
       window.addEventListener('beforeinstallprompt', (event) => {
-        e.preventDefault();
+        event.preventDefault();
         window.INSTALLAPPEVENT = event;
         console.log('Can install App',event);
       });
