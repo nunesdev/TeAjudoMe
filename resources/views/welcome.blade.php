@@ -25,22 +25,15 @@
         <meta name="msapplication-starturl" content="/?utm_source=homescreen">
         <meta name="msapplication-TileColor" content="#264463">
 
-        <link rel="icon" type="image/png" sizes="72x72" href="images/icons/icon-72x72.png">
-        <link rel="apple-touch-icon" type="image/png" sizes="72x72" href="images/icons/apple/icon-72x72.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="images/icons/icon-96x96.png">
-        <link rel="apple-touch-icon" type="image/png" sizes="96x96" href="images/icons/apple/icon-96x96.png">
-        <link rel="icon" type="image/png" sizes="128x128" href="mages/icons/icon-128x128.png">
-        <link rel="apple-touch-icon" type="image/png" sizes="128x128" href="mages/icons/apple/icon-128x128.png">
-        <link rel="icon" type="image/png" sizes="144x144" href="images/icons/icon-144x144.png">
-        <link rel="apple-touch-icon" type="image/png" sizes="144x144" href="images/icons/apple/icon-144x144.png">
-        <link rel="icon" type="image/png" sizes="152x152" href="images/icons/icon-152x152.png">
-        <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="images/icons/apple/icon-152x152.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="images/icons/icon-192x192.png">
-        <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="images/icons/apple/icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="384x384" href="images/icons/icon-384x384.png">
-        <link rel="apple-touch-icon" type="image/png" sizes="384x384" href="images/icons/apple/icon-384x384.png">
-        <link rel="icon" type="image/png" sizes="512x512" href="images/icons/icon-512x512.png">
-        <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="images/icons/apple/icon-512x512.png">
+        <link rel="icon" type="image/png" sizes="72x72" href="/images/icons/icon-72x72.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/images/icons/icon-96x96.png">
+        <link rel="icon" type="image/png" sizes="128x128" href="/images/icons/icon-128x128.png">
+        <link rel="icon" type="image/png" sizes="144x144" href="/images/icons/icon-144x144.png">
+        <link rel="icon" type="image/png" sizes="152x152" href="/images/icons/icon-152x152.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="384x384" href="/images/icons/icon-384x384.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="/images/icons/icon-512x512.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="/images/icons/apple/icon-180x180.png">
 
         <link  rel="apple-touch-startup-image" href="/images/icons/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" />
         <link  rel="apple-touch-startup-image" href="/images/icons/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
@@ -53,7 +46,7 @@
         <link  rel="apple-touch-startup-image" href="/images/icons/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" />
         <link  rel="apple-touch-startup-image" href="/images/icons/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" />
 
-        <link rel="manifest" href="manifest.json">
+        <link rel="manifest" href="/manifest.json">
 
         <title>Te Ajudo - Me</title>
         <!-- Fonts -->
