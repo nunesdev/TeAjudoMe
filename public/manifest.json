@@ -1,6 +1,6 @@
 {
-  "name": "Te Ajudo - Plataforma Colaborativa",
-  "short_name": "TeAjudo",
+  "name": "Te Ajudo",
+  "short_name": "Te Ajudo",
   "start_url": "/?utm_source=homescreen",
   "display": "standalone",
   "orientation": "portrait",
