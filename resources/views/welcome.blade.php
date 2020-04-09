@@ -66,25 +66,6 @@
       // appId: "157b4f4f-3001-4ad3-93f8-8bdf9970e51c",
     });
   });
-  window.addEventListener('load', () => {
-  if (navigator.standalone) {
-    console.log('Launched: Installed (iOS)');
-  } else if (matchMedia('(display-mode: standalone)').matches) {
-    console.log('Launched: Installed');
-  } else {
-    console.log('Launched: Browser Tab');
-  }
-});
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI notify the user they can install the PWA
-  console.log('INstall App');
-});
 </script>
     </head>
     <body >

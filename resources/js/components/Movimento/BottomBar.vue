@@ -141,6 +141,25 @@ export default {
       this.$emit('sidebarOpen', v);
     },
     installApp() {
+      window.addEventListener('load', () => {
+      if (navigator.standalone) {
+        console.log('Launched: Installed (iOS)');
+      } else if (matchMedia('(display-mode: standalone)').matches) {
+        console.log('Launched: Installed');
+      } else {
+        console.log('Launched: Browser Tab');
+      }
+    });
+    let installPromptEvent;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent the mini-infobar from appearing on mobile
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      installPromptEvent = e;
+      // Update UI notify the user they can install the PWA
+      console.log('INstall App');
+    });
       // Show the modal add to home screen dialog
       installPromptEvent.prompt();
       // Wait for the user to respond to the prompt
