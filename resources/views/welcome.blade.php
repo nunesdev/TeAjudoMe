@@ -21,7 +21,8 @@
         <meta name="theme-color" content="#264463">
         <meta name="msapplication-navbutton-color" content="#264463">
         <meta name="apple-mobile-web-app-status-bar-style" content="white">
-        <meta name="msapplication-starturl" content="/">
+        <meta name="msapplication-starturl" content="/?utm_source=homescreen">
+        <meta name="msapplication-TileColor" content="#264463">
 
         <link rel="icon" type="image/png" sizes="72x72" href="images/icons/icon-72x72.png">
         <link rel="apple-touch-icon" type="image/png" sizes="72x72" href="images/icons/apple/icon-72x72.png">

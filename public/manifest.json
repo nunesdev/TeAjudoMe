@@ -4,6 +4,7 @@
   "start_url": "/?utm_source=homescreen",
   "display": "standalone",
   "orientation": "portrait",
+  "scope": ".",
   "theme_color": "#264463",
   "background_color": "#fff",
   "description": "Plataforma colaborativa para ajudar pessoas na pandemia(COVID-19)",
