@@ -118,6 +118,12 @@ export default {
     ]),
   },
   created() {
+
+  },
+  mounted() {
+    this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false
+    this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false
+
     window.addEventListener('load', () => {
       if (navigator.standalone) {
         console.log('Launched: Installed (iOS)');
@@ -133,10 +139,6 @@ export default {
       this.installAppEvent = event;
       console.log('Can install App',event);
     });
-  },
-  mounted() {
-    this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false
-    this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false
   },
   methods: {
     getTotal(type) {
