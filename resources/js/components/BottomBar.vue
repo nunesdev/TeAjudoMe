@@ -104,7 +104,6 @@ export default {
       isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true,
-      installAppEvent: undefined,
       installedAppPWA: false,
     }
   },
@@ -124,38 +123,30 @@ export default {
     this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false
     this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false
 
-    window.addEventListener('load', () => {
-      if (navigator.standalone) {
-        console.log('Launched: Installed (iOS)');
-        this.$gtag.event('Launched_App', {
-            'event_category': 'Launched',
-            'event_label': 'standalone',
-            'event_value': 'ios'
-          })
-        this.installedAppPWA = true;
-      } else if (matchMedia('(display-mode: standalone)').matches) {
-        console.log('Launched: Installed');
-        this.$gtag.event('Launched_App', {
-            'event_category': 'Launched',
-            'event_label': 'standalone',
-            'event_value': 'android'
-          })
-        this.installedAppPWA = true;
-      } else {
-        console.log('Launched: Browser Tab');
-        this.$gtag.event('Launched_App', {
-            'event_category': 'Launched',
-            'event_label': 'standalone',
-            'event_value': 'Browser'
-          })
-      }
-    });
-
-    window.addEventListener('beforeinstallprompt', (event) => {
-      event.preventDefault();
-      this.installAppEvent = event;
-      console.log('Can install App',this.installAppEvent);
-    });
+    if (navigator.standalone) {
+      console.log('Launched: Installed (iOS)');
+      this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'ios'
+        })
+      this.installedAppPWA = true;
+    } else if (matchMedia('(display-mode: standalone)').matches) {
+      console.log('Launched: Installed');
+      this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'android'
+        })
+      this.installedAppPWA = true;
+    } else {
+      console.log('Launched: Browser Tab');
+      this.$gtag.event('Launched_App', {
+          'event_category': 'Launched',
+          'event_label': 'standalone',
+          'event_value': 'Browser'
+        })
+    }
   },
   methods: {
     getTotal(type) {
@@ -178,12 +169,12 @@ export default {
       this.$emit('sidebarOpen', v);
     },
     installApp() {
-      this.installAppEvent.prompt();
-      this.installAppEvent.userChoice.then((choice) => {
+      self.INSTALLAPPEVENT.prompt();
+      self.INSTALLAPPEVENT.userChoice.then((choice) => {
         if (choice.outcome === 'accepted') {
           this.installedAppPWA = true
         }
-        this.installAppEvent = null;
+        self.INSTALLAPPEVENT = null;
       });
     }
   }

@@ -6928,7 +6928,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true,
-      installAppEvent: undefined,
       installedAppPWA: false
     };
   },
@@ -6940,46 +6939,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkers', 'getTotalMarkers'])),
   mounted: function mounted() {
-    var _this = this;
-
     this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false;
     this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false;
-    window.addEventListener('load', function () {
-      if (navigator.standalone) {
-        console.log('Launched: Installed (iOS)');
 
-        _this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'ios'
-        });
-
-        _this.installedAppPWA = true;
-      } else if (matchMedia('(display-mode: standalone)').matches) {
-        console.log('Launched: Installed');
-
-        _this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'android'
-        });
-
-        _this.installedAppPWA = true;
-      } else {
-        console.log('Launched: Browser Tab');
-
-        _this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'Browser'
-        });
-      }
-    });
-    window.addEventListener('beforeinstallprompt', function (event) {
-      event.preventDefault();
-      _this.installAppEvent = event;
-      console.log('Can install App', _this.installAppEvent);
-    });
+    if (navigator.standalone) {
+      console.log('Launched: Installed (iOS)');
+      this.$gtag.event('Launched_App', {
+        'event_category': 'Launched',
+        'event_label': 'standalone',
+        'event_value': 'ios'
+      });
+      this.installedAppPWA = true;
+    } else if (matchMedia('(display-mode: standalone)').matches) {
+      console.log('Launched: Installed');
+      this.$gtag.event('Launched_App', {
+        'event_category': 'Launched',
+        'event_label': 'standalone',
+        'event_value': 'android'
+      });
+      this.installedAppPWA = true;
+    } else {
+      console.log('Launched: Browser Tab');
+      this.$gtag.event('Launched_App', {
+        'event_category': 'Launched',
+        'event_label': 'standalone',
+        'event_value': 'Browser'
+      });
+    }
   },
   methods: {
     getTotal: function getTotal(type) {
@@ -7001,15 +6987,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$emit('sidebarOpen', v);
     },
     installApp: function installApp() {
-      var _this2 = this;
+      var _this = this;
 
-      this.installAppEvent.prompt();
-      this.installAppEvent.userChoice.then(function (choice) {
+      self.INSTALLAPPEVENT.prompt();
+      self.INSTALLAPPEVENT.userChoice.then(function (choice) {
         if (choice.outcome === 'accepted') {
-          _this2.installedAppPWA = true;
+          _this.installedAppPWA = true;
         }
 
-        _this2.installAppEvent = null;
+        self.INSTALLAPPEVENT = null;
       });
     }
   }
@@ -7640,7 +7626,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       isActiveSidebarMember: false,
       showHandUp: true,
       showMapUp: true,
-      installAppEvent: undefined,
       installedAppPWA: false
     };
   },
@@ -7652,46 +7637,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['getMarkersMovimento', 'getTotalMarkersMovimento'])),
   mounted: function mounted() {
-    var _this = this;
-
     this.showHandUp = this.$router.currentRoute.name == 'Movimento117' ? true : false;
     this.showMapUp = this.$router.currentRoute.name != 'Movimento117' ? true : false;
-    window.addEventListener('load', function () {
-      if (navigator.standalone) {
-        console.log('Launched: Installed (iOS)');
 
-        _this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'ios'
-        });
-
-        _this.installedAppPWA = true;
-      } else if (matchMedia('(display-mode: standalone)').matches) {
-        console.log('Launched: Installed');
-
-        _this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'android'
-        });
-
-        _this.installedAppPWA = true;
-      } else {
-        console.log('Launched: Browser Tab');
-
-        _this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'Browser'
-        });
-      }
-    });
-    window.addEventListener('beforeinstallprompt', function (event) {
-      event.preventDefault();
-      _this.installAppEvent = event;
-      console.log('Can install App', _this.installAppEvent);
-    });
+    if (navigator.standalone) {
+      console.log('Launched: Installed (iOS)');
+      this.$gtag.event('Launched_App', {
+        'event_category': 'Launched',
+        'event_label': 'standalone',
+        'event_value': 'ios'
+      });
+      this.installedAppPWA = true;
+    } else if (matchMedia('(display-mode: standalone)').matches) {
+      console.log('Launched: Installed');
+      this.$gtag.event('Launched_App', {
+        'event_category': 'Launched',
+        'event_label': 'standalone',
+        'event_value': 'android'
+      });
+      this.installedAppPWA = true;
+    } else {
+      console.log('Launched: Browser Tab');
+      this.$gtag.event('Launched_App', {
+        'event_category': 'Launched',
+        'event_label': 'standalone',
+        'event_value': 'Browser'
+      });
+    }
   },
   methods: {
     getTotal: function getTotal(type) {
@@ -7713,15 +7685,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$emit('sidebarOpen', v);
     },
     installApp: function installApp() {
-      var _this2 = this;
+      var _this = this;
 
-      this.installAppEvent.prompt();
-      this.installAppEvent.userChoice.then(function (choice) {
+      self.INSTALLAPPEVENT.prompt();
+      self.INSTALLAPPEVENT.userChoice.then(function (choice) {
         if (choice.outcome === 'accepted') {
-          _this2.installedAppPWA = true;
+          _this.installedAppPWA = true;
         }
 
-        _this2.installAppEvent = null;
+        self.INSTALLAPPEVENT = null;
       });
     }
   }
