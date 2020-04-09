@@ -12,15 +12,41 @@
         <meta name="twitter:image" content="https://teajudo.me/images/teajudome.png">
         <meta name="twitter:card" content="summary_large_image">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+        <link rel="manifest" href="manifest.json">
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="teajudo">
+        <meta name="apple-mobile-web-app-title" content="teajudo">
+        <meta name="theme-color" content="#264463">
+        <meta name="msapplication-navbutton-color" content="#264463">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="msapplication-starturl" content="/">
+
+        <link rel="icon" type="image/png" sizes="72x72" href="images/icons/icon-72x72.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="72x72" href="images/icons/icon-72x72.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="images/icons/icon-96x96.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="96x96" href="images/icons/icon-96x96.png">
+        <link rel="icon" type="image/png" sizes="128x128" href="mages/icons/icon-128x128.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="128x128" href="mages/icons/icon-128x128.png">
+        <link rel="icon" type="image/png" sizes="144x144" href="images/icons/icon-144x144.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="144x144" href="images/icons/icon-144x144.png">
+        <link rel="icon" type="image/png" sizes="152x152" href="images/icons/icon-152x152.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="152x152" href="images/icons/icon-152x152.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="images/icons/icon-192x192.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="images/icons/icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="384x384" href="images/icons/icon-384x384.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="384x384" href="images/icons/icon-384x384.png">
+        <link rel="icon" type="image/png" sizes="512x512" href="images/icons/icon-512x512.png">
+        <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="images/icons/icon-512x512.png">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no, shrink-to-fit=no">
         <title>Te Ajudo - Me</title>
         <!-- Fonts -->
         <!-- <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet"/> -->
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
         <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/app.css?c=4">
-        <!-- Hotjar Tracking Code for https://www.teajudo.me -->
-        <link rel="manifest" href="/manifest.json">
 <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -36,8 +62,8 @@
   var OneSignal = window.OneSignal || [];
   OneSignal.push(function() {
     OneSignal.init({
-      // appId: "7b37bf81-b1d0-4303-89bd-04a223cece62",
-      appId: "157b4f4f-3001-4ad3-93f8-8bdf9970e51c",
+      appId: "7b37bf81-b1d0-4303-89bd-04a223cece62",
+      // appId: "157b4f4f-3001-4ad3-93f8-8bdf9970e51c",
     });
   });
 </script>

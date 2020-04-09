@@ -55,12 +55,13 @@
 
       <div class="row">
         <div class="col-12">
-          <router-link to="/movimento117/quero-doar"  class="btn btn-active btn-white">
+          <router-link to="/movimento117/quero-doar"  class="btn btn-sm btn-active btn-white">
             <span class="icon-hand-stop"></span> <span>Quero doar</span>
           </router-link>
-          <router-link  class="btn btn-white" to="/movimento117/voluntario">
+          <router-link  class="btn btn-sm btn-white" to="/movimento117/voluntario">
             <span>Quero ser voluntário</span>
           </router-link>
+          <button @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>Instalar App</button>
         </div>
       </div>
 
@@ -139,6 +140,20 @@ export default {
       this.isActiveSidebarMember = v;
       this.$emit('sidebarOpen', v);
     },
+    installApp() {
+      // Show the modal add to home screen dialog
+      installPromptEvent.prompt();
+      // Wait for the user to respond to the prompt
+      installPromptEvent.userChoice.then((choice) => {
+        if (choice.outcome === 'accepted') {
+          console.log('User accepted the A2HS prompt');
+        } else {
+          console.log('User dismissed the A2HS prompt');
+        }
+        // Clear the saved prompt since it can't be used again
+        installPromptEvent = null;
+      });
+    }
   }
 }
 </script>
