@@ -118,7 +118,14 @@ export default {
           el: '.swiper-pagination'
         },
       },
+      showInstall: false,
     }
+  },
+  updated() {
+    if(self.INSTALLAPPEVENT) this.showInstall = true
+  },
+  created() {
+    if(self.INSTALLAPPEVENT) this.showInstall = true
   },
   computed: {
     swiper() {

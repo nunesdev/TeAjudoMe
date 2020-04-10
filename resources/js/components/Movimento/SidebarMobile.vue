@@ -26,8 +26,8 @@
       <vs-sidebar-item index="5" icon="format_align_center" to="/movimento117/sobre">
         Sobre
       </vs-sidebar-item>
-      <vs-sidebar-item index="6" icon="get_app">
-        <button v-if="!installedAppPWA" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button">Adicionar à tela de ínicio</button>
+      <vs-sidebar-item index="6" icon="get_app" v-if="showInstall && !installedAppPWA">
+        <button  @click="installApp" type="button" class="btn btn-sm btn-primary" name="button">Adicionar à tela de ínicio</button>
       </vs-sidebar-item>
       <vs-sidebar-item index="5" icon="system_update" @click="updateApp">
         Atualizar App
@@ -76,6 +76,9 @@ export default {
       showInstall: false
     }
   },
+  updated() {
+    if(self.INSTALLAPPEVENT) this.showInstall = true
+  },
   created() {
     EventBus.$on('OPEN_SIDEBAR', this.changeState);
 
@@ -94,7 +97,7 @@ export default {
           'event_value': 'android'
         })
       this.installedAppPWA = true;
-        this.showInstall = false
+      this.showInstall = false
     } else {
       this.$gtag.event('Launched_App', {
           'event_category': 'Launched',

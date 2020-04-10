@@ -27,8 +27,8 @@
         Sobre
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="6" icon="get_app">
-        <button v-if="!installedAppPWA" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button">Adicionar à tela de ínicio</button>
+      <vs-sidebar-item index="6" icon="get_app" v-if="showInstall && !installedAppPWA">
+        <button  @click="installApp" type="button" class="btn btn-sm btn-primary" name="button">Adicionar à tela de ínicio</button>
       </vs-sidebar-item>
       <vs-sidebar-item index="5" icon="system_update" @click="updateApp">
         Atualizar App
@@ -79,7 +79,12 @@ export default {
       showInstall: false
     }
   },
+  updated() {
+    if(self.INSTALLAPPEVENT) this.showInstall = true
+  },
   created() {
+    if(self.INSTALLAPPEVENT) this.showInstall = true
+
     EventBus.$on('OPEN_SIDEBAR_HOME', this.changeState);
 
     if (navigator.standalone) {
