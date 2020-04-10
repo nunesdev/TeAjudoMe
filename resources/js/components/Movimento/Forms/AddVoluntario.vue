@@ -78,7 +78,7 @@
 
                     </div>
                   </div>
-                  <div class="col-md-6 col-sm-12 ">
+                  <!-- <div class="col-md-6 col-sm-12 ">
                     <div class="help" :class="{active: info.support.dia_d}">
                       <label for="dia_d">
                         <span>
@@ -89,7 +89,7 @@
                       </label>
 
                     </div>
-                  </div>
+                  </div> -->
 
                 </div>
               </div>
