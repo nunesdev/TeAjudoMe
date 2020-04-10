@@ -30,10 +30,10 @@
             <span v-if="item.options.blood">
               <small>Doar sangue</small>
             </span>
-            <span v-if="item.options.dia_d">
+            <!-- <span v-if="item.options.dia_d">
               <small>Participar do dia D</small>
-            </span>
-          </div>
+            </span> -->
+          </div> 
 
         </div>
 
