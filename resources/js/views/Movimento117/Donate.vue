@@ -14,9 +14,14 @@
 
 <script>
 import AddMember from "@components/Movimento/Forms/AddMember"
+import EventBus from '@src/event-bus';
+
 export default {
   components: {
     AddMember
+  },
+  created() {
+    EventBus.$emit('OPEN_SIDEBAR', false);
   }
 }
 </script>

@@ -14,9 +14,13 @@
 
 <script>
 import AddStore from "@components/Adds/AddStore"
+import EventBus from '@src/event-bus';
 export default {
   components: {
     AddStore
+  },
+  created() {
+    EventBus.$emit('OPEN_SIDEBAR_HOME', false);
   }
 }
 </script>

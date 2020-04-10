@@ -36,12 +36,16 @@
 
 <script>
 import { isMobile } from 'mobile-device-detect';
+import EventBus from '@src/event-bus';
 export default {
   name: 'staysafe',
   data() {
     return {
       isMobile: isMobile,
     }
+  },
+  created() {
+    EventBus.$emit('OPEN_SIDEBAR_HOME', false);
   }
 }
 </script>

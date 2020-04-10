@@ -43,20 +43,15 @@
             </div>
           </div>
         </div>
-
-        <!-- <div class="col-12 text-right">
-          <small>Total: {{getTotalMarkers}}</small>
-        </div> -->
       </div>
 
 
     </div>
 
-
-    <div class="bottombar--actions">
+    <div class="bottombar--actions ">
 
       <div class="row">
-        <div class="col-12">
+        <div class="col-10 text-center">
           <router-link to="/preciso-de-ajuda"  class="btn btn-active btn-white">
             <span class="icon-hand-stop"></span> <span v-text="$ml.get('menu.needup')"></span>
           </router-link>
@@ -66,18 +61,20 @@
           <router-link to="/posso-ajudar"  class="btn btn-white">
             <span v-text="$ml.get('menu.handup')"></span>
           </router-link>
-          <button @click="show" type="button" class="btn btn-sm btn-primary" name="button">Campanhas</button>
-          <button v-if="!installedAppPWA && showInstall" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>App</button>
+        </div>
+        <div class="col-2 text-right">
+          <button @click="emitMethod" class="btn btn-info"><span class="icon-lista"></span></button>
         </div>
       </div>
+    </div>
+
+    <!-- <div class="bottombar--actions">
 
       <div class="col-12 bottombar-links">
         <div class="row align-items-start">
           <div class="col-6">
-            <!-- <router-link to="/" v-text="$ml.get('menu.mapa')"></router-link> -->
             <router-link to="/sobre" v-text="$ml.get('menu.sobre')"></router-link>
             <router-link to="/fique-seguro" v-text="$ml.get('menu.seguranca')"></router-link>
-            <!-- <div class='onesignal-customlink-container'></div> -->
           </div>
           <div class="col-6 bottombar-flags">
             <a @click="$ml.change('portuguese')" href="#">Português</a>
@@ -90,13 +87,14 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
  import { mapGetters, mapActions } from 'vuex'
  import { MLBuilder } from 'vue-multilanguage'
+  import EventBus from '@src/event-bus';
 
 export default {
   props: ['address'],
@@ -104,17 +102,11 @@ export default {
   data() {
     return {
       isActive: false,
-      isActiveSidebarMember: false,
-      showHandUp: true,
-      showMapUp: true,
-      installedAppPWA: false,
-      showInstall: false
     }
   },
   watch:{
     $route (to, from){
-      this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false
-      this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false
+
     }
   },
   computed: {
@@ -123,71 +115,14 @@ export default {
       'getTotalMarkers',
     ]),
   },
-  updated() {
-    if(self.INSTALLAPPEVENT) this.showInstall = true
-  },
-  mounted() {
-    this.showHandUp = this.$router.currentRoute.name == 'home' ? true : false
-    this.showMapUp = this.$router.currentRoute.name != 'home' ? true : false
-
-    if (navigator.standalone) {
-      console.log('Launched: Installed (iOS)');
-      this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'ios'
-        })
-      this.installedAppPWA = true;
-      this.showInstall = false
-    } else if (matchMedia('(display-mode: standalone)').matches) {
-      console.log('Launched: Installed');
-      this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'android'
-        })
-      this.installedAppPWA = true;
-        this.showInstall = false
-    } else {
-      console.log('Launched: Browser Tab');
-      this.$gtag.event('Launched_App', {
-          'event_category': 'Launched',
-          'event_label': 'standalone',
-          'event_value': 'Browser'
-        })
-    }
-  },
   methods: {
     getTotal(type) {
       return this.getMarkers.filter((item)=>{
         return item.type == type
       }).length
     },
-    changeState() {
-      this.isActive = !this.isActive
-      this.$emit('sidebarOpen', this.isActive);
-    },
-    changeStateMember() {
-      this.isActiveSidebarMember = !this.isActiveSidebarMember
-      this.$emit('sidebarOpen', this.isActiveSidebarMember);
-    },
-    closeSidebar(v) {
-
-      this.isActive = v;
-      this.isActiveSidebarMember = v;
-      this.$emit('sidebarOpen', v);
-    },
-    installApp() {
-      self.INSTALLAPPEVENT.prompt();
-      self.INSTALLAPPEVENT.userChoice.then((choice) => {
-        if (choice.outcome === 'accepted') {
-          this.installedAppPWA = true
-        }
-        self.INSTALLAPPEVENT = null;
-      });
-    },
-    show () {
-      this.$modal.show('select-campaign');
+    emitMethod (v) {
+       EventBus.$emit('OPEN_SIDEBAR_HOME', true);
     }
   }
 }

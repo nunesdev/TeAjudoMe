@@ -1,29 +1,43 @@
 <template>
   <div class="wrapper"
   :class='{"sidebar-active":sidebarOpen}'>
-    <BottomBar v-if="isMobile" @sidebarOpen="onSidebarOpen" />
-    <router-view></router-view>
 
-    <Sidebar v-if="!isMobile"  @sidebarOpen="onSidebarOpen" />
-    <notifications group="foo" />
+    <div class="start" v-if="!startStep">
+      <StartStep @onFinishStep="setStartStep"></StartStep>
+    </div>
+
+    <div class="" v-if="startStep">
+      <BottomBar v-if="isMobile" />
+      <SidebarMobile v-if="isMobile" />
+
+      <router-view></router-view>
+
+
+      <Sidebar v-if="!isMobile" />
+      <notifications group="foo" />
+    </div>
   </div>
 </template>
 <script>
 import { isMobile } from 'mobile-device-detect';
 import Sidebar from '@components/Sidebar';
 import BottomBar from '@components/BottomBar';
-
+import SidebarMobile from '@components/SidebarMobile'
+import StartStep from '@components/Movimento/StartStep'
 
 export default {
   name: 'app',
   components: {
     Sidebar,
-    BottomBar
+    BottomBar,
+    SidebarMobile,
+    StartStep
   },
   data() {
     return {
       isMobile: isMobile,
-      sidebarOpen: false
+      sidebarOpen: false,
+      startStep: this.$cookies.get('_tastartstep') || !isMobile ? true : false,
     };
   },
   mounted() {
@@ -34,6 +48,10 @@ export default {
   methods: {
     onSidebarOpen(v) {
       this.sidebarOpen = v
+    },
+    setStartStep(v) {
+      this.startStep = true
+      this.$cookies.set('_tastartstep', true);
     },
   }
 }

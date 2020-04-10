@@ -14,9 +14,13 @@
 
 <script>
 import AddVoluntario from "@components/Adds/AddVoluntario"
+import EventBus from '@src/event-bus';
 export default {
   components: {
     AddVoluntario
+  },
+  created() {
+    EventBus.$emit('OPEN_SIDEBAR_HOME', false);
   }
 }
 </script>

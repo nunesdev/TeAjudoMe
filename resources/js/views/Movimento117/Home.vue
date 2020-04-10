@@ -1,5 +1,6 @@
 <template>
     <div class="">
+
       <div class="map">
 
         <modal class="select-campaign" height="auto" :adaptive="true" name="select-campaign">
@@ -123,10 +124,9 @@ export default {
     MglPopup,
     MglAttributionControl,
     MglNavigationControl,
-
     MarkerVolunteer,
     MarkerStore,
-    MarkerUser
+    MarkerUser,
   },
   data() {
     return {

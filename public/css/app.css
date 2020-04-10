@@ -11039,7 +11039,6 @@ a.btn {
 .btn [class*=" icon-"],
 a.btn [class^=icon-],
 a.btn [class*=" icon-"] {
-  margin-right: 5px;
   font-size: 0.7rem;
 }
 
@@ -12530,11 +12529,6 @@ a.btn.btn-active {
   -webkit-backface-visibility: hidden;
 }
 
-.bottombar--actions .btn {
-  margin-bottom: 10px;
-  line-height: 18px;
-}
-
 .location,
 .search-area {
   position: absolute;
@@ -12850,7 +12844,7 @@ a.btn.btn-active {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media all and (display-mode: standalone) {
+@media all and (display-mode: minimal-ui) {
   body {
     background-color: #fff;
   }
@@ -12859,6 +12853,10 @@ a.btn.btn-active {
 body {
   font-size: 10px;
   color: #283241;
+}
+
+body .material-icons {
+  font-family: "Material Icons" !important;
 }
 
 body .onesignal-customlink-subscribe.button {

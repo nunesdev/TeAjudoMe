@@ -14,9 +14,14 @@
 
 <script>
 import AddVoluntario from "@components/Movimento/Forms/AddVoluntario"
+import EventBus from '@src/event-bus';
+
 export default {
   components: {
     AddVoluntario
+  },
+  created() {
+    EventBus.$emit('OPEN_SIDEBAR', false);
   }
 }
 </script>

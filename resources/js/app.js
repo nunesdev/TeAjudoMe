@@ -15,9 +15,18 @@ import VueGtag from "vue-gtag";
 import VModal from 'vue-js-modal'
 import VTooltip from 'v-tooltip'
 
+import Vuesax from 'vuesax'
+import 'vuesax/dist/vuesax.css'
+import 'material-icons/iconfont/material-icons.css'   
+
+Vue.use(Vuesax, {
+  // options here
+})
+
 // Layouts
 import DefaultLayout from './layouts/Default'
 import Movimento117 from './layouts/Movimento117'
+
 Vue.component('DefaultLayout', DefaultLayout)
 Vue.component('Movimento117', Movimento117)
 
