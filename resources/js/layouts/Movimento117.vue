@@ -39,9 +39,14 @@ export default {
     return {
       isMobile: isMobile,
       sidebarOpen: false,
-      startStep: this.$cookies.get('_tastartstep') || !isMobile ? true : false,
+      startStep: true,
       installedAppPWA: false,
     };
+  },
+  mounted() {
+    setTimeout(()=>{
+      this.startStep = this.$cookies.get('_tastartstep') || !isMobile ? true : false
+    },1000) 
   },
   methods: {
     setStartStep(v) {

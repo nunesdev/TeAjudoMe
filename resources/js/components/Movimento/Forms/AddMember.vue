@@ -38,7 +38,7 @@
                         <span>
                           <img src="/images/movimento/doacao_money.png" width="32" height="32" alt="">
                         </span>
-                        <small>Doar via paypal, transferência</small>
+                        <small>Doar via transferência</small>
                         <input type="checkbox" name="support[]" v-model="info.support.money" id="paypal" value="paypal">
                       </label>
                     </div>
@@ -59,20 +59,21 @@
                   <div class="col-12" v-if="info.support.money">
                     <div class="card">
                       <div class="row no-gutters align-items-center">
-                        <div class="col-md-6 col-sm-12 ">
+                        <!-- <div class="col-md-6 col-sm-12 ">
                           <span> <img src="/images/movimento/paypal.png" width="32" height="32" alt=""> </span>
                           <p>
                             Via paypal: <br/>paulista@teste.com
                           </p>
-                        </div>
+                        </div> -->
                         <div class="col-md-6 col-sm-12 ">
                           <span> <img src="/images/movimento/pagar.png" width="32" height="32" alt=""> </span>
                           <p>
                             Via transferência:<br/>
-                            <small><b>Banco do Brasil - Agência: 21221</b></small>
-                            <small><b>Conta corrente: 32323232-2</b></small>
-                            <small><b>CNPJ: 32323232/0002-22</b></small>
-                            <small>É importante que você envie o comprovante para paulista@teste.com ou whatsapp (11) 9-43432124</small>
+                            <small><b>Banco Bradesco - Agência: 3396-0</b></small>
+                            <small><b>Conta corrente: 46235-7</b></small>
+                            <small><b>União Central Brasileira da Igreja Adventista do Sétimo dia</b></small>
+                            <small><b>CNPJ: 55.233.019/0002-50</b></small>
+                            <small>É importante que você envie o comprovante para paulista@teste.com</small>
                           </p>
                         </div>
                       </div>

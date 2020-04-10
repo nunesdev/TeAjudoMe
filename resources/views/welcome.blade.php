@@ -46,14 +46,14 @@
         <link  rel="apple-touch-startup-image" href="/images/icons/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" />
         <link  rel="apple-touch-startup-image" href="/images/icons/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" />
 
-        <link rel="manifest" href="/manifest.json">
+        <link rel="manifest" href="/manifest.json?c=1">
 
         <title>Te Ajudo - Me</title>
         <!-- Fonts -->
         <!-- <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet"/> -->
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
         <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css?c=6">
+        <link rel="stylesheet" href="/css/app.css?c=7">
 <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -82,6 +82,6 @@
     </head>
     <body >
       <div id="app"></div>
-      <script type="text/javascript" src="/js/app.js?c=6"></script>
+      <script type="text/javascript" src="/js/app.js?c=7"></script>
     </body>
 </html>
