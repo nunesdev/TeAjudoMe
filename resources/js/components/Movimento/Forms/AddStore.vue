@@ -226,12 +226,12 @@ import { isMobile } from 'mobile-device-detect';
 import VuePhoneNumberInput from 'vue-phone-number-input';
 import 'vue-phone-number-input/dist/vue-phone-number-input.css';
 
-import Helper from '../../helper'
+import Helper from '@src/helper'
 
 import Map from '@components/Map'
 
 export default {
-    name: 'AddVoluntario',
+    name: 'AddStore',
     components: {
       VuePhoneNumberInput,
       Map
@@ -243,6 +243,7 @@ export default {
         isMapShow: false,
         info: {
           member: 'volunteer',
+          campaign: 'movimento117',
           location: {},
           support: {
             available: {}
@@ -270,7 +271,7 @@ export default {
       ]),
       ...mapActions([
         'actionSetNewUser',
-        'actionSetNewPosition'
+        'actionSetNewUserMovimento'
       ]),
 
       async getLocationMobile() {
@@ -385,8 +386,8 @@ export default {
             type: 'success'
           });
 
-          this.actionSetNewUser(payload.data.data)
-          this.$router.push('/');
+          this.actionSetNewUserMovimento(payload.data.data)
+
 
           this.$gtag.event('add_store', {
               'event_category': 'success',
@@ -395,6 +396,7 @@ export default {
             })
 
             this.info = {location:{}, support:{}}
+            this.$router.push('/movimento117'); 
         } else {
           this.$gtag.event('add_store', {
               'event_category': 'error',

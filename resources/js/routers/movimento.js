@@ -1,6 +1,7 @@
 import Home from '@views/Movimento117/Home'
 import Donate from '@views/Movimento117/Donate'
 import Volunteer from '@views/Movimento117/Volunteer'
+import Store from '@views/Movimento117/Store'
 import StaySafe from '@views/Movimento117/StaySafe'
 import HowWorks from '@views/Movimento117/HowWorks'
 import About from '@views/Movimento117/About'
@@ -27,6 +28,15 @@ export default [
     path: '/movimento117/voluntario',
     name: 'movimento117Volunteer',
     component : Volunteer,
+    meta: {
+      layout: 'Movimento117',
+      bodyClass: 'm117_volunteer'
+    }
+  },
+  {
+    path: '/movimento117/central-de-coleta',
+    name: 'movimento117Store',
+    component : Store,
     meta: {
       layout: 'Movimento117',
       bodyClass: 'm117_volunteer'

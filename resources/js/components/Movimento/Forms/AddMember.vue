@@ -73,7 +73,7 @@
                             <small><b>Conta corrente: 46235-7</b></small>
                             <small><b>União Central Brasileira da Igreja Adventista do Sétimo dia</b></small>
                             <small><b>CNPJ: 55.233.019/0002-50</b></small>
-                            <small>É importante que você envie o comprovante para paulista@teste.com</small>
+                            <small>É importante que você envie o comprovante para jovens.ap@outlook.com</small>
                           </p>
                         </div>
                       </div>

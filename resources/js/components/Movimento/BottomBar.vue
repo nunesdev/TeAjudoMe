@@ -54,7 +54,7 @@
     <div class="bottombar--actions ">
 
       <div class="row">
-        <div class="col-8 text-center">
+        <div class="col-10 text-center">
           <router-link to="/movimento117/quero-doar"  class="btn btn-sm btn-active btn-white">
             <span class="icon-hand-stop"></span> <span>Quero doar</span>
           </router-link>
@@ -62,7 +62,7 @@
             <span>Quero ser voluntário</span>
           </router-link>
         </div>
-        <div class="col-4 text-right">
+        <div class="col-2 text-right">
           <button @click="emitMethod" class="btn btn-info"><span class="icon-lista"></span></button>
         </div>
       </div>
