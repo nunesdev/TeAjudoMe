@@ -26,12 +26,17 @@
       <vs-sidebar-item index="5" icon="format_align_center" to="/sobre">
         Sobre
       </vs-sidebar-item>
+
       <vs-sidebar-item index="6" icon="get_app">
         <button v-if="!installedAppPWA" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button">Adicionar à tela de ínicio</button>
       </vs-sidebar-item>
+      <vs-sidebar-item index="5" icon="system_update" @click="updateApp">
+        Atualizar App
+      </vs-sidebar-item>
 
       <vs-sidebar-item index="2.1" icon="favorite" to="/movimento117">
-        #AmorEmMovimento
+        <img src="/images/movimento/movimento.png" width="32" alt="">
+        &nbsp;&nbsp; #AmorEmMovimento
       </vs-sidebar-item>
       <vs-sidebar-item index="2.2" icon="store" to="/">
         #CompreDoBairro #CompraDoPequeno
@@ -113,6 +118,9 @@ export default {
         self.INSTALLAPPEVENT = null;
       });
     },
+    updateApp() {
+      self.location.reload()
+    }
   }
 }
 </script>
