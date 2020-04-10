@@ -59,6 +59,7 @@
 
 <script>
 import EventBus from '@src/event-bus';
+import { isMobile, isAndroid,isMobileSafari } from 'mobile-device-detect';
 
 
 export default {
@@ -68,6 +69,9 @@ export default {
       reduce: true,
       notExpand: false,
 
+      isMobile: isMobile,
+      isAndroid: isAndroid,
+      isMobileSafari: isMobileSafari,
       installedAppPWA: false,
       showInstall: false
     }
@@ -106,13 +110,28 @@ export default {
       },500)
     },
     installApp() {
-      self.INSTALLAPPEVENT.prompt();
-      self.INSTALLAPPEVENT.userChoice.then((choice) => {
-        if (choice.outcome === 'accepted') {
-          this.installedAppPWA = true
+
+      if(isMobileSafari) {
+        if (navigator.share) {
+          navigator.share({
+            title: 'TeAjudo.me',
+            url: 'https://teajudo.me?utm_source=shareapp'
+          }).then(() => {
+            console.log('Thanks for sharing!');
+          })
+          .catch(console.error);
+        } else {
+          alert('Não é possível completar, para adicionar a tela clique em compartilhar no navegador, e depois em "Adicionar à tela de início"')
         }
-        self.INSTALLAPPEVENT = null;
-      });
+      } else {
+        self.INSTALLAPPEVENT.prompt();
+        self.INSTALLAPPEVENT.userChoice.then((choice) => {
+          if (choice.outcome === 'accepted') {
+            this.installedAppPWA = true
+          }
+          self.INSTALLAPPEVENT = null;
+        });
+      }
     },
     updateApp() {
       self.location.reload()
