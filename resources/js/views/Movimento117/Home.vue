@@ -207,7 +207,7 @@ export default {
         this.actionGetAllUsersMovimento({
           'campaign' : 'movimento117',
           'location': {lat:this.location.coords.latitude, lng: this.location.coords.longitude},
-          'distance' : this.isMobile ? 7 : 10
+          'distance' : this.isMobile ? 40 : 60
         })
 
         this.map.on('zoomend', this.onZoomOut)
@@ -241,7 +241,7 @@ export default {
       this.actionGetAllUsersMovimento({
         'campaign' : 'movimento117',
         'location': {lat: this.map.getCenter().lat,lng: this.map.getCenter().lng},
-        'distance' : this.isMobile ? (distance*6) : (distance*3)
+        'distance' : this.isMobile ? (distance*30) : (distance*40)
       })
       this.isSearchByArea = false
     },

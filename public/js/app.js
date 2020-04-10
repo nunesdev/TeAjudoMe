@@ -9612,7 +9612,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     lat: _this2.location.coords.latitude,
                     lng: _this2.location.coords.longitude
                   },
-                  'distance': _this2.isMobile ? 2 : 4
+                  'distance': _this2.isMobile ? 40 : 60
                 });
 
                 _this2.map.on('zoomend', _this2.onZoomOut);
@@ -9659,7 +9659,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           lat: this.map.getCenter().lat,
           lng: this.map.getCenter().lng
         },
-        'distance': this.isMobile ? distance * 6 : distance * 3
+        'distance': this.isMobile ? distance * 30 : distance * 40
       });
       this.isSearchByArea = false;
     },
@@ -10026,7 +10026,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     lat: _this2.location.coords.latitude,
                     lng: _this2.location.coords.longitude
                   },
-                  'distance': _this2.isMobile ? 7 : 10
+                  'distance': _this2.isMobile ? 40 : 60
                 });
 
                 _this2.map.on('zoomend', _this2.onZoomOut);
@@ -10074,7 +10074,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           lat: this.map.getCenter().lat,
           lng: this.map.getCenter().lng
         },
-        'distance': this.isMobile ? distance * 6 : distance * 3
+        'distance': this.isMobile ? distance * 30 : distance * 40
       });
       this.isSearchByArea = false;
     },
