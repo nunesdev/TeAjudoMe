@@ -2,7 +2,7 @@
   "name": "Te Ajudo",
   "short_name": "Te Ajudo",
   "start_url": "/?utm_source=homescreen",
-  "display": "standalone",
+  "display": "minimal-ui",
   "orientation": "portrait",
   "scope": ".",
   "theme_color": "#264463",
