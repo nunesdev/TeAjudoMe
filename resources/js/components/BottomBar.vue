@@ -44,9 +44,9 @@
           </div>
         </div>
 
-        <div class="col-12 text-right">
+        <!-- <div class="col-12 text-right">
           <small>Total: {{getTotalMarkers}}</small>
-        </div>
+        </div> -->
       </div>
 
 
