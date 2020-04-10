@@ -55,7 +55,7 @@
     </div>
   </swiper-slide>
 
-  <swiper-slide v-if="isMobileSafari">
+  <swiper-slide v-if="isIOS">
     <div class="row justify-content-center text-center">
       <div class="col-12">
         <img src="/images/movimento/start/add_iphone.gif" width="180" alt="">
