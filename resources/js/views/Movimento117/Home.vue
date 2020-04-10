@@ -207,7 +207,7 @@ export default {
         this.actionGetAllUsersMovimento({
           'campaign' : 'movimento117',
           'location': {lat:this.location.coords.latitude, lng: this.location.coords.longitude},
-          'distance' : this.isMobile ? 40 : 60
+          'distance' : this.isMobile ? 100 : 120
         })
 
         this.map.on('zoomend', this.onZoomOut)
