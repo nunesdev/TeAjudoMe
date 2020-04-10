@@ -41,7 +41,7 @@
       </div>
     </div>
   </swiper-slide>
-  <swiper-slide v-if="isMobileSafari">
+  <swiper-slide v-if="isIOS">
     <div class="row justify-content-center text-center">
       <div class="col-12">
         <img src="/images/movimento/start/baixar.png" width="128" alt="">
@@ -49,7 +49,7 @@
       <div class="col-12">
           <h3>Acesso rápido</h3>
           <p>Adicione nossa ferramenta à sua tela inicial, para você voltar aqui com mais facilidade, beleza ?</p>
-          <p>No próximo passo, você aprende como fazer.</p>
+          <p>No próximo passo, você aprende como fazer, mas precisa ser feito no Safari, tá ?</p>
 
       </div>
     </div>
@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import { isMobile, isAndroid,isMobileSafari } from 'mobile-device-detect';
+import { isMobile, isAndroid,isMobileSafari, isIOS } from 'mobile-device-detect';
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 
@@ -113,6 +113,7 @@ export default {
       isMobile: isMobile,
       isAndroid: isAndroid,
       isMobileSafari: isMobileSafari,
+      isIOS: isIOS,
       swiperOptions: {
         pagination: {
           el: '.swiper-pagination'
