@@ -37,6 +37,9 @@
             <!-- <span v-if="item.options.dia_d">
               <small>Participar do dia D</small>
             </span> -->
+            <span v-if="item.options.talk">
+              <small>Conversar / Orar por alguém</small>
+            </span>
           </div>
 
         </div>

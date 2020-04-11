@@ -85,6 +85,18 @@
 
                     </div>
                   </div>
+                  <div class="col-md-6 col-sm-12 ">
+                    <div class="help" :class="{active: info.support.talk}">
+                      <label for="talk">
+                        <span>
+                          <img src="/images/movimento/falar.png" width="32" height="32" alt="">
+                        </span>
+                        <small>Conversar</small>
+                        <input type="checkbox" name="support[]" v-model="info.support.talk" id="talk" value="talk">
+                      </label>
+
+                    </div>
+                  </div>
                   <!-- <div class="col-md-6 col-sm-12 ">
                     <div class="help" :class="{active: info.support.dia_d}">
                       <label for="dia_d">
@@ -211,7 +223,7 @@ export default {
           return;
         }
 
-        if(!this.info.support.market && !this.info.support.food && !this.info.support.health && !this.info.support.talk) {
+        if(!this.info.support.market && !this.info.support.food && !this.info.support.health && !this.info.support.talk && !this.info.support.blood) {
           this.$notify({
             group: 'foo',
             title: 'Ops!',
