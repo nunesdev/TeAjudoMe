@@ -7,7 +7,7 @@
 
         <img v-if="!item.options.blood && !item.options.regional" src="/images/movimento/user.png" width="48" height="48" alt="">
         <img v-if="item.options.blood && !item.options.regional" src="/images/movimento/user_blood.png" width="48" height="48" alt="">
-        <img v-if="item.options.regional" src="/images/movimento/user_regional.png" width="48" height="48" alt="">
+        <img v-if="!item.options.blood && item.options.regional" src="/images/movimento/user_regional.png" width="48" height="48" alt="">
         <div v-if="item.options.regional" class="">
           <small>Regional</small>
         </div>

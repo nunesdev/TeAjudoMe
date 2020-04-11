@@ -84,9 +84,9 @@
 
           <MglMarker v-for="(item, index) in markers" :key="index" :coordinates="[item.lng,item.lat]" color="blue">
             <div class="" slot="marker">
-              <img v-if="item && item.type == 'volunteer' && !item.options.blood" src="/images/movimento/user.png" width="36" height="36" alt="">
-              <img v-if="item && item.type == 'volunteer' && item.options.blood" src="/images/movimento/user_blood.png" width="36" height="36" alt="">
-              <img v-if="item && item.type == 'volunteer' && item.options.regional" src="/images/movimento/user_regional.png" width="36" height="36" alt="">
+              <img v-if="item && item.type == 'volunteer' && !item.options.blood && !item.options.regional" src="/images/movimento/user.png" width="36" height="36" alt="">
+              <img v-if="item && item.type == 'volunteer' && item.options.blood && !item.options.regional" src="/images/movimento/user_blood.png" width="36" height="36" alt="">
+              <img v-if="item && item.type == 'volunteer' && item.options.regional && !item.options.blood" src="/images/movimento/user_regional.png" width="36" height="36" alt="">
 
               <img v-if="item && item.type == 'user' && !item.options.money" src="/images/movimento/caixa.png" width="38" height="38" alt="">
               <img v-if="item && item.type == 'user' && item.options.money" src="/images/movimento/doacao_money.png" width="38" height="38" alt="">
