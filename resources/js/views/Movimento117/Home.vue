@@ -86,9 +86,13 @@
             <div class="" slot="marker">
               <img v-if="item && item.type == 'volunteer' && !item.options.blood" src="/images/movimento/user.png" width="36" height="36" alt="">
               <img v-if="item && item.type == 'volunteer' && item.options.blood" src="/images/movimento/user_blood.png" width="36" height="36" alt="">
+              <img v-if="item && item.type == 'volunteer' && item.options.regional" src="/images/movimento/user_regional.png" width="36" height="36" alt="">
 
-              <img v-if="item && item.type == 'user'" src="/images/movimento/caixa.png" width="38" height="38" alt="">
-              <img v-if="item && item.type == 'store'" src="/images/movimento/abrigo.png" width="48" height="48" alt="">
+              <img v-if="item && item.type == 'user' && !item.options.money" src="/images/movimento/caixa.png" width="38" height="38" alt="">
+              <img v-if="item && item.type == 'user' && item.options.money" src="/images/movimento/doacao_money.png" width="38" height="38" alt="">
+
+              <img v-if="item && item.type == 'store' && !item.options.blood" src="/images/movimento/abrigo.png" width="48" height="48" alt="">
+              <img v-if="item && item.type == 'store' && item.options.blood" src="/images/movimento/sangue.png" width="48" height="48" alt="">
 
 
             </div>
@@ -241,7 +245,7 @@ export default {
       this.actionGetAllUsersMovimento({
         'campaign' : 'movimento117',
         'location': {lat: this.map.getCenter().lat,lng: this.map.getCenter().lng},
-        'distance' : this.isMobile ? (distance*30) : (distance*40)
+        'distance' : this.isMobile ? (distance*60) : (distance*50)
       })
       this.isSearchByArea = false
     },

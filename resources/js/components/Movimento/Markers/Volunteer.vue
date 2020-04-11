@@ -5,8 +5,12 @@
       <div class="popup text-center">
 
 
-        <img v-if="!item.options.blood" src="/images/movimento/user.png" width="48" height="48" alt="">
-        <img v-if="item.options.blood" src="/images/movimento/user_blood.png" width="48" height="48" alt="">
+        <img v-if="!item.options.blood && !item.options.regional" src="/images/movimento/user.png" width="48" height="48" alt="">
+        <img v-if="item.options.blood && !item.options.regional" src="/images/movimento/user_blood.png" width="48" height="48" alt="">
+        <img v-if="item.options.regional" src="/images/movimento/user_regional.png" width="48" height="48" alt="">
+        <div v-if="item.options.regional" class="">
+          <small>Regional</small>
+        </div>
 
 
         <div class="popup-head row align-items-center">
@@ -33,7 +37,7 @@
             <!-- <span v-if="item.options.dia_d">
               <small>Participar do dia D</small>
             </span> -->
-          </div> 
+          </div>
 
         </div>
 

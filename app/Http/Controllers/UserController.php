@@ -20,21 +20,25 @@ class UserController extends BaseController
       if(!$request->input('email') || !$request->input('phone'))
         throw new \Exception("É necessário um email e telefone válido", 1);
 
-      if(!$request->input('campaign'))
-        $thereIs = User::where('email', $request->input('email'))->whereNull('campaign')->first();
+      if(!$request->input('campaign')):
+        $thereIs = User::where('email', $request->input('email'))
+        ->whereNull('campaign')
+        ->where('type', $request->input('type'))
+        ->first();
+      endif;
 
-      if($request->input('campaign'))
-        $thereIs = User::where('email', $request->input('email'))->where('campaign', $request->input('campaign'))->first();
-
+      if($request->input('campaign')):
+        $thereIs = User::where('email', $request->input('email'))
+        ->where('campaign', $request->input('campaign'))
+        ->where('type', $request->input('type'))
+        ->first();
+      endif;
 
       if($thereIs && $thereIs->email)
         throw new \Exception("Você já faz parte! Se precisar alterar seus dados entre em contato pelo email teajudome@gmail.com, obrigado!", 1);
 
-
       if(!$request->input('location.lat') || !$request->input('location.lon'))
         throw new \Exception("Vá para o MAPA, Mova o PIN AMARELO, para atualizar sua localização", 1);
-
-
 
       $user = new User;
       $user->name = $request->input('name');
@@ -76,13 +80,16 @@ class UserController extends BaseController
       if(!$request->input('location.lat') || !$request->input('location.lon'))
         throw new \Exception("Vá para o MAPA, Mova o PIN AMARELO, para atualizar sua localização", 1);
 
-      if($request->input('email'))
-        $query = User::where('email', $request->input('email'));
+      if($request->input('email')):
+        $query = User::where('email', $request->input('email'))
+        ->where('type', $request->input('type'));
+      endif;
 
       if(!$request->input('email')):
         $query = User::where('phone', $request->input('phone'))
         ->where('lat', $request->input('location.lat'))
-        ->where('lng', $request->input('location.lon'));
+        ->where('lng', $request->input('location.lon'))
+        ->where('type', $request->input('type'));
       endif;
 
       $thereIs = $query->first();

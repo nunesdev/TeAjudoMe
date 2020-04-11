@@ -3,19 +3,20 @@
     <MglPopup>
       <div class="popup text-center">
 
-        <img src="/images/movimento/caixa.png" width="48" height="48" alt="">
+        <img v-if="!item.options.money" src="/images/movimento/caixa.png" width="48" height="48" alt="">
+        <img v-if="item.options.money" src="/images/movimento/doacao_money.png" width="48" height="48" alt="">
 
         <div class="popup-head row align-items-center">
           <h3 class="col-11">{{item.name}}</h3>
         </div>
 
-        <h4 v-text="$ml.get('home.map.popup.talk_to')"></h4>
+        <h4  v-if="item.options && !item.options.money" v-text="$ml.get('home.map.popup.talk_to')"></h4>
 
-        <span v-if="item.email"><a :href="`mailto:${item.email}`"> Email </a></span>
-        <span v-if="item.phone"><a :href="`tel:${item.phone}`" v-text="$ml.get('home.map.popup.phone')"></a></span>
-        <span v-if="item.whatsapp"><a target="_blank" :href="`https://api.whatsapp.com/send?phone=${item.phone}`"> WhatsApp </a></span>
+        <span v-if="item.email && !item.options.money"><a :href="`mailto:${item.email}`"> Email </a></span>
+        <span v-if="item.phone && !item.options.money"><a :href="`tel:${item.phone}`" v-text="$ml.get('home.map.popup.phone')"></a></span>
+        <span v-if="item.whatsapp && !item.options.money"><a target="_blank" :href="`https://api.whatsapp.com/send?phone=${item.phone}`"> WhatsApp </a></span>
 
-        <div class="support"  v-if="item.options">
+        <div class="support" v-if="item.options && !item.options.money">
 
           <div v-if="item.options.others">
             <hr>

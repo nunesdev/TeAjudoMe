@@ -263,7 +263,7 @@ export default {
       const distance = this.distance(this.map.getCenter().lat,this.map.getCenter().lng,this.location.coords.latitude, this.location.coords.longitude)
       this.actionGetAllUsers({
         'location': {lat: this.map.getCenter().lat,lng: this.map.getCenter().lng},
-        'distance' : this.isMobile ? (distance*30) : (distance*40)
+        'distance' : this.isMobile ? (distance*60) : (distance*50)
       })
       this.isSearchByArea = false
     },

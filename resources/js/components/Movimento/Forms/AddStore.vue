@@ -18,18 +18,18 @@
             <div class="text-left">
               <router-link v-if="isMobile" class="btn btn-showmap" :to="{ name: 'home' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
             </div>
-            <h3 v-text="$ml.get('store.title')"></h3>
+            <h3>Dados do local</h3>
 
             <hr>
 
             <form  class="form-horizontal" action="/api" v-on:submit.prevent="onSubmit" method="post">
 
               <div class="form-group">
-                 <input type="text" class="form-control" v-model="info.name" name="name" :placeholder="$ml.get('store.form.name')"  required>
-                 <small>ex: Mercadinho do seu Zé</small>
+                 <input type="text" class="form-control" v-model="info.name" name="name" placeholder="Nome do local"  required>
+                 <small>ex: Casa dona Maria / Hemocentro Hospital das Clínicas</small>
               </div>
               <div class="form-group">
-                 <input type="text" class="form-control" v-model="info.support.owner" name="owner" :placeholder="$ml.get('store.form.owner')"  required>
+                 <input type="text" class="form-control" v-model="info.support.owner" name="owner" placeholder="Nome do responsável"  required>
               </div>
               <div class="form-group">
                 <VuePhoneNumberInput @update="updatePhone" :translations="translations"  v-model="info.phone_" required />
@@ -50,70 +50,41 @@
                  <input type="text" class="form-control" v-model="info.state" name="state" :placeholder="$ml.get('sidebar.form.state')" required>
               </div>
               <div class="form-group">
-                <h4 v-text="$ml.get('store.form.subtitle')"></h4>
+                <h4>A central é: </h4>
                 <hr>
 
                 <div class="row helps text-center">
                   <div class="col-6">
-                    <div class="help" :class="{active: info.support.market}">
-                      <label for="s_market" >
+                    <div class="help" :class="{active: info.support.central_coleta}">
+                      <label for="central_coleta" >
 
-                        <span class="icon-shopping-cart"></span>
-                        <small v-text="$ml.get('store.form.help.market')"></small>
-                        <input type="checkbox" name="support[]" v-model="info.support.market" id="s_market" value="market">
+                        <span>
+                          <img src="/images/movimento/caixa.png" width="32" height="32" alt="">
+                        </span>
+                        <small>Ponto de coleta</small>
+                        <input type="checkbox" name="support[]" v-model="info.support.central_coleta" id="central_coleta" value="central_coleta">
                       </label>
                     </div>
                   </div>
                   <div class="col-6">
-                    <div class="help" :class="{active: info.support.food}">
-                      <label for="s_food">
-                        <span class="icon-location-food"></span>
-                        <small v-text="$ml.get('store.form.help.food')"></small>
-                        <input type="checkbox" name="support[]" v-model="info.support.food" id="s_food" value="food">
+                    <div class="help" :class="{active: info.support.blood}">
+                      <label for="blood">
+                        <span>
+                          <img src="/images/movimento/doacao.png" width="32" height="32" alt="">
+                        </span>
+                        <small>Hemocentro</small>
+                        <input type="checkbox" name="support[]" v-model="info.support.blood" id="blood" value="blood">
                       </label>
                     </div>
                   </div>
-                  <div class="col-6">
-                    <div class="help" :class="{active: info.support.market_garden}">
-                      <label for="market_garden">
-                        <span class="icon-location-food"></span>
-                        <small v-text="$ml.get('store.form.help.market_garden')"></small>
-                        <input type="checkbox" name="support[]" v-model="info.support.market_garden" id="market_garden" value="market_garden">
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="help" :class="{active: info.support.health}">
-                      <label for="s_health">
-                        <span class="icon-store-front"></span>
-                        <small v-text="$ml.get('store.form.help.health')"></small>
-                        <input type="checkbox" name="support[]" v-model="info.support.health" id="s_health" value="health">
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="help" :class="{active: info.support.mechanical}">
-                      <label for="mechanical">
-                        <span class="icon-cogs"></span>
-                        <small v-text="$ml.get('store.form.help.mechanical')"></small>
-                        <input type="checkbox" name="support[]" v-model="info.support.mechanical" id="mechanical" value="mechanical">
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-6">
-                    <div class="help featured" :class="{active: info.support.add_others}">
-                      <label for="others">
-                        <span class="icon-add-outline"></span>
-                        <small v-text="$ml.get('store.form.help.others')"></small>
-                        <input type="checkbox" name="support[]" v-model="info.support.add_others" id="others" value="others">
-                      </label>
-                    </div>
-                  </div>
+
+
                 </div>
                 <div class="row">
-                  <div class="col-12" v-if="info.support.add_others">
+                  <div class="col-12">
                     <div class="form-group">
-                      <input class="form-control" type="text" v-model="info.support.others" name="" :placeholder="$ml.get('store.form.help.others_placeholder')" value="">
+                      <small>Observações</small>
+                      <input class="form-control" type="text" v-model="info.support.others" name=""  value="">
                     </div>
                   </div>
 
@@ -177,6 +148,7 @@
                       </label>
                     </div>
                   </div>
+
                 </div>
                 <div class="row">
                   <div class="col-12" v-if="info.support.available.add_others">
@@ -188,13 +160,14 @@
 
               </div>
               <div class="form-group">
-                <h4 v-text="$ml.get('store.form.available.title_2')"></h4>
-                <hr>
+                <h4>Pode receber via sistema drive-thru ?</h4>
+                <small>Se aplica apenas para pontos de coletas</small>
+                <br>
                 <div class="row helps text-center">
                   <div class="col">
                     <div class="help" :class="{active: info.support.available.delivery}">
                       <label for="available_delivery" >
-                        <small v-text="$ml.get('store.form.available.delivery')">Delivery</small>
+                        <small>Sim</small>
                         <input type="checkbox" name="support[]" v-model="info.support.available.delivery" id="available_delivery" value="available_delivery">
                       </label>
                     </div>
@@ -270,7 +243,7 @@ export default {
         'getMarkerPosition',
       ]),
       ...mapActions([
-        'actionSetNewUser',
+        'actionSetNewPosition',
         'actionSetNewUserMovimento'
       ]),
 
@@ -396,7 +369,7 @@ export default {
             })
 
             this.info = {location:{}, support:{}}
-            this.$router.push('/movimento117'); 
+            this.$router.push('/movimento117');
         } else {
           this.$gtag.event('add_store', {
               'event_category': 'error',
