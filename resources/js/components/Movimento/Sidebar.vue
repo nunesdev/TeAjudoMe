@@ -3,7 +3,7 @@
     <div class="sidebar">
 
       <div class="sidebar-volunteers-count">
-        <div class="row ">
+        <div class="row align-items-center">
           <div class="col-6">
             <div class="row align-items-center no-gutters">
               <div class="col-6">
@@ -40,6 +40,18 @@
                </div>
             </div>
           </div>
+          <div class="col-6">
+            <div class="row align-items-center no-gutters">
+              <div class="col-6">
+                <img src="/images/movimento/sangue.png" width="44" height="44" alt="">
+              </div>
+               <div class="col-6">
+                 <div class="stats">
+                   <span>{{getTotalHemocentros('store')}}</span> <small>Hemocentros</small>
+                 </div>
+               </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -60,36 +72,38 @@
           </div>
         </div>
 
-        <footer class="container">
-          <div class="sponsors">
-            <div class="sidebar-logo">
-              <div class="row justify-content-center align-items-center  no-gutters">
-                <div class="col-4">
-                  <router-link :to="{ name: 'home' }"><img src="/images/teajudome.png?c=1"  alt=""></router-link>
-                </div>
 
-                <div class="col-4">
-                  <a target="_blank" href="https://instagram.com/movimento117">
-                    <img src="/images/movimento/movimento.png?c=1"  alt="">
-                  </a>
-                </div>
+      </div>
+
+      <footer class="container">
+        <div class="sponsors">
+          <div class="sidebar-logo">
+            <div class="row justify-content-center align-items-center  no-gutters">
+              <div class="col-4">
+                <router-link :to="{ name: 'home' }"><img src="/images/teajudome.png?c=1"  alt=""></router-link>
+              </div>
+
+              <div class="col-4">
+                <a target="_blank" href="https://instagram.com/movimento117">
+                  <img src="/images/movimento/movimento.png?c=1"  alt="">
+                </a>
               </div>
             </div>
-            <div class="col-12">
-              <router-link to="/movimento117/como-funciona">Como funciona</router-link>
-              <router-link to="/movimento117/sobre" v-text="$ml.get('menu.sobre')"></router-link>
-              <router-link to="/movimento117/fique-seguro">Fique seguro</router-link>
-                <a href="mailto:teajudome@gmail.com"><span v-text="$ml.get('menu.contato')"></span></a>
-              <br/>
-              <br>
-            </div>
-            <div class="col-12">
-              <small v-text="$ml.get('sidebar.sponsor')"></small>
-              <a target="_blank" href="https://mapbox.com"><img src="/images/mapbox-logo-black.png" width="80" alt=""></a>
-            </div>
           </div>
-        </footer>
-      </div>
+          <div class="col-12">
+            <router-link to="/movimento117/como-funciona">Como funciona</router-link>
+            <router-link to="/movimento117/sobre" v-text="$ml.get('menu.sobre')"></router-link>
+            <router-link to="/movimento117/fique-seguro">Fique seguro</router-link>
+              <a href="mailto:teajudome@gmail.com"><span v-text="$ml.get('menu.contato')"></span></a>
+            <br/>
+            <br>
+          </div>
+          <div class="col-12">
+            <small v-text="$ml.get('sidebar.sponsor')"></small>
+            <a target="_blank" href="https://mapbox.com"><img src="/images/mapbox-logo-black.png" width="80" alt=""></a>
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
 </template>
@@ -169,6 +183,13 @@ export default {
         if(type == 'store' && item.type == 'store' && !item.options.blood) {
           return item.type == type
         } else if(type != 'store' && item.type != 'store') {
+          return item.type == type
+        }
+      }).length
+    },
+    getTotalHemocentros(type) {
+      return this.getMarkersMovimento.filter((item)=>{
+        if(type == 'store' && item.type == 'store' && item.options.blood) {
           return item.type == type
         }
       }).length

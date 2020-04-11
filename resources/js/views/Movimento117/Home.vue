@@ -16,7 +16,7 @@
                       <img v-if="isMobile" src="/images/movimento/user.png" width="52" height="52" alt="">
                     </div>
                     <div class="col-9">
-                      <h4>Movimento 117 - #AmorEmMovimento</h4>
+                      <h4>Movimento117 #AmorEmMovimento</h4>
                       <button class="btn btn-info" @click="hide()">Continuar nesse mapa</button>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                       <img v-if="isMobile" src="/images/teajudome.png" width="52" height="52" alt="">
                     </div>
                     <div class="col-9">
-                      <h4>TeAjudo - Pequenos Negócios</h4>
+                      <h4>TeAjudo - #CompreDoBairro #VizinhoTeAjudo</h4>
                       <router-link class="btn btn-active btn-info" to="/">Ir para o mapa</router-link >
                     </div>
                 </div>
@@ -92,7 +92,7 @@
               <img v-if="item && item.type == 'user' && item.options.money" src="/images/movimento/doacao_money.png" width="38" height="38" alt="">
 
               <img v-if="item && item.type == 'store' && !item.options.blood" src="/images/movimento/abrigo.png" width="48" height="48" alt="">
-              <img v-if="item && item.type == 'store' && item.options.blood" src="/images/movimento/sangue.png" width="48" height="48" alt="">
+              <img v-if="item && item.type == 'store' && item.options.blood" src="/images/movimento/sangue.png" width="36" height="36" alt="">
 
 
             </div>

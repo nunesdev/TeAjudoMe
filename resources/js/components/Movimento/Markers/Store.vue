@@ -3,7 +3,7 @@
     <MglPopup>
       <div class="popup text-center">
         <img v-if="!item.options.blood" src="/images/movimento/abrigo.png" width="48" height="48" alt="">
-        <img v-else  src="/images/movimento/doacao.png" width="48" height="48" alt="">
+        <img v-else  src="/images/movimento/sangue.png" width="36" height="36" alt="">
 
 
         <div class="popup-head row align-items-center">
