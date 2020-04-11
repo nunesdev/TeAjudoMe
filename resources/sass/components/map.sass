@@ -1,6 +1,6 @@
 .location, .search-area
   position: absolute
-  top: 20px
+  top: 160px
   border-radius: 4px
   right: 10px
   background: $white
@@ -30,9 +30,19 @@
     .btn
        span:last-child
          display: inline-block
+
+
 .mapboxgl-ctrl-top-right
-  top: 50%
-  transform: translate(0, -50%)
+  top: 0
+  @media only screen and (max-width: 600px)
+    top: 10px
+    right: auto
+    left: 50%
+    width: 90%
+    transform: translate(-50%)
+    .mapboxgl-ctrl-geocoder
+      margin: 0
+      font-size: 16px
 .map
   position: absolute
   top: 0
@@ -43,6 +53,7 @@
   @media only screen and (max-width: 600px)
     right: 0
     top: 0
+    width: 95%
   .loading-markers
     position: absolute
     top: 90px

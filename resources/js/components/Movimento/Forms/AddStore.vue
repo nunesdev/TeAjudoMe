@@ -4,9 +4,9 @@
 
 
         <div :class="{'col-md-7 col-sm-12':!isMobile,'fixed-map':isMobile,'fixed-map-show':isMapShow}">
-          <Map @onDragEnd="onDragEnd"></Map>
+          <Map @onDragEnd="onDragEnd" @onResult="onResultAddress"></Map>
           <div class="fixed-map-close" v-if="isMobile">
-            <a @click="isMapShow = false" class="btn btn-showmap">Fechar</a>
+            <a @click="isMapShow = false" class="btn btn-showmap">Ok, feito</a>
           </div>
         </div>
 
@@ -40,8 +40,11 @@
               </div>
 
               <div class="form-group" v-if="isMobile">
-                <a class="btn btn-sm white btn-success" @click="isMapShow = !isMapShow">Alterar endereço</a>
+                <a class="btn btn-sm white btn-success" @click="isMapShow = !isMapShow">Alterar endereço (localizacão)</a>
                  <!-- <input type="text" class="form-control" id="address" v-model="info.address" name="address" :placeholder="$ml.get('store.form.address')" required> -->
+              </div>
+              <div class="form-group" v-if="info.address">
+                <input type="text"  class="form-control" v-model="info.address" name="address" disabled>
               </div>
               <div class="form-group">
                  <input type="text" class="form-control" v-model="info.city" name="city" :placeholder="$ml.get('sidebar.form.city')" required>
@@ -215,6 +218,7 @@ export default {
         isMobile: isMobile,
         isMapShow: false,
         info: {
+          address: false,
           member: 'volunteer',
           campaign: 'movimento117',
           location: {},
@@ -383,6 +387,10 @@ export default {
       onDragEnd(v) {
         if(this.getMarkerPosition().lat && this.getMarkerPosition().lng)
           this.isLocated = true
+      },
+      onResultAddress(v){
+        console.log('res',v);
+        this.info.address = v.place_name;
       }
     }
 }
@@ -410,11 +418,23 @@ export default {
       position: absolute;
       top: 10px;
       left: 10px;
+
+      @media only screen and (max-width: 600px) {
+        bottom: 30px;
+        top: auto;
+        right: 10px;
+        left: auto;
+      }
     }
 
     .location {
       top: 20px;
       bottom: auto;
+      @media only screen and (max-width: 600px) {
+        top: 50%;
+        transform: translate(0,-50%);
+        right: 10px;
+      }
     }
   }
 

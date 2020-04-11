@@ -51,9 +51,14 @@
         <title>Te Ajudo - Me</title>
         <!-- Fonts -->
         <!-- <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet"/> -->
+        <link
+        rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css"
+        type="text/css"
+        />
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
         <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css?c=11">
+        <link rel="stylesheet" href="/css/app.css?c=12">
 <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -82,6 +87,6 @@
     </head>
     <body >
       <div id="app"></div>
-      <script type="text/javascript" src="/js/app.js?c=11"></script>
+      <script type="text/javascript" src="/js/app.js?c=12"></script>
     </body>
 </html>

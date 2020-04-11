@@ -46,7 +46,7 @@ class UserController extends BaseController
       $user->phone = $request->input('phone');
       $user->whatsapp = $request->input('whatsapp') !== null ? $request->input('whatsapp') : false;
       $user->slug = str_slug($request->input('name'));
-      $user->address = '';
+      $user->address = $request->input('address') !== null ? $request->input('address') : false;
       $user->lat = $request->input('location.lat');
       $user->lng = $request->input('location.lon');
       $user->type = $request->input('type') ? $request->input('type') : 'volunteer';
