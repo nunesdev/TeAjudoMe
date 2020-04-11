@@ -286,7 +286,7 @@ export default {
           return;
         }
 
-        if(!this.info.support.market && !this.info.support.market_garden && !this.info.support.food && !this.info.support.health && !this.info.support.mechanical && !this.info.support.others) {
+        if(!this.info.support.central_coleta && !this.info.support.blood & !this.info.support.others) {
           this.$notify({
             group: 'foo',
             title: 'Ops!',
@@ -312,21 +312,6 @@ export default {
               'event_category': 'warning',
               'event_label': 'field',
               'event_value': 'support.available'
-            })
-          return;
-        }
-
-        if(this.info.support.psicologo && !this.info.support.document) {
-          this.$notify({
-            group: 'foo',
-            title: 'Ops!',
-            text: this.$ml.get('sidebar.form.msg.error_document'),
-            type: 'warning'
-          });
-          this.$gtag.event('add_store', {
-              'event_category': 'warning',
-              'event_label': 'field',
-              'event_value': 'document'
             })
           return;
         }
