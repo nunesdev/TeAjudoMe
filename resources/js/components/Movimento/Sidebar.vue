@@ -11,7 +11,7 @@
               </div>
               <div class="col-6">
                 <div class="stats">
-                  <span>{{getTotal('user')}}</span> <small>{{getTotal('user') > 1 ? 'Doadores' : 'Doador'}}</small>
+                  <span>{{getTotal('user')}}</span> <small>Doadores</small>
                 </div>
               </div>
             </div>
@@ -23,7 +23,7 @@
               </div>
               <div class="col-6">
                 <div class="stats">
-                  <span>{{getTotal('volunteer')}} </span> <small>{{getTotal('volunteer') > 1 ? 'Voluntários' : 'Voluntário'}}</small>
+                  <span>{{getTotal('volunteer')}} </span> <small>Voluntários</small>
                 </div>
               </div>
             </div>
@@ -35,7 +35,7 @@
               </div>
                <div class="col-6">
                  <div class="stats">
-                   <span>{{getTotal('store')}}</span> <small>Central de Coleta</small>
+                   <span>{{getTotal('store')}}</span> <small>Centrais de Coleta</small>
                  </div>
                </div>
             </div>
