@@ -165,9 +165,12 @@ export default {
   },
   methods: {
     getTotal(type) {
-      if(!this.getMarkersMovimento) return;
       return this.getMarkersMovimento.filter((item)=>{
-        return item.type == type
+        if(type == 'store' && item.type == 'store' && !item.options.blood) {
+          return item.type == type
+        } else if(type != 'store' && item.type != 'store') {
+          return item.type == type
+        }
       }).length
     },
     show () {
