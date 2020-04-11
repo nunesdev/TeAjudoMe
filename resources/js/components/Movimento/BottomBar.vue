@@ -108,7 +108,7 @@ export default {
   methods: {
     getTotal(type) {
       return this.getMarkersMovimento.filter((item)=>{
-        return item.type == type
+        return item.type == type && !item.options.blood
       }).length
     },
     changeState() {
