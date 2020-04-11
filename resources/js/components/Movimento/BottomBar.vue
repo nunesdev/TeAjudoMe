@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-6">
                   <div class="stats">
-                    <span>{{getTotal('user')}}</span> <small>{{getTotal('user') > 1 ? 'Doadores' : 'Doador'}}</small>
+                    <span>{{getTotal('user')}}</span> <small>Doadores</small>
                   </div>
                 </div>
               </div>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-6">
                   <div class="stats">
-                    <span>{{getTotal('volunteer')}} </span> <small>{{getTotal('volunteer') > 1 ? 'Voluntários' : 'Voluntário'}}</small>
+                    <span>{{getTotal('volunteer')}} </span> <small>Voluntários</small>
                   </div>
                 </div>
               </div>
@@ -108,7 +108,11 @@ export default {
   methods: {
     getTotal(type) {
       return this.getMarkersMovimento.filter((item)=>{
-        return item.type == type && !item.options.blood
+        if(type == 'store' && item.type == 'store' && !item.options.blood) {
+          return item.type == type
+        } else if(type != 'store' && item.type != 'store') {
+          return item.type == type
+        }
       }).length
     },
     changeState() {

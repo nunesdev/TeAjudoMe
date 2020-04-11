@@ -53,7 +53,7 @@
         <!-- <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css" rel="stylesheet"/> -->
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
         <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/css/app.css?c=8">
+        <link rel="stylesheet" href="/css/app.css?c=10">
 <script>
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
@@ -82,6 +82,6 @@
     </head>
     <body >
       <div id="app"></div>
-      <script type="text/javascript" src="/js/app.js?c=8"></script>
+      <script type="text/javascript" src="/js/app.js?c=10"></script>
     </body>
 </html>
