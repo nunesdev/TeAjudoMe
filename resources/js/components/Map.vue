@@ -167,9 +167,11 @@ export default {
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .map-inner
     position: absolute
     width: 100%
     height: 100%
+  .location
+    top: 160px
 </style>
