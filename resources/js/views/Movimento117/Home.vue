@@ -43,7 +43,7 @@
           <div class="text-center">
             <a class="btn" @click="locateMe">
               <span class="icon-target"></span>
-              <span v-text="$ml.get('home.map.location')"></span>
+              <span v-if="!isMobile" v-text="$ml.get('home.map.location')"></span>
               <small v-if="!isLocated">loading...</small>
             </a>
           </div>
@@ -53,7 +53,7 @@
           <div class="text-center">
             <a class="btn" @click="searchByArea">
               <span class="icon-busca"></span>
-              <span v-text="$ml.get('home.map.search_area')">Pesquisar nesta área</span>
+              <span  v-if="!isMobile" v-text="$ml.get('home.map.search_area')">Pesquisar nesta área</span>
             </a>
           </div>
         </div>
