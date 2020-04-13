@@ -136,4 +136,15 @@ body {
       background: $white;
     }
   }
+
+  .v-tour {
+    // height: 100%;
+    // position: absolute;
+    // width: 100%;
+    // background: rgba(255,255,255,0.5);
+    //z-index: 20000;
+  }
+  .v-tour__target--highlighted {
+    box-shadow: 0 0 0 4px rgb(56, 193, 114)!important;
+  }
 }

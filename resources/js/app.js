@@ -17,11 +17,15 @@ import VTooltip from 'v-tooltip'
 
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css'
-import 'material-icons/iconfont/material-icons.css'   
+import 'material-icons/iconfont/material-icons.css'
 
 Vue.use(Vuesax, {
   // options here
 })
+
+import VueTour from 'vue-tour'
+import 'vue-tour/dist/vue-tour.css'
+Vue.use(VueTour)
 
 // Layouts
 import DefaultLayout from './layouts/Default'
