@@ -55,12 +55,15 @@ class User extends Authenticatable
      if(isset($options['campaign']))
       $query .= " AND u.campaign = '{$options['campaign']}'";
 
+     if(!isset($options['campaign']))
+      $query .= " AND u.campaign IS NULL";
+
       $query .=	" HAVING
 					distance < ".$options['distance']."
 				ORDER BY
 					distance ASC
 				LIMIT 0, ".$options['limit'];
-  
+
     	$users = DB::select($query);
 
     	return $users;
