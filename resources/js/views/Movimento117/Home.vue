@@ -39,21 +39,21 @@
           </div>
         </modal>
 
-        <div class="location">
+        <div class="search-area v-step-3" v-if="isSearchByArea">
+          <div class="text-center">
+            <a class="btn" @click="searchByArea">
+              <span class="icon-busca"></span>
+              <span  v-if="!isMobile" v-text="$ml.get('home.map.search_area')">Pesquisar nesta área</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="location v-step-4">
           <div class="text-center">
             <a class="btn" @click="locateMe">
               <span class="icon-target"></span>
               <span v-if="!isMobile" v-text="$ml.get('home.map.location')"></span>
               <small v-if="!isLocated">loading...</small>
-            </a>
-          </div>
-        </div>
-
-        <div class="search-area" v-if="isSearchByArea">
-          <div class="text-center">
-            <a class="btn" @click="searchByArea">
-              <span class="icon-busca"></span>
-              <span  v-if="!isMobile" v-text="$ml.get('home.map.search_area')">Pesquisar nesta área</span>
             </a>
           </div>
         </div>
@@ -139,7 +139,7 @@ export default {
       loadedMap: false,
       items: [],
       loadedItems: false,
-      isSearchByArea: false,
+      isSearchByArea: true,
       oldZoom: false,
 
       isMobile: isMobile,

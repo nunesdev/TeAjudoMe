@@ -6,7 +6,7 @@
         <vs-avatar  size="70px" src="/images/movimento/user.png"/>
       </div>
 
-      <vs-sidebar-item index="1" icon="map" to="/movimento117">
+      <vs-sidebar-item index="1" icon="map" to="/movimento117" class="v-step-8">
         Mapa
       </vs-sidebar-item>
 

@@ -5,7 +5,7 @@
 
         <div class="col-12 bottombar-volunteers-count">
           <div class="row no-gutters">
-            <div class="col-4">
+            <div class="col-4 v-step-0">
               <div class="row align-items-center no-gutters">
                 <div class="col-6">
                   <img src="/images/movimento/caixa.png" width="22" alt="">
@@ -17,7 +17,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-4 v-step-1">
               <div class="row align-items-center no-gutters">
                 <div class="col-6">
                   <img src="/images/movimento/user.png" width="16" alt="">
@@ -29,7 +29,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-4">
+            <div class="col-4 v-step-2">
               <div class="row align-items-center no-gutters">
                 <div class="col-6">
                   <img src="/images/movimento/abrigo.png" width="16" alt="">
@@ -55,14 +55,14 @@
 
       <div class="row">
         <div class="col-10 text-center">
-          <router-link to="/movimento117/quero-doar"  class="btn btn-sm btn-active btn-white">
+          <router-link to="/movimento117/quero-doar"  class="btn btn-sm btn-active btn-white v-step-5">
             <span class="icon-hand-stop"></span> <span>Quero doar</span>
           </router-link>
-          <router-link  class="btn btn-sm btn-white" to="/movimento117/voluntario">
+          <router-link  class="btn btn-sm btn-white v-step-6" to="/movimento117/voluntario">
             <span>Quero ser voluntário</span>
           </router-link>
         </div>
-        <div class="col-2 text-right">
+        <div class="col-2 text-right v-step-7">
           <button @click="emitMethod" class="btn btn-info"><span class="icon-lista"></span></button>
         </div>
       </div>
