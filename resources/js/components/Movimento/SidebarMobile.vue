@@ -1,5 +1,35 @@
 <template>
    <div ref="parentSidebar">
+
+     <v-tour name="myTourSidebar" :steps="tour.steps" :options="tour.options" :callbacks="tour.myCallbacks">
+       <template slot-scope="tour">
+         <transition name="fade">
+           <v-step
+             class="v-step-custom"
+             v-if="tour.currentStep === index"
+             v-for="(step, index) of tour.steps"
+             :key="index"
+             :step="step"
+             :previous-step="tour.previousStep"
+             :next-step="tour.nextStep"
+             :stop="tour.stop"
+             :is-first="tour.isFirst"
+             :is-last="tour.isLast"
+             :labels="tour.labels"
+           >
+             <template>
+               <div slot="actions">
+                 <button @click="tour.skip" class="btn btn-sm btn-warning">Fechar</button>
+
+                 <button @click="tour.previousStep" class="btn btn-sm btn-info">Anterior</button>
+                 <button @click="tour.nextStep" class="btn btn-sm btn-success">Próximo</button>
+               </div>
+             </template>
+           </v-step>
+         </transition>
+       </template>
+     </v-tour>
+
      <vs-sidebar :parent="$refs.parentSidebar" v-model="active" default-index="1"  position-right  color="primary" class="sidebarx" spacer >
 
       <div class="header-sidebar" slot="header">
@@ -10,7 +40,7 @@
         Mapa
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="2" icon="favorite" to="/movimento117/quero-doar">
+      <vs-sidebar-item index="2" icon="favorite" to="/movimento117/quero-doar" class="v-step-9">
         Quero doar
       </vs-sidebar-item>
 
@@ -26,9 +56,12 @@
       <vs-sidebar-item index="5" icon="format_align_center" to="/movimento117/sobre">
         Sobre
       </vs-sidebar-item>
-      <vs-sidebar-item index="6" icon="get_app" v-if="showInstall && !installedAppPWA">
+      <vs-sidebar-item index="6" icon="get_app"
+        :class="{'v-step-12':isAndroid,'v-step-12-1':isMobileSafari}"
+        v-if="showInstall && !installedAppPWA">
         <button  @click="installApp" type="button" class="btn btn-sm btn-primary" name="button">Adicionar à tela de ínicio</button>
       </vs-sidebar-item>
+
       <vs-sidebar-item index="5" icon="system_update" @click="updateApp">
         Atualizar App
       </vs-sidebar-item>
@@ -60,7 +93,7 @@
 <script>
 import EventBus from '@src/event-bus';
 import { isMobile, isAndroid,isMobileSafari } from 'mobile-device-detect';
-
+import Steps from '@src/store/jsons/steps/movimento-sidebar'
 
 export default {
   data() {
@@ -73,11 +106,29 @@ export default {
       isAndroid: isAndroid,
       isMobileSafari: isMobileSafari,
       installedAppPWA: false,
-      showInstall: false
+      showInstall: false,
+      tour: {
+        steps: Steps,
+        options: {
+          highlight: true,
+          labels: {
+            buttonSkip: 'Fechar',
+            buttonPrevious: 'Ant',
+            buttonNext: 'Próx',
+            buttonStop: 'Terminar'
+          },
+        },
+        myCallbacks: {
+          onPreviousStep: this.myCustomPreviousStepCallback,
+          onNextStep: this.myCustomNextStepCallback,
+          onStop: this.myCustomStopCallback
+        }
+      }
     }
   },
   updated() {
     if(self.INSTALLAPPEVENT) this.showInstall = true
+    //this.$tours['myTourSidebar'].start()
   },
   created() {
     EventBus.$on('OPEN_SIDEBAR', this.changeState);
@@ -138,12 +189,21 @@ export default {
     },
     updateApp() {
       self.location.reload()
+    },
+    myCustomPreviousStepCallback(currentStep) {
+
+    },
+    myCustomNextStepCallback(currentStep) {
+
+    },
+    myCustomStopCallback(v) {
+      console.log(v);
     }
   }
 }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 #parentx
   overflow: hidden
   height: 100vh
@@ -171,4 +231,6 @@ export default {
       border: 0px solid rgba(0,0,0,0) !important
       border-left: 1px solid rgba(0,0,0,.07) !important
       border-radius: 0px !important
+.v-step-custom
+  z-index: 50000!important
 </style>
