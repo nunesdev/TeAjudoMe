@@ -167,7 +167,7 @@ export default {
         isMapShow: false,
         info: {
           address: false,
-          member: 'volunteer',
+          type: 'volunteer',
           location: {},
           support: {}
         },
@@ -291,15 +291,15 @@ export default {
           });
 
           this.actionSetNewUser(payload.data.data)
-          this.$router.push('/');
+
 
           this.$gtag.event('add_voluntario', {
               'event_category': 'success',
               'event_label': 'ok_ao_inserir',
               'event_value': this.info
             })
-
             this.info = {location:{}, support:{}}
+            this.$router.push('/');
         } else {
           this.$gtag.event('add_voluntario', {
               'event_category': 'error',
@@ -332,7 +332,7 @@ export default {
       onResultAddress(v){
         console.log('res',v);
         this.info.address = v.place_name;
-      }
+      },
     }
 }
 </script>

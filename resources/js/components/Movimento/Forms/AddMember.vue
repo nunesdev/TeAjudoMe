@@ -278,7 +278,7 @@ export default {
               'event_label': 'ok_ao_inserir',
               'event_value': this.info
             })
-
+            this.sendTagHash();
             this.info = {location:{}, support:{}}
             this.$router.push('/movimento117');
         } else {
@@ -314,6 +314,29 @@ export default {
       onResultAddress(v){
         console.log('res',v);
         this.info.address = v.place_name;
+      },
+      sendTagHash() {
+        var OneSignal = self.OneSignal || [];
+        var UData = {
+          "name":this.info.name,
+          "city":this.info.city,
+          "state":this.info.state,
+          "phone":this.info.phone,
+          "type":this.info.type,
+          "food": this.info.support.blood ? true : false,
+        }
+
+        if (OneSignal && UData !== '') {
+          console.log('OneSignal UData: ', UData);
+          OneSignal.push(function() { 
+            OneSignal.sendTag("user_name", UData.name);
+            OneSignal.sendTag("user_city", UData.city);
+            OneSignal.sendTag("user_state", UData.state);
+            OneSignal.sendTag("user_phone", UData.phone);
+            OneSignal.sendTag("u_user_type", UData.type);
+            OneSignal.sendTag("m_user_food", UData.food);
+          })
+        }
       }
     }
 }

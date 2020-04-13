@@ -44,15 +44,29 @@ export default {
     };
   },
   mounted() {
+
+
     setTimeout(()=>{
       this.startStep = this.$cookies.get('_tastartstep') || !isMobile ? true : false
-    },1000) 
+      this.sendTagHash();
+    },1000)
   },
   methods: {
     setStartStep(v) {
       this.startStep = true
       this.$cookies.set('_tastartstep', true);
     },
+    sendTagHash() {
+      var OneSignal = self.OneSignal || [];
+      var UCampaign = 'movimento117';
+
+      if (OneSignal && UCampaign !== '') {
+        console.log('OneSignal UCampaign: ', UCampaign);
+        OneSignal.push(function() {
+          OneSignal.sendTag("user_campaign", UCampaign);
+        })
+      }
+    }
   }
 }
 </script>

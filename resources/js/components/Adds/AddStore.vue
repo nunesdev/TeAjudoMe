@@ -429,7 +429,6 @@ export default {
           this.isLocated = true
       },
       onResultAddress(v){
-        console.log('res',v);
         this.info.address = v.place_name;
       }
     }

@@ -41,6 +41,8 @@ export default {
     };
   },
   mounted() {
+    this.sendTagHash();
+
     setTimeout(()=>{
       this.startStep = this.$cookies.get('_tastartstep') || !isMobile ? true : false
     },1000)
@@ -56,6 +58,18 @@ export default {
       this.startStep = true
       this.$cookies.set('_tastartstep', true);
     },
+    sendTagHash() {
+      var OneSignal = self.OneSignal || [];
+      var uHashCurrent = 'teajudo';
+
+      if (OneSignal && uHashCurrent !== '') {
+        console.log('OneSignal UCampaign: ', uHashCurrent);
+        OneSignal.push(function() {
+          OneSignal.sendTag("u_user_campaign", uHashCurrent);
+          console.log('OneSignal UCampaign Sended: ', uHashCurrent);
+        })
+      }
+    }
   }
 }
 </script>
