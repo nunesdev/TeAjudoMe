@@ -16,7 +16,7 @@
                       <img v-if="isMobile" src="/images/teajudome.png" width="52" height="52" alt="">
                     </div>
                     <div class="col-9">
-                      <h4>TeAjudo - Pequenos Negócios</h4>
+                      <h4>TeAjudo - <small>#CompreDoBairro #VizinhoEuTeAjudo</small> </h4>
                       <button class="btn btn-info" @click="hide()">Continuar nesse mapa</button>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                       <img v-if="isMobile" src="/images/movimento/user.png" width="52" height="52" alt="">
                     </div>
                     <div class="col-9">
-                      <h4>Movimento 117 - #AmorEmMovimento</h4>
+                      <h4>Movimento 117 - <small>#AmorEmMovimento</small> </h4>
                       <button class="btn  btn-active btn-info" @click="selectCampaign('movimento117')">Ir para o mapa</button>
                     </div>
                 </div>
