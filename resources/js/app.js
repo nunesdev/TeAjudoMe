@@ -46,7 +46,7 @@ Vue.use(VueCookies)
 Vue.use(Vuex);
 Vue.use(VueReCaptcha, { siteKey: '6LfhneIUAAAAAD5iy7oduG0ni8-1ex59VGmxrHP6' })
 Vue.use(Notifications)
-Vue.use(VModal)
+Vue.use(VModal, { dialog: true })
 
 const store = new Vuex.Store(Store);
 sync(store, router);

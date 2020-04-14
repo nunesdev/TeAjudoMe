@@ -52,7 +52,7 @@ export default [
   },
   {
     target: '.v-step-6',
-    content: 'Quer ser o voluntário? Este botão abre um formulário para você preencher algumas informações',
+    content: 'Quer ser voluntário? Este botão abre um formulário para você preencher algumas informações',
     params: {
       placement: 'top'
     }
