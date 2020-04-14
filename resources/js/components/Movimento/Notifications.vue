@@ -58,6 +58,7 @@ export default {
     }
   },
   mounted() {
+  
     const notified = this.$cookies.get('_tanotify') ? this.$cookies.get('_tanotify')  : false
 
     if(notified && !notified.includes('action_1')) {

@@ -94,10 +94,12 @@ export default {
     };
   },
   mounted() {
-
+    console.log(this.$router.currentRoute);
     setTimeout(()=>{
       this.startedStep = this.$cookies.get('_tastartstep') || !isMobile ? true : false
-      if(this.startedStep && !this.startedTutorial) this.$tours['myTour'].start()
+
+      if(this.startedStep && !this.startedTutorial && this.$router.currentRoute.name != 'movimento117Notify') this.$tours['myTour'].start()
+
       this.sendTagHash()
     },1000)
   },
