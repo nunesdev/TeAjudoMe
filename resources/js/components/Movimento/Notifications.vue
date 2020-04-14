@@ -33,7 +33,7 @@
             </div>
             <div class="pt-2">
               <h4>Somos +50 voluntários no movimento, mas podemos ser 100 ou mais!</h4>
-              <p> Vamos precisar de bastante gente nos próximos dias, que tal mandar esse link para um amigo seu que ainda não se cadastrou ? </p>
+              <p> Vamos precisar de bastante gente nos próximos dias, que tal mandar esse link para um amigo seu, que ainda não se cadastrou ? </p>
             </div>
             <div class="panel" style="background:aliceblue">
               https://bit.ly/2xqNrIR
@@ -58,7 +58,7 @@ export default {
     }
   },
   mounted() {
-  
+
     const notified = this.$cookies.get('_tanotify') ? this.$cookies.get('_tanotify')  : false
 
     if(notified && !notified.includes('action_1')) {
