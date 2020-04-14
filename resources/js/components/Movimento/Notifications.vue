@@ -60,9 +60,17 @@ export default {
   mounted() {
     const notified = this.$cookies.get('_tanotify') ? this.$cookies.get('_tanotify')  : false
 
-    if(notified && !notified.includes('action_1')) this.$modal.show('modal-notifications');
+    if(notified && !notified.includes('action_1')) {
+      this.$modal.show('modal-notifications');
+    }
 
-    if(!notified) this.$modal.show('modal-notifications');
+    if(notified && notified.includes('action_1')) {
+      this.$router.push('/movimento117')
+    }
+
+    if(!notified) {
+      this.$modal.show('modal-notifications');
+    }
   },
   methods: {
     aceito(){
@@ -84,6 +92,8 @@ export default {
           'event_label': 'acao_1',
           'event_value': 'deixa_comigo'
         })
+
+      this.$router.push('/movimento117')
     }
   }
 }

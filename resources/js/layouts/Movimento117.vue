@@ -37,8 +37,6 @@
 
     <div class="" v-if="startedStep">
 
-      <Notifications />
-
       <SidebarMobile v-if="isMobile" />
 
       <BottomBar v-if="isMobile"/>
@@ -54,7 +52,7 @@ import { isMobile } from 'mobile-device-detect'
 import Sidebar from '@components/Movimento/Sidebar'
 import BottomBar from '@components/Movimento/BottomBar'
 import SidebarMobile from '@components/Movimento/SidebarMobile'
-import Notifications from '@components/Movimento/Notifications'
+
 
 import StartStep from '@components/Movimento/StartStep'
 import Steps from '@src/store/jsons/steps/movimento'
@@ -67,8 +65,7 @@ export default {
     Sidebar,
     SidebarMobile,
     BottomBar,
-    StartStep,
-    Notifications
+    StartStep
   },
   data() {
     return {

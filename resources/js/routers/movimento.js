@@ -5,6 +5,7 @@ import Store from '@views/Movimento117/Store'
 import StaySafe from '@views/Movimento117/StaySafe'
 import HowWorks from '@views/Movimento117/HowWorks'
 import About from '@views/Movimento117/About'
+import Notifications from '@views/Movimento117/Notifications'
 
 export default [
   {
@@ -64,6 +65,15 @@ export default [
     path: '/movimento117/sobre',
     name: 'movimento117About',
     component : About,
+    meta: {
+      layout: 'Movimento117',
+      bodyClass: 'm117_about'
+    }
+  },
+  {
+    path: '/movimento117/notificacoes',
+    name: 'movimento117Notify',
+    component : Notifications,
     meta: {
       layout: 'Movimento117',
       bodyClass: 'm117_about'
