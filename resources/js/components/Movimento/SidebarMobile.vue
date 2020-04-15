@@ -65,9 +65,9 @@
         Como funciona
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="5" icon="done" to="/transparencia">
+      <!-- <vs-sidebar-item index="5" icon="done" to="/transparencia">
         Transparência
-      </vs-sidebar-item>
+      </vs-sidebar-item> -->
 
       <vs-sidebar-item index="5" icon="format_align_center" to="/movimento117/sobre">
         Sobre
