@@ -22,7 +22,7 @@
               Meta de Cestas: {{this.target}}
               <hr>
               <small class="text-right label">Arrecadado</small>
-              <vue-slider v-model="value" readonly :tooltip="'always'" :tooltip-formatter="sliderOptions.formatter1" :tooltip-placement="['top']"></vue-slider>
+              <vue-slider v-model="value" disabled :tooltip="'always'" :tooltip-formatter="sliderOptions.formatter1" :tooltip-placement="['top']"></vue-slider>
             </p>
             <p>Comprovantes de compra</p>
             <small>Colocaremos todos os comprovantes de compra aqui.</small>
