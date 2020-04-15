@@ -65,9 +65,9 @@
             <router-link to="/movimento117/voluntario"  class="btn btn-white">
               <span>Quero ser um voluntário</span>
             </router-link>
-            <router-link  class="btn btn-white" to="/transparencia">
+            <!-- <router-link  class="btn btn-white" to="/transparencia">
               <span>Transparência</span>
-            </router-link>
+            </router-link> -->
             <button @click="showCampaigns" type="button" class="btn btn-sm btn-primary" name="button">Campanhas</button>
             <button v-if="!installedAppPWA && showInstall" @click="installApp" type="button" class="btn btn-sm btn-primary" name="button"><span class="icon-download"></span>App</button>
             <div v-if="showButtonNotify" class='onesignal-customlink-container'></div>
