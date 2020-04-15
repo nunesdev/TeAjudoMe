@@ -32,7 +32,7 @@
                 <div class="row helps text-center">
 
 
-                  <div class="col-md-6 col-sm-12 ">
+                  <div class="col-md-6 col-sm-12 " v-if="!campaign_focus">
                     <div class="help" :class="{active: info.support.money}">
                       <label for="paypal">
                         <span>
@@ -156,6 +156,7 @@ export default {
         isLocated: false,
         isMobile: isMobile,
         isMapShow: false,
+        campaign_focus: false,
         info: {
           address: false,
           campaign: 'movimento117',
@@ -178,6 +179,10 @@ export default {
 
       if(this.getMarkerPosition().lat && this.getMarkerPosition().lng)
         this.isLocated = true
+    },
+    mounted(){
+      if(this.$router.currentRoute.query && this.$router.currentRoute.query.campaign) this.campaign_focus = true
+
     },
     methods: {
       ...mapGetters([
@@ -328,7 +333,7 @@ export default {
 
         if (OneSignal && UData !== '') {
           console.log('OneSignal UData: ', UData);
-          OneSignal.push(function() { 
+          OneSignal.push(function() {
             OneSignal.sendTag("user_name", UData.name);
             OneSignal.sendTag("user_city", UData.city);
             OneSignal.sendTag("user_state", UData.state);

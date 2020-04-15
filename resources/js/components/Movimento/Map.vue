@@ -77,8 +77,8 @@ export default {
       mapboxgeocoder: undefined,
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/brunodevsp/ck8561s7l04me1imoc1r5jk3x',
-      coordinates: this.$cookies.get('isLocated') ? [this.$cookies.get('isLocated').lng, this.$cookies.get('isLocated').lat] : [-60.943904,-10.5705057],
-      zoom: this.$cookies.get('isLocated') ? 14 : 2,
+      coordinates: this.$cookies.isKey('isLocated') ? [this.$cookies.get('isLocated').lng, this.$cookies.get('isLocated').lat] : [-60.943904,-10.5705057],
+      zoom: this.$cookies.isKey('isLocated') ? 14 : 2,
     }
   },
   methods: {

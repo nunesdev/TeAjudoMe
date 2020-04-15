@@ -59,7 +59,7 @@ export default {
   },
   mounted() {
 
-    const notified = this.$cookies.get('_tanotify') ? this.$cookies.get('_tanotify')  : false
+    const notified = this.$cookies.isKey('_tanotify') ? this.$cookies.get('_tanotify')  : false
 
     if(notified && !notified.includes('action_1')) {
       this.$modal.show('modal-notifications');
@@ -86,7 +86,7 @@ export default {
     },
     deixaComigo() {
       this.$modal.hide('modal-notifications-2');
-      this.$cookies.set('_tanotify',['action_1'])
+      this.$cookies.set('_tanotify',['action_1'], 60 * 60 * 24 * 30)
 
       this.$gtag.event('movimento_notificacoes', {
           'event_category': 'acao',

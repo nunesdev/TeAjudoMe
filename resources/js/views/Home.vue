@@ -165,8 +165,8 @@ export default {
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/brunodevsp/ck8ngw7go0r6l1ipriw3gi2lk',
-      coordinates: this.$cookies.get('_tageocord') ? [this.$cookies.get('_tageocord').lng,this.$cookies.get('_tageocord').lat] : [-60.943904,-10.5705057],
-      zoom: this.$cookies.get('_tageocord') ? 10 : 2,
+      coordinates: this.$cookies.isKey('_tageocord') ? [this.$cookies.get('_tageocord').lng,this.$cookies.get('_tageocord').lat] : [-60.943904,-10.5705057],
+      zoom: this.$cookies.isKey('_tageocord') ? 10 : 2,
       positionControl: isMobile ? 'top-right' : 'bottom-right'
     };
   },
@@ -280,18 +280,18 @@ export default {
     	return d;
     },
     selectCampaign(c) {
-      this.$cookies.set('_tamodalcampaign', c)
+      this.$cookies.set('_tamodalcampaign', c, 60 * 60 * 24 * 30)
       this.$router.push('/movimento117')
     },
     show () {
-      if($cookies.get('_tamodalcampaign')) return;
+      if($cookies.isKey('_tamodalcampaign')) return;
       this.$modal.show('select-campaign');
     },
     hide () {
       this.$modal.hide('select-campaign');
     },
     beforeClose() {
-      this.$cookies.set('_tamodalcampaign', true)
+      this.$cookies.set('_tamodalcampaign', true, 60 * 60 * 24 * 30)
     }
   }
 }

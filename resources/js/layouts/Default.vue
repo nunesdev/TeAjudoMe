@@ -44,7 +44,7 @@ export default {
     this.sendTagHash();
 
     setTimeout(()=>{
-      this.startStep = this.$cookies.get('_tastartstep') || !isMobile ? true : false
+      this.startStep = this.$cookies.isKey('_tastartstep') || !isMobile ? true : false
     },1000)
   },
   created() {
@@ -56,17 +56,15 @@ export default {
     },
     setStartStep(v) {
       this.startStep = true
-      this.$cookies.set('_tastartstep', true);
+      this.$cookies.set('_tastartstep', true, 60 * 60 * 24 * 30);
     },
     sendTagHash() {
       var OneSignal = self.OneSignal || [];
       var uHashCurrent = 'teajudo';
 
       if (OneSignal && uHashCurrent !== '') {
-        console.log('OneSignal UCampaign: ', uHashCurrent);
         OneSignal.push(function() {
           OneSignal.sendTag("u_user_campaign", uHashCurrent);
-          console.log('OneSignal UCampaign Sended: ', uHashCurrent);
         })
       }
     }

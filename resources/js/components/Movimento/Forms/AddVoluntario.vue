@@ -178,6 +178,9 @@ export default {
       if(this.getMarkerPosition().lat && this.getMarkerPosition().lng)
         this.isLocated = true
     },
+    mounted(){
+      console.log(this.$router.currentRoute);
+    },
     methods: {
       ...mapGetters([
         'getMarkerPosition',
@@ -289,7 +292,7 @@ export default {
             })
 
             this.sendTagHash()
-            this.$cookies.set('_tadata', this.info)
+            this.$cookies.set('_tadata', this.info,  60 * 60 * 24 * 30)
 
             this.info = {location:{}, support:{}}
 

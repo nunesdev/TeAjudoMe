@@ -72,7 +72,7 @@ export default {
       isMobile: isMobile,
       sidebarOpen: false,
       startedStep: true,
-      startedTutorial : this.$cookies.get('_tastartutorial') ? true : false,
+      startedTutorial : this.$cookies.isKey('_tastartutorial') ? true : false,
       installedAppPWA: false,
       tour: {
         steps: Steps,
@@ -94,9 +94,9 @@ export default {
     };
   },
   mounted() {
-    console.log(this.$router.currentRoute);
+    
     setTimeout(()=>{
-      this.startedStep = this.$cookies.get('_tastartstep') || !isMobile ? true : false
+      this.startedStep = this.$cookies.isKey('_tastartstep') || !isMobile ? true : false
 
       if(this.startedStep && !this.startedTutorial && this.$router.currentRoute.name != 'movimento117Notify') this.$tours['myTour'].start()
 
@@ -111,7 +111,7 @@ export default {
   methods: {
     setStartedStep(v) {
       this.startedStep = true
-      this.$cookies.set('_tastartstep', true);
+      this.$cookies.set('_tastartstep', true, 60 * 60 * 24 * 30);
       this.$tours['myTour'].start()
     },
     myCustomPreviousStepCallback(currentStep) {
@@ -121,7 +121,7 @@ export default {
       if(currentStep > 6 && currentStep < 8) {
         setTimeout(()=>{
           EventBus.$emit('OPEN_SIDEBAR', true)
-          this.$cookies.set('_tastartutorial', true);
+          this.$cookies.set('_tastartutorial', true, 60 * 60 * 24 * 30);
 
           this.startedTutorial = false;
 
@@ -133,14 +133,13 @@ export default {
       var UCampaign = 'movimento117';
 
       if (OneSignal && UCampaign !== '') {
-        console.log('OneSignal UCampaign: ', UCampaign);
         OneSignal.push(function() {
           OneSignal.sendTag("user_campaign", UCampaign);
         })
       }
     },
     myCustomStopCallback(v) {
-      this.$cookies.set('_tastartutorial', true);
+      this.$cookies.set('_tastartutorial', true, 60 * 60 * 24 * 30);
     }
   }
 }

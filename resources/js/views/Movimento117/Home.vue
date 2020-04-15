@@ -145,12 +145,12 @@ export default {
       isMobile: isMobile,
       sidebarOpen: false,
       location: null,
-      isLocated: this.$cookies.get('_tageocord_mv') ? true : false,
+      isLocated: this.$cookies.isKey('_tageocord_mv') ? true : false,
 
       accessToken: 'pk.eyJ1IjoiYnJ1bm9kZXZzcCIsImEiOiJjazd6NzBocmwwMnQ5M2xvcWg0YmxqNmZpIn0.rfIgqe3-QTrf16tIVgjgjg',
       mapStyle: 'mapbox://styles/brunodevsp/ck8ngw7go0r6l1ipriw3gi2lk',
-      coordinates: this.$cookies.get('_tageocord_mv') ? [this.$cookies.get('_tageocord_mv').lng,this.$cookies.get('_tageocord_mv').lat] : [-60.943904,-10.5705057],
-      zoom: this.$cookies.get('_tageocord_mv') ? 10 : 2,
+      coordinates: this.$cookies.isKey('_tageocord_mv') ? [this.$cookies.get('_tageocord_mv').lng,this.$cookies.get('_tageocord_mv').lat] : [-60.943904,-10.5705057],
+      zoom: this.$cookies.isKey('_tageocord_mv') ? 10 : 2,
       positionControl: isMobile ? 'top-right' : 'bottom-right'
     };
   },
@@ -185,7 +185,7 @@ export default {
 
         navigator.geolocation.getCurrentPosition(pos => {
           setTimeout(()=>this.isLocated = true,1000)
-          this.$cookies.set('_tageocord_mv', {"lng":pos.coords.longitude,"lat":pos.coords.latitude});
+          this.$cookies.set('_tageocord_mv', {"lng":pos.coords.longitude,"lat":pos.coords.latitude}, 60 * 60 * 24 * 30);
           resolve(pos);
         }, err => {
           reject(err);
