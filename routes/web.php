@@ -29,3 +29,6 @@ Route::prefix('api')->group(function () {
 Route::get('/movimento117', function(){
   return redirect('/#/movimento117');
 });
+Route::get('/transparencia', function(){
+  return redirect('/#/transparencia');
+});
