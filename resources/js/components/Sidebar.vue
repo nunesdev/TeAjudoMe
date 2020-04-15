@@ -60,6 +60,9 @@
             <router-link  class="btn btn-white" to="/negocio">
               <span v-text="$ml.get('menu.marketup')"></span>
             </router-link>
+            <router-link  class="btn btn-white" to="/transparencia">
+              <span>Transparência</span>
+            </router-link>
             <router-link v-if="showMapUp" class="btn btn-showmap" :to="{ name: 'home' }"> <span class="icon-map"></span> <span v-text="$ml.get('menu.mapup')"></span> </router-link>
             <!-- <div class='onesignal-customlink-container'></div> -->
           </div>

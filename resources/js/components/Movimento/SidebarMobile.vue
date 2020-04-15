@@ -47,11 +47,27 @@
       <vs-sidebar-item index="3" icon="pan_tool" to="/movimento117/voluntario">
         Quero ser voluntário
       </vs-sidebar-item>
+
+      <vs-divider position="left"></vs-divider>
+
+      <vs-sidebar-item index="2.1" icon="favorite" to="/movimento117">
+        <img src="/images/movimento/movimento.png" width="32" alt="">
+        &nbsp;&nbsp; #AmorEmMovimento
+      </vs-sidebar-item>
+      <vs-sidebar-item index="2.2" icon="store" to="/">
+        #CompreDoBairro #CompraDoPequeno
+      </vs-sidebar-item>
+      <vs-sidebar-item index="2.3" icon="house" to="/">
+        #VizinhoEuTeAjudo
+      </vs-sidebar-item>
+
       <vs-sidebar-item index="4" icon="swap_horizontal_circle" to="/movimento117/como-funciona">
         Como funciona
       </vs-sidebar-item>
 
-      <vs-divider position="left"></vs-divider>
+      <vs-sidebar-item index="5" icon="done" to="/transparencia">
+        Transparência
+      </vs-sidebar-item>
 
       <vs-sidebar-item index="5" icon="format_align_center" to="/movimento117/sobre">
         Sobre
@@ -66,16 +82,7 @@
         Atualizar App
       </vs-sidebar-item>
 
-      <vs-sidebar-item index="2.1" icon="favorite" to="/movimento117">
-        <img src="/images/movimento/movimento.png" width="32" alt="">
-        &nbsp;&nbsp; #AmorEmMovimento
-      </vs-sidebar-item>
-      <vs-sidebar-item index="2.2" icon="store" to="/">
-        #CompreDoBairro #CompraDoPequeno
-      </vs-sidebar-item>
-      <vs-sidebar-item index="2.3" icon="house" to="/">
-        #VizinhoEuTeAjudo
-      </vs-sidebar-item>
+
 
       <div class="footer-sidebar" slot="footer">
         <vs-button  type="flat" target="_blank" href="https://instagram.com/movimento117">

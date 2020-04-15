@@ -10,6 +10,7 @@ import StaySafe from '../views/StaySafe'
 import Store from '../views/Store'
 import NeedHelp from '../views/NeedHelp'
 import Volunteer from '../views/Volunteer'
+import Transparencia from '../views/Transparencia'
 
 const baseRoutes = [
   {
@@ -47,13 +48,19 @@ const baseRoutes = [
     component : Volunteer,
     name: 'Posso Ajudar',
     meta: { bodyClass: 'canhelp'  }
+  },
+  {
+    path: '/transparencia',
+    component : Transparencia,
+    name: 'Transparencia',
+    meta: { bodyClass: 'canhelp'  }
   }
 ]
 
 import Movimento from './movimento'
 
 const routes = baseRoutes.concat(
-  Movimento 
+  Movimento
 )
 
 const router = new Router({
