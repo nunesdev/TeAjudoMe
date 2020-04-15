@@ -23,12 +23,12 @@
             <p v-text="item.options.others"></p>
           </div>
         </div>
-        <!-- <div class="actions">
-          <div @click="collect = !collect" class="btn btn-primary" :class="{'btn-active': collect}">
-            <small>{{collect ? 'Concluir Coleta':'Coletar Doação'}}</small>
+        <div class="actions" v-if="item.options.campaign_focus">
+          <div class="btn btn-active btn-primary">
+            <small>Bruno é o responsável.</small>
             <img src="/images/movimento/caixa.png" width="22" alt="">
           </div>
-        </div> -->
+        </div>
       </div>
     </MglPopup>
   </div>

@@ -181,8 +181,10 @@ export default {
         this.isLocated = true
     },
     mounted(){
-      if(this.$router.currentRoute.query && this.$router.currentRoute.query.campaign) this.campaign_focus = true
-
+      if(this.$router.currentRoute.query && this.$router.currentRoute.query.campaign) {
+        this.campaign_focus = true
+        this.info.support.campaign_focus =  true;
+      }
     },
     methods: {
       ...mapGetters([
