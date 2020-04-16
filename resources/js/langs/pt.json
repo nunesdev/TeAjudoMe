@@ -76,7 +76,7 @@
         "dog" : "Passear com o dog",
         "others" : "Outras solicitações"
       },
-      "truth": "Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários",
+      "truth": "Eu confirmo a veracidade das informações prestadas, assumo toda a responsabilidade por tais informações e concordo em ter essas informações compartilhadas com outros usuários e que tenho mais de 16 anos de idade",
       "save" : "Salvar",
       "msg": {
         "error" : "Preencha com o que você pode ajudar :)",

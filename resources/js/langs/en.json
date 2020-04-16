@@ -74,7 +74,7 @@
         "dog" : "Walk the dog",
         "others" : "Other requests"
       },
-      "truth": "I confirm the veracity of the information provided, I assume full responsibility for such information and agree to have that information shared with other users",
+      "truth": "I confirm the veracity of the information provided, I assume full responsibility for such information and agree to have that information shared with other users and that I am over 16 years old",
       "save" : "Save",
       "msg": {
         "error" : "Complete what can help :)",
