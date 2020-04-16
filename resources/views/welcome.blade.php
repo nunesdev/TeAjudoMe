@@ -8,6 +8,11 @@
         <meta property="og:image" content="https://teajudo.me/images/teajudome.png">
         <meta property="og:url" content="https://www.teajudo.me">
 
+        <meta property="title" content="TeAjudo - Plataforma colaborativa">
+        <meta property="description" content="Plataforma colaborativa criada para ajudar pessoas com a pandemia COVID-19">
+        <meta property="image" content="https://teajudo.me/images/teajudome.png">
+        <meta property="url" content="https://www.teajudo.me">
+
         <meta name="twitter:title" content="TeAjudo - Plataforma colaborativa ">
         <meta name="twitter:description" content="Plataforma colaborativa criada para ajudar pessoas com a pandemia COVID-19">
         <meta name="twitter:image" content="https://teajudo.me/images/teajudome.png">
