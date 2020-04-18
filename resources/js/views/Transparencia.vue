@@ -25,10 +25,24 @@
               <vue-slider v-model="value" disabled :tooltip="'always'" :tooltip-formatter="sliderOptions.formatter1" :tooltip-placement="['top']"></vue-slider>
             </p>
             <p>Comprovantes de compra</p>
-            <small>Colocaremos todos os comprovantes de compra aqui.</small>
+            <div class="">
+              <small>Cesta comprada em <b>17/04/2020</b> e entregue em <b>18/04/2020</b><br/>  </small>
+
+              <a target="_blank" href="/images/docs/comprovante_cesta_18_04_2020.jpg">
+                <img src="/images/docs/comprovante_cesta_18_04_2020.jpg" width="64" alt=""></a>
+            </div>
+
+
+
             <hr>
             <p>Famílias atendidas</p>
-            <small>Colocaremos aqui os bairros atendidos, com algumas fotos.</small>
+            <div class="">
+
+              <small>Cesta entregue <b>18/04/2020 - Carapicuíba SP</b></small><br/>
+              <a href="/images/docs/carapicuiba/foto_cesta_entregue_18_04_2020.jpg" target="_blank">
+                <img src="/images/docs/carapicuiba/foto_cesta_entregue_18_04_2020.jpg" width="64" alt="">
+              </a>
+            </div>
           </div>
         </div>
       </div>
