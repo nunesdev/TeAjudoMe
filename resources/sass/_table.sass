@@ -1,0 +1,82 @@
+.table
+  border-collapse: collapse
+  border-spacing: 0 2em
+  margin-top: 1rem
+  margin-bottom: 0
+  &-hide
+    display: none
+  &-active
+    display: table
+    margin-top: 0
+    tbody
+      tr
+        box-shadow: -2px 7px 8px -1px rgba(0, 0, 0, 0.2)!important
+  tbody
+    tr
+      cursor: pointer
+      box-shadow: 0 1px 8px -1px rgba(0,0,0,0.2)
+      transition: 0.3s
+      border-radius: 4px
+      background: $white
+      border-left: 4px solid $bucketlabel
+      &:hover
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2)
+        .name
+        .edit
+          visibility: visible
+      &.published
+        border-left: 4px solid #4cc06b
+      &.inactive
+        border-left: 4px solid #e83959
+
+      td
+        vertical-align: middle
+        border: none
+        &:first-child
+          .icon-drive
+            color: #dbd9d9
+            font-size: 2.5em
+        .icon
+          font-size: 1.6em
+        .label
+          font-size: 1.2em
+          color: $bucketlabel
+        .name
+          color: #172b4d
+          font-size: 1.6em
+          .alias
+            a
+              color: $bucketlabel
+              font-size: 12px
+        .edit
+          visibility: hidden
+          [class^="icon-"]
+            font-size: 1.3em
+          a
+            padding-right: 10px
+          .alias
+            display: block
+            color: $bucketlabel
+        .created_at
+          display: block
+          font-size: 1.4em
+          margin-bottom: 10px
+        .owner
+          font-size: 1.4em
+          display: block
+        .public_url
+          .icon-earth
+            margin-right: 10px
+            color: #4cc06b
+        .options
+          .icon
+            color: $bucketlabel
+
+.dark-mode
+  .table
+    tbody
+      tr
+        background: #333232
+        td
+          .name
+            color: #ccc9c9

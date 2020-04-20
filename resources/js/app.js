@@ -19,9 +19,7 @@ import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css'
 import 'material-icons/iconfont/material-icons.css'
 
-Vue.use(Vuesax, {
-  // options here
-})
+Vue.use(Vuesax)
 
 import VueTour from 'vue-tour'
 import 'vue-tour/dist/vue-tour.css'

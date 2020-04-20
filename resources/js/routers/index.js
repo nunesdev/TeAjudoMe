@@ -2,15 +2,17 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import VueBodyClass from 'vue-body-class';
 
+
 Vue.use(Router)
 
-import Home from '../views/Home'
-import About from '../views/About'
-import StaySafe from '../views/StaySafe'
-import Store from '../views/Store'
-import NeedHelp from '../views/NeedHelp'
-import Volunteer from '../views/Volunteer'
-import Transparencia from '../views/Transparencia'
+import Home from '@views/Home'
+import About from '@views/About'
+import StaySafe from '@views/StaySafe'
+import Store from '@views/Store'
+import NeedHelp from '@views/NeedHelp'
+import Volunteer from '@views/Volunteer'
+import Transparencia from '@views/Transparencia'
+import List from '@views/List'
 
 const baseRoutes = [
   {
@@ -54,6 +56,13 @@ const baseRoutes = [
     component : Transparencia,
     name: 'Transparencia',
     meta: { bodyClass: 'canhelp'  }
+  },
+  {
+    path: '/lista/:type',
+    component : List,
+    name: 'List',
+    props: true,
+    meta: { bodyClass: 'list'  }
   }
 ]
 
@@ -66,8 +75,6 @@ const routes = baseRoutes.concat(
 const router = new Router({
   routes
 })
-
-
 
 const vueBodyClass = new VueBodyClass(routes);
 

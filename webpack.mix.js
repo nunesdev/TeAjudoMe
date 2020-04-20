@@ -32,5 +32,8 @@ mix.webpackConfig({
       '@components': path.resolve(__dirname, src_path + 'components/'),
       '@modules': path.resolve(__dirname, src_path + 'modules/'),
     }
+  },
+  node: {
+     fs: "empty"
   }
 });
