@@ -114,6 +114,7 @@
     </div>
 </template>
 <script>
+import EventBus from '@src/event-bus';
 import { isMobile } from 'mobile-device-detect';
 import Mapbox from "mapbox-gl";
 import {
@@ -171,8 +172,8 @@ export default {
     };
   },
   created() {
+    EventBus.$emit('OPEN_SIDEBAR_HOME', false);
     this.mapbox = Mapbox;
-
   },
   mounted() {
     this.show()

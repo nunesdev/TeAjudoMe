@@ -1,6 +1,6 @@
 import { register } from 'register-service-worker'
 
-//if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'development') {
   register(`/service-worker.js?cache=1212`, {
     ready () {
       console.log('Site is ready')
@@ -26,4 +26,4 @@ import { register } from 'register-service-worker'
       console.error('Error during service worker registration:', error)
     },
   })
-//}
+}

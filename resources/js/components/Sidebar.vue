@@ -5,43 +5,50 @@
         <div class="row ">
 
           <div class="col-6">
-            <div class="row align-items-center no-gutters">
-              <div class="col-6">
-                <img src="/images/perfil.png" width="44" height="44" alt="">
-              </div>
-              <div class="col-6">
-                <div class="stats">
-                  <span>{{getTotal('user')}}</span> <small v-text="$ml.get('sidebar.total.requests')"></small>
+            <router-link :to="{ name: 'List', params: {type:'user'} }">
+              <div class="row align-items-center no-gutters">
+                <div class="col-6">
+                  <img src="/images/perfil.png" width="44" height="44" alt="">
+                </div>
+                <div class="col-6">
+                  <div class="stats">
+                    <span>{{getTotal('user')}}</span> <small v-text="$ml.get('sidebar.total.requests')"></small>
+                  </div>
                 </div>
               </div>
-            </div>
+            </router-link>
           </div>
           <div class="col-6">
-            <div class="row align-items-center no-gutters">
-              <div class="col-6">
-                <img src="/images/voluntario.png" width="44" height="44" alt="">
-              </div>
-              <div class="col-6">
-                <div class="stats">
-                  <span>{{getTotal('volunteer')}} </span> <small v-text="$ml.get('sidebar.total.volunteers')"></small>
+            <router-link :to="{ name: 'List', params: {type:'volunteer'} }">
+              <div class="row align-items-center no-gutters">
+                <div class="col-6">
+                  <img src="/images/voluntario.png" width="44" height="44" alt="">
+                </div>
+                <div class="col-6">
+                  <div class="stats">
+                    <span>{{getTotal('volunteer')}} </span> <small v-text="$ml.get('sidebar.total.volunteers')"></small>
+                  </div>
                 </div>
               </div>
-            </div>
+            </router-link>
           </div>
           <div class="col-6">
-            <div class="row align-items-center no-gutters">
-              <div class="col-6">
-                <img src="/images/comercio.png" width="44" height="44" alt="">
-              </div>
-               <div class="col-6">
-                 <div class="stats">
-                   <span>{{getTotal('store')}}</span> <small v-text="$ml.get('sidebar.total.small_business')"></small>
+            <router-link :to="{ name: 'List', params: {type:'store'} }">
+              <div class="row align-items-center no-gutters">
+                <div class="col-6">
+                  <img src="/images/comercio.png" width="44" height="44" alt="">
+                </div>
+                 <div class="col-6">
+                   <div class="stats">
+                     <span>{{getTotal('store')}}</span> <small v-text="$ml.get('sidebar.total.small_business')"></small>
+                   </div>
                  </div>
-               </div>
-            </div>
+              </div>
+            </router-link>
           </div>
           <div class="col-12">
             <small>Total: {{getTotalMarkers}}</small>
+            <router-link class="btn btn-sm btn-white" :to="{ name: 'List', params: { type: 'store' } }">Ver Lista</router-link>
           </div>
         </div>
       </div>

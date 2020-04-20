@@ -5,31 +5,35 @@
 
         <div class="col-12 bottombar-volunteers-count">
           <div class="row no-gutters">
-            <div class="col-4">
-              <div class="row align-items-center no-gutters">
-                <div class="col-6">
-                  <img src="/images/perfil.png" width="22" alt="">
-                </div>
-                <div class="col-6">
-                  <div class="stats">
-                    <span>{{getTotal('user')}}</span> <small v-text="$ml.get('sidebar.total.requests')"></small>
+            <router-link  class="col-4" :to="{ name: 'List', params: {type:'user'} }">
+              <div>
+                <div class="row align-items-center no-gutters">
+                  <div class="col-6">
+                    <img src="/images/perfil.png" width="22" alt="">
+                  </div>
+                  <div class="col-6">
+                    <div class="stats">
+                      <span>{{getTotal('user')}}</span> <small v-text="$ml.get('sidebar.total.requests')"></small>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-4">
-              <div class="row align-items-center no-gutters">
-                <div class="col-6">
-                  <img src="/images/voluntario.png" width="16" alt="">
-                </div>
-                <div class="col-6">
-                  <div class="stats">
-                    <span>{{getTotal('volunteer')}} </span> <small v-text="$ml.get('sidebar.total.volunteers')"></small>
+            </router-link>
+            <router-link class="col-4" :to="{ name: 'List', params: {type:'volunteer'} }">
+              <div >
+                <div class="row align-items-center no-gutters">
+                  <div class="col-6">
+                    <img src="/images/voluntario.png" width="16" alt="">
+                  </div>
+                  <div class="col-6">
+                    <div class="stats">
+                      <span>{{getTotal('volunteer')}} </span> <small v-text="$ml.get('sidebar.total.volunteers')"></small>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-4">
+            </router-link>
+            <router-link class="col-4" :to="{ name: 'List', params: {type:'store'} }">
               <div class="row align-items-center no-gutters">
                 <div class="col-6">
                   <img src="/images/comercio.png" width="16" alt="">
@@ -40,7 +44,7 @@
                    </div>
                  </div>
               </div>
-            </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -55,12 +59,14 @@
           <router-link to="/preciso-de-ajuda"  class="btn btn-active btn-white">
             <span class="icon-hand-stop"></span> <span v-text="$ml.get('menu.needup')"></span>
           </router-link>
+
           <router-link  class="btn btn-white" to="/negocio">
             <span v-text="$ml.get('menu.marketup')"></span>
           </router-link>
           <router-link to="/posso-ajudar"  class="btn btn-white">
             <span v-text="$ml.get('menu.handup')"></span>
           </router-link>
+
         </div>
         <div class="col-2 text-right">
           <button @click="emitMethod" class="btn btn-info"><span class="icon-lista"></span></button>
@@ -102,11 +108,8 @@ export default {
   data() {
     return {
       isActive: false,
-    }
-  },
-  watch:{
-    $route (to, from){
-
+      isMap: this.$router.currentRoute.name == 'home',
+      isList: this.$router.currentRoute.name == 'List',
     }
   },
   computed: {
@@ -114,6 +117,10 @@ export default {
       'getMarkers',
       'getTotalMarkers',
     ]),
+  },
+  updated() {
+    console.log(this.isMap);
+    console.log(this.isList);
   },
   methods: {
     getTotal(type) {

@@ -11,6 +11,7 @@
 
 @import 'buttons';
 @import 'icons';
+@import 'table';
 
 // Components
 @import 'components/sidebar';
@@ -97,6 +98,10 @@ body {
   .list {
     list-style: circle;
     margin-left: 1rem;
+  }
+
+  .row-reverse {
+    flex-flow: wrap-reverse;
   }
 
   .grecaptcha-badge {

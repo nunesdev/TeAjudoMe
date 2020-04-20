@@ -9,6 +9,9 @@
       <vs-sidebar-item index="1" icon="map" to="/">
         Mapa
       </vs-sidebar-item>
+      <vs-sidebar-item index="1" icon="list" to="/lista/store">
+        Lista
+      </vs-sidebar-item>
 
       <vs-sidebar-item index="2" icon="pan_tool" to="/preciso-de-ajuda">
         <span v-text="$ml.get('menu.needup')"></span>
