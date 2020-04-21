@@ -5,7 +5,7 @@
 
         <div class="col-12 bottombar-volunteers-count">
           <div class="row no-gutters">
-            <div class="col-4 v-step-0">
+            <router-link class="col-4 v-step-0" :to="{ name: 'Movimento117List', params: {type:'user'} }">
               <div class="row align-items-center no-gutters">
                 <div class="col-6">
                   <img src="/images/movimento/caixa.png" width="22" alt="">
@@ -16,8 +16,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-4 v-step-1">
+            </router-link>
+            <router-link class="col-4 v-step-1" :to="{ name: 'Movimento117List', params: {type:'volunteer'} }">
               <div class="row align-items-center no-gutters">
                 <div class="col-6">
                   <img src="/images/movimento/user.png" width="16" alt="">
@@ -28,8 +28,8 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-4 v-step-2">
+            </router-link>
+            <router-link class="col-4 v-step-2" :to="{ name: 'Movimento117List', params: {type:'store'} }">
               <div class="row align-items-center no-gutters">
                 <div class="col-6">
                   <img src="/images/movimento/abrigo.png" width="16" alt="">
@@ -40,7 +40,7 @@
                    </div>
                  </div>
               </div>
-            </div>
+            </router-link>
           </div>
         </div>
         <!-- <div class="col-12 text-right">

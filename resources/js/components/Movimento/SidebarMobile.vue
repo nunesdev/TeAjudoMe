@@ -39,6 +39,9 @@
       <vs-sidebar-item index="1" icon="map" to="/movimento117" class="v-step-8">
         Mapa
       </vs-sidebar-item>
+      <vs-sidebar-item index="1" icon="list" to="/movimento117/lista/user" class="v-step-10">
+        Lista
+      </vs-sidebar-item>
 
       <vs-sidebar-item index="2" icon="favorite" to="/movimento117/quero-doar" class="v-step-9">
         Quero doar

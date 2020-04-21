@@ -4,7 +4,7 @@
 
       <div class="sidebar-volunteers-count">
         <div class="row align-items-center">
-          <div class="col-6">
+          <router-link class="col-6" :to="{ name: 'Movimento117List', params: {type:'user'} }">
             <div class="row align-items-center no-gutters">
               <div class="col-6">
                 <img src="/images/movimento/caixa.png" width="44" height="44" alt="">
@@ -15,8 +15,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-6">
+          </router-link>
+          <router-link class="col-6" :to="{ name: 'Movimento117List', params: {type:'volunteer'} }">
             <div class="row align-items-center no-gutters">
               <div class="col-6">
                 <img src="/images/movimento/user.png" width="44" height="44" alt="">
@@ -27,8 +27,8 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-6">
+          </router-link>
+          <router-link class="col-6" :to="{ name: 'Movimento117List', params: {type:'store'} }">
             <div class="row align-items-center no-gutters">
               <div class="col-6">
                 <img src="/images/movimento/abrigo.png" width="44" height="44" alt="">
@@ -39,8 +39,8 @@
                  </div>
                </div>
             </div>
-          </div>
-          <div class="col-6">
+          </router-link>
+          <router-link class="col-6" :to="{ name: 'Movimento117List', params: {type:'store'} }">
             <div class="row align-items-center no-gutters">
               <div class="col-6">
                 <img src="/images/movimento/sangue.png" width="44" height="44" alt="">
@@ -51,7 +51,7 @@
                  </div>
                </div>
             </div>
-          </div>
+          </router-link>
         </div>
       </div>
       <div class="row">
