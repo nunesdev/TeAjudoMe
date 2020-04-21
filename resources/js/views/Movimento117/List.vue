@@ -1,6 +1,43 @@
 <template>
   <div class="content">
     <div class="container">
+
+      <modal class="select-campaign" height="auto" :adaptive="true" name="select-campaign">
+        <div class="modal-header">
+          <h3>Selecione a campanha</h3>
+        </div>
+        <div class="modal-body">
+          <div class="row ">
+            <div class="col-12 pb pt select-campaign-item">
+              <div class="row no-gutters">
+                  <div class="col-3">
+                    <img v-if="!isMobile" src="/images/movimento/user.png" width="92" height="92" alt="">
+                    <img v-if="isMobile" src="/images/movimento/user.png" width="52" height="52" alt="">
+                  </div>
+                  <div class="col-9">
+                    <h4>Movimento117 <small>#AmorEmMovimento</small> </h4>
+                    <button class="btn btn-info" @click="hide()">Continuar nesse mapa</button>
+                  </div>
+              </div>
+            </div>
+            <div class="col-12 pb pt select-campaign-item">
+              <div class="row no-gutters">
+                  <div class="col-3">
+                    <img v-if="!isMobile" src="/images/teajudome.png" width="92" height="92" alt="">
+                    <img v-if="isMobile" src="/images/teajudome.png" width="52" height="52" alt="">
+                  </div>
+                  <div class="col-9">
+                    <h4>TeAjudo <small>#CompreDoBairro #VizinhoTeAjudo</small> </h4>
+                    <router-link class="btn btn-active btn-info" to="/">Ir para o mapa</router-link >
+                  </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </modal>
+
       <div class="row justify-content-center">
         <div class="col-md-10 col-sm-12">
 

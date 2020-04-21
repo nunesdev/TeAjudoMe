@@ -52,6 +52,9 @@
                </div>
             </div>
           </router-link>
+          <div class="col-12">
+            <router-link class="btn btn-sm btn-white" :to="{ name: 'Movimento117List', params: { type: 'store' } }">Ver Lista</router-link>
+          </div>
         </div>
       </div>
       <div class="row">

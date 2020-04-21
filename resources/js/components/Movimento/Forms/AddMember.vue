@@ -69,10 +69,10 @@
                           <span> <img src="/images/movimento/pagar.png" width="32" height="32" alt=""> </span>
                           <p>
                             Via transferência:<br/>
-                            <small><b>Banco Bradesco - Agência: 3396-0</b></small>
-                            <small><b>Conta corrente: 46235-7</b></small>
+                            <small><b>Banco Bradesco - Agência: 3368-5</b></small>
+                            <small><b>Conta corrente: 16600-6</b></small>
                             <small><b>União Central Brasileira da Igreja Adventista do Sétimo dia</b></small>
-                            <small><b>CNPJ: 55.233.019/0002-50</b></small>
+                            <small><b>CNPJ: 55.233.019/0001-70</b></small>
                             <small>É importante que você envie o comprovante para jovens.ap@outlook.com</small>
                           </p>
                         </div>
