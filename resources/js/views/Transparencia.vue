@@ -62,9 +62,9 @@ export default {
   data() {
     return {
       isMobile: isMobile,
-      lastUpdated: '22/04/2020 ás 09:07',
+      lastUpdated: '22/04/2020 ás 22:22',
       target: 60,
-      price: 1880,
+      price: 3110,
       cestas: 0,
       price_food: 60,
       value: 0,
