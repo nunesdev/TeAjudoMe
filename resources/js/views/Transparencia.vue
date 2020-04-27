@@ -21,7 +21,7 @@
             <p>
               Meta de Cestas: {{this.target}}
               <hr>
-              <small class="text-right label">Arrecadado</small>
+              <small class="text-right label">Arrecadado (45 cestas de R$ 63,00) + (20 cestas de 39,90) = R$ 3613</small>
               <vue-slider v-model="value" disabled :tooltip="'always'" :tooltip-formatter="sliderOptions.formatter1" :tooltip-placement="['top']"></vue-slider>
             </p>
             <p>Comprovantes de compra</p>
@@ -62,9 +62,9 @@ export default {
   data() {
     return {
       isMobile: isMobile,
-      lastUpdated: '23/04/2020 ás 10:41',
+      lastUpdated: '26/04/2020 ás 12:41',
       target: 60,
-      price: 3030,
+      price: 2835,
       cestas: 0,
       price_food: 60,
       value: 0,
