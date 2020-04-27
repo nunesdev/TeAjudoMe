@@ -31,6 +31,18 @@
               <a target="_blank" href="/images/docs/comprovante_cesta_18_04_2020.jpg">
                 <img src="/images/docs/comprovante_cesta_18_04_2020.jpg" width="64" alt=""></a>
             </div>
+            <div class="">
+              <small>45 Cestas compradas em <b>22/04/2020</b> e entregue em <b>25/04/2020</b><br/>  </small>
+
+              <a target="_blank" href="/images/docs/capao_redondo/comprovante_cesta_22_04_2020.jpg">
+                <img src="/images/docs/capao_redondo/comprovante_cesta_22_04_2020.jpg" width="64" alt=""></a>
+            </div>
+            <div class="">
+              <small>20 Cestas compradas em <b>24/04/2020</b> e entregue em <b>25/04/2020</b><br/>  </small>
+
+              <a target="_blank" href="/images/docs/capao_redondo/comprovante_cesta_24_04_2020.jpg">
+                <img src="/images/docs/capao_redondo/comprovante_cesta_24_04_2020.jpg" width="64" alt=""></a>
+            </div>
 
 
 
@@ -64,9 +76,9 @@ export default {
       isMobile: isMobile,
       lastUpdated: '26/04/2020 ás 12:41',
       target: 60,
-      price: 2835,
+      price: 3613,
       cestas: 0,
-      price_food: 63,
+      price_food: 60,
       value: 0,
       sliderOptions: {
         formatter1: '{value}%',
