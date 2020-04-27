@@ -55,6 +55,14 @@
                 <img src="/images/docs/carapicuiba/foto_cesta_entregue_18_04_2020.jpg" width="64" alt="">
               </a>
             </div>
+            <div class="">
+
+              <small>Cestas entregue <b>25/04/2020 - Jardim Lídia - Capão Redondo SP</b></small><br/>
+              álbum compartilhado clique para ver mais fotos:
+              <a href="https://photos.app.goo.gl/Ezp5Wqciv3zKJd8g6" target="_blank">
+                <img src="/images/docs/capao_redondo/IMG_0835.jpg" width="64" alt="">
+              </a>
+            </div>
           </div>
         </div>
       </div>
