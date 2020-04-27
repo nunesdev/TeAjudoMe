@@ -86,7 +86,7 @@ export default {
       target: 60,
       price: 3613,
       cestas: 0,
-      price_food: 60,
+      price_food: 56,
       value: 0,
       sliderOptions: {
         formatter1: '{value}%',
